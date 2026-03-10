@@ -367,19 +367,69 @@
     overflow: hidden;
     border-radius: 12px 12px 0 0;
     background: var(--surface2);
+    position: relative;
+  }
+
+  .carousel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
   }
 
   .category-img {
+    min-width: 100%;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
     display: block;
+    flex-shrink: 0;
   }
 
-  .category-card:hover .category-img {
-    transform: scale(1.05);
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    line-height: 1;
   }
+
+  .category-img-wrap:hover .carousel-btn { opacity: 1; }
+
+  .carousel-btn.prev { left: 8px; }
+  .carousel-btn.next { right: 8px; }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+  }
+
+  .carousel-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .carousel-dot.active { background: #fff; }
 
   .category-card {
     background: var(--surface);
@@ -891,8 +941,11 @@
   </div>
   <div class="categories-grid">
     <div class="category-card reveal">
-      <div class="category-img-wrap">
-        <img src="imgs/chaveiros.jpg" alt="Chaveiros" class="category-img" onerror="this.parentElement.style.display='none'">
+      <div class="category-img-wrap" id="wrap-chaveiros">
+        <div class="carousel" id="carousel-chaveiros"></div>
+        <button class="carousel-btn prev" onclick="slide('chaveiros',-1,event)">&#8592;</button>
+        <button class="carousel-btn next" onclick="slide('chaveiros',1,event)">&#8594;</button>
+        <div class="carousel-dots" id="dots-chaveiros"></div>
       </div>
       <div class="category-icon">🔑</div>
       <div class="category-name">Chaveiros</div>
@@ -906,8 +959,11 @@
       </div>
     </div>
     <div class="category-card reveal">
-      <div class="category-img-wrap">
-        <img src="imgs/decoracao.jpg" alt="Decoração" class="category-img" onerror="this.parentElement.style.display='none'">
+      <div class="category-img-wrap" id="wrap-decoracao">
+        <div class="carousel" id="carousel-decoracao"></div>
+        <button class="carousel-btn prev" onclick="slide('decoracao',-1,event)">&#8592;</button>
+        <button class="carousel-btn next" onclick="slide('decoracao',1,event)">&#8594;</button>
+        <div class="carousel-dots" id="dots-decoracao"></div>
       </div>
       <div class="category-icon">🌸</div>
       <div class="category-name">Decoração</div>
@@ -921,8 +977,11 @@
       </div>
     </div>
     <div class="category-card reveal">
-      <div class="category-img-wrap">
-        <img src="imgs/utilidades.jpg" alt="Utilidades" class="category-img" onerror="this.parentElement.style.display='none'">
+      <div class="category-img-wrap" id="wrap-utilidades">
+        <div class="carousel" id="carousel-utilidades"></div>
+        <button class="carousel-btn prev" onclick="slide('utilidades',-1,event)">&#8592;</button>
+        <button class="carousel-btn next" onclick="slide('utilidades',1,event)">&#8594;</button>
+        <div class="carousel-dots" id="dots-utilidades"></div>
       </div>
       <div class="category-icon">📦</div>
       <div class="category-name">Utilidades</div>
@@ -936,8 +995,11 @@
       </div>
     </div>
     <div class="category-card reveal">
-      <div class="category-img-wrap">
-        <img src="imgs/geek.jpg" alt="Geek e Games" class="category-img" onerror="this.parentElement.style.display='none'">
+      <div class="category-img-wrap" id="wrap-geek">
+        <div class="carousel" id="carousel-geek"></div>
+        <button class="carousel-btn prev" onclick="slide('geek',-1,event)">&#8592;</button>
+        <button class="carousel-btn next" onclick="slide('geek',1,event)">&#8594;</button>
+        <div class="carousel-dots" id="dots-geek"></div>
       </div>
       <div class="category-icon">🎮</div>
       <div class="category-name">Geek & Games</div>
@@ -951,8 +1013,11 @@
       </div>
     </div>
     <div class="category-card reveal">
-      <div class="category-img-wrap">
-        <img src="imgs/presentes.jpg" alt="Presentes Personalizados" class="category-img" onerror="this.parentElement.style.display='none'">
+      <div class="category-img-wrap" id="wrap-presentes">
+        <div class="carousel" id="carousel-presentes"></div>
+        <button class="carousel-btn prev" onclick="slide('presentes',-1,event)">&#8592;</button>
+        <button class="carousel-btn next" onclick="slide('presentes',1,event)">&#8594;</button>
+        <div class="carousel-dots" id="dots-presentes"></div>
       </div>
       <div class="category-icon">🎁</div>
       <div class="category-name">Presentes Personalizados</div>
@@ -966,8 +1031,11 @@
       </div>
     </div>
     <div class="category-card reveal">
-      <div class="category-img-wrap">
-        <img src="imgs/corporativo.jpg" alt="Corporativo" class="category-img" onerror="this.parentElement.style.display='none'">
+      <div class="category-img-wrap" id="wrap-corporativo">
+        <div class="carousel" id="carousel-corporativo"></div>
+        <button class="carousel-btn prev" onclick="slide('corporativo',-1,event)">&#8592;</button>
+        <button class="carousel-btn next" onclick="slide('corporativo',1,event)">&#8594;</button>
+        <div class="carousel-dots" id="dots-corporativo"></div>
       </div>
       <div class="category-icon">🏢</div>
       <div class="category-name">Corporativo</div>
@@ -1228,6 +1296,76 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // INIT
 calcular();
+
+// CAROUSEL
+const carouselState = {};
+
+const categoryImgs = {
+  chaveiros:   ['imgs/chaveiros.jpg','imgs/chaveiros-1.jpg','imgs/chaveiros-2.jpg','imgs/chaveiros-3.jpg'],
+  decoracao:   ['imgs/decoracao.jpg','imgs/decoracao-1.jpg','imgs/decoracao-2.jpg','imgs/decoracao-3.jpg'],
+  utilidades:  ['imgs/utilidades.jpg','imgs/utilidades-1.jpg','imgs/utilidades-2.jpg','imgs/utilidades-3.jpg'],
+  geek:        ['imgs/geek.jpg','imgs/geek-1.jpg','imgs/geek-2.jpg','imgs/geek-3.jpg'],
+  presentes:   ['imgs/presentes.jpg','imgs/presentes-1.jpg','imgs/presentes-2.jpg','imgs/presentes-3.jpg'],
+  corporativo: ['imgs/corporativo.jpg','imgs/corporativo-1.jpg','imgs/corporativo-2.jpg','imgs/corporativo-3.jpg'],
+};
+
+async function loadCarousel(slug) {
+  const urls = categoryImgs[slug];
+  const carousel = document.getElementById('carousel-' + slug);
+  const dotsEl = document.getElementById('dots-' + slug);
+  const wrap = document.getElementById('wrap-' + slug);
+  const loaded = [];
+
+  for (const url of urls) {
+    await new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => { loaded.push(url); resolve(); };
+      img.onerror = () => resolve();
+      img.src = url;
+    });
+  }
+
+  if (loaded.length === 0) { wrap.style.display = 'none'; return; }
+
+  loaded.forEach((url, i) => {
+    const img = document.createElement('img');
+    img.src = url;
+    img.className = 'category-img';
+    img.alt = slug;
+    carousel.appendChild(img);
+
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = (e) => { e.stopPropagation(); goTo(slug, i); };
+    dotsEl.appendChild(dot);
+  });
+
+  carouselState[slug] = { index: 0, total: loaded.length };
+  if (loaded.length <= 1) {
+    wrap.querySelector('.prev').style.display = 'none';
+    wrap.querySelector('.next').style.display = 'none';
+    dotsEl.style.display = 'none';
+  }
+}
+
+function goTo(slug, index) {
+  const state = carouselState[slug];
+  if (!state) return;
+  state.index = (index + state.total) % state.total;
+  document.getElementById('carousel-' + slug).style.transform = `translateX(-${state.index * 100}%)`;
+  document.querySelectorAll(`#dots-${slug} .carousel-dot`).forEach((d, i) => {
+    d.classList.toggle('active', i === state.index);
+  });
+}
+
+function slide(slug, dir, e) {
+  e.stopPropagation();
+  const state = carouselState[slug];
+  if (!state) return;
+  goTo(slug, state.index + dir);
+}
+
+Object.keys(categoryImgs).forEach(loadCarousel);
 </script>
 </body>
 </html>
