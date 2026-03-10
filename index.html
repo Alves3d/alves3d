@@ -873,6 +873,82 @@
     transform: translateY(0);
   }
 
+  /* MATERIAIS */
+  .mat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .mat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .mat-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .mat-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: 'DM Mono', monospace;
+    width: fit-content;
+  }
+
+  .mat-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .mat-sub {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: -10px;
+  }
+
+  .mat-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .mat-pros {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mat-pro {
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .mat-use {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
   /* FLOATING WHATSAPP */
   .wpp-float {
     position: fixed;
@@ -946,6 +1022,7 @@
     <li><a href="#produtos">Produtos</a></li>
     <li><a href="#calculadora">Orçamento</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#materiais">Materiais</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="https://wa.me/5516992364004" class="nav-cta">WhatsApp</a></li>
   </ul>
@@ -969,10 +1046,10 @@
     <div class="hero-card">
       <div class="hero-icon">🖨️</div>
       <div class="hero-card-title">Impressão 3D Personalizada</div>
-      <div class="hero-card-sub">Desde R$8 por peça</div>
+      <div class="hero-card-sub">Desde R$15 por peça</div>
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-num">200+</div>
+          <div class="stat-num">56+</div>
           <div class="stat-label">Projetos</div>
         </div>
         <div class="stat">
@@ -995,11 +1072,11 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-bar-item">
-    <div class="stats-bar-num">200+</div>
+    <div class="stats-bar-num">56+</div>
     <div class="stats-bar-label">Projetos entregues</div>
   </div>
   <div class="stats-bar-item">
-    <div class="stats-bar-num">50K</div>
+    <div class="stats-bar-num">10K</div>
     <div class="stats-bar-label">Views / mês</div>
   </div>
   <div class="stats-bar-item">
@@ -1162,12 +1239,11 @@
       </div>
 
       <div class="field-group">
-        <label class="field-label">Material / Acabamento</label>
+        <label class="field-label">Resistência do material</label>
         <select class="field-select" id="material" onchange="calcular()">
-          <option value="1">PLA padrão</option>
-          <option value="1.3">PLA+ premium</option>
-          <option value="1.5">PETG resistente</option>
-          <option value="0.85">ABS (mais econômico)</option>
+          <option value="1">🟢 Padrão — PLA (cores vibrantes, uso geral)</option>
+          <option value="1.5">🟡 Média — PETG (mais resistente ao calor e impacto)</option>
+          <option value="0.85">🔵 Alta — ABS (resistência superior, acabamento técnico)</option>
         </select>
       </div>
 
@@ -1263,6 +1339,75 @@
   </div>
 </section>
 
+<!-- MATERIAIS -->
+<section id="materiais" style="border-top: 1px solid var(--border);">
+  <div class="section-header reveal" style="text-align:center;">
+    <div class="section-tag">// materiais</div>
+    <h2 class="section-title">QUAL <span>MATERIAL</span> ESCOLHER?</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:560px; margin:16px auto 0;">Cada peça tem uma necessidade diferente. Veja abaixo qual material é ideal para o seu caso:</p>
+  </div>
+  <div class="mat-grid">
+
+    <div class="mat-card reveal">
+      <div class="mat-badge" style="background: rgba(65,118,225,0.12); color: #4176e1; border-color: rgba(65,118,225,0.3);">🟢 PADRÃO</div>
+      <div class="mat-name">PLA</div>
+      <div class="mat-sub">Polylactic Acid</div>
+      <div class="mat-desc">O material mais popular da impressão 3D. Ideal para peças decorativas, chaveiros e presentes. Disponível em dezenas de cores vibrantes, incluindo efeitos brilhantes, metálicos e multicoloridos.</div>
+      <div class="mat-pros">
+        <div class="mat-pro">✅ Cores incríveis e variadas</div>
+        <div class="mat-pro">✅ Ótimo nível de detalhe</div>
+        <div class="mat-pro">✅ Custo mais acessível</div>
+        <div class="mat-pro">⚠️ Evitar calor acima de 60°C</div>
+      </div>
+      <div class="mat-use">
+        <span class="tag">Chaveiros</span>
+        <span class="tag">Decoração</span>
+        <span class="tag">Presentes</span>
+        <span class="tag">Figuras</span>
+      </div>
+    </div>
+
+    <div class="mat-card reveal">
+      <div class="mat-badge" style="background: rgba(234,179,8,0.12); color: #ca8a04; border-color: rgba(234,179,8,0.3);">🟡 MÉDIA RESISTÊNCIA</div>
+      <div class="mat-name">PETG</div>
+      <div class="mat-sub">Polyethylene Terephthalate Glycol</div>
+      <div class="mat-desc">Combina a facilidade de impressão do PLA com mais resistência mecânica e térmica. Ótimo para peças que vão ao sol, suportam peso ou precisam durar mais.</div>
+      <div class="mat-pros">
+        <div class="mat-pro">✅ Resistente ao calor (até ~80°C)</div>
+        <div class="mat-pro">✅ Mais flexível — não quebra fácil</div>
+        <div class="mat-pro">✅ Resistente à umidade</div>
+        <div class="mat-pro">⚠️ Cores menos vibrantes</div>
+      </div>
+      <div class="mat-use">
+        <span class="tag">Suportes</span>
+        <span class="tag">Organizadores</span>
+        <span class="tag">Peças externas</span>
+        <span class="tag">Utensílios</span>
+      </div>
+    </div>
+
+    <div class="mat-card reveal">
+      <div class="mat-badge" style="background: rgba(107,114,128,0.12); color: #9ca3af; border-color: rgba(107,114,128,0.3);">🔵 ALTA RESISTÊNCIA</div>
+      <div class="mat-name">ABS</div>
+      <div class="mat-sub">Acrylonitrile Butadiene Styrene</div>
+      <div class="mat-desc">Material técnico com alta resistência mecânica. O mesmo plástico usado em capacetes, peças automotivas e eletrodomésticos. Indicado para peças que sofrem impacto ou stress constante.</div>
+      <div class="mat-pros">
+        <div class="mat-pro">✅ Alta resistência a impactos</div>
+        <div class="mat-pro">✅ Suporta até ~100°C</div>
+        <div class="mat-pro">✅ Custo mais baixo por grama</div>
+        <div class="mat-pro">⚠️ Menos opções de cores</div>
+      </div>
+      <div class="mat-use">
+        <span class="tag">Peças técnicas</span>
+        <span class="tag">Corporativo</span>
+        <span class="tag">Reposição</span>
+        <span class="tag">Uso intenso</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq" style="background: var(--surface); border-top: 1px solid var(--border);">
   <div class="section-header reveal" style="text-align: center;">
@@ -1318,6 +1463,12 @@ function updateQty(v) {
 
 function calcular() {
   const cat = document.getElementById('categoria').value;
+  const matSelect = document.getElementById('material');
+
+  // Auto-select PLA for chaveiros (best for colors and detail)
+  if (cat === 'chaveiro' && matSelect.selectedIndex !== 0) {
+    matSelect.selectedIndex = 0;
+  }
   const tam = parseFloat(document.getElementById('tamanho').value);
   const mat = parseFloat(document.getElementById('material').value);
   const qty = parseInt(document.getElementById('quantidade').value);
