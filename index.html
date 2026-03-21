@@ -2,2073 +2,729 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alves.3D — Impressão 3D Personalizada</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="shortcut icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alves.3D — Impressão 3D Personalizada</title>
-<meta name="description" content="Impressão 3D personalizada feita sob medida. Chaveiros, decoração, utilidades, presentes e muito mais. Entregamos para todo o Brasil. Peça seu orçamento no WhatsApp!">
-<meta name="keywords" content="impressão 3D, impressão 3D personalizada, chaveiro personalizado, decoração 3D, presente personalizado, peças 3D, Alves 3D">
-<meta name="author" content="Alves.3D">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph (WhatsApp, Facebook) -->
+<meta name="description" content="Impressão 3D personalizada feita sob medida. Chaveiros, decoração, utilidades, presentes e muito mais. Entregamos para todo o Brasil.">
 <meta property="og:title" content="Alves.3D — Impressão 3D Personalizada">
 <meta property="og:description" content="Transforme suas ideias em realidade! Peças personalizadas feitas com impressora 3D. Entregamos para todo o Brasil.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://matheuscalves91192-gif.github.io/alves3d">
+<meta property="og:url" content="https://alves3d.github.io/alves3d">
 <meta property="og:image" content="https://alves3d.github.io/alves3d/imgs/chaveiros-1.jpg">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Alves.3D — Impressão 3D Personalizada">
-<meta name="twitter:description" content="Transforme suas ideias em realidade! Peças personalizadas feitas com impressora 3D.">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #1a1a1a;
-    --accent: #4176e1;
-    --accent2: #5b8ff9;
-    --text: #f0ede8;
-    --muted: #888;
-    --border: #222;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* NOISE TEXTURE */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 48px;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 3px;
-    color: var(--text);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--accent); }
-
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-  .nav-cta {
-    background: var(--accent);
-    color: #000 !important;
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-weight: 600 !important;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 120px 48px 80px;
-    position: relative;
-    overflow: hidden;
-    background-image: url('imgs/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      105deg,
-      rgba(10,10,10,0.92) 0%,
-      rgba(10,10,10,0.75) 50%,
-      rgba(10,10,10,0.4) 100%
-    );
-    z-index: 1;
-  }
-
-  .hero-content, .hero-visual {
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero::after {
-    content: '3D';
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 40vw;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(65,118,225,0.08);
-    pointer-events: none;
-    line-height: 1;
-  }
-
-  .hero-content { position: relative; z-index: 2; }
-  /* hero z-index handled in .hero::before */
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(65,118,225,0.1);
-    border: 1px solid rgba(65,118,225,0.3);
-    color: var(--accent);
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
-  }
-
-  .hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(56px, 7vw, 96px);
-    line-height: 0.95;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s ease 0.1s both;
-  }
-
-  .hero h1 span {
-    display: block;
-    color: var(--accent);
-    -webkit-text-stroke: 1px var(--accent);
-  }
-
-  .hero-desc {
-    font-size: 17px;
-    color: var(--muted);
-    max-width: 440px;
-    margin-bottom: 40px;
-    font-weight: 300;
-    animation: fadeUp 0.6s ease 0.2s both;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.6s ease 0.3s both;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--accent);
-    color: #000;
-    padding: 14px 28px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(65,118,225,0.3);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    color: var(--text);
-    padding: 14px 28px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    font-weight: 500;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  .hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeUp 0.6s ease 0.4s both;
-  }
-
-  .hero-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    width: 320px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 24px;
-  }
-
-  .stat {
-    background: var(--surface2);
-    border-radius: 10px;
-    padding: 16px;
-    border: 1px solid var(--border);
-  }
-
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    color: var(--accent);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  .hero-icon {
-    font-size: 48px;
-    margin-bottom: 12px;
-  }
-
-  .hero-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 1px;
-  }
-
-  .hero-card-sub {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* STATS BAR */
-  .stats-bar {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    padding: 24px 48px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .stats-bar-item {
-    text-align: center;
-  }
-
-  .stats-bar-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 40px;
-    color: var(--accent);
-    line-height: 1;
-  }
-
-  .stats-bar-label {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  /* SECTION */
-  section { padding: 100px 48px; }
-
-  .section-header {
-    margin-bottom: 60px;
-  }
-
-  .section-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 5vw, 60px);
-    letter-spacing: 2px;
-    line-height: 1;
-  }
-
-  .section-title span { color: var(--accent); }
-
-  /* CATEGORIES */
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-  }
-
-  .category-img-wrap {
-    width: calc(100% + 56px);
-    margin: -28px -28px 20px -28px;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 12px 12px 0 0;
-    background: var(--surface2);
-    position: relative;
-  }
-
-  .carousel {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s ease;
-  }
-
-  .category-img {
-    min-width: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    flex-shrink: 0;
-  }
-
-  .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.55);
-    color: #fff;
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    font-size: 14px;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s;
-    line-height: 1;
-  }
-
-  .category-img-wrap:hover .carousel-btn { opacity: 1; }
-
-  .carousel-btn.prev { left: 8px; }
-  .carousel-btn.next { right: 8px; }
-
-  .carousel-dots {
-    position: absolute;
-    bottom: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-  }
-
-  .carousel-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.4);
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .carousel-dot.active { background: #fff; }
-
-  .category-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .category-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 0;
-    background: linear-gradient(to top, rgba(65,118,225,0.05), transparent);
-    transition: height 0.3s;
-  }
-
-  .category-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(65,118,225,0.1);
-  }
-
-  .category-card:hover::before { height: 100%; }
-
-  .category-icon {
-    font-size: 36px;
-    margin-bottom: 16px;
-  }
-
-  .category-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
-
-  .category-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-
-  .category-range {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(65,118,225,0.1);
-    border: 1px solid rgba(65,118,225,0.2);
-    color: var(--accent);
-    padding: 4px 12px;
-    border-radius: 100px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .category-examples {
-    margin-top: 14px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 3px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  /* CALCULATOR */
-  #calculadora {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .calc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .calc-form { display: flex; flex-direction: column; gap: 24px; }
-
-  .field-group { display: flex; flex-direction: column; gap: 8px; }
-
-  .field-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .field-select, .field-range-wrap {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    transition: border-color 0.2s;
-  }
-
-  .field-select {
-    padding: 12px 16px;
-    appearance: none;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
-  }
-
-  .field-select:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    background: var(--accent);
-    cursor: pointer;
-    box-shadow: 0 0 0 4px rgba(65,118,225,0.15);
-    transition: box-shadow 0.2s;
-  }
-
-  input[type="range"]::-webkit-slider-thumb:hover {
-    box-shadow: 0 0 0 8px rgba(65,118,225,0.2);
-  }
-
-  .field-range-wrap {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .range-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .range-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--accent);
-    text-align: center;
-  }
-
-  /* RESULT CARD */
-  .calc-result {
-    position: sticky;
-    top: 100px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px;
-    overflow: hidden;
-  }
-
-  .calc-result::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-  }
-
-  .result-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'DM Mono', monospace;
-    margin-bottom: 8px;
-  }
-
-  .result-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
-    line-height: 1;
-    color: var(--accent);
-    transition: all 0.3s;
-  }
-
-  .result-range {
-    font-size: 14px;
-    color: var(--muted);
-    margin-top: 4px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .result-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 24px 0;
-  }
-
-  .result-breakdown { display: flex; flex-direction: column; gap: 12px; }
-
-  .breakdown-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-  }
-
-  .breakdown-key { color: var(--muted); }
-  .breakdown-val { font-weight: 600; font-family: 'DM Mono', monospace; color: var(--text); }
-
-  .result-note {
-    margin-top: 20px;
-    background: rgba(65,118,225,0.08);
-    border: 1px solid rgba(65,118,225,0.2);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 12px;
-    color: var(--accent);
-    line-height: 1.5;
-  }
-
-  .btn-wpp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    margin-top: 24px;
-    background: #25D366;
-    color: #000;
-    padding: 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-wpp:hover {
-    background: #1db954;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37,211,102,0.25);
-  }
-
-  /* HOW IT WORKS */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 32px;
-    position: relative;
-  }
-
-  .step {
-    position: relative;
-    padding: 28px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: border-color 0.3s;
-  }
-
-  .step:hover { border-color: rgba(65,118,225,0.4); }
-
-  .step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
-    color: rgba(65,118,225,0.15);
-    line-height: 1;
-    margin-bottom: -8px;
-  }
-
-  .step-icon { font-size: 28px; margin-bottom: 12px; }
-
-  .step-title {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
-
-  /* FAQ */
-  .faq { max-width: 800px; margin: 0 auto; }
-
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 24px 0;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    transition: color 0.2s;
-  }
-
-  .faq-q:hover { color: var(--accent); }
-
-  .faq-arrow {
-    color: var(--accent);
-    font-size: 20px;
-    transition: transform 0.3s;
-    flex-shrink: 0;
-  }
-
-  .faq-item.open .faq-arrow { transform: rotate(45deg); }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s;
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .faq-item.open .faq-a {
-    max-height: 300px;
-    padding-bottom: 24px;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 3px;
-    color: var(--text);
-  }
-
-  .footer-logo span { color: var(--accent); }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-
-  .footer-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--text); }
-
-  .footer-note {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    section { padding: 70px 20px; }
-    .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; }
-    .hero::after { display: none; }
-    .hero-visual { display: none; }
-    .stats-bar { padding: 24px 20px; }
-    .calc-grid { grid-template-columns: 1fr; }
-    .calc-result { position: static; }
-    footer { flex-direction: column; text-align: center; padding: 32px 20px; }
-    .footer-links { justify-content: center; }
-  }
-
-  /* SCROLL ANIMATION */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* MATERIAIS */
-  .mat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .mat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-
-  .mat-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-  }
-
-  .mat-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 14px;
-    border-radius: 100px;
-    border: 1px solid;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    font-family: 'DM Mono', monospace;
-    width: fit-content;
-  }
-
-  .mat-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    line-height: 1;
-    color: var(--text);
-  }
-
-  .mat-sub {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    margin-top: -10px;
-  }
-
-  .mat-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .mat-pros {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .mat-pro {
-    font-size: 13px;
-    color: var(--text);
-  }
-
-  .mat-use {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-  }
-
-  /* GALERIA */
-  #galeria { border-top: 1px solid var(--border); }
-
-  .gallery-grid {
-    columns: 4;
-    column-gap: 12px;
-  }
-
-  @media (max-width: 1024px) { .gallery-grid { columns: 3; } }
-  @media (max-width: 640px)  { .gallery-grid { columns: 2; } }
-
-  .gallery-item {
-    break-inside: avoid;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    border: 1px solid var(--border);
-  }
-
-  .gallery-item img {
-    width: 100%;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .gallery-item:hover img { transform: scale(1.05); }
-
-  .gallery-item-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.8), transparent 50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: flex;
-    align-items: flex-end;
-    padding: 16px;
-  }
-
-  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-
-  .gallery-item-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .gallery-placeholder {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 32px 16px;
-    break-inside: avoid;
-    margin-bottom: 12px;
-    color: var(--muted);
-    font-size: 12px;
-    font-family: 'DM Mono', monospace;
-    text-align: center;
-  }
-
-  .gallery-placeholder span { font-size: 28px; }
-
-  /* DEPOIMENTOS */
-  #depoimentos { background: var(--surface); border-top: 1px solid var(--border); }
-
-  .dep-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .dep-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: border-color 0.3s, transform 0.3s;
-    position: relative;
-  }
-
-  .dep-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
-
-  .dep-quote {
-    font-size: 40px;
-    color: var(--accent);
-    font-family: 'Bebas Neue', sans-serif;
-    line-height: 1;
-    opacity: 0.4;
-  }
-
-  .dep-text {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-    flex: 1;
-    font-style: italic;
-  }
-
-  .dep-stars { color: #facc15; font-size: 16px; letter-spacing: 2px; }
-
-  .dep-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-top: 1px solid var(--border);
-    padding-top: 16px;
-  }
-
-  .dep-avatar {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 16px;
-    color: #fff;
-    flex-shrink: 0;
-  }
-
-  .dep-name { font-weight: 700; font-size: 14px; }
-  .dep-info { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
-
-  .dep-placeholder {
-    border-style: dashed;
-    opacity: 0.5;
-  }
-
-  .dep-placeholder .dep-text {
-    text-align: center;
-    font-style: normal;
-  }
-
-  /* FORMULÁRIO */
-  #formulario { border-top: 1px solid var(--border); }
-
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-  .form-fields { display: flex; flex-direction: column; gap: 20px; }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
-
-  .form-input, .form-textarea, .form-select-field {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    padding: 12px 16px;
-    width: 100%;
-    transition: border-color 0.2s;
-    outline: none;
-  }
-
-  .form-input:focus, .form-textarea:focus, .form-select-field:focus {
-    border-color: var(--accent);
-  }
-
-  .form-textarea { resize: vertical; min-height: 120px; }
-
-  .form-select-field {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    cursor: pointer;
-  }
-
-  .form-info {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px;
-    position: sticky;
-    top: 100px;
-  }
-
-  .form-info-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-  }
-
-  .form-info-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .form-info-item:last-child { border-bottom: none; }
-
-  .form-info-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-
-  .form-info-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .form-info-text strong { color: var(--text); display: block; margin-bottom: 2px; }
-
-  /* FLOATING WHATSAPP */
-  /* FLOATING WHATSAPP */
-  .wpp-float {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
-
-  .wpp-float-tooltip {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    white-space: nowrap;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    opacity: 0;
-    transform: translateX(10px);
-    transition: all 0.3s;
-    pointer-events: none;
-  }
-
-  .wpp-float:hover .wpp-float-tooltip {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .wpp-float-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #25D366;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-    animation: wppPulse 2.5s infinite;
-  }
-
-  .wpp-float-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 28px rgba(37,211,102,0.55);
-  }
-
-  @keyframes wppPulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-    50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
-  }
-
-  @media (max-width: 768px) {
-    .wpp-float { bottom: 20px; right: 16px; }
-    .wpp-float-btn { width: 50px; height: 50px; }
-  }
+:root{--bg:#080808;--bg2:#0f0f0f;--surface:#141414;--surface2:#1c1c1c;--accent:#4176e1;--accent2:#5b8ff9;--text:#f0ede6;--text2:#a8a49e;--border:rgba(255,255,255,0.07);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;--mono:'DM Mono',monospace}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 60px;transition:background .4s,backdrop-filter .4s}
+nav.scrolled{background:rgba(8,8,8,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:2px;color:var(--text);text-decoration:none}
+.nav-logo em{color:var(--accent);font-style:italic}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--text)!important;color:var(--bg)!important;padding:10px 24px!important;border-radius:100px!important;font-weight:600!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--accent)!important;color:#fff!important;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{padding:160px 60px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:32px;opacity:0;animation:fadeUp .8s ease .1s forwards}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--serif);font-size:clamp(64px,7vw,110px);font-weight:300;line-height:.92;letter-spacing:-.02em;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero h1 span{display:block;font-weight:600;font-style:normal;color:var(--text)}
+.hero-sub{font-size:16px;color:var(--text2);max-width:380px;line-height:1.7;margin-bottom:48px;font-weight:300;opacity:0;animation:fadeUp .8s ease .3s forwards}
+.hero-actions{display:flex;gap:16px;opacity:0;animation:fadeUp .8s ease .4s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:14px 32px;border-radius:100px;font-weight:600;font-size:14px;letter-spacing:.02em;text-decoration:none;transition:all .3s}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(65,118,225,.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--text2);padding:14px 24px;border-radius:100px;border:1px solid var(--border);font-weight:400;font-size:14px;text-decoration:none;transition:all .3s;letter-spacing:.02em}
+.btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.04)}
+.hero-stats{display:flex;gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid var(--border);opacity:0;animation:fadeUp .8s ease .5s forwards}
+.hero-stat-num{font-family:var(--serif);font-size:40px;font-weight:300;line-height:1;color:var(--text)}
+.hero-stat-label{font-size:11px;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;font-family:var(--mono)}
+.hero-right{position:relative;overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;background-image:url('imgs/hero-bg.jpg');background-size:cover;background-position:center;transform:scale(1.05)}
+.hero-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,rgba(8,8,8,.3) 60%,transparent 100%)}
+.hero-right-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:60px 60px 80px 40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);padding:8px 16px;border-radius:100px;font-size:12px;font-family:var(--mono);color:var(--text);width:fit-content;margin-bottom:12px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4)}50%{opacity:.8;box-shadow:0 0 0 4px rgba(74,222,128,0)}}
+.hero-caption{font-size:13px;color:rgba(255,255,255,.45);font-family:var(--mono);letter-spacing:.05em}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);padding:14px 0;overflow:hidden}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:20px;padding:0 32px;white-space:nowrap;font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:.12em;text-transform:uppercase}
+.marquee-dot{width:3px;height:3px;border-radius:50%;background:var(--accent)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION BASE */
+.section{padding:120px 60px}
+.section-label{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.section-title{font-family:var(--serif);font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1;letter-spacing:-.02em}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-title strong{font-weight:600}
+
+/* CATALOGUE */
+.catalogue-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
+.catalogue-header-right{font-size:14px;color:var(--text2);max-width:300px;line-height:1.7;text-align:right}
+.catalogue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.cat-item{position:relative;overflow:hidden;background:var(--surface);cursor:pointer;aspect-ratio:3/4}
+.cat-item:first-child{grid-row:span 2;aspect-ratio:unset}
+.cat-img{position:absolute;inset:0;background:var(--surface2)}
+.cat-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease,filter .5s ease;filter:brightness(.6)}
+.cat-item:hover .cat-img img{transform:scale(1.06);filter:brightness(.45)}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.9) 0%,transparent 60%);z-index:1}
+.cat-content{position:absolute;bottom:0;left:0;right:0;padding:28px;z-index:2}
+.cat-name{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1;margin-bottom:6px}
+.cat-items-list{font-size:12px;color:rgba(255,255,255,.45);font-family:var(--mono);letter-spacing:.05em;margin-bottom:12px}
+.cat-price{display:inline-flex;align-items:center;gap:6px;background:rgba(65,118,225,.15);border:1px solid rgba(65,118,225,.3);color:var(--accent2);padding:4px 12px;border-radius:100px;font-family:var(--mono);font-size:12px}
+.cat-wpp{position:absolute;top:20px;right:20px;z-index:2;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);color:#fff;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:500;text-decoration:none;opacity:0;transform:translateY(-8px);transition:all .3s}
+.cat-item:hover .cat-wpp{opacity:1;transform:translateY(0)}
+
+/* GALLERY */
+#galeria{border-top:1px solid var(--border)}
+.gallery-intro{padding:80px 60px 40px}
+.gallery-scroll-wrap{overflow:hidden}
+.gallery-scroll-track{display:flex;gap:16px;padding:0 60px 60px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
+.gallery-scroll-track::-webkit-scrollbar{display:none}
+.gallery-scroll-track:active{cursor:grabbing}
+.gallery-scroll-item{flex-shrink:0;border-radius:6px;overflow:hidden}
+.gallery-scroll-item:nth-child(odd){width:320px;height:420px}
+.gallery-scroll-item:nth-child(even){width:260px;height:340px;margin-top:40px}
+.gallery-scroll-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.gallery-scroll-item:hover img{transform:scale(1.04)}
+.gallery-hint{padding:0 60px 20px;display:flex;justify-content:flex-end;font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:.1em}
+
+/* PROCESSO */
+#como-funciona{border-top:1px solid var(--border)}
+.processo-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.processo-steps{display:flex;flex-direction:column;margin-top:60px}
+.processo-step{display:flex;gap:32px;padding:32px 0;border-bottom:1px solid var(--border);transition:padding .3s}
+.processo-step:first-child{border-top:1px solid var(--border)}
+.processo-step:hover{padding-left:12px}
+.step-num{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--accent);opacity:.35;line-height:1;flex-shrink:0;width:48px}
+.step-title{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:6px}
+.step-desc{font-size:14px;color:var(--text2);line-height:1.7}
+.processo-visual{position:relative}
+.processo-img-main{width:100%;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--surface)}
+.processo-img-main img{width:100%;height:100%;object-fit:cover;filter:brightness(.8)}
+.processo-tag{position:absolute;bottom:-24px;left:-24px;background:var(--accent);color:#fff;padding:20px 28px;border-radius:4px}
+.processo-tag-num{font-family:var(--serif);font-size:48px;font-weight:300;line-height:1}
+.processo-tag-label{font-size:11px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:4px}
+
+/* CALCULATOR */
+#calculadora{background:var(--surface);border-top:1px solid var(--border)}
+.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.calc-form-section{display:flex;flex-direction:column;gap:28px}
+.field-block{display:flex;flex-direction:column;gap:10px}
+.field-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text2)}
+.field-sel,.field-inp{background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--sans);font-size:15px;padding:14px 18px;transition:border-color .2s;outline:none;width:100%}
+.field-sel{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+.field-sel:focus,.field-inp:focus{border-color:var(--accent)}
+.range-wrap{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.range-val{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--accent);text-align:center;line-height:1}
+input[type="range"]{-webkit-appearance:none;width:100%;height:2px;background:var(--border);border-radius:1px;outline:none;cursor:pointer}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;transition:box-shadow .2s}
+input[type="range"]::-webkit-slider-thumb:hover{box-shadow:0 0 0 6px rgba(65,118,225,.15)}
+.range-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);font-family:var(--mono)}
+.calc-result{position:sticky;top:100px;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.calc-result-header{background:var(--accent);padding:32px}
+.result-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.result-price{font-family:var(--serif);font-size:80px;font-weight:300;color:#fff;line-height:1;transition:all .3s}
+.result-range{font-size:13px;color:rgba(255,255,255,.6);font-family:var(--mono);margin-top:4px}
+.calc-result-body{padding:28px 32px}
+.breakdown{display:flex;flex-direction:column;gap:14px}
+.bd-row{display:flex;justify-content:space-between;font-size:14px}
+.bd-key{color:var(--text2)}
+.bd-val{font-family:var(--mono);font-weight:500}
+.bd-total{border-top:1px solid var(--border);padding-top:14px;margin-top:4px}
+.bd-total .bd-key{color:var(--text);font-weight:600}
+.bd-total .bd-val{color:var(--accent);font-size:18px}
+.result-obs{margin-top:20px;font-size:12px;color:var(--text2);line-height:1.6;padding:14px 16px;background:rgba(65,118,225,.05);border:1px solid rgba(65,118,225,.1);border-radius:6px}
+.btn-wpp{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:20px;background:#25D366;color:#000;padding:16px;border-radius:6px;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;letter-spacing:.02em}
+.btn-wpp:hover{background:#1db954;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.2)}
+
+/* FORM */
+#formulario{background:var(--bg2);border-top:1px solid var(--border)}
+.form-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.form-side{display:flex;flex-direction:column;gap:20px}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-inp,.form-sel,.form-ta{background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--sans);font-size:15px;padding:14px 18px;width:100%;outline:none;transition:border-color .2s}
+.form-sel{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+.form-ta{resize:vertical;min-height:120px}
+.form-inp:focus,.form-sel:focus,.form-ta:focus{border-color:var(--accent)}
+.form-info-side{position:sticky;top:100px}
+.form-info-title{font-family:var(--serif);font-size:36px;font-weight:300;line-height:1.1;margin-bottom:40px}
+.form-info-title em{font-style:italic;color:var(--accent)}
+.form-steps{display:flex;flex-direction:column}
+.form-step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border)}
+.form-step:first-child{border-top:1px solid var(--border)}
+.form-step-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;flex-shrink:0;padding-top:2px;width:28px}
+.form-step-title{font-weight:600;font-size:14px;margin-bottom:4px}
+.form-step-desc{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* MATERIAIS */
+#materiais{border-top:1px solid var(--border)}
+.mat-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.mat-intro{position:sticky;top:100px}
+.mat-intro-text{font-size:15px;color:var(--text2);line-height:1.8;margin-top:24px}
+.mat-cards{display:flex;flex-direction:column;gap:2px}
+.mat-card{background:var(--surface);padding:36px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;transition:background .3s}
+.mat-card:hover{background:var(--surface2)}
+.mat-letter{font-family:var(--serif);font-size:72px;font-weight:300;line-height:1;color:var(--text2);opacity:.15;width:60px;text-align:center}
+.mat-name{font-family:var(--serif);font-size:28px;font-weight:400;margin-bottom:4px}
+.mat-full{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:.05em;margin-bottom:12px}
+.mat-desc{font-size:14px;color:var(--text2);line-height:1.6;max-width:480px}
+.mat-pros-inline{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mat-pro-tag{font-size:11px;font-family:var(--mono);padding:3px 10px;border-radius:3px;border:1px solid var(--border);color:var(--text2)}
+.mat-level{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--text);white-space:nowrap}
+.mat-use-label{font-size:11px;font-family:var(--mono);color:var(--text2);margin-top:4px;letter-spacing:.05em}
+
+/* DEPOIMENTOS */
+#depoimentos{background:var(--surface);border-top:1px solid var(--border)}
+.dep-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.dep-card{background:var(--bg);padding:36px;display:flex;flex-direction:column;gap:20px;transition:background .3s}
+.dep-card:hover{background:var(--bg2)}
+.dep-quote-mark{font-family:var(--serif);font-size:64px;color:var(--accent);line-height:.8;opacity:.25}
+.dep-text{font-family:var(--serif);font-size:18px;font-weight:300;line-height:1.7;font-style:italic;color:var(--text);flex:1}
+.dep-stars{color:#facc15;font-size:14px;letter-spacing:3px}
+.dep-author-row{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--border)}
+.dep-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:#fff;flex-shrink:0}
+.dep-name{font-weight:600;font-size:14px}
+.dep-product{font-size:12px;color:var(--text2);font-family:var(--mono)}
+.dep-placeholder{opacity:.3}
+
+/* FAQ */
+#faq{border-top:1px solid var(--border)}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.faq-intro{position:sticky;top:100px}
+.faq-intro-text{font-size:15px;color:var(--text2);line-height:1.8;margin-top:24px}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--sans);font-size:16px;font-weight:500;padding:28px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;transition:color .2s}
+.faq-q:hover{color:var(--accent)}
+.faq-icon{font-size:20px;color:var(--accent);transition:transform .3s;flex-shrink:0;font-family:var(--mono)}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:15px;color:var(--text2);line-height:1.8}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:28px}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:60px}
+.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid var(--border);margin-bottom:40px}
+.footer-logo{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:1px;margin-bottom:12px}
+.footer-logo em{color:var(--accent);font-style:italic}
+.footer-tagline{font-size:13px;color:var(--text2);line-height:1.6;max-width:220px}
+.footer-col-title{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text2);margin-bottom:20px}
+.footer-links{display:flex;flex-direction:column;gap:12px;list-style:none}
+.footer-links a{color:var(--text2);text-decoration:none;font-size:14px;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:12px;color:var(--text2);font-family:var(--mono)}
+
+/* FLOAT WPP */
+.wpp-float{position:fixed;bottom:28px;right:28px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wpp-float-tip{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:6px;font-size:13px;white-space:nowrap;opacity:0;transform:translateX(10px);transition:all .3s;pointer-events:none}
+.wpp-float:hover .wpp-float-tip{opacity:1;transform:translateX(0)}
+.wpp-float-btn{width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);cursor:pointer;text-decoration:none;transition:all .3s;animation:wppPulse 2.5s infinite}
+.wpp-float-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+@keyframes wppPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.35)}50%{box-shadow:0 4px 32px rgba(37,211,102,.6)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:20px 24px}
+  .nav-links{display:none}
+  .section{padding:80px 24px}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:120px 24px 60px}
+  .hero-right{display:none}
+  .catalogue-header{flex-direction:column;gap:20px;align-items:flex-start}
+  .catalogue-header-right{text-align:left}
+  .catalogue-grid{grid-template-columns:1fr 1fr}
+  .cat-item:first-child{grid-column:span 2;aspect-ratio:16/9}
+  .gallery-intro{padding:60px 24px 32px}
+  .gallery-scroll-track{padding:0 24px 40px}
+  .gallery-hint{padding:0 24px 16px}
+  .gallery-scroll-item:nth-child(odd){width:240px;height:300px}
+  .gallery-scroll-item:nth-child(even){width:200px;height:250px}
+  .processo-grid{grid-template-columns:1fr}
+  .processo-visual{display:none}
+  .calc-layout{grid-template-columns:1fr}
+  .calc-result{position:static}
+  .form-layout{grid-template-columns:1fr}
+  .form-info-side{position:static}
+  .form-row-2{grid-template-columns:1fr}
+  .mat-layout{grid-template-columns:1fr}
+  .mat-intro{position:static}
+  .mat-card{grid-template-columns:1fr;gap:16px}
+  .mat-letter{display:none}
+  .dep-layout{grid-template-columns:1fr}
+  .faq-layout{grid-template-columns:1fr}
+  .faq-intro{position:static}
+  footer{padding:40px 24px}
+  .footer-top{grid-template-columns:1fr;gap:40px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .wpp-float{bottom:20px;right:16px}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">ALVES<span>.3D</span></a>
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Alves<em>.3D</em></a>
   <ul class="nav-links">
-    <li><a href="#produtos">Produtos</a></li>
-    <li><a href="#calculadora">Orçamento</a></li>
-    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#produtos">Catálogo</a></li>
     <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#calculadora">Orçamento</a></li>
     <li><a href="#formulario">Pedir peça</a></li>
     <li><a href="#materiais">Materiais</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="https://wa.me/5516992364004" class="nav-cta">WhatsApp</a></li>
+    <li><a href="https://wa.me/5516992364004?text=Olá! Vim pelo site e quero mais informações!" target="_blank" class="nav-cta">WhatsApp</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">🟢 Aceitando pedidos</div>
-    <h1>
-      SUAS IDEIAS
-      <span>EM 3D</span>
-    </h1>
-    <p class="hero-desc">Peças personalizadas feitas com impressora 3D. Presentes, decoração, utilidades e muito mais — entregamos para todo o Brasil.</p>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Impressão 3D Personalizada</div>
+    <h1>Suas ideias<br><em>ganham</em><br><span>forma.</span></h1>
+    <p class="hero-sub">Peças únicas feitas sob medida — chaveiros, decoração, presentes, utilidades e muito mais. Entregamos para todo o Brasil.</p>
     <div class="hero-actions">
-      <a href="#calculadora" class="btn-primary">💰 Simular orçamento</a>
-      <a href="#produtos" class="btn-secondary">Ver portfólio →</a>
+      <a href="#calculadora" class="btn-primary">Simular orçamento</a>
+      <a href="#produtos" class="btn-ghost">Ver catálogo →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">200+</div><div class="hero-stat-label">Projetos</div></div>
+      <div><div class="hero-stat-num">50K</div><div class="hero-stat-label">Views / mês</div></div>
+      <div><div class="hero-stat-num">BR</div><div class="hero-stat-label">Nacional</div></div>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-card">
-      <div class="hero-icon">🖨️</div>
-      <div class="hero-card-title">Impressão 3D Personalizada</div>
-      <div class="hero-card-sub">Desde R$8 por peça</div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">200+</div>
-          <div class="stat-label">Projetos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">BR</div>
-          <div class="stat-label">Entrega nacional</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">3D</div>
-          <div class="stat-label">Tecnologia FDM</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">24h</div>
-          <div class="stat-label">Resposta</div>
-        </div>
-      </div>
+  <div class="hero-right">
+    <div class="hero-bg-img" id="heroBg"></div>
+    <div class="hero-right-content">
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Aceitando pedidos</div>
+      <div class="hero-caption">// Desde R$8 por peça</div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">200+</div>
-    <div class="stats-bar-label">Projetos entregues</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">50K</div>
-    <div class="stats-bar-label">Views / mês</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">100%</div>
-    <div class="stats-bar-label">Brasil</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">24h</div>
-    <div class="stats-bar-label">Tempo de resposta</div>
-  </div>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
-<!-- PRODUTOS -->
-<section id="produtos">
-  <div class="section-header reveal">
-    <div class="section-tag">// portfólio</div>
-    <h2 class="section-title">O QUE <span>FAZEMOS</span></h2>
+<!-- CATÁLOGO -->
+<section class="section" id="produtos">
+  <div class="catalogue-header reveal">
+    <div>
+      <div class="section-label">Catálogo</div>
+      <h2 class="section-title">O que <em>fazemos</em></h2>
+    </div>
+    <p class="catalogue-header-right">Cada peça produzida sob demanda, com atenção aos detalhes. Clique para solicitar orçamento.</p>
   </div>
-  <div class="categories-grid">
-    <div class="category-card reveal">
-      <div class="category-img-wrap" id="wrap-chaveiros">
-        <div class="carousel" id="carousel-chaveiros"></div>
-        <button class="carousel-btn prev" onclick="slide('chaveiros',-1,event)">&#8592;</button>
-        <button class="carousel-btn next" onclick="slide('chaveiros',1,event)">&#8594;</button>
-        <div class="carousel-dots" id="dots-chaveiros"></div>
-      </div>
-      <div class="category-icon">🔑</div>
-      <div class="category-name">Chaveiros</div>
-      <div class="category-desc">Chaveiros personalizados com nome, tema, personagem ou logotipo. Ótimos para presentes e lembraças.</div>
-      <div class="category-range">R$8 – R$30</div>
-      <div class="category-examples">
-        <span class="tag">nomes</span>
-        <span class="tag">personagens</span>
-        <span class="tag">logos</span>
-        <span class="tag">pets</span>
-      </div>
+  <div class="catalogue-grid reveal">
+    <div class="cat-item">
+      <div class="cat-img"><img src="imgs/chaveiros-1.jpg" alt="Chaveiros" onerror="this.parentElement.style.background='#1c1c1c'"></div>
+      <div class="cat-overlay"></div>
+      <a class="cat-wpp" href="https://wa.me/5516992364004?text=Olá! Tenho interesse em chaveiros personalizados." target="_blank">Pedir orçamento</a>
+      <div class="cat-content"><div class="cat-name">Chaveiros</div><div class="cat-items-list">nomes · personagens · logos · pets</div><div class="cat-price">R$8 — R$30</div></div>
     </div>
-    <div class="category-card reveal">
-      <div class="category-img-wrap" id="wrap-decoracao">
-        <div class="carousel" id="carousel-decoracao"></div>
-        <button class="carousel-btn prev" onclick="slide('decoracao',-1,event)">&#8592;</button>
-        <button class="carousel-btn next" onclick="slide('decoracao',1,event)">&#8594;</button>
-        <div class="carousel-dots" id="dots-decoracao"></div>
-      </div>
-      <div class="category-icon">🌸</div>
-      <div class="category-name">Decoração</div>
-      <div class="category-desc">Peças decorativas para casa, escritório e festas. Vasos, esculturas, enfeites de parede e temáticos.</div>
-      <div class="category-range">R$10 – R$120</div>
-      <div class="category-examples">
-        <span class="tag">vasos</span>
-        <span class="tag">natal</span>
-        <span class="tag">esculturas</span>
-        <span class="tag">luminárias</span>
-      </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="imgs/decoracao-1.jpg" alt="Decoração" onerror="this.parentElement.style.background='#1c1c1c'"></div>
+      <div class="cat-overlay"></div>
+      <a class="cat-wpp" href="https://wa.me/5516992364004?text=Olá! Tenho interesse em peças de decoração." target="_blank">Pedir orçamento</a>
+      <div class="cat-content"><div class="cat-name">Decoração</div><div class="cat-items-list">vasos · natal · esculturas · luminárias</div><div class="cat-price">R$10 — R$120</div></div>
     </div>
-    <div class="category-card reveal">
-      <div class="category-img-wrap" id="wrap-utilidades">
-        <div class="carousel" id="carousel-utilidades"></div>
-        <button class="carousel-btn prev" onclick="slide('utilidades',-1,event)">&#8592;</button>
-        <button class="carousel-btn next" onclick="slide('utilidades',1,event)">&#8594;</button>
-        <div class="carousel-dots" id="dots-utilidades"></div>
-      </div>
-      <div class="category-icon">📦</div>
-      <div class="category-name">Utilidades</div>
-      <div class="category-desc">Organizadores, porta-canetas, suportes e acessórios funcionais para o dia a dia.</div>
-      <div class="category-range">R$12 – R$70</div>
-      <div class="category-examples">
-        <span class="tag">organizadores</span>
-        <span class="tag">suportes</span>
-        <span class="tag">caixas</span>
-        <span class="tag">acessórios</span>
-      </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="imgs/presentes-1.jpg" alt="Presentes" onerror="this.parentElement.style.background='#1c1c1c'"></div>
+      <div class="cat-overlay"></div>
+      <a class="cat-wpp" href="https://wa.me/5516992364004?text=Olá! Tenho interesse em presentes personalizados." target="_blank">Pedir orçamento</a>
+      <div class="cat-content"><div class="cat-name">Presentes</div><div class="cat-items-list">aniversário · formatura · pets · datas especiais</div><div class="cat-price">R$15 — R$200</div></div>
     </div>
-    <div class="category-card reveal">
-      <div class="category-img-wrap" id="wrap-geek">
-        <div class="carousel" id="carousel-geek"></div>
-        <button class="carousel-btn prev" onclick="slide('geek',-1,event)">&#8592;</button>
-        <button class="carousel-btn next" onclick="slide('geek',1,event)">&#8594;</button>
-        <div class="carousel-dots" id="dots-geek"></div>
-      </div>
-      <div class="category-icon">🎮</div>
-      <div class="category-name">Geek & Games</div>
-      <div class="category-desc">Miniaturas, figuras articuladas, itens de jogos e cultura pop. Para colecionadores e gamers.</div>
-      <div class="category-range">R$15 – R$250</div>
-      <div class="category-examples">
-        <span class="tag">Minecraft</span>
-        <span class="tag">Fortnite</span>
-        <span class="tag">dados RPG</span>
-        <span class="tag">articulados</span>
-      </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="imgs/geek-1.jpg" alt="Geek" onerror="this.parentElement.style.background='#1c1c1c'"></div>
+      <div class="cat-overlay"></div>
+      <a class="cat-wpp" href="https://wa.me/5516992364004?text=Olá! Tenho interesse em peças geek e gamer." target="_blank">Pedir orçamento</a>
+      <div class="cat-content"><div class="cat-name">Geek & Games</div><div class="cat-items-list">Minecraft · Fortnite · dados RPG · articulados</div><div class="cat-price">R$15 — R$250</div></div>
     </div>
-    <div class="category-card reveal">
-      <div class="category-img-wrap" id="wrap-presentes">
-        <div class="carousel" id="carousel-presentes"></div>
-        <button class="carousel-btn prev" onclick="slide('presentes',-1,event)">&#8592;</button>
-        <button class="carousel-btn next" onclick="slide('presentes',1,event)">&#8594;</button>
-        <div class="carousel-dots" id="dots-presentes"></div>
-      </div>
-      <div class="category-icon">🎁</div>
-      <div class="category-name">Presentes Personalizados</div>
-      <div class="category-desc">Criamos peças únicas com o nome ou tema que você quiser. Ideal para aniversários, formaturas e datas especiais.</div>
-      <div class="category-range">R$15 – R$200</div>
-      <div class="category-examples">
-        <span class="tag">aniversário</span>
-        <span class="tag">formatura</span>
-        <span class="tag">pets</span>
-        <span class="tag">profissões</span>
-      </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="imgs/utilidades-1.jpg" alt="Utilidades" onerror="this.parentElement.style.background='#1c1c1c'"></div>
+      <div class="cat-overlay"></div>
+      <a class="cat-wpp" href="https://wa.me/5516992364004?text=Olá! Tenho interesse em peças utilitárias." target="_blank">Pedir orçamento</a>
+      <div class="cat-content"><div class="cat-name">Utilidades</div><div class="cat-items-list">organizadores · suportes · caixas · acessórios</div><div class="cat-price">R$12 — R$70</div></div>
     </div>
-    <div class="category-card reveal">
-      <div class="category-img-wrap" id="wrap-corporativo">
-        <div class="carousel" id="carousel-corporativo"></div>
-        <button class="carousel-btn prev" onclick="slide('corporativo',-1,event)">&#8592;</button>
-        <button class="carousel-btn next" onclick="slide('corporativo',1,event)">&#8594;</button>
-        <div class="carousel-dots" id="dots-corporativo"></div>
-      </div>
-      <div class="category-icon">🏢</div>
-      <div class="category-name">Corporativo</div>
-      <div class="category-desc">Placas, logotipos, troféus e brindes personalizados para empresas. Pedidos em quantidade com desconto.</div>
-      <div class="category-range">sob consulta</div>
-      <div class="category-examples">
-        <span class="tag">placas</span>
-        <span class="tag">troféus</span>
-        <span class="tag">brindes</span>
-        <span class="tag">lote</span>
-      </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="imgs/corporativo-1.jpg" alt="Corporativo" onerror="this.parentElement.style.background='#1c1c1c'"></div>
+      <div class="cat-overlay"></div>
+      <a class="cat-wpp" href="https://wa.me/5516992364004?text=Olá! Tenho interesse em peças corporativas." target="_blank">Pedir orçamento</a>
+      <div class="cat-content"><div class="cat-name">Corporativo</div><div class="cat-items-list">placas · troféus · brindes · lotes</div><div class="cat-price">sob consulta</div></div>
     </div>
   </div>
 </section>
 
-<!-- FORMULÁRIO -->
-<section id="formulario">
-  <div class="section-header reveal">
-    <div class="section-tag">// peça personalizada</div>
-    <h2 class="section-title">DESCREVA SUA <span>IDEIA</span></h2>
-    <p style="color:var(--muted); font-size:15px; margin-top:8px;">Preencha os campos abaixo e vou montar sua mensagem no WhatsApp automaticamente.</p>
+<!-- GALERIA -->
+<div id="galeria">
+  <div class="gallery-intro reveal">
+    <div class="section-label">Galeria</div>
+    <h2 class="section-title">Peças <em>prontas</em></h2>
   </div>
-  <div class="form-grid">
-    <div class="form-fields reveal">
-
-      <div class="form-row">
-        <div class="field-group">
-          <label class="field-label">Seu nome</label>
-          <input type="text" class="form-input" id="f-nome" placeholder="Ex: João Silva" oninput="buildMsg()">
-        </div>
-        <div class="field-group">
-          <label class="field-label">Cidade / Estado</label>
-          <input type="text" class="form-input" id="f-cidade" placeholder="Ex: São Paulo / SP" oninput="buildMsg()">
-        </div>
-      </div>
-
-      <div class="field-group">
-        <label class="field-label">O que você quer imprimir?</label>
-        <input type="text" class="form-input" id="f-produto" placeholder="Ex: Chaveiro com nome da minha filha" oninput="buildMsg()">
-      </div>
-
-      <div class="form-row">
-        <div class="field-group">
-          <label class="field-label">Categoria</label>
-          <select class="form-select-field" id="f-cat" onchange="buildMsg()">
-            <option value="">Selecione...</option>
-            <option>Chaveiro</option>
-            <option>Decoração</option>
-            <option>Utilitário</option>
-            <option>Geek / Games</option>
-            <option>Presente personalizado</option>
-            <option>Corporativo</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label class="field-label">Tamanho aproximado</label>
-          <select class="form-select-field" id="f-tam" onchange="buildMsg()">
-            <option value="">Selecione...</option>
-            <option>Pequeno (até 5cm)</option>
-            <option>Médio (5–12cm)</option>
-            <option>Grande (12–20cm)</option>
-            <option>Extra grande (20cm+)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field-group">
-          <label class="field-label">Cor desejada</label>
-          <input type="text" class="form-input" id="f-cor" placeholder="Ex: Azul, vermelho, colorido..." oninput="buildMsg()">
-        </div>
-        <div class="field-group">
-          <label class="field-label">Quantidade</label>
-          <input type="number" class="form-input" id="f-qty" placeholder="Ex: 2" min="1" value="1" oninput="buildMsg()">
-        </div>
-      </div>
-
-      <div class="field-group">
-        <label class="field-label">Detalhes adicionais</label>
-        <textarea class="form-textarea" id="f-detalhe" placeholder="Descreva sua ideia com o máximo de detalhes: referência, uso, prazo necessário, etc." oninput="buildMsg()"></textarea>
-      </div>
-
-      <a href="#" class="btn-wpp" id="form-wpp-btn" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enviar pedido no WhatsApp
-      </a>
+  <div class="gallery-scroll-wrap">
+    <div class="gallery-scroll-track" id="galleryTrack">
+      <div class="gallery-scroll-item"><img src="imgs/galeria-1.jpg" alt="Peça 1" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-2.jpg" alt="Peça 2" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-3.jpg" alt="Peça 3" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-4.jpg" alt="Peça 4" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-5.jpg" alt="Peça 5" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-6.jpg" alt="Peça 6" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-7.jpg" alt="Peça 7" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-8.jpg" alt="Peça 8" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-9.jpg" alt="Peça 9" loading="lazy"></div>
+      <div class="gallery-scroll-item"><img src="imgs/galeria-10.jpg" alt="Peça 10" loading="lazy"></div>
     </div>
+  </div>
+  <div class="gallery-hint">← arraste para explorar →</div>
+</div>
 
-    <div class="form-info reveal">
-      <div class="form-info-title">Como funciona o pedido?</div>
-      <div class="form-info-item">
-        <div class="form-info-icon">💬</div>
-        <div class="form-info-text">
-          <strong>1. Preencha o formulário</strong>
-          Descreva sua ideia com o máximo de detalhes possível.
-        </div>
+<!-- COMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="processo-grid">
+    <div>
+      <div class="section-label reveal">Processo</div>
+      <h2 class="section-title reveal">Como <em>funciona</em></h2>
+      <div class="processo-steps">
+        <div class="processo-step reveal"><div class="step-num">01</div><div><div class="step-title">Fale comigo</div><div class="step-desc">Me conta sua ideia pelo WhatsApp — pode ser uma foto, referência ou só uma descrição.</div></div></div>
+        <div class="processo-step reveal"><div class="step-num">02</div><div><div class="step-title">Orçamento em até 5 dias úteis</div><div class="step-desc">Avalio a peça, tamanho, material e te passo o valor exato. Sem surpresas.</div></div></div>
+        <div class="processo-step reveal"><div class="step-num">03</div><div><div class="step-title">Produção</div><div class="step-desc">Após confirmação e pagamento, a peça entra na fila. Prazo médio: 3–7 dias úteis.</div></div></div>
+        <div class="processo-step reveal"><div class="step-num">04</div><div><div class="step-title">Entrega para todo o Brasil</div><div class="step-desc">Enviamos pelos Correios com código de rastreio. Você acompanha até a porta.</div></div></div>
       </div>
-      <div class="form-info-item">
-        <div class="form-info-icon">📲</div>
-        <div class="form-info-text">
-          <strong>2. Clique em enviar</strong>
-          Sua mensagem é montada automaticamente e enviada via WhatsApp.
-        </div>
-      </div>
-      <div class="form-info-item">
-        <div class="form-info-icon">💰</div>
-        <div class="form-info-text">
-          <strong>3. Receba o orçamento</strong>
-          Respondo em até 5 dias úteis com valor, prazo e opções de cor.
-        </div>
-      </div>
-      <div class="form-info-item">
-        <div class="form-info-icon">🖨️</div>
-        <div class="form-info-text">
-          <strong>4. Confirmação e produção</strong>
-          Após pagamento, sua peça entra na fila de impressão.
-        </div>
-      </div>
-      <div class="form-info-item">
-        <div class="form-info-icon">📦</div>
-        <div class="form-info-text">
-          <strong>5. Entrega para todo o Brasil</strong>
-          Enviamos pelos Correios com código de rastreio.
-        </div>
-      </div>
+    </div>
+    <div class="processo-visual reveal">
+      <div class="processo-img-main"><img src="imgs/hero-bg.jpg" alt="Impressora 3D" onerror="this.style.display='none'"></div>
+      <div class="processo-tag"><div class="processo-tag-num">3D</div><div class="processo-tag-label">Tecnologia FDM</div></div>
     </div>
   </div>
 </section>
 
 <!-- CALCULADORA -->
-<section id="calculadora">
-  <div class="section-header reveal">
-    <div class="section-tag">// simulador</div>
-    <h2 class="section-title">SIMULE SEU <span>ORÇAMENTO</span></h2>
+<section class="section" id="calculadora">
+  <div class="reveal" style="margin-bottom:60px">
+    <div class="section-label">Simulador</div>
+    <h2 class="section-title">Simule seu <em>orçamento</em></h2>
   </div>
-  <div class="calc-grid">
-    <div class="calc-form reveal">
-
-      <div class="field-group">
-        <label class="field-label">Categoria do produto</label>
-        <select class="field-select" id="categoria" onchange="calcular()">
-          <option value="chaveiro">🔑 Chaveiro</option>
-          <option value="decoracao">🌸 Decoração</option>
-          <option value="utilidade">📦 Utilitário</option>
-          <option value="geek">🎮 Geek / Games</option>
-          <option value="presente">🎁 Presente Personalizado</option>
-          <option value="corporativo">🏢 Corporativo</option>
+  <div class="calc-layout">
+    <div class="calc-form-section reveal">
+      <div class="field-block">
+        <label class="field-lbl">Categoria do produto</label>
+        <select class="field-sel" id="categoria" onchange="calcular()">
+          <option value="chaveiro">Chaveiro</option>
+          <option value="decoracao">Decoração</option>
+          <option value="utilidade">Utilitário</option>
+          <option value="geek">Geek / Games</option>
+          <option value="presente">Presente Personalizado</option>
+          <option value="corporativo">Corporativo</option>
         </select>
       </div>
-
-      <div class="field-group">
-        <label class="field-label">Tamanho da peça</label>
-        <select class="field-select" id="tamanho" onchange="calcular()">
+      <div class="field-block">
+        <label class="field-lbl">Tamanho da peça</label>
+        <select class="field-sel" id="tamanho" onchange="calcular()">
           <option value="1">Pequeno (até 5cm)</option>
           <option value="1.6">Médio (5–12cm)</option>
           <option value="2.4">Grande (12–20cm)</option>
           <option value="3.5">Extra grande (20cm+)</option>
         </select>
       </div>
-
-      <div class="field-group">
-        <label class="field-label">Resistência do material</label>
-        <select class="field-select" id="material" onchange="calcular()">
-          <option value="1">🟢 Padrão — PLA (cores vibrantes, uso geral)</option>
-          <option value="1.5">🟡 Média — PETG (mais resistente ao calor e impacto)</option>
-          <option value="0.85">🔵 Alta — ABS (resistência superior, acabamento técnico)</option>
+      <div class="field-block">
+        <label class="field-lbl">Resistência do material</label>
+        <select class="field-sel" id="material" onchange="calcular()">
+          <option value="1">Padrão — PLA (cores vibrantes, uso geral)</option>
+          <option value="1.5">Média — PETG (resistente ao calor e impacto)</option>
+          <option value="0.85">Alta — ABS (resistência superior, técnico)</option>
         </select>
       </div>
-
-      <div class="field-group">
-        <label class="field-label">Quantidade</label>
-        <div class="field-range-wrap">
-          <div class="range-value" id="qty-display">1 unidade</div>
-          <input type="range" min="1" max="20" value="1" id="quantidade" oninput="updateQty(this.value); calcular()">
-          <div class="range-labels"><span>1 un.</span><span>5 un.</span><span>10 un.</span><span>20 un.</span></div>
+      <div class="field-block">
+        <label class="field-lbl">Quantidade</label>
+        <div class="range-wrap">
+          <div class="range-val" id="qty-display">1 unidade</div>
+          <input type="range" min="1" max="20" value="1" id="quantidade" oninput="updateQty(this.value);calcular()">
+          <div class="range-labels"><span>1</span><span>5</span><span>10</span><span>20</span></div>
         </div>
       </div>
-
-      <div class="field-group">
-        <label class="field-label">Complexidade do design</label>
-        <select class="field-select" id="complexidade" onchange="calcular()">
+      <div class="field-block">
+        <label class="field-lbl">Complexidade do design</label>
+        <select class="field-sel" id="complexidade" onchange="calcular()">
           <option value="1">Simples (arquivo pronto)</option>
           <option value="1.3">Moderado (pequenas adaptações)</option>
           <option value="1.7">Complexo (modelagem customizada)</option>
         </select>
       </div>
-
     </div>
-
     <div class="calc-result reveal">
-      <div class="result-label">Estimativa por peça</div>
-      <div class="result-price" id="result-price">R$22</div>
-      <div class="result-range" id="result-range">faixa: R$18 – R$28</div>
-
-      <hr class="result-divider">
-
-      <div class="result-breakdown">
-        <div class="breakdown-item">
-          <span class="breakdown-key">Subtotal (1 un.)</span>
-          <span class="breakdown-val" id="bd-unit">R$22</span>
-        </div>
-        <div class="breakdown-item">
-          <span class="breakdown-key">Quantidade</span>
-          <span class="breakdown-val" id="bd-qty">× 1</span>
-        </div>
-        <div class="breakdown-item">
-          <span class="breakdown-key">Desconto volume</span>
-          <span class="breakdown-val" id="bd-disc" style="color: #4ade80">—</span>
-        </div>
-        <div class="breakdown-item" style="border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px;">
-          <span class="breakdown-key" style="font-weight: 700; color: var(--text)">Total estimado</span>
-          <span class="breakdown-val" id="bd-total" style="color: var(--accent); font-size: 18px">R$22</span>
-        </div>
+      <div class="calc-result-header">
+        <div class="result-lbl">Estimativa por peça</div>
+        <div class="result-price" id="result-price">R$12</div>
+        <div class="result-range" id="result-range">faixa: R$10 – R$15</div>
       </div>
-
-      <div class="result-note" id="result-note">
-        ⚡ Frete não incluso — calculado pelo CEP na hora do pedido.
+      <div class="calc-result-body">
+        <div class="breakdown">
+          <div class="bd-row"><span class="bd-key">Subtotal (1 un.)</span><span class="bd-val" id="bd-unit">R$12</span></div>
+          <div class="bd-row"><span class="bd-key">Quantidade</span><span class="bd-val" id="bd-qty">× 1</span></div>
+          <div class="bd-row"><span class="bd-key">Desconto volume</span><span class="bd-val" id="bd-disc" style="color:#4ade80">—</span></div>
+          <div class="bd-row bd-total"><span class="bd-key">Total estimado</span><span class="bd-val" id="bd-total">R$12</span></div>
+        </div>
+        <div class="result-obs" id="result-obs">Estimativa sem frete. Valor exato confirmado no WhatsApp. O valor pode variar para mais ou para menos dependendo da resistência necessária e nível de detalhes da peça.</div>
+        <a href="#" class="btn-wpp" id="wpp-calc-btn" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir orçamento no WhatsApp
+        </a>
       </div>
+    </div>
+  </div>
+</section>
 
-      <a href="https://wa.me/5516992364004?text=Ol%C3%A1!%20Simulei%20um%20or%C3%A7amento%20no%20site%20e%20quero%20mais%20informa%C3%A7%C3%B5es!" class="btn-wpp" id="wpp-btn">
+<!-- FORMULÁRIO -->
+<section class="section" id="formulario">
+  <div class="form-layout">
+    <div class="form-side reveal">
+      <div style="margin-bottom:40px">
+        <div class="section-label">Peça personalizada</div>
+        <h2 class="section-title">Descreva sua <em>ideia</em></h2>
+      </div>
+      <div class="form-row-2">
+        <div class="field-block"><label class="field-lbl">Seu nome</label><input type="text" class="form-inp" id="f-nome" placeholder="Ex: João Silva" oninput="buildMsg()"></div>
+        <div class="field-block"><label class="field-lbl">Cidade / Estado</label><input type="text" class="form-inp" id="f-cidade" placeholder="Ex: SP / São Paulo" oninput="buildMsg()"></div>
+      </div>
+      <div class="field-block"><label class="field-lbl">O que você quer imprimir?</label><input type="text" class="form-inp" id="f-produto" placeholder="Ex: Chaveiro com nome da minha filha" oninput="buildMsg()"></div>
+      <div class="form-row-2">
+        <div class="field-block"><label class="field-lbl">Categoria</label><select class="form-sel" id="f-cat" onchange="buildMsg()"><option value="">Selecione...</option><option>Chaveiro</option><option>Decoração</option><option>Utilitário</option><option>Geek / Games</option><option>Presente personalizado</option><option>Corporativo</option></select></div>
+        <div class="field-block"><label class="field-lbl">Tamanho</label><select class="form-sel" id="f-tam" onchange="buildMsg()"><option value="">Selecione...</option><option>Pequeno (até 5cm)</option><option>Médio (5–12cm)</option><option>Grande (12–20cm)</option><option>Extra grande (20cm+)</option></select></div>
+      </div>
+      <div class="form-row-2">
+        <div class="field-block"><label class="field-lbl">Cor desejada</label><input type="text" class="form-inp" id="f-cor" placeholder="Ex: Azul, colorido..." oninput="buildMsg()"></div>
+        <div class="field-block"><label class="field-lbl">Quantidade</label><input type="number" class="form-inp" id="f-qty" placeholder="Ex: 2" min="1" value="1" oninput="buildMsg()"></div>
+      </div>
+      <div class="field-block"><label class="field-lbl">Detalhes adicionais</label><textarea class="form-ta" id="f-detalhe" placeholder="Descreva sua ideia com o máximo de detalhes: referência, uso, prazo necessário, etc." oninput="buildMsg()"></textarea></div>
+      <a href="#" class="btn-wpp" id="form-wpp-btn" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Pedir orçamento no WhatsApp
+        Enviar pedido no WhatsApp
       </a>
     </div>
-  </div>
-</section>
-
-<!-- COMO FUNCIONA -->
-<section id="como-funciona">
-  <div class="section-header reveal">
-    <div class="section-tag">// processo</div>
-    <h2 class="section-title">COMO <span>FUNCIONA</span></h2>
-  </div>
-  <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <div class="step-icon">💬</div>
-      <div class="step-title">Fale comigo</div>
-      <div class="step-desc">Me conta sua ideia pelo WhatsApp — pode ser uma foto, referência ou só uma descrição.</div>
+    <div class="form-info-side reveal">
+      <div class="form-info-title">Como funciona o <em>pedido?</em></div>
+      <div class="form-steps">
+        <div class="form-step"><div class="form-step-num">01</div><div><div class="form-step-title">Preencha o formulário</div><div class="form-step-desc">Descreva sua ideia com o máximo de detalhes possível.</div></div></div>
+        <div class="form-step"><div class="form-step-num">02</div><div><div class="form-step-title">Clique em enviar</div><div class="form-step-desc">Sua mensagem é montada automaticamente e enviada via WhatsApp.</div></div></div>
+        <div class="form-step"><div class="form-step-num">03</div><div><div class="form-step-title">Receba o orçamento</div><div class="form-step-desc">Respondo em até 5 dias úteis com valor, prazo e opções de cor.</div></div></div>
+        <div class="form-step"><div class="form-step-num">04</div><div><div class="form-step-title">Confirmação e produção</div><div class="form-step-desc">Após pagamento, sua peça entra na fila de impressão.</div></div></div>
+        <div class="form-step"><div class="form-step-num">05</div><div><div class="form-step-title">Entrega para todo o Brasil</div><div class="form-step-desc">Enviamos pelos Correios com código de rastreio.</div></div></div>
+      </div>
     </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <div class="step-icon">📐</div>
-      <div class="step-title">Orçamento</div>
-      <div class="step-desc">Avalio a peça, tamanho, material e te passo o valor exato. Sem surpresas.</div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <div class="step-icon">🖨️</div>
-      <div class="step-title">Produção</div>
-      <div class="step-desc">Após confirmação e pagamento, a peça entra na fila de impressão. Prazo médio: 3–7 dias úteis.</div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <div class="step-icon">📦</div>
-      <div class="step-title">Entrega</div>
-      <div class="step-desc">Enviamos pelos Correios para todo o Brasil. Você recebe o código de rastreio.</div>
-    </div>
-  </div>
-</section>
-
-<!-- GALERIA -->
-<section id="galeria">
-  <div class="section-header reveal" style="text-align:center;">
-    <div class="section-tag">// galeria</div>
-    <h2 class="section-title">PEÇAS <span>PRONTAS</span></h2>
-    <p style="color:var(--muted); font-size:15px; max-width:560px; margin:16px auto 0;">Algumas das peças já produzidas. Novas peças adicionadas regularmente!</p>
-  </div>
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-item reveal"><img src="imgs/galeria-1.jpg" alt="Peça 1" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-2.jpg" alt="Peça 2" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-3.jpg" alt="Peça 3" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-4.jpg" alt="Peça 4" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-5.jpg" alt="Peça 5" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-6.jpg" alt="Peça 6" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-7.jpg" alt="Peça 7" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-8.jpg" alt="Peça 8" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-9.jpg" alt="Peça 9" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
-    <div class="gallery-item reveal"><img src="imgs/galeria-10.jpg" alt="Peça 10" loading="lazy"><div class="gallery-item-overlay"><span class="gallery-item-label">Alves.3D</span></div></div>
   </div>
 </section>
 
 <!-- MATERIAIS -->
-<section id="materiais" style="border-top: 1px solid var(--border);">
-  <div class="section-header reveal" style="text-align:center;">
-    <div class="section-tag">// materiais</div>
-    <h2 class="section-title">QUAL <span>MATERIAL</span> ESCOLHER?</h2>
-    <p style="color:var(--muted); font-size:15px; max-width:560px; margin:16px auto 0;">Cada peça tem uma necessidade diferente. Veja abaixo qual material é ideal para o seu caso:</p>
-  </div>
-  <div class="mat-grid">
-
-    <div class="mat-card reveal">
-      <div class="mat-badge" style="background: rgba(65,118,225,0.12); color: #4176e1; border-color: rgba(65,118,225,0.3);">🟢 PADRÃO</div>
-      <div class="mat-name">PLA</div>
-      <div class="mat-sub">Polylactic Acid</div>
-      <div class="mat-desc">O material mais popular da impressão 3D. Ideal para peças decorativas, chaveiros e presentes. Disponível em dezenas de cores vibrantes, incluindo efeitos brilhantes, metálicos e multicoloridos.</div>
-      <div class="mat-pros">
-        <div class="mat-pro">✅ Cores incríveis e variadas</div>
-        <div class="mat-pro">✅ Ótimo nível de detalhe</div>
-        <div class="mat-pro">✅ Custo mais acessível</div>
-        <div class="mat-pro">⚠️ Evitar calor acima de 60°C</div>
+<section class="section" id="materiais">
+  <div class="mat-layout">
+    <div class="mat-intro reveal">
+      <div class="section-label">Materiais</div>
+      <h2 class="section-title">Qual <em>material</em> escolher?</h2>
+      <p class="mat-intro-text">Cada peça tem uma necessidade diferente. Escolha o material ideal baseado no uso, resistência e acabamento desejado.</p>
+    </div>
+    <div class="mat-cards reveal">
+      <div class="mat-card">
+        <div class="mat-letter">P</div>
+        <div>
+          <div class="mat-name">PLA — Padrão</div>
+          <div class="mat-full">Polylactic Acid</div>
+          <div class="mat-desc">O material mais popular. Ideal para decoração, chaveiros e presentes. Disponível em dezenas de cores vibrantes, metálicas e multicoloridas.</div>
+          <div class="mat-pros-inline"><span class="mat-pro-tag">Cores incríveis</span><span class="mat-pro-tag">Ótimo detalhe</span><span class="mat-pro-tag">Mais acessível</span><span class="mat-pro-tag">Evitar calor +60°C</span></div>
+        </div>
+        <div><div class="mat-level">Uso geral</div><div class="mat-use-label">Chaveiros · Decoração · Presentes</div></div>
       </div>
-      <div class="mat-use">
-        <span class="tag">Chaveiros</span>
-        <span class="tag">Decoração</span>
-        <span class="tag">Presentes</span>
-        <span class="tag">Figuras</span>
+      <div class="mat-card">
+        <div class="mat-letter">M</div>
+        <div>
+          <div class="mat-name">PETG — Média</div>
+          <div class="mat-full">Polyethylene Terephthalate Glycol</div>
+          <div class="mat-desc">Combina facilidade com mais resistência mecânica e térmica. Ótimo para peças que vão ao sol ou precisam suportar peso.</div>
+          <div class="mat-pros-inline"><span class="mat-pro-tag">Resistente ao calor +80°C</span><span class="mat-pro-tag">Flexível</span><span class="mat-pro-tag">Resistente à umidade</span></div>
+        </div>
+        <div><div class="mat-level">Resistente</div><div class="mat-use-label">Suportes · Externos · Utensílios</div></div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-letter">A</div>
+        <div>
+          <div class="mat-name">ABS — Alta</div>
+          <div class="mat-full">Acrylonitrile Butadiene Styrene</div>
+          <div class="mat-desc">Material técnico com alta resistência mecânica. O mesmo plástico de capacetes e peças automotivas. Para peças que sofrem impacto constante.</div>
+          <div class="mat-pros-inline"><span class="mat-pro-tag">Alta resistência</span><span class="mat-pro-tag">Suporta +100°C</span><span class="mat-pro-tag">Custo por grama menor</span></div>
+        </div>
+        <div><div class="mat-level">Técnico</div><div class="mat-use-label">Corporativo · Reposição · Intenso</div></div>
       </div>
     </div>
-
-    <div class="mat-card reveal">
-      <div class="mat-badge" style="background: rgba(234,179,8,0.12); color: #ca8a04; border-color: rgba(234,179,8,0.3);">🟡 MÉDIA RESISTÊNCIA</div>
-      <div class="mat-name">PETG</div>
-      <div class="mat-sub">Polyethylene Terephthalate Glycol</div>
-      <div class="mat-desc">Combina a facilidade de impressão do PLA com mais resistência mecânica e térmica. Ótimo para peças que vão ao sol, suportam peso ou precisam durar mais.</div>
-      <div class="mat-pros">
-        <div class="mat-pro">✅ Resistente ao calor (até ~80°C)</div>
-        <div class="mat-pro">✅ Mais flexível — não quebra fácil</div>
-        <div class="mat-pro">✅ Resistente à umidade</div>
-        <div class="mat-pro">⚠️ Cores menos vibrantes</div>
-      </div>
-      <div class="mat-use">
-        <span class="tag">Suportes</span>
-        <span class="tag">Organizadores</span>
-        <span class="tag">Peças externas</span>
-        <span class="tag">Utensílios</span>
-      </div>
-    </div>
-
-    <div class="mat-card reveal">
-      <div class="mat-badge" style="background: rgba(107,114,128,0.12); color: #9ca3af; border-color: rgba(107,114,128,0.3);">🔵 ALTA RESISTÊNCIA</div>
-      <div class="mat-name">ABS</div>
-      <div class="mat-sub">Acrylonitrile Butadiene Styrene</div>
-      <div class="mat-desc">Material técnico com alta resistência mecânica. O mesmo plástico usado em capacetes, peças automotivas e eletrodomésticos. Indicado para peças que sofrem impacto ou stress constante.</div>
-      <div class="mat-pros">
-        <div class="mat-pro">✅ Alta resistência a impactos</div>
-        <div class="mat-pro">✅ Suporta até ~100°C</div>
-        <div class="mat-pro">✅ Custo mais baixo por grama</div>
-        <div class="mat-pro">⚠️ Menos opções de cores</div>
-      </div>
-      <div class="mat-use">
-        <span class="tag">Peças técnicas</span>
-        <span class="tag">Corporativo</span>
-        <span class="tag">Reposição</span>
-        <span class="tag">Uso intenso</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- DEPOIMENTOS -->
-<section id="depoimentos">
-  <div class="section-header reveal" style="text-align:center;">
-    <div class="section-tag">// depoimentos</div>
-    <h2 class="section-title">O QUE DIZEM <span>OS CLIENTES</span></h2>
+<section class="section" id="depoimentos">
+  <div style="margin-bottom:60px" class="reveal">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title">O que dizem os <em>clientes</em></h2>
   </div>
-  <div class="dep-grid">
-    <div class="dep-card reveal dep-placeholder">
-      <div class="dep-quote">"</div>
-      <div class="dep-text">Seu depoimento aqui em breve...</div>
-      <div class="dep-stars">★★★★★</div>
-      <div class="dep-author">
-        <div class="dep-avatar">?</div>
-        <div>
-          <div class="dep-name">Cliente Verificado</div>
-          <div class="dep-info">aguardando depoimento</div>
-        </div>
-      </div>
-    </div>
-    <div class="dep-card reveal dep-placeholder">
-      <div class="dep-quote">"</div>
-      <div class="dep-text">Seu depoimento aqui em breve...</div>
-      <div class="dep-stars">★★★★★</div>
-      <div class="dep-author">
-        <div class="dep-avatar">?</div>
-        <div>
-          <div class="dep-name">Cliente Verificado</div>
-          <div class="dep-info">aguardando depoimento</div>
-        </div>
-      </div>
-    </div>
-    <div class="dep-card reveal dep-placeholder">
-      <div class="dep-quote">"</div>
-      <div class="dep-text">Seu depoimento aqui em breve...</div>
-      <div class="dep-stars">★★★★★</div>
-      <div class="dep-author">
-        <div class="dep-avatar">?</div>
-        <div>
-          <div class="dep-name">Cliente Verificado</div>
-          <div class="dep-info">aguardando depoimento</div>
-        </div>
-      </div>
-    </div>
+  <div class="dep-layout reveal">
+    <div class="dep-card dep-placeholder"><div class="dep-quote-mark">"</div><div class="dep-text">Seu depoimento aqui em breve...</div><div class="dep-stars">★★★★★</div><div class="dep-author-row"><div class="dep-avatar">?</div><div><div class="dep-name">Cliente Verificado</div><div class="dep-product">aguardando depoimento</div></div></div></div>
+    <div class="dep-card dep-placeholder"><div class="dep-quote-mark">"</div><div class="dep-text">Seu depoimento aqui em breve...</div><div class="dep-stars">★★★★★</div><div class="dep-author-row"><div class="dep-avatar">?</div><div><div class="dep-name">Cliente Verificado</div><div class="dep-product">aguardando depoimento</div></div></div></div>
+    <div class="dep-card dep-placeholder"><div class="dep-quote-mark">"</div><div class="dep-text">Seu depoimento aqui em breve...</div><div class="dep-stars">★★★★★</div><div class="dep-author-row"><div class="dep-avatar">?</div><div><div class="dep-name">Cliente Verificado</div><div class="dep-product">aguardando depoimento</div></div></div></div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="background: var(--surface); border-top: 1px solid var(--border);">
-  <div class="section-header reveal" style="text-align: center;">
-    <div class="section-tag">// dúvidas</div>
-    <h2 class="section-title">PERGUNTAS <span>FREQUENTES</span></h2>
-  </div>
-  <div class="faq reveal">
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Por que o preço não é fixo? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">O preço da impressão 3D depende de 4 fatores: tamanho da peça (tempo de impressão), quantidade de material usado (filamento), complexidade do design e material escolhido. Uma peça grande em material especial custa mais do que uma pequena em PLA padrão — por isso trabalhamos com estimativas e orçamento personalizado.</div>
+<section class="section" id="faq" style="background:var(--surface)">
+  <div class="faq-layout">
+    <div class="faq-intro reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Dúvidas <em>frequentes</em></h2>
+      <p class="faq-intro-text">Não encontrou o que procura? Me chama no WhatsApp.</p>
     </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Consigo fazer uma peça com meu design? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Sim! Você pode enviar o arquivo 3D pronto (STL, OBJ) ou só uma foto/referência do que quer. Para designs mais complexos, fazemos a modelagem com um custo adicional.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Qual o prazo de produção e entrega? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">A produção leva em média 3–7 dias úteis dependendo da complexidade e fila. A entrega via Correios varia por região: 2–10 dias úteis. O prazo total é informado na confirmação do pedido.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Quais materiais vocês usam? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Trabalhamos principalmente com PLA (padrão e premium), PETG (mais resistente ao calor e impacto) e materiais flexíveis. Cada material tem características específicas — posso te indicar o melhor para sua peça.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Tem desconto para pedidos em quantidade? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Sim! A partir de 5 unidades da mesma peça já começa a ter desconto progressivo. Para pedidos maiores (empresas, brindes), entre em contato para um orçamento especial.</div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Por que o preço não é fixo? <span class="faq-icon">+</span></button><div class="faq-a">O preço depende de 4 fatores: tamanho da peça (tempo de impressão), quantidade de material, complexidade do design e material escolhido. Por isso trabalhamos com orçamento personalizado.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Consigo fazer uma peça com meu design? <span class="faq-icon">+</span></button><div class="faq-a">Sim! Você pode enviar o arquivo 3D pronto (STL, OBJ) ou só uma foto/referência. Para designs complexos, fazemos a modelagem com custo adicional.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qual o prazo de produção e entrega? <span class="faq-icon">+</span></button><div class="faq-a">A produção leva 3–7 dias úteis. A entrega via Correios varia por região: 2–10 dias úteis. O prazo exato é informado na confirmação do pedido.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quais materiais vocês usam? <span class="faq-icon">+</span></button><div class="faq-a">Trabalhamos com PLA (padrão), PETG (resistente) e ABS (técnico). Cada material tem características específicas — posso te indicar o melhor para sua peça.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Tem desconto para pedidos em quantidade? <span class="faq-icon">+</span></button><div class="faq-a">Sim! A partir de 3 unidades já começa o desconto progressivo. Para pedidos maiores, entre em contato para orçamento especial.</div></div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">ALVES<span>.3D</span></div>
-  <ul class="footer-links">
-    <li><a href="#produtos">Produtos</a></li>
-    <li><a href="#calculadora">Orçamento</a></li>
-    <li><a href="https://instagram.com/alves_3d" target="_blank">Instagram</a></li>
-    <li><a href="https://wa.me/5516992364004">WhatsApp</a></li>
-  </ul>
-  <div class="footer-note">© 2026 Alves.3D · Impressão 3D para todo o Brasil</div>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Alves<em>.3D</em></div>
+      <p class="footer-tagline">Transformando ideias em peças reais com impressão 3D personalizada.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navegação</div>
+      <ul class="footer-links">
+        <li><a href="#produtos">Catálogo</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#calculadora">Simular orçamento</a></li>
+        <li><a href="#formulario">Pedir peça</a></li>
+        <li><a href="#materiais">Materiais</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contato</div>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/5516992364004" target="_blank">WhatsApp</a></li>
+        <li><a href="https://instagram.com/alves_3d" target="_blank">Instagram @alves_3d</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Alves.3D · Impressão 3D para todo o Brasil</div>
+    <div class="footer-copy">Desde R$8 por peça · Entrega nacional</div>
+  </div>
 </footer>
 
-<script>
-// CALCULATOR
-const bases = {
-  chaveiro: 12, decoracao: 35, utilidade: 38,
-  geek: 50, presente: 55, corporativo: 45
-};
-
-function updateQty(v) {
-  document.getElementById('qty-display').textContent = v + (v == 1 ? ' unidade' : ' unidades');
-}
-
-function calcular() {
-  const cat = document.getElementById('categoria').value;
-  const matSelect = document.getElementById('material');
-
-  // Auto-select PLA for chaveiros (best for colors and detail)
-  if (cat === 'chaveiro' && matSelect.selectedIndex !== 0) {
-    matSelect.selectedIndex = 0;
-  }
-  const tam = parseFloat(document.getElementById('tamanho').value);
-  const mat = parseFloat(document.getElementById('material').value);
-  const qty = parseInt(document.getElementById('quantidade').value);
-  const comp = parseFloat(document.getElementById('complexidade').value);
-
-  const base = bases[cat];
-  const unitPrice = Math.round(base * tam * mat * comp);
-  const minPrice = Math.round(unitPrice * 0.85);
-  const maxPrice = Math.round(unitPrice * 1.2);
-
-  let discount = 0;
-  if (qty >= 10) discount = 0.15;
-  else if (qty >= 5) discount = 0.10;
-  else if (qty >= 3) discount = 0.05;
-
-  const total = Math.round(unitPrice * qty * (1 - discount));
-
-  document.getElementById('result-price').textContent = `R$${unitPrice}`;
-  document.getElementById('result-range').textContent = `faixa: R$${minPrice} – R$${maxPrice}`;
-  document.getElementById('bd-unit').textContent = `R$${unitPrice}`;
-  document.getElementById('bd-qty').textContent = `× ${qty}`;
-  document.getElementById('bd-disc').textContent = discount > 0 ? `-${discount*100}%` : '—';
-  document.getElementById('bd-total').textContent = `R$${total}`;
-
-  const note = document.getElementById('result-note');
-  if (cat === 'corporativo') {
-    note.innerHTML = '📞 Para pedidos corporativos, entre em contato para orçamento detalhado.<br><br>⚠️ <strong>Obs:</strong> O valor final pode ser menor ou maior dependendo da resistência necessária, nível de detalhes e complexidade da peça.';
-  } else {
-    note.innerHTML = '⚡ Estimativa sem frete. Valor exato confirmado no WhatsApp.<br><br>⚠️ <strong>Obs:</strong> O valor pode variar para mais ou para menos dependendo da resistência necessária e do nível de detalhes da peça.';
-  }
-
-  // Update WPP link
-  const msg = `Olá! Simulei um orçamento no site:\n• Produto: ${document.getElementById('categoria').options[document.getElementById('categoria').selectedIndex].text}\n• Tamanho: ${document.getElementById('tamanho').options[document.getElementById('tamanho').selectedIndex].text}\n• Quantidade: ${qty}\n• Estimativa: R$${total}\n\nQuero confirmar o pedido!`;
-  document.getElementById('wpp-btn').href = `https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
-}
-
-// FAQ
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// SCROLL REVEAL
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// INIT
-calcular();
-
-// Gallery is hardcoded in HTML for GitHub Pages compatibility
-
-// FORM MESSAGE BUILDER
-function buildMsg() {
-  const nome = document.getElementById('f-nome').value.trim();
-  const cidade = document.getElementById('f-cidade').value.trim();
-  const produto = document.getElementById('f-produto').value.trim();
-  const cat = document.getElementById('f-cat').value;
-  const tam = document.getElementById('f-tam').value;
-  const cor = document.getElementById('f-cor').value.trim();
-  const qty = document.getElementById('f-qty').value;
-  const detalhe = document.getElementById('f-detalhe').value.trim();
-
-  let msg = `Olá! Vim pelo site e quero fazer um pedido personalizado.\n\n`;
-  if (nome)    msg += `Nome: ${nome}\n`;
-  if (cidade)  msg += `Cidade: ${cidade}\n`;
-  if (produto) msg += `Produto: ${produto}\n`;
-  if (cat)     msg += `Categoria: ${cat}\n`;
-  if (tam)     msg += `Tamanho: ${tam}\n`;
-  if (cor)     msg += `Cor: ${cor}\n`;
-  if (qty)     msg += `Quantidade: ${qty}\n`;
-  if (detalhe) msg += `\nDetalhes: ${detalhe}\n`;
-
-  const btn = document.getElementById('form-wpp-btn');
-  btn.href = `https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
-}
-buildMsg();
-
-// CAROUSEL
-const carouselState = {};
-
-const categoryImgs = {
-  chaveiros:   ['imgs/chaveiros.jpg','imgs/chaveiros-1.jpg','imgs/chaveiros-2.jpg','imgs/chaveiros-3.jpg'],
-  decoracao:   ['imgs/decoracao.jpg','imgs/decoracao-1.jpg','imgs/decoracao-2.jpg','imgs/decoracao-3.jpg'],
-  utilidades:  ['imgs/utilidades.jpg','imgs/utilidades-1.jpg','imgs/utilidades-2.jpg','imgs/utilidades-3.jpg'],
-  geek:        ['imgs/geek.jpg','imgs/geek-1.jpg','imgs/geek-2.jpg','imgs/geek-3.jpg'],
-  presentes:   ['imgs/presentes.jpg','imgs/presentes-1.jpg','imgs/presentes-2.jpg','imgs/presentes-3.jpg'],
-  corporativo: ['imgs/corporativo.jpg','imgs/corporativo-1.jpg','imgs/corporativo-2.jpg','imgs/corporativo-3.jpg'],
-};
-
-async function loadCarousel(slug) {
-  const urls = categoryImgs[slug];
-  const carousel = document.getElementById('carousel-' + slug);
-  const dotsEl = document.getElementById('dots-' + slug);
-  const wrap = document.getElementById('wrap-' + slug);
-  const loaded = [];
-
-  for (const url of urls) {
-    await new Promise(resolve => {
-      const img = new Image();
-      img.onload = () => { loaded.push(url); resolve(); };
-      img.onerror = () => resolve();
-      img.src = url;
-    });
-  }
-
-  if (loaded.length === 0) { wrap.style.display = 'none'; return; }
-
-  loaded.forEach((url, i) => {
-    const img = document.createElement('img');
-    img.src = url;
-    img.className = 'category-img';
-    img.alt = slug;
-    carousel.appendChild(img);
-
-    const dot = document.createElement('div');
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = (e) => { e.stopPropagation(); goTo(slug, i); };
-    dotsEl.appendChild(dot);
-  });
-
-  carouselState[slug] = { index: 0, total: loaded.length };
-  if (loaded.length <= 1) {
-    wrap.querySelector('.prev').style.display = 'none';
-    wrap.querySelector('.next').style.display = 'none';
-    dotsEl.style.display = 'none';
-  }
-}
-
-function goTo(slug, index) {
-  const state = carouselState[slug];
-  if (!state) return;
-  state.index = (index + state.total) % state.total;
-  document.getElementById('carousel-' + slug).style.transform = `translateX(-${state.index * 100}%)`;
-  document.querySelectorAll(`#dots-${slug} .carousel-dot`).forEach((d, i) => {
-    d.classList.toggle('active', i === state.index);
-  });
-}
-
-function slide(slug, dir, e) {
-  e.stopPropagation();
-  const state = carouselState[slug];
-  if (!state) return;
-  goTo(slug, state.index + dir);
-}
-
-Object.keys(categoryImgs).forEach(loadCarousel);
-</script>
-<!-- FLOATING WHATSAPP -->
+<!-- FLOAT WPP -->
 <div class="wpp-float">
-  <div class="wpp-float-tooltip">💬 Fale comigo no WhatsApp</div>
-  <a class="wpp-float-btn" href="https://wa.me/5516992364004?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20mais%20informa%C3%A7%C3%B5es!" target="_blank" aria-label="WhatsApp">
+  <div class="wpp-float-tip">Fale comigo no WhatsApp</div>
+  <a class="wpp-float-btn" href="https://wa.me/5516992364004?text=Olá! Vim pelo site e quero mais informações!" target="_blank" aria-label="WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
 
+<script>
+// NAV
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+
+// HERO PARALLAX
+const heroBg=document.getElementById('heroBg');
+if(heroBg)window.addEventListener('scroll',()=>{heroBg.style.transform=`scale(1.05) translateY(${window.scrollY*.15}px)`});
+
+// MARQUEE
+const items=['Impressão 3D','Personalizado','Entrega Nacional','Desde R$8','Chaveiros','Decoração','Geek & Games','Presentes','Corporativo','PLA','PETG','ABS','200+ Projetos','Bambu Lab'];
+const track=document.getElementById('marqueeTrack');
+[...items,...items].forEach(t=>{const el=document.createElement('div');el.className='marquee-item';el.innerHTML=`<span class="marquee-dot"></span>${t}`;track.appendChild(el)});
+
+// GALLERY DRAG
+const gt=document.getElementById('galleryTrack');
+if(gt){let isDown=false,startX,scrollLeft;
+gt.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-gt.offsetLeft;scrollLeft=gt.scrollLeft});
+gt.addEventListener('mouseleave',()=>isDown=false);
+gt.addEventListener('mouseup',()=>isDown=false);
+gt.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();gt.scrollLeft=scrollLeft-(e.pageX-gt.offsetLeft-startX)*1.5})}
+
+// CALCULATOR
+const bases={chaveiro:12,decoracao:35,utilidade:38,geek:50,presente:55,corporativo:45};
+function updateQty(v){document.getElementById('qty-display').textContent=v+(v==1?' unidade':' unidades')}
+function calcular(){
+  const cat=document.getElementById('categoria').value;
+  const tam=parseFloat(document.getElementById('tamanho').value);
+  const mat=parseFloat(document.getElementById('material').value);
+  const qty=parseInt(document.getElementById('quantidade').value);
+  const comp=parseFloat(document.getElementById('complexidade').value);
+  if(cat==='chaveiro')document.getElementById('material').selectedIndex=0;
+  const unit=Math.round(bases[cat]*tam*mat*comp);
+  const min=Math.round(unit*.85),max=Math.round(unit*1.2);
+  let disc=qty>=10?.15:qty>=5?.10:qty>=3?.05:0;
+  const total=Math.round(unit*qty*(1-disc));
+  document.getElementById('result-price').textContent=`R$${unit}`;
+  document.getElementById('result-range').textContent=`faixa: R$${min} – R$${max}`;
+  document.getElementById('bd-unit').textContent=`R$${unit}`;
+  document.getElementById('bd-qty').textContent=`× ${qty}`;
+  document.getElementById('bd-disc').textContent=disc>0?`-${disc*100}%`:'—';
+  document.getElementById('bd-total').textContent=`R$${total}`;
+  const msg=`Olá! Simulei um orçamento no site:\nProduto: ${document.getElementById('categoria').options[document.getElementById('categoria').selectedIndex].text}\nTamanho: ${document.getElementById('tamanho').options[document.getElementById('tamanho').selectedIndex].text}\nQuantidade: ${qty}\nEstimativa: R$${total}\n\nQuero confirmar o pedido!`;
+  document.getElementById('wpp-calc-btn').href=`https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
+}
+
+// FORM
+function buildMsg(){
+  const nome=document.getElementById('f-nome').value.trim();
+  const cidade=document.getElementById('f-cidade').value.trim();
+  const produto=document.getElementById('f-produto').value.trim();
+  const cat=document.getElementById('f-cat').value;
+  const tam=document.getElementById('f-tam').value;
+  const cor=document.getElementById('f-cor').value.trim();
+  const qty=document.getElementById('f-qty').value;
+  const detalhe=document.getElementById('f-detalhe').value.trim();
+  let msg=`Olá! Vim pelo site e quero fazer um pedido personalizado.\n\n`;
+  if(nome)msg+=`Nome: ${nome}\n`;
+  if(cidade)msg+=`Cidade: ${cidade}\n`;
+  if(produto)msg+=`Produto: ${produto}\n`;
+  if(cat)msg+=`Categoria: ${cat}\n`;
+  if(tam)msg+=`Tamanho: ${tam}\n`;
+  if(cor)msg+=`Cor: ${cor}\n`;
+  if(qty)msg+=`Quantidade: ${qty}\n`;
+  if(detalhe)msg+=`\nDetalhes: ${detalhe}\n`;
+  document.getElementById('form-wpp-btn').href=`https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
+}
+
+// FAQ
+function toggleFaq(btn){const item=btn.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open')}
+
+// REVEAL
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80)})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+calcular();buildMsg();
+</script>
 </body>
 </html>
