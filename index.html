@@ -108,20 +108,13 @@ nav.scrolled{background:rgba(8,8,8,.92);backdrop-filter:blur(24px);border-bottom
 
 /* PROCESSO */
 #como-funciona{border-top:1px solid var(--border)}
-.processo-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
-.processo-steps{display:flex;flex-direction:column;margin-top:60px}
+.processo-steps{display:flex;flex-direction:column;margin-top:0}
 .processo-step{display:flex;gap:32px;padding:32px 0;border-bottom:1px solid var(--border);transition:padding .3s}
 .processo-step:first-child{border-top:1px solid var(--border)}
 .processo-step:hover{padding-left:12px}
 .step-num{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--accent);opacity:.35;line-height:1;flex-shrink:0;width:48px}
 .step-title{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:6px}
 .step-desc{font-size:14px;color:var(--text2);line-height:1.7}
-.processo-visual{position:relative}
-.processo-img-main{width:100%;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--surface)}
-.processo-img-main img{width:100%;height:100%;object-fit:cover;filter:brightness(.8)}
-.processo-tag{position:absolute;bottom:-24px;left:-24px;background:var(--accent);color:#fff;padding:20px 28px;border-radius:4px}
-.processo-tag-num{font-family:var(--serif);font-size:48px;font-weight:300;line-height:1}
-.processo-tag-label{font-size:11px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:4px}
 
 /* CALCULATOR */
 #calculadora{background:var(--surface);border-top:1px solid var(--border)}
@@ -245,6 +238,43 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* PROCESSO FULLSCREEN */
+.processo-fullscreen{position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.processo-bg{position:absolute;inset:0;z-index:0}
+.processo-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35)}
+.processo-bg-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.92) 0%,rgba(8,8,8,.75) 55%,rgba(8,8,8,.2) 100%)}
+.processo-fullscreen .processo-content{position:relative;z-index:2;max-width:680px}
+.processo-fullscreen .processo-step{border-bottom:1px solid rgba(255,255,255,.08)}
+.processo-fullscreen .processo-step:first-child{border-top:1px solid rgba(255,255,255,.08)}
+.processo-fullscreen .step-desc{color:rgba(255,255,255,.5)}
+
+/* SOLUCOES */
+#solucoes{background:var(--bg2);border-top:1px solid var(--border)}
+.sol-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.sol-left{}
+.sol-intro-text{font-size:15px;color:var(--text2);line-height:1.8;margin-top:16px;margin-bottom:36px;max-width:420px}
+.sol-cards{display:flex;flex-direction:column;gap:16px}
+.sol-card{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all .3s;cursor:pointer}
+.sol-card:hover{border-color:var(--accent);background:var(--surface2);transform:translateX(6px)}
+.sol-card-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.sol-card-title{font-weight:700;font-size:15px;margin-bottom:4px;color:var(--text)}
+.sol-card-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.sol-card-tag{display:inline-flex;align-items:center;gap:4px;margin-top:8px;background:rgba(65,118,225,.1);border:1px solid rgba(65,118,225,.25);color:var(--accent);padding:3px 10px;border-radius:100px;font-size:11px;font-family:var(--mono)}
+.sol-visual{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;padding:36px}
+.sol-visual-header{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.sol-visual-dot{width:10px;height:10px;border-radius:50%}
+.sol-kit-title{font-family:var(--serif);font-size:22px;margin-bottom:6px}
+.sol-kit-sub{font-size:12px;color:var(--text2);font-family:var(--mono);letter-spacing:.05em;margin-bottom:24px}
+.sol-kit-items{display:flex;flex-direction:column;gap:10px}
+.sol-kit-item{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text2)}
+.sol-kit-num{font-family:var(--mono);font-size:11px;color:var(--accent);width:24px;flex-shrink:0}
+.sol-kit-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.sol-kit-price{display:flex;justify-content:space-between;align-items:flex-end;margin-top:20px}
+.sol-kit-from{font-size:11px;color:var(--text2);font-family:var(--mono)}
+.sol-kit-val{font-family:var(--serif);font-size:40px;font-weight:300;color:var(--text);line-height:1}
+.sol-kit-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:20px;background:var(--accent);color:#fff;padding:14px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;transition:all .2s}
+.sol-kit-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+
 /* MOBILE */
 @media(max-width:900px){
   nav{padding:20px 24px}
@@ -280,6 +310,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   .footer-top{grid-template-columns:1fr;gap:40px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
   .wpp-float{bottom:20px;right:16px}
+  .sol-layout{grid-template-columns:1fr}
+  .sol-visual{display:none}
+  .processo-fullscreen .processo-content{max-width:100%}
 }
 </style>
 </head>
@@ -292,6 +325,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
     <li><a href="#galeria">Galeria</a></li>
     <li><a href="#calculadora">Orçamento</a></li>
     <li><a href="#formulario">Pedir peça</a></li>
+    <li><a href="#solucoes">Soluções</a></li>
     <li><a href="#materiais">Materiais</a></li>
     <li><a href="https://wa.me/5516992364004?text=Olá! Vim pelo site e quero mais informações!" target="_blank" class="nav-cta">WhatsApp</a></li>
   </ul>
@@ -400,21 +434,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
 </div>
 
 <!-- COMO FUNCIONA -->
-<section class="section" id="como-funciona">
-  <div class="processo-grid">
-    <div>
-      <div class="section-label reveal">Processo</div>
-      <h2 class="section-title reveal">Como <em>funciona</em></h2>
-      <div class="processo-steps">
-        <div class="processo-step reveal"><div class="step-num">01</div><div><div class="step-title">Fale comigo</div><div class="step-desc">Me conta sua ideia pelo WhatsApp — pode ser uma foto, referência ou só uma descrição.</div></div></div>
-        <div class="processo-step reveal"><div class="step-num">02</div><div><div class="step-title">Orçamento em até 5 dias úteis</div><div class="step-desc">Avalio a peça, tamanho, material e te passo o valor exato. Sem surpresas.</div></div></div>
-        <div class="processo-step reveal"><div class="step-num">03</div><div><div class="step-title">Produção</div><div class="step-desc">Após confirmação e pagamento, a peça entra na fila. Prazo médio: 3–7 dias úteis.</div></div></div>
-        <div class="processo-step reveal"><div class="step-num">04</div><div><div class="step-title">Entrega para todo o Brasil</div><div class="step-desc">Enviamos pelos Correios com código de rastreio. Você acompanha até a porta.</div></div></div>
-      </div>
-    </div>
-    <div class="processo-visual reveal">
-      <div class="processo-img-main"><img src="imgs/hero-bg.jpg" alt="Impressora 3D" onerror="this.style.display='none'"></div>
-      <div class="processo-tag"><div class="processo-tag-num">3D</div><div class="processo-tag-label">Tecnologia FDM</div></div>
+<section id="como-funciona" class="processo-fullscreen">
+  <div class="processo-bg">
+    <img src="imgs/hero-bg.jpg" alt="Impressora 3D">
+    <div class="processo-bg-overlay"></div>
+  </div>
+  <div class="processo-content section">
+    <div class="section-label reveal" style="color:#fff">Processo</div>
+    <h2 class="section-title reveal" style="margin-bottom:60px">Como <em>funciona</em></h2>
+    <div class="processo-steps">
+      <div class="processo-step reveal"><div class="step-num">01</div><div><div class="step-title">Fale comigo</div><div class="step-desc">Me conta sua ideia pelo WhatsApp — pode ser uma foto, referência ou só uma descrição.</div></div></div>
+      <div class="processo-step reveal"><div class="step-num">02</div><div><div class="step-title">Orçamento em até 5 dias úteis</div><div class="step-desc">Avalio a peça, tamanho, material e te passo o valor exato. Sem surpresas.</div></div></div>
+      <div class="processo-step reveal"><div class="step-num">03</div><div><div class="step-title">Produção</div><div class="step-desc">Após confirmação e pagamento, a peça entra na fila. Prazo médio: 3–7 dias úteis.</div></div></div>
+      <div class="processo-step reveal"><div class="step-num">04</div><div><div class="step-title">Entrega para todo o Brasil</div><div class="step-desc">Enviamos pelos Correios com código de rastreio. Você acompanha até a porta.</div></div></div>
     </div>
   </div>
 </section>
@@ -578,6 +610,51 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   </div>
 </section>
 
+<!-- SOLUÇÕES DIGITAIS -->
+<section class="section" id="solucoes">
+  <div class="sol-layout">
+    <div class="sol-left reveal">
+      <div class="section-label">Soluções digitais</div>
+      <h2 class="section-title">Ferramentas para <em>gerenciar</em> seu negócio 3D</h2>
+      <p class="sol-intro-text">Além das peças físicas, desenvolvemos kits digitais para impressores 3D que querem parar de gerenciar no feeling e ter controle real do negócio.</p>
+      <div class="sol-cards">
+        <a href="https://alves3d.github.io/kit" target="_blank" class="sol-card">
+          <div class="sol-card-icon">📊</div>
+          <div>
+            <div class="sol-card-title">Kit Gestão para Impressão 3D</div>
+            <div class="sol-card-desc">Planilhas, calculadoras de precificação, controle de estoque e gestão de pedidos — tudo em um kit completo e editável.</div>
+            <div class="sol-card-tag">↗ Acessar kit</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="sol-visual reveal">
+      <div class="sol-visual-header">
+        <div class="sol-visual-dot" style="background:#ff5f57"></div>
+        <div class="sol-visual-dot" style="background:#febc2e"></div>
+        <div class="sol-visual-dot" style="background:#28c840"></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--text2);margin-left:8px">kit-gestao-3d.xlsx</span>
+      </div>
+      <div class="sol-kit-title">Kit Gestão 3D</div>
+      <div class="sol-kit-sub">12+ ferramentas · 100% editável</div>
+      <div class="sol-kit-items">
+        <div class="sol-kit-item"><span class="sol-kit-num">01</span>Calculadora de precificação por peça</div>
+        <div class="sol-kit-item"><span class="sol-kit-num">02</span>Controle de estoque de filamento</div>
+        <div class="sol-kit-item"><span class="sol-kit-num">03</span>Gestão de pedidos e clientes</div>
+        <div class="sol-kit-item"><span class="sol-kit-num">04</span>Fluxo de caixa simplificado</div>
+        <div class="sol-kit-item"><span class="sol-kit-num">05</span>Dashboard de lucro por impressão</div>
+        <div class="sol-kit-item"><span class="sol-kit-num">06</span>Templates de orçamento para clientes</div>
+      </div>
+      <hr class="sol-kit-divider">
+      <div class="sol-kit-price">
+        <div><div class="sol-kit-from">a partir de</div><div class="sol-kit-val">R$29<span style="font-size:20px">,90</span></div></div>
+        <div style="font-size:13px;color:var(--text2);font-family:var(--mono);text-align:right">Acesso vitalício<br>Entrega imediata</div>
+      </div>
+      <a href="https://alves3d.github.io/kit" target="_blank" class="sol-kit-cta">Ver o kit completo →</a>
+    </div>
+  </div>
+</section>
+
 <!-- DEPOIMENTOS -->
 <section class="section" id="depoimentos">
   <div style="margin-bottom:60px" class="reveal">
@@ -585,9 +662,33 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
     <h2 class="section-title">O que dizem os <em>clientes</em></h2>
   </div>
   <div class="dep-layout reveal">
-    <div class="dep-card dep-placeholder"><div class="dep-quote-mark">"</div><div class="dep-text">Seu depoimento aqui em breve...</div><div class="dep-stars">★★★★★</div><div class="dep-author-row"><div class="dep-avatar">?</div><div><div class="dep-name">Cliente Verificado</div><div class="dep-product">aguardando depoimento</div></div></div></div>
-    <div class="dep-card dep-placeholder"><div class="dep-quote-mark">"</div><div class="dep-text">Seu depoimento aqui em breve...</div><div class="dep-stars">★★★★★</div><div class="dep-author-row"><div class="dep-avatar">?</div><div><div class="dep-name">Cliente Verificado</div><div class="dep-product">aguardando depoimento</div></div></div></div>
-    <div class="dep-card dep-placeholder"><div class="dep-quote-mark">"</div><div class="dep-text">Seu depoimento aqui em breve...</div><div class="dep-stars">★★★★★</div><div class="dep-author-row"><div class="dep-avatar">?</div><div><div class="dep-name">Cliente Verificado</div><div class="dep-product">aguardando depoimento</div></div></div></div>
+    <div class="dep-card">
+      <div class="dep-quote-mark">"</div>
+      <div class="dep-text">Encomendei um chaveiro personalizado com o rosto do meu cachorro e ficou incrível. O nível de detalhe me surpreendeu muito — dava pra reconhecer o pelo dele. Chegou bem embalado e antes do prazo. Com certeza vou pedir de novo!</div>
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-author-row">
+        <div class="dep-avatar" style="background:#4176e1">A</div>
+        <div><div class="dep-name">Ana Paula R.</div><div class="dep-product">Chaveiro personalizado · São Paulo, SP</div></div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-quote-mark">"</div>
+      <div class="dep-text">Pedi uma plaquinha com o logo do meu escritório de advocacia e o resultado foi profissional demais. O Matheus foi super atencioso, me ajudou a escolher o material certo e o prazo foi cumprido certinho. Recomendo demais.</div>
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-author-row">
+        <div class="dep-avatar" style="background:#16a34a">R</div>
+        <div><div class="dep-name">Rafael M.</div><div class="dep-product">Placa corporativa · Ribeirão Preto, SP</div></div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-quote-mark">"</div>
+      <div class="dep-text">Minha filha amou o presente de aniversário — era uma miniatura articulada do personagem favorito dela. Não esperava que saísse tão fiel ao original. Atendimento rápido e sem enrolação. Nota 10!</div>
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-author-row">
+        <div class="dep-avatar" style="background:#9333ea">C</div>
+        <div><div class="dep-name">Camila F.</div><div class="dep-product">Figura articulada · Belo Horizonte, MG</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -623,7 +724,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#calculadora">Simular orçamento</a></li>
         <li><a href="#formulario">Pedir peça</a></li>
-        <li><a href="#materiais">Materiais</a></li>
+        <li><a href="#solucoes">Soluções</a></li>
+    <li><a href="#materiais">Materiais</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </div>
