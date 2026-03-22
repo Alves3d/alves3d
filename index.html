@@ -446,6 +446,21 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
       <div class="gallery-scroll-item" onclick="openLightbox(7)"><img src="imgs/galeria-8.jpg" alt="Peça 8" loading="lazy"></div>
       <div class="gallery-scroll-item" onclick="openLightbox(8)"><img src="imgs/galeria-9.jpg" alt="Peça 9" loading="lazy"></div>
       <div class="gallery-scroll-item" onclick="openLightbox(9)"><img src="imgs/galeria-10.jpg" alt="Peça 10" loading="lazy"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(10)"><img src="imgs/galeria-11.jpg" alt="Peça 11" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(11)"><img src="imgs/galeria-12.jpg" alt="Peça 12" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(12)"><img src="imgs/galeria-13.jpg" alt="Peça 13" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(13)"><img src="imgs/galeria-14.jpg" alt="Peça 14" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(14)"><img src="imgs/galeria-15.jpg" alt="Peça 15" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(15)"><img src="imgs/galeria-16.jpg" alt="Peça 16" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(16)"><img src="imgs/galeria-17.jpg" alt="Peça 17" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(17)"><img src="imgs/galeria-18.jpg" alt="Peça 18" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(18)"><img src="imgs/galeria-19.jpg" alt="Peça 19" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(19)"><img src="imgs/galeria-20.jpg" alt="Peça 20" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(20)"><img src="imgs/galeria-21.jpg" alt="Peça 21" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(21)"><img src="imgs/galeria-22.jpg" alt="Peça 22" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(22)"><img src="imgs/galeria-23.jpg" alt="Peça 23" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(23)"><img src="imgs/galeria-24.jpg" alt="Peça 24" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-scroll-item" onclick="openLightbox(24)"><img src="imgs/galeria-25.jpg" alt="Peça 25" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
     </div>
   </div>
   <div class="gallery-hint">← arraste para explorar →</div>
@@ -865,12 +880,13 @@ const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.i
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 // LIGHTBOX
-const galleryImgs=['imgs/galeria-1.jpg','imgs/galeria-2.jpg','imgs/galeria-3.jpg','imgs/galeria-4.jpg','imgs/galeria-5.jpg','imgs/galeria-6.jpg','imgs/galeria-7.jpg','imgs/galeria-8.jpg','imgs/galeria-9.jpg','imgs/galeria-10.jpg'];
+const galleryImgs=['imgs/galeria-1.jpg','imgs/galeria-2.jpg','imgs/galeria-3.jpg','imgs/galeria-4.jpg','imgs/galeria-5.jpg','imgs/galeria-6.jpg','imgs/galeria-7.jpg','imgs/galeria-8.jpg','imgs/galeria-9.jpg','imgs/galeria-10.jpg','imgs/galeria-11.jpg','imgs/galeria-12.jpg','imgs/galeria-13.jpg','imgs/galeria-14.jpg','imgs/galeria-15.jpg','imgs/galeria-16.jpg','imgs/galeria-17.jpg','imgs/galeria-18.jpg','imgs/galeria-19.jpg','imgs/galeria-20.jpg','imgs/galeria-21.jpg','imgs/galeria-22.jpg','imgs/galeria-23.jpg','imgs/galeria-24.jpg','imgs/galeria-25.jpg'];
 let lbIndex=0;
-function openLightbox(i){lbIndex=i;document.getElementById('lightboxImg').src=galleryImgs[i];document.getElementById('lightboxCounter').textContent=`${i+1} / ${galleryImgs.length}`;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
+function updateLightboxCounter(i){const total=document.querySelectorAll(".gallery-scroll-item:not([style*='none'])").length||galleryImgs.length;document.getElementById("lightboxCounter").textContent=`${i+1} / ${total}`}
+function openLightbox(i){lbIndex=i;document.getElementById('lightboxImg').src=galleryImgs[i];updateLightboxCounter(i);document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
 function closeLightboxOverlay(e){if(e.target===document.getElementById('lightbox'))closeLightbox()}
-function shiftLightbox(dir,e){e.stopPropagation();lbIndex=(lbIndex+dir+galleryImgs.length)%galleryImgs.length;document.getElementById('lightboxImg').src=galleryImgs[lbIndex];document.getElementById('lightboxCounter').textContent=`${lbIndex+1} / ${galleryImgs.length}`}
+function shiftLightbox(dir,e){e.stopPropagation();lbIndex=(lbIndex+dir+galleryImgs.length)%galleryImgs.length;document.getElementById('lightboxImg').src=galleryImgs[lbIndex];updateLightboxCounter(lbIndex)}
 document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')shiftLightbox(-1,{stopPropagation:()=>{}});if(e.key==='ArrowRight')shiftLightbox(1,{stopPropagation:()=>{}})});
 
 calcular();buildMsg();
