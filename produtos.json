@@ -1,0 +1,599 @@
+[
+  {
+    "id": "M-5AF4",
+    "nome": "Caixa Ampolas 40un",
+    "categoria": "Chaveiro",
+    "preco": 52,
+    "descricao": "Caixa amazenamento ampolas, ideal para armazenar e proteger suas ampolas com segurança e praticidade.\nCapacidade para 40 ampolas de até 16 mm de diâmetro cada, mantendo tudo organizado e de fácil acesso.",
+    "material": "PLA",
+    "tamanho": "18,5cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-5AF4-Caixa-Ampolas-40un.jpg"
+    ]
+  },
+  {
+    "id": "M-805F",
+    "nome": "Caixa Ampolas 20un",
+    "categoria": "Chaveiro",
+    "preco": 28,
+    "descricao": "Caixa amazenamento ampolas, ideal para armazenar e proteger suas ampolas com segurança e praticidade.\nCapacidade para 20 ampolas de até 16 mm de diâmetro cada, mantendo tudo organizado e de fácil acesso.",
+    "material": "PLA",
+    "tamanho": "12cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-805F-Caixa-Ampolas-20un-1.jpg",
+      "imgs/produtos/M-805F-Caixa-Ampolas-20un-2.jpg"
+    ]
+  },
+  {
+    "id": "3",
+    "nome": "Placa coleira PET",
+    "categoria": "PET",
+    "preco": 12,
+    "descricao": "Coleira personalizada com o nome do seu pet, garantindo estilo e identificação em um só produto. Você também pode incluir seu número de contato para maior segurança em caso de perda.",
+    "material": "PLA",
+    "tamanho": "7cm",
+    "tags": [
+      "PET",
+      "chaveiro",
+      "personalizado"
+    ],
+    "imagens": [
+      "imgs/produtos/3-Placa-coleira-PET-1.jpg",
+      "imgs/produtos/3-Placa-coleira-PET-2.jpg",
+      "imgs/produtos/3-Placa-coleira-PET-3.jpg",
+      "imgs/produtos/3-Placa-coleira-PET-4.jpg"
+    ]
+  },
+  {
+    "id": "M-5B3F",
+    "nome": "Caixa sibilla Italiana",
+    "categoria": "Caixa/Embalagem",
+    "preco": 18,
+    "descricao": "Caixa Sibilla Italiana em PLA. Guarde seu baralho de tarologia com elegância.",
+    "material": "PLA",
+    "tamanho": "14cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-5B3F-Caixa-sibilla-Italiana-1.jpg",
+      "imgs/produtos/M-5B3F-Caixa-sibilla-Italiana-2.jpg",
+      "imgs/produtos/M-5B3F-Caixa-sibilla-Italiana-3.jpg"
+    ]
+  },
+  {
+    "id": "M-E889",
+    "nome": "Caixa 8 ampolas",
+    "categoria": "Caixa/Embalagem",
+    "preco": 28,
+    "descricao": "Caixa para 8 ampolas em PLA. Proteção compacta e organizada para ampolas.",
+    "material": "PLA",
+    "tamanho": "10cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-E889-Caixa-8-ampolas.jpg"
+    ]
+  },
+  {
+    "id": "M-6575",
+    "nome": "Suporte PS4 Fat",
+    "categoria": "Organizador/Suporte",
+    "preco": 12,
+    "descricao": "Suporte para PS4 Fat em PLA. Organize e exiba seu console com estilo.",
+    "material": "PLA",
+    "tamanho": "10cm",
+    "tags": [
+      "organização",
+      "suporte",
+      "ps4"
+    ],
+    "imagens": [
+      "imgs/produtos/M-6575-Suporte-PS4-Fat.jpg"
+    ]
+  },
+  {
+    "id": "M-7886",
+    "nome": "Chaveiro camisa seleção 01",
+    "categoria": "Chaveiros",
+    "preco": 4,
+    "descricao": "Chaveiro camisa da seleção 01 em PLA. Demonstre sua paixão pelo futebol brasileiro.",
+    "material": "PLA",
+    "tamanho": "7,5cm",
+    "tags": [
+      "chaveiro",
+      "copa do munco",
+      "personalizado"
+    ],
+    "imagens": [
+      "imgs/produtos/M-7886-Chaveiro-camisa-seleção-01.jpg"
+    ]
+  },
+  {
+    "id": "M-E581",
+    "nome": "Chaveiro camisa seleção 02",
+    "categoria": "Chaveiros",
+    "preco": 3,
+    "descricao": "Chaveiro camisa da seleção 02 em PLA. Segunda versão para torcedores dedicados.",
+    "material": "PLA",
+    "tamanho": "6,5cm",
+    "tags": [
+      "chaveiro",
+      "copa do munco",
+      "personalizado"
+    ],
+    "imagens": [
+      "imgs/produtos/M-E581-Chaveiro-camisa-seleção-02.jpg"
+    ]
+  },
+  {
+    "id": "M-3F3C",
+    "nome": "Pokebola - MasterBall",
+    "categoria": "Brinquedos",
+    "preco": 25,
+    "descricao": "Pokebola Master Ball em PLA. A mais rara de todas para sua coleção.",
+    "material": "PLA",
+    "tamanho": "7cm",
+    "tags": [
+      "pokemon",
+      "colecionável"
+    ],
+    "imagens": [
+      "imgs/produtos/M-3F3C-Pokebola---MasterBall-1.jpg",
+      "imgs/produtos/M-3F3C-Pokebola---MasterBall-2.jpg"
+    ]
+  },
+  {
+    "id": "M-CE34",
+    "nome": "Pokebola",
+    "categoria": "Brinquedos",
+    "preco": 25,
+    "descricao": "Pokebola em PLA tamanho real. Para capturar corações de fãs Pokémon.",
+    "material": "PLA",
+    "tamanho": "7cm",
+    "tags": [
+      "pokemon",
+      "colecionável"
+    ],
+    "imagens": [
+      "imgs/produtos/M-CE34-Pokebola-1.jpg",
+      "imgs/produtos/M-CE34-Pokebola-2.jpg",
+      "imgs/produtos/M-CE34-Pokebola-3.jpg"
+    ]
+  },
+  {
+    "id": "M-805F",
+    "nome": "Caixa + suporte 20 ap",
+    "categoria": "Caixas e Embalagens",
+    "preco": 31,
+    "descricao": "Caixa com suporte para 20 ampolas versão 2 em PLA. Organização prática e compacta.",
+    "material": "ABS",
+    "tamanho": "12cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-1.jpg",
+      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-2.jpg",
+      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-3.jpg",
+      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-4.jpg"
+    ]
+  },
+  {
+    "id": "M-5AF4",
+    "nome": "Caixa + suporte 40 ap",
+    "categoria": "Caixas e Embalagens",
+    "preco": 54,
+    "descricao": "Caixa com suporte para 40 ampolas versão 2 em PLA. Capacidade total de organização.",
+    "material": "ABS",
+    "tamanho": "18cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-5AF4-Caixa-+-suporte-40-ap.jpg"
+    ]
+  },
+  {
+    "id": "212",
+    "nome": "Imã PET personalizado",
+    "categoria": "Imãs",
+    "preco": 15,
+    "descricao": "Imã PET personalizado em PLA. Personalize com a foto do seu PET e eternize sua melhor companhia!",
+    "material": "PLA",
+    "tamanho": "6,5cm",
+    "tags": [
+      "PET",
+      "imã",
+      "personalizado"
+    ],
+    "imagens": [
+      "imgs/produtos/212-Imã-PET-personalizado-1.jpg",
+      "imgs/produtos/212-Imã-PET-personalizado-2.jpg",
+      "imgs/produtos/212-Imã-PET-personalizado-3.jpg",
+      "imgs/produtos/212-Imã-PET-personalizado-4.jpg"
+    ]
+  },
+  {
+    "id": "195",
+    "nome": "Chaveiro personalizado PET",
+    "categoria": "Chaveiros",
+    "preco": 15,
+    "descricao": "Chaveiro personalizado do seu PET! Uma peça unica para você.",
+    "material": "PLA",
+    "tamanho": "6cm",
+    "tags": [
+      "presente",
+      "pet",
+      "chaveiro"
+    ],
+    "imagens": [
+      "imgs/produtos/195-Chaveiro-personalizado-PET-1.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-2.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-3.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-4.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-5.jpg"
+    ]
+  },
+  {
+    "id": "M-58E2",
+    "nome": "Tartaturuga articulada",
+    "categoria": "Brinquedos",
+    "preco": 18,
+    "descricao": "Tartaruga articulada em PLA com movimentos realistas. Brinquedo e decoração.",
+    "material": "PLA",
+    "tamanho": "11cm",
+    "tags": [
+      "brinquedo",
+      "pet",
+      "decoração"
+    ],
+    "imagens": [
+      "imgs/produtos/M-58E2-Tartaturuga-articulada-1.jpg",
+      "imgs/produtos/M-58E2-Tartaturuga-articulada-2.jpg",
+      "imgs/produtos/M-58E2-Tartaturuga-articulada-3.jpg"
+    ]
+  },
+  {
+    "id": "23",
+    "nome": "Raiva",
+    "categoria": "Figuras e Personagens",
+    "preco": 35,
+    "descricao": "Figura da Raiva de Divertida Mente em PLA. Para fãs do filme da Pixar.",
+    "material": "PLA",
+    "tamanho": "10 cm",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/23-Raiva-1.jpg",
+      "imgs/produtos/23-Raiva-2.jpg"
+    ]
+  },
+  {
+    "id": "24",
+    "nome": "Vergonha",
+    "categoria": "Figuras e Personagens",
+    "preco": 55,
+    "descricao": "Figura da Vergonha de Divertida Mente em PLA. Colecionável do filme da Pixar.",
+    "material": "PLA",
+    "tamanho": "18cm",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/24-Vergonha-1.jpg",
+      "imgs/produtos/24-Vergonha-2.jpg"
+    ]
+  },
+  {
+    "id": "25",
+    "nome": "Medo",
+    "categoria": "Figuras e Personagens",
+    "preco": 20,
+    "descricao": "Figura do Medo de Divertida Mente em PLA. Perfeita para completar a coleção.",
+    "material": "PLA",
+    "tamanho": "12 cm",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/25-Medo-1.jpg",
+      "imgs/produtos/25-Medo-2.jpg"
+    ]
+  },
+  {
+    "id": "26",
+    "nome": "Tristeza",
+    "categoria": "Figuras e Personagens",
+    "preco": 50,
+    "descricao": "Figura da Tristeza de Divertida Mente em PLA. Colecionável detalhado do filme.",
+    "material": "PLA",
+    "tamanho": "12 cm",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/26-Tristeza-1.jpg",
+      "imgs/produtos/26-Tristeza-2.jpg"
+    ]
+  },
+  {
+    "id": "27",
+    "nome": "Ansiedade",
+    "categoria": "Figuras e Personagens",
+    "preco": 60,
+    "descricao": "Figura da Ansiedade de Divertida Mente em PLA. Novidade da sequência do filme.",
+    "material": "PLA",
+    "tamanho": "15 cm",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/27-Ansiedade-1.jpg",
+      "imgs/produtos/27-Ansiedade-2.jpg"
+    ]
+  },
+  {
+    "id": "28",
+    "nome": "Alegria",
+    "categoria": "Figuras e Personagens",
+    "preco": 40,
+    "descricao": "Figura da Alegria de Divertida Mente em PLA. Leve alegria para sua coleção.",
+    "material": "PLA",
+    "tamanho": "15 cm",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/28-Alegria-1.jpg",
+      "imgs/produtos/28-Alegria-2.jpg"
+    ]
+  },
+  {
+    "id": "",
+    "nome": "Inveja",
+    "categoria": "Figuras e Personagens",
+    "preco": null,
+    "descricao": "Figura da Inveja de Divertida Mente em PLA. Novidade da sequência do filme.",
+    "material": "PLA",
+    "tamanho": "",
+    "tags": [
+      "decoração",
+      "divertidamente",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/-Inveja-1.jpg",
+      "imgs/produtos/-Inveja-2.jpg"
+    ]
+  },
+  {
+    "id": "M-A8A7",
+    "nome": "Vaso tulipa P",
+    "categoria": "Decoração",
+    "preco": 15,
+    "descricao": "Vaso tulipa pequeno em PLA. Decoração delicada para mesa ou janela.",
+    "material": "ABS",
+    "tamanho": "11cm",
+    "tags": [
+      "decoração",
+      "vaso"
+    ],
+    "imagens": [
+      "imgs/produtos/M-A8A7-Vaso-tulipa-P.jpg"
+    ]
+  },
+  {
+    "id": "M-75BA",
+    "nome": "Nome minecraft",
+    "categoria": "Decoração",
+    "preco": 25,
+    "descricao": "Nome personalizado em estilo Minecraft em PLA. Decoração exclusiva para o quarto.",
+    "material": "PLA",
+    "tamanho": "~15cm",
+    "tags": [
+      "personalizado",
+      "minecraft",
+      "decoração"
+    ],
+    "imagens": [
+      "imgs/produtos/M-75BA-Nome-minecraft-1.jpg",
+      "imgs/produtos/M-75BA-Nome-minecraft-2.jpg"
+    ]
+  },
+  {
+    "id": "M-C208",
+    "nome": "Nezuko",
+    "categoria": "Figuras e Personagens",
+    "preco": 67,
+    "descricao": "Nezuko em PLA com detalhes da personagem. Para fãs de Demon Slayer.",
+    "material": "PLA",
+    "tamanho": "15cm",
+    "tags": [
+      "anime",
+      "decoração",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/M-C208-Nezuko.jpg"
+    ]
+  },
+  {
+    "id": "M-3AE6",
+    "nome": "Suporte PS2",
+    "categoria": "Organizadores",
+    "preco": 20,
+    "descricao": "Suporte para PS2 em PLA. Deixe seu console posicionado com estilo e segurança.",
+    "material": "PLA",
+    "tamanho": "15cm",
+    "tags": [
+      "organização",
+      "suporte",
+      "ps2"
+    ],
+    "imagens": [
+      "imgs/produtos/M-3AE6-Suporte-PS2.jpg"
+    ]
+  },
+  {
+    "id": "5",
+    "nome": "Banguela e furia da luz",
+    "categoria": "Brinquedos",
+    "preco": 30,
+    "descricao": "Banguela e furia da luz em modelo articulado! Para você que quer colecionar e ter seu dragão em casa.",
+    "material": "PLA",
+    "tamanho": "18cm",
+    "tags": [
+      "brinquedo",
+      "colecionável",
+      "action figure"
+    ],
+    "imagens": [
+      "imgs/produtos/5-Banguela-e-furia-da-luz-1.jpg",
+      "imgs/produtos/5-Banguela-e-furia-da-luz-2.jpg",
+      "imgs/produtos/5-Banguela-e-furia-da-luz-3.jpg",
+      "imgs/produtos/5-Banguela-e-furia-da-luz-4.jpg"
+    ]
+  },
+  {
+    "id": "8",
+    "nome": "Coração com perna articulado",
+    "categoria": "Decoração",
+    "preco": 15,
+    "descricao": "Coração artístico em PLA com design diferenciado. Perfeito para presentear.",
+    "material": "ABS",
+    "tamanho": "15cm",
+    "tags": [
+      "decoração",
+      "dia dos namorados",
+      "presente"
+    ],
+    "imagens": [
+      "imgs/produtos/8-Coração-com-perna-articulado-1.jpg",
+      "imgs/produtos/8-Coração-com-perna-articulado-2.jpg"
+    ]
+  },
+  {
+    "id": "M-A230",
+    "nome": "Caixa pendulo egipcio",
+    "categoria": "Caixa/Embalagem",
+    "preco": 10,
+    "descricao": "Caixa perfeita para guardar seu pendulo egipcio com segurança! Feito nas medidas exatas para armazenar seu pendulo!",
+    "material": "PLA",
+    "tamanho": "8 cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-1.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-2.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-3.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-4.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-5.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-6.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-7.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-8.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-9.jpg"
+    ]
+  },
+  {
+    "id": "M-36F7",
+    "nome": "Pote container",
+    "categoria": "Organizador/Suporte",
+    "preco": 10,
+    "descricao": "Pote ideal para levar em viagens, levar pequenos objetos de forma organizada ou até mesmo sua dose diária de Whey!\nO valor inicial é de R$10,00 (pote + tampa). Para mais tamanhos, o valor será alterado conforme demanda.",
+    "material": "PLA",
+    "tamanho": "5 cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-36F7-Pote-container-1.jpg",
+      "imgs/produtos/M-36F7-Pote-container-2.jpg",
+      "imgs/produtos/M-36F7-Pote-container-3.jpg"
+    ]
+  },
+  {
+    "id": "M-4A01",
+    "nome": "Lanterna minecraft",
+    "categoria": "Decoração",
+    "preco": 140,
+    "descricao": "Luminaria para quem ama Minecraft! Ideal para colocar ao lado da sua cama com uma luz leve e calmante.",
+    "material": "PLA",
+    "tamanho": "15 cm",
+    "tags": [
+      "decoração",
+      "coleção"
+    ],
+    "imagens": [
+      "imgs/produtos/M-4A01-Lanterna-minecraft-1.jpg",
+      "imgs/produtos/M-4A01-Lanterna-minecraft-2.jpg"
+    ]
+  },
+  {
+    "id": "172",
+    "nome": "Caixa baralho lenormand",
+    "categoria": "Caixa/Embalagem",
+    "preco": 25,
+    "descricao": "Caixa feita para guardar seu oráculo de forma segura, aceitando baralhos com medidas de até 12x7 cm",
+    "material": "PLA",
+    "tamanho": "12 cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/172-Caixa-baralho-lenormand-1.jpg",
+      "imgs/produtos/172-Caixa-baralho-lenormand-2.jpg",
+      "imgs/produtos/172-Caixa-baralho-lenormand-3.jpg",
+      "imgs/produtos/172-Caixa-baralho-lenormand-4.jpg"
+    ]
+  },
+  {
+    "id": "193",
+    "nome": "Caixa baralho Tarot",
+    "categoria": "Caixa/Embalagem",
+    "preco": 25,
+    "descricao": "Caixa feita para guardar seu oráculo de forma segura, aceitando baralhos com medidas de até 11x7 cm",
+    "material": "PLA",
+    "tamanho": "14 cm",
+    "tags": [
+      "organização",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/193-Caixa-baralho-Tarot-1.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-2.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-3.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-4.jpg"
+    ]
+  }
+]

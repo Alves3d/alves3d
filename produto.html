@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produto — Alves.3D</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080808;--bg2:#0f0f0f;--surface:#141414;--surface2:#1c1c1c;--accent:#4176e1;--accent2:#5b8ff9;--text:#f0ede6;--text2:#a8a49e;--border:rgba(255,255,255,0.07);--serif:'Bebas Neue',sans-serif;--sans:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(8,8,8,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:24px;letter-spacing:3px;color:var(--text);text-decoration:none}
+.nav-logo em{color:var(--accent);font-style:normal}
+.nav-back{display:flex;align-items:center;gap:8px;color:var(--text2);text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;font-family:var(--mono)}
+.nav-back:hover{color:var(--text)}
+.nav-wpp{background:#25D366;color:#000;padding:10px 20px;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;transition:all .2s}
+.nav-wpp:hover{background:#1db954;transform:translateY(-1px)}
+
+/* PAGE */
+.page{max-width:1100px;margin:0 auto;padding:100px 40px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+
+/* IMAGE SIDE */
+.product-img-main{width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);position:sticky;top:90px}
+.product-img-main img{width:100%;height:100%;object-fit:cover;display:block}
+.product-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.15}
+
+/* INFO SIDE */
+.product-info{display:flex;flex-direction:column;gap:24px;padding-top:8px}
+
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:.1em;text-transform:uppercase}
+.breadcrumb a{color:var(--text2);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{color:var(--accent)}
+
+.product-cat{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+
+.product-name{font-family:var(--serif);font-size:clamp(36px,5vw,60px);letter-spacing:2px;line-height:1;color:var(--text)}
+
+.product-price-block{display:flex;align-items:flex-end;gap:8px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.price-label{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:.1em;margin-bottom:4px}
+.price-val{font-family:var(--serif);font-size:56px;line-height:1;color:var(--text)}
+.price-obs{font-size:12px;color:var(--text2);line-height:1.5;max-width:200px;margin-left:auto;text-align:right}
+
+.product-desc{font-size:16px;color:var(--text2);line-height:1.8}
+
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.spec-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.spec-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);margin-bottom:4px}
+.spec-val{font-size:15px;font-weight:600;color:var(--text)}
+
+.tags-row{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;font-family:var(--mono);padding:4px 12px;border-radius:4px;border:1px solid var(--border);color:var(--text2)}
+
+.btn-wpp{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#000;padding:18px 24px;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s;width:100%}
+.btn-wpp:hover{background:#1db954;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.2)}
+
+.btn-back{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:14px 24px;border-radius:8px;font-size:14px;text-decoration:none;transition:all .2s;width:100%}
+.btn-back:hover{border-color:var(--accent);color:var(--accent)}
+
+.actions{display:flex;flex-direction:column;gap:10px}
+
+/* RELATED */
+.related{max-width:1100px;margin:0 auto;padding:0 40px 80px}
+.related-title{font-family:var(--serif);font-size:32px;letter-spacing:2px;margin-bottom:24px}
+.related-title span{color:var(--accent)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;text-decoration:none;transition:all .3s;display:flex;flex-direction:column}
+.related-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.related-img{aspect-ratio:1;overflow:hidden;background:var(--surface2)}
+.related-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.related-card:hover .related-img img{transform:scale(1.05)}
+.related-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;opacity:.15}
+.related-body{padding:12px}
+.related-name{font-family:var(--serif);font-size:18px;letter-spacing:1px;margin-bottom:4px;color:var(--text)}
+.related-price{font-size:13px;color:var(--accent);font-family:var(--mono)}
+
+/* LOADING */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;color:var(--text2)}
+.spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* NOT FOUND */
+.not-found{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;text-align:center;padding:40px}
+.not-found-icon{font-size:64px;opacity:.3}
+.not-found-title{font-family:var(--serif);font-size:40px;letter-spacing:2px}
+.not-found-desc{color:var(--text2);font-size:15px}
+
+/* CAROUSEL */
+.carousel-wrap{position:relative;width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);position:sticky;top:90px}
+.carousel-track{display:flex;height:100%;transition:transform .4s ease}
+.carousel-slide{min-width:100%;height:100%;overflow:hidden;flex-shrink:0}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-slide-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.15}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;font-family:var(--mono);opacity:0;transition:opacity .2s}
+.carousel-wrap:hover .carousel-btn{opacity:1}
+.carousel-btn.prev{left:12px}
+.carousel-btn.next{right:12px}
+.carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+.carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;border:none}
+.carousel-dot.active{background:#fff;width:18px;border-radius:3px}
+.carousel-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.carousel-thumbs::-webkit-scrollbar{display:none}
+.carousel-thumb{flex-shrink:0;width:64px;height:64px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s}
+.carousel-thumb.active{border-color:var(--accent)}
+.carousel-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .page{grid-template-columns:1fr;gap:32px;padding:80px 20px 40px}
+  .carousel-wrap{position:static!important;aspect-ratio:4/3}
+  .related{padding:0 20px 60px}
+  .related-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .price-obs{display:none}
+  .price-val{font-size:44px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="catalogo.html" class="nav-back">← Catálogo</a>
+  <a href="index.html" class="nav-logo">ALVES<em>.3D</em></a>
+  <a href="https://wa.me/5516992364004" target="_blank" class="nav-wpp">WhatsApp</a>
+</nav>
+
+<div id="content">
+  <div class="loading">
+    <div class="spinner"></div>
+    <span>Carregando produto...</span>
+  </div>
+</div>
+
+<script>
+async function loadProduct() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  if (!id || id === 'null') { showNotFound(); return; }
+
+  try {
+    const res = await fetch('produtos.json?v=' + Date.now());
+    const products = await res.json();
+    const p = products.find(x => String(x.id) === String(id));
+
+    if (!p) { showNotFound(); return; }
+
+    document.title = p.nome + ' — Alves.3D';
+
+    const msg = encodeURIComponent(`Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}\nCategoria: ${p.categoria}\nPreço: R$${p.preco}\n\nPoderia me passar mais informações?`);
+
+    document.getElementById('content').innerHTML = `
+      <div class="page">
+        <div>
+          <div class="carousel-wrap" id="carouselWrap">
+            <div class="carousel-track" id="carouselTrack">
+              ${buildCarouselSlides(p)}
+            </div>
+            ${(p.imagens||[p.imagem||'']).length > 1 ? `
+            <button class="carousel-btn prev" onclick="slideCarousel(-1)">&#8249;</button>
+            <button class="carousel-btn next" onclick="slideCarousel(1)">&#8250;</button>
+            <div class="carousel-dots" id="carouselDots"></div>` : ''}
+          </div>
+          ${(p.imagens||[p.imagem||'']).length > 1 ? `<div class="carousel-thumbs" id="carouselThumbs"></div>` : ''}
+        </div>
+        <div class="product-info">
+          <div class="breadcrumb">
+            <a href="catalogo.html">Catálogo</a>
+            <span>/</span>
+            <a href="catalogo.html">${p.categoria}</a>
+            <span>/</span>
+            <span>${p.nome}</span>
+          </div>
+          <div class="product-cat">${p.categoria}</div>
+          <div class="product-name">${p.nome}</div>
+          <div class="product-price-block">
+            <div>
+              <div class="price-label">a partir de</div>
+              <div class="price-val">R$${p.preco}</div>
+            </div>
+            <div class="price-obs">Valor exato confirmado no WhatsApp conforme tamanho e detalhes</div>
+          </div>
+          <div class="product-desc">${p.descricao}</div>
+          <div class="specs-grid">
+            <div class="spec-box"><div class="spec-lbl">Material</div><div class="spec-val">${p.material}</div></div>
+            <div class="spec-box"><div class="spec-lbl">Tamanho</div><div class="spec-val">${p.tamanho}</div></div>
+          </div>
+          <div class="tags-row">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div class="actions">
+            <a href="https://wa.me/5516992364004?text=${msg}" target="_blank" class="btn-wpp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Quero este produto
+            </a>
+            <a href="catalogo.html" class="btn-back">← Voltar ao catálogo</a>
+          </div>
+        </div>
+      </div>
+      <div class="related" id="related"></div>
+    `;
+
+    initCarousel();
+
+    // Load related products (same category)
+    const related = products.filter(x => x.categoria === p.categoria && x.id !== p.id).slice(0, 4);
+    if (related.length > 0) {
+      document.getElementById('related').innerHTML = `
+        <div class="related-title">MAIS EM <span>${p.categoria.toUpperCase()}</span></div>
+        <div class="related-grid">
+          ${related.map(r => `
+            <a href="produto.html?id=${r.id}" class="related-card">
+              <div class="related-img">
+                <img src="${r.imagem}" alt="${r.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="related-img-placeholder" style="display:none">🖨️</div>
+              </div>
+              <div class="related-body">
+                <div class="related-name">${r.nome}</div>
+                <div class="related-price">R$${r.preco}</div>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      `;
+    }
+
+  } catch(e) {
+    showNotFound();
+  }
+}
+
+function showNotFound() {
+  document.getElementById('content').innerHTML = `
+    <div class="not-found">
+      <div class="not-found-icon">🔍</div>
+      <div class="not-found-title">PRODUTO NÃO ENCONTRADO</div>
+      <div class="not-found-desc">Este produto não existe ou foi removido.</div>
+      <a href="catalogo.html" class="btn-back" style="margin-top:16px;width:fit-content;padding:14px 28px">← Voltar ao catálogo</a>
+    </div>
+  `;
+}
+
+// CAROUSEL
+let carouselIndex = 0;
+let carouselImages = [];
+
+function buildCarouselSlides(p) {
+  carouselImages = p.imagens || (p.imagem ? [p.imagem] : ['']);
+  return carouselImages.map(src => `
+    <div class="carousel-slide">
+      <img src="${src}" alt="${p.nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="carousel-slide-placeholder" style="display:none">🖨️</div>
+    </div>
+  `).join('');
+}
+
+function initCarousel() {
+  const imgs = carouselImages;
+  if (imgs.length <= 1) return;
+
+  const dots = document.getElementById('carouselDots');
+  const thumbs = document.getElementById('carouselThumbs');
+
+  if (dots) {
+    dots.innerHTML = imgs.map((_, i) =>
+      `<button class="carousel-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></button>`
+    ).join('');
+  }
+
+  if (thumbs) {
+    thumbs.innerHTML = imgs.map((src, i) =>
+      `<div class="carousel-thumb ${i===0?'active':''}" onclick="goToSlide(${i})">
+        <img src="${src}" alt="foto ${i+1}">
+      </div>`
+    ).join('');
+  }
+}
+
+function goToSlide(i) {
+  carouselIndex = (i + carouselImages.length) % carouselImages.length;
+  const track = document.getElementById('carouselTrack');
+  if (track) track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+
+  document.querySelectorAll('.carousel-dot').forEach((d,idx) => d.classList.toggle('active', idx===carouselIndex));
+  document.querySelectorAll('.carousel-thumb').forEach((t,idx) => t.classList.toggle('active', idx===carouselIndex));
+}
+
+function slideCarousel(dir) { goToSlide(carouselIndex + dir); }
+
+loadProduct();
+</script>
+</body>
+</html>
