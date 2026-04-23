@@ -123,6 +123,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   .price-val{font-size:44px}
 }
 </style>
+<!-- Google Analytics — substitua G-XXXXXXXXXX pelo seu ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body>
 
@@ -217,7 +225,7 @@ async function loadProduct() {
           ${related.map(r => `
             <a href="produto.html?id=${r.id}" class="related-card">
               <div class="related-img">
-                <img src="${r.imagem}" alt="${r.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <img src="${(r.imagens&&r.imagens[0])||r.imagem||''}" alt="${r.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                 <div class="related-img-placeholder" style="display:none">🖨️</div>
               </div>
               <div class="related-body">
