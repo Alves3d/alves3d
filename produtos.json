@@ -2,7 +2,7 @@
   {
     "id": "M-5AF4",
     "nome": "Caixa Ampolas 40un",
-    "categoria": "Chaveiro",
+    "categoria": "Caixa/Embalagem",
     "preco": 52,
     "descricao": "Caixa amazenamento ampolas, ideal para armazenar e proteger suas ampolas com segurança e praticidade.\nCapacidade para 40 ampolas de até 16 mm de diâmetro cada, mantendo tudo organizado e de fácil acesso.",
     "material": "PLA",
@@ -20,7 +20,7 @@
   {
     "id": "M-805F",
     "nome": "Caixa Ampolas 20un",
-    "categoria": "Chaveiro",
+    "categoria": "Caixa/Embalagem",
     "preco": 28,
     "descricao": "Caixa amazenamento ampolas, ideal para armazenar e proteger suas ampolas com segurança e praticidade.\nCapacidade para 20 ampolas de até 16 mm de diâmetro cada, mantendo tudo organizado e de fácil acesso.",
     "material": "PLA",
@@ -106,14 +106,15 @@
       "ps4"
     ],
     "imagens": [
-      "imgs/produtos/M-6575-Suporte-PS4-Fat.jpg"
+      "imgs/produtos/M-6575-Suporte-PS4-Fat-1.jpg",
+      "imgs/produtos/M-6575-Suporte-PS4-Fat-2.jpg"
     ]
   },
   {
     "id": "M-7886",
     "nome": "Chaveiro camisa seleção 01",
-    "categoria": "Chaveiros",
-    "preco": 4,
+    "categoria": "Chaveiro",
+    "preco": 8,
     "descricao": "Chaveiro camisa da seleção 01 em PLA. Demonstre sua paixão pelo futebol brasileiro.",
     "material": "PLA",
     "tamanho": "7,5cm",
@@ -129,8 +130,8 @@
   {
     "id": "M-E581",
     "nome": "Chaveiro camisa seleção 02",
-    "categoria": "Chaveiros",
-    "preco": 3,
+    "categoria": "Chaveiro",
+    "preco": 5,
     "descricao": "Chaveiro camisa da seleção 02 em PLA. Segunda versão para torcedores dedicados.",
     "material": "PLA",
     "tamanho": "6,5cm",
@@ -179,44 +180,9 @@
     ]
   },
   {
-    "id": "M-805F",
-    "nome": "Caixa + suporte 20 ap",
-    "categoria": "Caixas e Embalagens",
-    "preco": 31,
-    "descricao": "Caixa com suporte para 20 ampolas versão 2 em PLA. Organização prática e compacta.",
-    "material": "ABS",
-    "tamanho": "12cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
-    "imagens": [
-      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-1.jpg",
-      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-2.jpg",
-      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-3.jpg",
-      "imgs/produtos/M-805F-Caixa-+-suporte-20-ap-4.jpg"
-    ]
-  },
-  {
-    "id": "M-5AF4",
-    "nome": "Caixa + suporte 40 ap",
-    "categoria": "Caixas e Embalagens",
-    "preco": 54,
-    "descricao": "Caixa com suporte para 40 ampolas versão 2 em PLA. Capacidade total de organização.",
-    "material": "ABS",
-    "tamanho": "18cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
-    "imagens": [
-      "imgs/produtos/M-5AF4-Caixa-+-suporte-40-ap.jpg"
-    ]
-  },
-  {
     "id": "212",
     "nome": "Imã PET personalizado",
-    "categoria": "Imãs",
+    "categoria": "Decoração",
     "preco": 15,
     "descricao": "Imã PET personalizado em PLA. Personalize com a foto do seu PET e eternize sua melhor companhia!",
     "material": "PLA",
@@ -238,7 +204,7 @@
   {
     "id": "195",
     "nome": "Chaveiro personalizado PET",
-    "categoria": "Chaveiros",
+    "categoria": "Chaveiro",
     "preco": 15,
     "descricao": "Chaveiro personalizado do seu PET! Uma peça unica para você.",
     "material": "PLA",
@@ -254,7 +220,8 @@
       "imgs/produtos/195-Chaveiro-personalizado-PET-3.jpg",
       "imgs/produtos/195-Chaveiro-personalizado-PET-4.jpg",
       "imgs/produtos/195-Chaveiro-personalizado-PET-5.jpg",
-      "imgs/produtos/195-Chaveiro-personalizado-PET-6.jpg"
+      "imgs/produtos/195-Chaveiro-personalizado-PET-6.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-7.jpg"
     ]
   },
   {
@@ -279,7 +246,7 @@
   {
     "id": "23",
     "nome": "Raiva",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 35,
     "descricao": "Figura da Raiva de Divertida Mente em PLA. Para fãs do filme da Pixar.",
     "material": "PLA",
@@ -297,7 +264,7 @@
   {
     "id": "24",
     "nome": "Vergonha",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 55,
     "descricao": "Figura da Vergonha de Divertida Mente em PLA. Colecionável do filme da Pixar.",
     "material": "PLA",
@@ -315,7 +282,7 @@
   {
     "id": "25",
     "nome": "Medo",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 20,
     "descricao": "Figura do Medo de Divertida Mente em PLA. Perfeita para completar a coleção.",
     "material": "PLA",
@@ -333,7 +300,7 @@
   {
     "id": "26",
     "nome": "Tristeza",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 50,
     "descricao": "Figura da Tristeza de Divertida Mente em PLA. Colecionável detalhado do filme.",
     "material": "PLA",
@@ -351,7 +318,7 @@
   {
     "id": "27",
     "nome": "Ansiedade",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 60,
     "descricao": "Figura da Ansiedade de Divertida Mente em PLA. Novidade da sequência do filme.",
     "material": "PLA",
@@ -370,7 +337,7 @@
   {
     "id": "28",
     "nome": "Alegria",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 40,
     "descricao": "Figura da Alegria de Divertida Mente em PLA. Leve alegria para sua coleção.",
     "material": "PLA",
@@ -387,10 +354,10 @@
     ]
   },
   {
-    "id": "",
+    "id": "M-3R2S",
     "nome": "Inveja",
-    "categoria": "Figuras e Personagens",
-    "preco": null,
+    "categoria": "Figura/Personagem",
+    "preco": 40,
     "descricao": "Figura da Inveja de Divertida Mente em PLA. Novidade da sequência do filme.",
     "material": "PLA",
     "tamanho": "",
@@ -400,8 +367,8 @@
       "coleção"
     ],
     "imagens": [
-      "imgs/produtos/-Inveja-1.jpg",
-      "imgs/produtos/-Inveja-2.jpg"
+      "imgs/produtos/M-3R2S-Inveja-1.jpg",
+      "imgs/produtos/M-3R2S-Inveja-2.jpg"
     ]
   },
   {
@@ -441,7 +408,7 @@
   {
     "id": "M-C208",
     "nome": "Nezuko",
-    "categoria": "Figuras e Personagens",
+    "categoria": "Figura/Personagem",
     "preco": 67,
     "descricao": "Nezuko em PLA com detalhes da personagem. Para fãs de Demon Slayer.",
     "material": "PLA",
@@ -458,7 +425,7 @@
   {
     "id": "M-3AE6",
     "nome": "Suporte PS2",
-    "categoria": "Organizadores",
+    "categoria": "Organizador/Suporte",
     "preco": 20,
     "descricao": "Suporte para PS2 em PLA. Deixe seu console posicionado com estilo e segurança.",
     "material": "PLA",
@@ -489,7 +456,9 @@
       "imgs/produtos/5-Banguela-e-furia-da-luz-1.jpg",
       "imgs/produtos/5-Banguela-e-furia-da-luz-2.jpg",
       "imgs/produtos/5-Banguela-e-furia-da-luz-3.jpg",
-      "imgs/produtos/5-Banguela-e-furia-da-luz-4.jpg"
+      "imgs/produtos/5-Banguela-e-furia-da-luz-4.jpg",
+      "imgs/produtos/5-Banguela-e-furia-da-luz-5.jpg",
+      "imgs/produtos/5-Banguela-e-furia-da-luz-6.jpg"
     ]
   },
   {
