@@ -10,8 +10,9 @@
 <style>
 :root{--bg:#080808;--bg2:#0f0f0f;--surface:#141414;--surface2:#1c1c1c;--accent:#4176e1;--accent2:#5b8ff9;--text:#f0ede6;--text2:#a8a49e;--border:rgba(255,255,255,0.07);--serif:'Bebas Neue',sans-serif;--sans:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+img{max-width:100%;height:auto}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden;max-width:100vw}
 
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
 
@@ -94,10 +95,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .not-found-desc{color:var(--text2);font-size:15px}
 
 /* CAROUSEL */
-.carousel-wrap{position:relative;width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);position:sticky;top:90px}
+.carousel-wrap{position:relative;width:100%;max-width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);position:sticky;top:90px}
 .carousel-track{display:flex;height:100%;transition:transform .4s ease}
 .carousel-slide{min-width:100%;height:100%;overflow:hidden;flex-shrink:0}
-.carousel-slide img{width:100%;height:100%;object-fit:contain;display:block;background:var(--surface2)}
+.carousel-slide img{width:100%;height:100%;max-width:100%;object-fit:contain;display:block;background:var(--surface2)}
 .carousel-slide-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.15}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;font-family:var(--mono);opacity:0;transition:opacity .2s}
 .carousel-wrap:hover .carousel-btn{opacity:1}
@@ -115,8 +116,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* MOBILE */
 @media(max-width:768px){
   nav{padding:16px 20px}
-  .page{grid-template-columns:1fr;gap:32px;padding:80px 20px 40px}
-  .carousel-wrap{position:static!important;aspect-ratio:4/3}
+  .page{grid-template-columns:1fr;gap:32px;padding:80px 16px 40px;max-width:100vw;overflow-x:hidden}
+  .carousel-wrap{position:static!important;aspect-ratio:1;max-height:70vw}
   .related{padding:0 20px 60px}
   .related-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   .price-obs{display:none}
