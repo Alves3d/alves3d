@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .related-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;text-decoration:none;transition:all .3s;display:flex;flex-direction:column}
 .related-card:hover{border-color:var(--accent);transform:translateY(-3px)}
 .related-img{aspect-ratio:1;overflow:hidden;background:var(--surface2)}
-.related-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.related-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s;background:var(--surface2)}
 .related-card:hover .related-img img{transform:scale(1.05)}
 .related-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;opacity:.15}
 .related-body{padding:12px}
@@ -97,7 +97,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .carousel-wrap{position:relative;width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);position:sticky;top:90px}
 .carousel-track{display:flex;height:100%;transition:transform .4s ease}
 .carousel-slide{min-width:100%;height:100%;overflow:hidden;flex-shrink:0}
-.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-slide img{width:100%;height:100%;object-fit:contain;display:block;background:var(--surface2)}
 .carousel-slide-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.15}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;font-family:var(--mono);opacity:0;transition:opacity .2s}
 .carousel-wrap:hover .carousel-btn{opacity:1}
@@ -110,7 +110,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .carousel-thumbs::-webkit-scrollbar{display:none}
 .carousel-thumb{flex-shrink:0;width:64px;height:64px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s}
 .carousel-thumb.active{border-color:var(--accent)}
-.carousel-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-thumb img{width:100%;height:100%;object-fit:contain;display:block;background:var(--surface2)}
 
 /* MOBILE */
 @media(max-width:768px){
