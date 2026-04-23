@@ -95,30 +95,114 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .not-found-desc{color:var(--text2);font-size:15px}
 
 /* CAROUSEL */
-.carousel-wrap{position:sticky;top:90px;width:100%;max-height:600px;border-radius:12px;overflow:hidden;background:var(--surface2);border:1px solid var(--border)}
-.carousel-track{display:flex;transition:transform .4s ease}
-.carousel-slide{min-width:100%;max-height:600px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.carousel-slide img{width:100%;height:100%;max-height:600px;max-width:100%;display:block;object-fit:contain;background:var(--surface2)}
-.carousel-slide-placeholder{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.15}
-.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:var(--mono);opacity:0;transition:opacity .2s}
+.carousel-wrap{
+  position:sticky;
+  top:90px;
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--surface2);
+  border:1px solid var(--border);
+}
+.carousel-track{
+  display:flex;
+  transition:transform .4s ease;
+  align-items:flex-start;
+}
+.carousel-slide{
+  min-width:100%;
+  width:100%;
+  flex-shrink:0;
+}
+.carousel-slide img{
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  display:block;
+  object-fit:contain;
+  margin:0 auto;
+}
+.carousel-slide-placeholder{
+  width:100%;
+  aspect-ratio:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:80px;
+  opacity:.15;
+}
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.65);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  width:36px;height:36px;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+  font-family:var(--mono);
+  opacity:0;
+  transition:opacity .2s;
+}
 .carousel-wrap:hover .carousel-btn{opacity:1}
-@media(max-width:768px){.carousel-btn{opacity:0.7!important}}
-.carousel-btn.prev{left:12px}
-.carousel-btn.next{right:12px}
-.carousel-dots{display:flex;gap:6px;justify-content:center;padding:10px 0 4px}
-.carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;border:none}
+.carousel-btn.prev{left:10px}
+.carousel-btn.next{right:10px}
+.carousel-dots{
+  display:flex;
+  gap:6px;
+  justify-content:center;
+  padding:10px 0 4px;
+}
+.carousel-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.35);
+  cursor:pointer;
+  transition:all .2s;
+  border:none;
+}
 .carousel-dot.active{background:#fff;width:18px;border-radius:3px}
-.carousel-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.carousel-thumbs{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  padding-bottom:4px;
+}
 .carousel-thumbs::-webkit-scrollbar{display:none}
-.carousel-thumb{flex-shrink:0;width:64px;height:64px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s}
+.carousel-thumb{
+  flex-shrink:0;
+  width:64px;height:64px;
+  border-radius:6px;
+  overflow:hidden;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:border-color .2s;
+  background:var(--surface2);
+}
 .carousel-thumb.active{border-color:var(--accent)}
-.carousel-thumb img{width:100%;height:100%;object-fit:contain;display:block;background:var(--surface2)}
+.carousel-thumb img{
+  width:100%;height:100%;
+  object-fit:contain;
+  display:block;
+}
 
 /* MOBILE */
 @media(max-width:768px){
+  .carousel-btn{opacity:.7!important}
+  .carousel-slide img{max-height:80vw}
+
   nav{padding:16px 20px}
   .page{grid-template-columns:1fr;gap:32px;padding:80px 16px 40px;max-width:100vw;overflow-x:hidden}
-  .carousel-wrap{position:static!important;max-height:80vw}
+  .carousel-wrap{position:static!important}
+.carousel-slide img{max-height:80vw}
   .related{padding:0 20px 60px}
   .related-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   .price-obs{display:none}
