@@ -195,7 +195,10 @@
     "imagens": [
       "imgs/produtos/212-Imã-PET-personalizado-1.jpg",
       "imgs/produtos/212-Imã-PET-personalizado-2.jpg",
-      "imgs/produtos/212-Imã-PET-personalizado-3.jpg"
+      "imgs/produtos/212-Imã-PET-personalizado-3.jpg",
+      "imgs/produtos/212-Imã-PET-personalizado-4.jpg",
+      "imgs/produtos/212-Imã-PET-personalizado-5.jpg",
+      "imgs/produtos/212-Imã-PET-personalizado-6.jpg"
     ]
   },
   {
@@ -215,7 +218,10 @@
       "imgs/produtos/195-Chaveiro-personalizado-PET-1.jpg",
       "imgs/produtos/195-Chaveiro-personalizado-PET-2.jpg",
       "imgs/produtos/195-Chaveiro-personalizado-PET-3.jpg",
-      "imgs/produtos/195-Chaveiro-personalizado-PET-4.jpg"
+      "imgs/produtos/195-Chaveiro-personalizado-PET-4.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-5.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-6.jpg",
+      "imgs/produtos/195-Chaveiro-personalizado-PET-7.jpg"
     ]
   },
   {
@@ -489,7 +495,12 @@
       "imgs/produtos/M-A230-Caixa-pendulo-egipcio-1.jpg",
       "imgs/produtos/M-A230-Caixa-pendulo-egipcio-2.jpg",
       "imgs/produtos/M-A230-Caixa-pendulo-egipcio-3.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-4.jpg"
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-4.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-5.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-6.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-7.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-8.jpg",
+      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-9.jpg"
     ]
   },
   {
@@ -563,6 +574,24 @@
       "imgs/produtos/193-Caixa-baralho-Tarot-2.jpg",
       "imgs/produtos/193-Caixa-baralho-Tarot-3.jpg",
       "imgs/produtos/193-Caixa-baralho-Tarot-4.jpg"
+    ]
+  },
+  {
+    "id": "M-A3C7",
+    "nome": "Andry Birds",
+    "categoria": "Decoração",
+    "preco": 65,
+    "descricao": "O passarinho mais fofo (e nervoso) para sua coleção!",
+    "material": "PLA",
+    "tamanho": "20 cm",
+    "tags": [
+      "brinquedo",
+      "colecionável",
+      "action figure"
+    ],
+    "imagens": [
+      "imgs/produtos/M-A3C7-Andry-Birds-1.jpg",
+      "imgs/produtos/M-A3C7-Andry-Birds-2.jpg"
     ]
   }
 ]
