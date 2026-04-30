@@ -593,5 +593,24 @@
       "imgs/produtos/M-A3C7-Andry-Birds-1.jpg",
       "imgs/produtos/M-A3C7-Andry-Birds-2.jpg"
     ]
+  },
+   {
+    "id": "M-FD43",
+    "nome": "Chaveiro Diabo Veste Prada",
+    "categoria": "Chaveiro",
+    "preco": 18,
+    "descricao": "Sofisticação em cada detalhe: Conheça o Conjunto de Chaveiros Devil Wears Prada 2.\nO filme que definiu gerações está de volta, e seus acessórios merecem o mesmo nível de prestígio. Una o clássico ao contemporâneo com este set indispensável para colecionadores.",
+    "material": "PLA",
+    "tamanho": "7 cm",
+    "tags": [
+      "chaveiro",
+      "filme"
+    ],
+    "imagens": [
+      "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-1.jpg",
+      "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-2.jpg",
+      "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-3.jpg",
+      "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-4.jpg"
+    ]
   }
 ]
