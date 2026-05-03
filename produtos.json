@@ -77,22 +77,6 @@
     ]
   },
   {
-    "id": "M-E889",
-    "nome": "Caixa 8 ampolas",
-    "categoria": "Caixa/Embalagem",
-    "preco": 28,
-    "descricao": "Caixa para 8 ampolas em PLA. Proteção compacta e organizada para ampolas.",
-    "material": "PLA",
-    "tamanho": "10cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
-    "imagens": [
-      "imgs/produtos/M-E889-Caixa-8-ampolas.jpg"
-    ]
-  },
-  {
     "id": "M-6575",
     "nome": "Suporte PS4 Fat",
     "categoria": "Organizador/Suporte",
