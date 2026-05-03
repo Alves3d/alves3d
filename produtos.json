@@ -480,27 +480,27 @@
     ]
   },
   {
-    "id": "M-A230",
-    "nome": "Caixa pendulo egipcio",
+    "id": "193",
+    "nome": "Caixa baralho Tarot",
     "categoria": "Caixa/Embalagem",
-    "preco": 10,
-    "descricao": "Caixa perfeita para guardar seu pendulo egipcio com segurança! Feito nas medidas exatas para armazenar seu pendulo!",
+    "preco": 25,
+    "descricao": "Caixa feita para guardar seu oráculo de forma segura, aceitando baralhos com medidas de até 11x7 cm",
     "material": "PLA",
-    "tamanho": "8 cm",
+    "tamanho": "14 cm",
     "tags": [
       "organização",
       "caixa"
     ],
     "imagens": [
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-1.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-2.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-3.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-4.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-5.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-6.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-7.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-8.jpg",
-      "imgs/produtos/M-A230-Caixa-pendulo-egipcio-9.jpg"
+      "imgs/produtos/193-Caixa-baralho-Tarot-1.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-2.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-3.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-4.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-5.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-6.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-7.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-8.jpg",
+      "imgs/produtos/193-Caixa-baralho-Tarot-9.jpg"
     ]
   },
   {
