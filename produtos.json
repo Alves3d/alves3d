@@ -612,5 +612,24 @@
       "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-3.jpg",
       "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-4.jpg"
     ]
+  },
+  {
+    "id": "M-6C01",
+    "nome": "Suporte lata Monster Cyber",
+    "categoria": "Organizador/Suporte",
+    "preco": 25,
+    "descricao": "Design futurista e cheio de personalidade para deixar sua lata ainda mais estilosa.\nPerfeito para decoração, setup gamer ou para quem curte o visual cyber.",
+    "material": "PETG",
+    "tamanho": "18 cm",
+    "tags": [
+      "suporte",
+      "lata"
+    ],
+    "imagens": [
+      "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-1.jpg",
+      "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-2.jpg",
+      "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-3.jpg",
+      "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-4.jpg"
+    ]
   }
 ]
