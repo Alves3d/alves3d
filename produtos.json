@@ -640,5 +640,22 @@
       "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-2.jpg",
       "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-3.jpg"
     ]
+  },
+  {
+    "id": "M-0ED6",
+    "nome": "Coração mãe",
+    "categoria": "Presentes",
+    "preco": 55,
+    "descricao": "Surpreenda sua mãe com esse coração de decoração, com cores personalizadas!",
+    "material": "PLA",
+    "tamanho": "18 cm",
+    "tags": [
+      "presente",
+      "dia das mães"
+    ],
+    "imagens": [
+      "imgs/produtos/M-0ED6-Coração-mãe-1.jpg",
+      "imgs/produtos/M-0ED6-Coração-mãe-2.jpg"
+    ]
   }
 ]
