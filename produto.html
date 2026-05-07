@@ -111,6 +111,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   grid-auto-columns:100%;
   transition:transform .4s ease;
   will-change:transform;
+  height:100%;
 }
 .carousel-slide{
   width:100%;
@@ -120,7 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .carousel-slide img{
   display:block;
   width:100%;
-  height:auto;
+  height:100%;
   max-width:100%;
   object-fit:contain;
   box-sizing:border-box;
@@ -350,8 +351,8 @@ let carouselImages = [];
 
 function buildCarouselSlides(p) {
   carouselImages = p.imagens || (p.imagem ? [p.imagem] : ['']);
-  return carouselImages.map(src => `
-    <div class="carousel-slide">
+  return carouselImages.map((src, i) => `
+    <div class="carousel-slide${i===0?' active':''}">
       <img src="${src}" alt="${p.nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="carousel-slide-placeholder" style="display:none">🖨️</div>
     </div>
@@ -367,7 +368,13 @@ function initCarousel() {
     const setH = () => {
       if (firstSlide.naturalHeight) {
         const ratio = firstSlide.naturalHeight / firstSlide.naturalWidth;
-        wrap.style.height = (wrap.offsetWidth * ratio) + 'px';
+        const h = Math.round(wrap.offsetWidth * ratio);
+        wrap.style.height = h + 'px';
+        const track2 = document.getElementById('carouselTrack');
+        if (track2) {
+          track2.style.height = h + 'px';
+          track2.querySelectorAll('.carousel-slide').forEach(s => s.style.height = h + 'px');
+        }
       }
     };
     firstSlide.complete ? setH() : (firstSlide.onload = setH);
@@ -403,14 +410,18 @@ function goToSlide(i) {
     // Adapt wrap height to current slide image
     const slides = track.querySelectorAll('.carousel-slide img');
     const currentImg = slides[carouselIndex];
-    if (currentImg && currentImg.complete && currentImg.naturalHeight) {
-      const ratio = currentImg.naturalHeight / currentImg.naturalWidth;
-      wrap.style.height = (slideWidth * ratio) + 'px';
-    } else if (currentImg) {
-      currentImg.onload = () => {
-        const ratio = currentImg.naturalHeight / currentImg.naturalWidth;
-        wrap.style.height = (slideWidth * ratio) + 'px';
-      };
+    const applyHeight = (img) => {
+      if (!img.naturalHeight) return;
+      const ratio = img.naturalHeight / img.naturalWidth;
+      const h = Math.round(slideWidth * ratio);
+      wrap.style.height = h + 'px';
+      track.style.height = h + 'px';
+      track.querySelectorAll('.carousel-slide').forEach(s => s.style.height = h + 'px');
+    };
+    if (currentImg) {
+      currentImg.complete && currentImg.naturalHeight
+        ? applyHeight(currentImg)
+        : (currentImg.onload = () => applyHeight(currentImg));
     }
   }
   document.querySelectorAll('.carousel-dot').forEach((d,idx) => d.classList.toggle('active', idx===carouselIndex));
