@@ -621,5 +621,24 @@
       "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-3.jpg",
       "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-4.jpg"
     ]
+  },
+  {
+    "id": "M-5406",
+    "nome": "Caixa Presente personalizada com flor",
+    "categoria": "Presentes",
+    "preco": 45,
+    "descricao": "Personalize o presente ideal para a pessoa que você ama! \nPerfeito para sua mãe ou namorada(o).",
+    "material": "PLA",
+    "tamanho": "22cm",
+    "tags": [
+      "presente",
+      "dia dos namorados",
+      "dia das mães"
+    ],
+    "imagens": [
+      "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-1.jpg",
+      "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-2.jpg",
+      "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-3.jpg"
+    ]
   }
 ]
