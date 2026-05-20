@@ -657,5 +657,74 @@
       "imgs/produtos/M-0ED6-Coração-mãe-1.jpg",
       "imgs/produtos/M-0ED6-Coração-mãe-2.jpg"
     ]
+  },
+  {
+    "id": "M-5040",
+    "nome": "Caixa figurinha copa 100",
+    "categoria": "Copa do mundo",
+    "preco": 25,
+    "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 100 figurinhas",
+    "material": "PLA",
+    "tamanho": "9,2 x 6,0",
+    "tags": [
+      "Copa do mundo",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-5040-Caixa-figurinha-copa-100-1.jpg",
+      "imgs/produtos/M-5040-Caixa-figurinha-copa-100-2.jpg"
+    ]
+  },
+  {
+    "id": "M-36F0",
+    "nome": "Caixa figurinha copa 40 tampa deslizante",
+    "categoria": "Copa do mundo",
+    "preco": 22,
+    "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 40 figurinhas e tampa deslizante",
+    "material": "PLA",
+    "tamanho": "10 X 7,6",
+    "tags": [
+      "Copa do mundo",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-36F0-Caixa-figurinha-copa-40-tampa-deslizante-1.jpg",
+      "imgs/produtos/M-36F0-Caixa-figurinha-copa-40-tampa-deslizante-2.jpg"
+    ]
+  },
+  {
+    "id": "M-83B5",
+    "nome": "Caixa figurinha copa grande com trava",
+    "categoria": "Copa do mundo",
+    "preco": 50,
+    "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para mais de 100 figurinhas e trava de segurança!",
+    "material": "PLA",
+    "tamanho": "10 x 11",
+    "tags": [
+      "Copa do mundo",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-83B5-Caixa-figurinha-copa-grande-com-trava-1.jpg",
+      "imgs/produtos/M-83B5-Caixa-figurinha-copa-grande-com-trava-2.jpg",
+      "imgs/produtos/M-83B5-Caixa-figurinha-copa-grande-com-trava-3.jpg"
+    ]
+  },
+  {
+    "id": "M-2DD0",
+    "nome": "Caixa figurinha copa média com trava",
+    "categoria": "Copa do mundo",
+    "preco": 28,
+    "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 100 figurinhas e trava de segurança!",
+    "material": "PLA",
+    "tamanho": "7,7 x 11",
+    "tags": [
+      "Copa do mundo",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-2DD0-Caixa-figurinha-copa-média-com-trava-1.jpg",
+      "imgs/produtos/M-2DD0-Caixa-figurinha-copa-média-com-trava-2.jpg"
+    ]
   }
 ]
