@@ -483,6 +483,38 @@ nav {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
+
+// Multi-format image support — testa extensões automaticamente
+const IMG_EXTS = ['.jpg', '.jpeg', '.png', '.webp'];
+
+function tryNextExt(img) {
+  const src = img.getAttribute('data-src') || img.src;
+  // Strip any existing extension
+  const base = src.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+
+  // Store base on element for next attempt
+  if (!img.getAttribute('data-src')) img.setAttribute('data-src', base);
+
+  const tried = parseInt(img.getAttribute('data-ext-idx') || '0');
+  const nextIdx = tried + 1;
+
+  if (nextIdx < IMG_EXTS.length) {
+    img.setAttribute('data-ext-idx', nextIdx);
+    img.src = base + IMG_EXTS[nextIdx];
+  } else {
+    img.style.display = 'none';
+    const placeholder = img.nextElementSibling;
+    if (placeholder) placeholder.style.display = 'flex';
+  }
+}
+
+function resolveImg(src) {
+  // If already has extension, return as-is
+  if (/\.(jpg|jpeg|png|webp)$/i.test(src)) return src;
+  // Otherwise try first extension — onerror will try the rest
+  return src + IMG_EXTS[0];
+}
+
 </script>
 </head>
 <body>
@@ -615,7 +647,7 @@ function renderProducts(products) {
   grid.innerHTML = products.map(p => `
     <div class="product-card" onclick="location.href='produto.html?id=${encodeURIComponent(String(p.id))}'">
       <div class="product-img">
-        <img src="${(p.imagens&&p.imagens[0])||p.imagem||''}" alt="${p.nome}" loading="lazy" onerror="tryNextExt(this)">
+        <img src="${resolveImg((p.imagens&&p.imagens[0])||p.imagem||'')}" alt="${p.nome}" loading="lazy" onerror="tryNextExt(this)">
         <div class="product-img-placeholder" style="display:none">🖨️</div>
       </div>
       <div class="product-body">
@@ -651,7 +683,7 @@ function openModal(id) {
   if (!p) return;
 
   document.getElementById('modalImg').innerHTML = `
-    <img src="${(p.imagens&&p.imagens[0])||p.imagem||''}" alt="${p.nome}" onerror="tryNextExt(this)">
+    <img src="${resolveImg((p.imagens&&p.imagens[0])||p.imagem||'')}" alt="${p.nome}" onerror="tryNextExt(this)">
     <div class="modal-img-placeholder" style="display:none">🖨️</div>`;
 
   document.getElementById('modalBody').innerHTML = `
