@@ -28,11 +28,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* PAGE */
 .page{max-width:1100px;margin:0 auto;padding:100px 40px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 
-/* IMAGE SIDE */
-.product-img-main{width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);position:sticky;top:90px}
-.product-img-main img{width:100%;height:100%;object-fit:cover;display:block}
-.product-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.15}
-
 /* INFO SIDE */
 .product-info{display:flex;flex-direction:column;gap:24px;padding-top:8px}
 
@@ -94,36 +89,97 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .not-found-title{font-family:var(--serif);font-size:40px;letter-spacing:2px}
 .not-found-desc{color:var(--text2);font-size:15px}
 
-/* CAROUSEL */
-.carousel-wrap{ position:sticky; top:90px; width:100%; max-width:100%; border-radius:12px; background:var(--surface2); border:1px solid var(--border); overflow:hidden; }
-.carousel-track{ display:grid; grid-auto-flow:column; grid-auto-columns:100%; transition:transform .4s ease; will-change:transform; height:100%; }
-.carousel-slide{ width:100%; overflow:hidden; box-sizing:border-box; }
-.carousel-slide img{ display:block; width:100%; height:100%; max-width:100%; object-fit:contain; box-sizing:border-box; }
-.carousel-slide-placeholder{ width:100%; aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:80px; opacity:.15; }
-.carousel-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.65); border:1px solid rgba(255,255,255,.2); color:#fff; width:36px;height:36px; border-radius:50%; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; font-family:var(--mono); opacity:0; transition:opacity .2s; }
-.carousel-wrap:hover .carousel-btn{opacity:1}
-.carousel-btn.prev{left:10px}
-.carousel-btn.next{right:10px}
-.carousel-dots{ display:flex; gap:6px; justify-content:center; padding:10px 0 4px; }
-.carousel-dot{ width:6px;height:6px; border-radius:50%; background:rgba(255,255,255,.35); cursor:pointer; transition:all .2s; border:none; }
-.carousel-dot.active{background:#fff;width:18px;border-radius:3px}
-.carousel-thumbs{ display:flex; gap:8px; margin-top:10px; overflow-x:auto; scrollbar-width:none; padding-bottom:4px; }
-.carousel-thumbs::-webkit-scrollbar{display:none}
-.carousel-thumb{ flex-shrink:0; width:64px;height:64px; border-radius:6px; overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color .2s; background:var(--surface2); }
-.carousel-thumb.active{border-color:var(--accent)}
-.carousel-thumb img{ width:100%;height:100%; object-fit:contain; display:block; }
+/* ========================================= */
+/* CAROUSEL (FLEXBOX + ASPECT-RATIO 100% CORRIGIDO) */
+/* ========================================= */
+.carousel-wrap {
+  position: sticky;
+  top: 90px;
+  width: 100%;
+  aspect-ratio: 1; /* Força um quadrado perfeito, sem piscar e sem vazar! */
+  border-radius: 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex; /* Flexbox garante que as imagens fiquem na horizontal */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+.carousel-slide {
+  flex: 0 0 100%; /* Cada slide ocupa exatamente 100% da largura do container */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Encaixa a imagem inteira sem cortar, completando com fundo escuro se sobrar espaço */
+  display: block;
+}
+.carousel-slide-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  opacity: .15;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.65);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-family: var(--mono);
+  opacity: 0;
+  transition: opacity .2s;
+}
+.carousel-wrap:hover .carousel-btn { opacity: 1; }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots { display: flex; gap: 6px; justify-content: center; padding: 10px 0 4px; }
+.carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.35); cursor: pointer; transition: all .2s; border: none; }
+.carousel-dot.active { background: #fff; width: 18px; border-radius: 3px; }
+
+.carousel-thumbs { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+.carousel-thumbs::-webkit-scrollbar { display: none; }
+.carousel-thumb { flex-shrink: 0; width: 64px; height: 64px; border-radius: 6px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: border-color .2s; background: var(--surface2); }
+.carousel-thumb.active { border-color: var(--accent); }
+.carousel-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* MOBILE */
 @media(max-width:768px){
-  .carousel-btn{opacity:.7!important}
-  .carousel-wrap{position:static!important;width:100%;overflow:hidden}
-  nav{padding:16px 20px}
-  .page{grid-template-columns:1fr;gap:32px;padding:80px 16px 40px;max-width:100vw;overflow-x:hidden}
-  .carousel-slide img{max-height:80vw}
-  .related{padding:0 20px 60px}
-  .related-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-  .price-obs{display:none}
-  .price-val{font-size:44px}
+  .carousel-btn { opacity: .7 !important; }
+  .carousel-wrap { position: static !important; width: 100%; }
+  nav { padding: 16px 20px; }
+  .page { grid-template-columns: 1fr; gap: 32px; padding: 80px 16px 40px; max-width: 100vw; overflow-x: hidden; }
+  .related { padding: 0 20px 60px; }
+  .related-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .price-obs { display: none; }
+  .price-val { font-size: 44px; }
 }
 </style>
 
@@ -134,7 +190,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 
-  // Multi-format image support
   const IMG_EXTS = ['.jpg', '.jpeg', '.png', '.webp'];
   function tryNextExt(img) {
     const src = img.src;
@@ -237,7 +292,6 @@ async function loadProduct() {
 
     initCarousel();
 
-    // Load related products (same category)
     const related = products.filter(x => x.categoria === p.categoria && x.id !== p.id).slice(0, 4);
     if (related.length > 0) {
       document.getElementById('related').innerHTML = `
@@ -276,7 +330,7 @@ function showNotFound() {
 }
 
 // ==========================================
-// LÓGICA DO CARROSSEL (Agora no lugar certo)
+// JS DO CARROSSEL LIMPO E OTIMIZADO
 // ==========================================
 let carouselIndex = 0;
 let carouselImages = [];
@@ -293,25 +347,6 @@ function buildCarouselSlides(p) {
 
 function initCarousel() {
   const imgs = carouselImages;
-  const wrap = document.getElementById('carouselWrap');
-  const firstSlide = document.querySelector('.carousel-slide img');
-  
-  if (wrap && firstSlide) {
-    const setH = () => {
-      if (firstSlide.naturalHeight) {
-        const ratio = firstSlide.naturalHeight / firstSlide.naturalWidth;
-        const h = Math.round(wrap.offsetWidth * ratio);
-        wrap.style.height = h + 'px';
-        const track2 = document.getElementById('carouselTrack');
-        if (track2) {
-          track2.style.height = h + 'px';
-          track2.querySelectorAll('.carousel-slide').forEach(s => s.style.height = h + 'px');
-        }
-      }
-    };
-    firstSlide.complete ? setH() : (firstSlide.onload = setH);
-  }
-  
   if (imgs.length <= 1) return;
 
   const dots = document.getElementById('carouselDots');
@@ -337,38 +372,16 @@ function goToSlide(i) {
 
   carouselIndex = (i + carouselImages.length) % carouselImages.length;
   const track = document.getElementById('carouselTrack');
-  const wrap = document.getElementById('carouselWrap');
   
-  if (track && wrap) {
-    const slideWidth = wrap.offsetWidth;
-    track.style.transform = `translateX(-${carouselIndex * slideWidth}px)`;
-
-    const slides = track.querySelectorAll('.carousel-slide img');
-    const currentImg = slides[carouselIndex];
-    
-    const applyHeight = (img) => {
-      if (!img || !img.naturalHeight) return;
-      const ratio = img.naturalHeight / img.naturalWidth;
-      const h = Math.round(slideWidth * ratio);
-      wrap.style.height = h + 'px';
-      track.style.height = h + 'px';
-      track.querySelectorAll('.carousel-slide').forEach(s => s.style.height = h + 'px');
-    };
-
-    if (currentImg) {
-      if (currentImg.complete && currentImg.naturalHeight) {
-        applyHeight(currentImg);
-      } else {
-        currentImg.onload = () => applyHeight(currentImg);
-      }
-    }
+  if (track) {
+    // Agora o cálculo usa %, sempre alinhando perfeitamente sem depender do resize da tela
+    track.style.transform = `translateX(-${carouselIndex * 100}%)`;
   }
   
   document.querySelectorAll('.carousel-dot').forEach((d, idx) => d.classList.toggle('active', idx === carouselIndex));
   document.querySelectorAll('.carousel-thumb').forEach((d, idx) => d.classList.toggle('active', idx === carouselIndex));
 }
 
-// Exportando as funções para o clique dos botões no HTML
 window.slideCarousel = function(dir) { 
   goToSlide(carouselIndex + dir); 
 };
@@ -376,12 +389,6 @@ window.slideCarousel = function(dir) {
 window.goToSlide = function(i) {
   goToSlide(i);
 };
-
-window.addEventListener('resize', () => {
-  if (carouselImages.length > 1) {
-    goToSlide(carouselIndex);
-  }
-});
 
 // Inicia a renderização
 loadProduct();
