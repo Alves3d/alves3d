@@ -90,20 +90,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .not-found-desc{color:var(--text2);font-size:15px}
 
 /* ========================================= */
-/* CAROUSEL (FLEXBOX + ASPECT-RATIO 100% CORRIGIDO) */
+/* CAROUSEL (FLEXBOX + ASPECT-RATIO 100%)    */
 /* ========================================= */
 .carousel-wrap {
   position: sticky;
   top: 90px;
   width: 100%;
-  aspect-ratio: 1; /* Força um quadrado perfeito, sem piscar e sem vazar! */
+  aspect-ratio: 1; 
   border-radius: 12px;
   background: var(--surface2);
   border: 1px solid var(--border);
   overflow: hidden;
 }
 .carousel-track {
-  display: flex; /* Flexbox garante que as imagens fiquem na horizontal */
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
@@ -112,7 +112,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   will-change: transform;
 }
 .carousel-slide {
-  flex: 0 0 100%; /* Cada slide ocupa exatamente 100% da largura do container */
+  flex: 0 0 100%; 
   width: 100%;
   height: 100%;
   display: flex;
@@ -124,7 +124,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Encaixa a imagem inteira sem cortar, completando com fundo escuro se sobrar espaço */
+  object-fit: contain; 
   display: block;
 }
 .carousel-slide-placeholder {
@@ -248,8 +248,8 @@ async function loadProduct() {
               ${buildCarouselSlides(p)}
             </div>
             ${(p.imagens||[p.imagem||'']).length > 1 ? `
-            <button class="carousel-btn prev" onclick="window.slideCarousel(-1)">&#8249;</button>
-            <button class="carousel-btn next" onclick="window.slideCarousel(1)">&#8250;</button>` : ''}
+            <button class="carousel-btn prev" onclick="slideCarousel(-1)">&#8249;</button>
+            <button class="carousel-btn next" onclick="slideCarousel(1)">&#8250;</button>` : ''}
           </div>
           ${(p.imagens||[p.imagem||'']).length > 1 ? `
           <div class="carousel-dots" id="carouselDots"></div>
@@ -329,9 +329,10 @@ function showNotFound() {
   `;
 }
 
-// ==========================================
-// JS DO CARROSSEL LIMPO E OTIMIZADO
-// ==========================================
+/* ========================================== */
+/* LÓGICA DO CARROSSEL (Agora sim, sem loop!) */
+/* ========================================== */
+
 let carouselIndex = 0;
 let carouselImages = [];
 
@@ -346,21 +347,20 @@ function buildCarouselSlides(p) {
 }
 
 function initCarousel() {
-  const imgs = carouselImages;
-  if (imgs.length <= 1) return;
+  if (carouselImages.length <= 1) return;
 
   const dots = document.getElementById('carouselDots');
   const thumbs = document.getElementById('carouselThumbs');
 
   if (dots) {
-    dots.innerHTML = imgs.map((_, i) =>
-      `<button class="carousel-dot ${i===0?'active':''}" onclick="window.goToSlide(${i})"></button>`
+    dots.innerHTML = carouselImages.map((_, i) =>
+      `<button class="carousel-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></button>`
     ).join('');
   }
 
   if (thumbs) {
-    thumbs.innerHTML = imgs.map((src, i) =>
-      `<div class="carousel-thumb ${i===0?'active':''}" onclick="window.goToSlide(${i})">
+    thumbs.innerHTML = carouselImages.map((src, i) =>
+      `<div class="carousel-thumb ${i===0?'active':''}" onclick="goToSlide(${i})">
         <img src="${src}" alt="foto ${i+1}">
       </div>`
     ).join('');
@@ -374,23 +374,20 @@ function goToSlide(i) {
   const track = document.getElementById('carouselTrack');
   
   if (track) {
-    // Agora o cálculo usa %, sempre alinhando perfeitamente sem depender do resize da tela
+    // Desliza a faixa perfeitamente usando porcentagem
     track.style.transform = `translateX(-${carouselIndex * 100}%)`;
   }
   
+  // Atualiza a parte visual das bolinhas e das miniaturas
   document.querySelectorAll('.carousel-dot').forEach((d, idx) => d.classList.toggle('active', idx === carouselIndex));
   document.querySelectorAll('.carousel-thumb').forEach((d, idx) => d.classList.toggle('active', idx === carouselIndex));
 }
 
-window.slideCarousel = function(dir) { 
+function slideCarousel(dir) { 
   goToSlide(carouselIndex + dir); 
-};
+}
 
-window.goToSlide = function(i) {
-  goToSlide(i);
-};
-
-// Inicia a renderização
+// Renderiza a página inteira
 loadProduct();
 </script>
 </body>
