@@ -214,7 +214,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 }
 </style>
 <!-- Google Analytics — substitua G-XXXXXXXXXX pelo seu ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
+// Multi-format image support
+const IMG_EXTS = ['.jpg', '.jpeg', '.png', '.webp'];
+function tryNextExt(img) {
+  const src = img.src;
+  const base = src.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+  const currentExt = (src.match(/\.(jpg|jpeg|png|webp)$/i) || [''])[0].toLowerCase();
+  const currentIdx = IMG_EXTS.indexOf(currentExt);
+  const nextIdx = currentIdx + 1;
+  if (nextIdx < IMG_EXTS.length) {
+    img.src = base + IMG_EXTS[nextIdx];
+  } else {
+    img.style.display = 'none';
+    const placeholder = img.nextElementSibling;
+    if (placeholder) placeholder.style.display = 'flex';
+  }
+}
+
+</script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -316,7 +334,7 @@ async function loadProduct() {
           ${related.map(r => `
             <a href="produto.html?id=${r.id}" class="related-card">
               <div class="related-img">
-                <img src="${(r.imagens&&r.imagens[0])||r.imagem||''}" alt="${r.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <img src="${(r.imagens&&r.imagens[0])||r.imagem||''}" alt="${r.nome}" loading="lazy" onerror="tryNextExt(this)">
                 <div class="related-img-placeholder" style="display:none">🖨️</div>
               </div>
               <div class="related-body">
@@ -353,7 +371,7 @@ function buildCarouselSlides(p) {
   carouselImages = p.imagens || (p.imagem ? [p.imagem] : ['']);
   return carouselImages.map((src, i) => `
     <div class="carousel-slide${i===0?' active':''}">
-      <img src="${src}" alt="${p.nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img src="${src}" alt="${p.nome}" onerror="tryNextExt(this)">
       <div class="carousel-slide-placeholder" style="display:none">🖨️</div>
     </div>
   `).join('');
