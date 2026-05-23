@@ -27,11 +27,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 nav.scrolled{background:rgba(8,8,8,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:3px;color:var(--text);text-decoration:none}
 .nav-logo em{color:var(--accent);font-style:italic}
-.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{background:var(--text)!important;color:var(--bg)!important;padding:10px 24px!important;border-radius:100px!important;font-weight:600!important;transition:all .3s!important}
 .nav-cta:hover{background:var(--accent)!important;color:#fff!important;transform:translateY(-1px)}
+.nav-app{background:rgba(65,118,225,.12)!important;color:var(--accent)!important;padding:8px 18px!important;border-radius:100px!important;border:1px solid rgba(65,118,225,.3)!important;font-weight:500!important;transition:all .3s!important}
+.nav-app:hover{background:rgba(65,118,225,.25)!important;border-color:var(--accent)!important;color:#fff!important}
 
 /* HERO */
 .hero{min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
@@ -195,7 +197,6 @@ input[type="range"]::-webkit-slider-thumb:hover{box-shadow:0 0 0 6px rgba(65,118
 .dep-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:#fff;flex-shrink:0}
 .dep-name{font-weight:600;font-size:14px}
 .dep-product{font-size:12px;color:var(--text2);font-family:var(--mono)}
-.dep-placeholder{opacity:.3}
 
 /* FAQ */
 #faq{border-top:1px solid var(--border)}
@@ -214,7 +215,7 @@ input[type="range"]::-webkit-slider-thumb:hover{box-shadow:0 0 0 6px rgba(65,118
 
 /* FOOTER */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:60px}
-.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid var(--border);margin-bottom:40px}
+.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid var(--border);margin-bottom:40px}
 .footer-logo{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:3px;margin-bottom:12px}
 .footer-logo em{color:var(--accent);font-style:italic}
 .footer-tagline{font-size:13px;color:var(--text2);line-height:1.6;max-width:220px}
@@ -222,6 +223,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
 .footer-links{display:flex;flex-direction:column;gap:12px;list-style:none}
 .footer-links a{color:var(--text2);text-decoration:none;font-size:14px;transition:color .2s}
 .footer-links a:hover{color:var(--text)}
+.footer-links .footer-highlight{color:var(--accent)}
+.footer-links .footer-highlight:hover{color:var(--accent2)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center}
 .footer-copy{font-size:12px;color:var(--text2);font-family:var(--mono)}
 
@@ -247,31 +250,42 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
 .processo-fullscreen .processo-step:first-child{border-top:1px solid rgba(255,255,255,.08)}
 .processo-fullscreen .step-desc{color:rgba(255,255,255,.5)}
 
-/* SOLUCOES */
+/* SOLUÇÕES */
 #solucoes{background:var(--bg2);border-top:1px solid var(--border)}
-.sol-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.sol-left{}
-.sol-intro-text{font-size:15px;color:var(--text2);line-height:1.8;margin-top:16px;margin-bottom:36px;max-width:420px}
-.sol-cards{display:flex;flex-direction:column;gap:16px}
-.sol-card{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all .3s;cursor:pointer}
+.sol-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.sol-intro-text{font-size:15px;color:var(--text2);line-height:1.8;margin-top:16px;margin-bottom:36px;max-width:460px}
+.sol-cards{display:flex;flex-direction:column;gap:12px}
+.sol-card{display:flex;gap:20px;align-items:flex-start;padding:22px;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all .3s;cursor:pointer}
 .sol-card:hover{border-color:var(--accent);background:var(--surface2);transform:translateX(6px)}
-.sol-card-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.sol-card-featured{border-color:rgba(65,118,225,.4);background:rgba(65,118,225,.06)}
+.sol-card-featured:hover{background:rgba(65,118,225,.12);border-color:var(--accent)}
+.sol-card-icon{font-size:26px;flex-shrink:0;margin-top:2px}
 .sol-card-title{font-weight:700;font-size:15px;margin-bottom:4px;color:var(--text)}
 .sol-card-desc{font-size:13px;color:var(--text2);line-height:1.6}
 .sol-card-tag{display:inline-flex;align-items:center;gap:4px;margin-top:8px;background:rgba(65,118,225,.1);border:1px solid rgba(65,118,225,.25);color:var(--accent);padding:3px 10px;border-radius:100px;font-size:11px;font-family:var(--mono)}
-.sol-visual{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;padding:36px}
-.sol-visual-header{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.sol-card-tag-green{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.3);color:#4ade80}
+
+/* APP VISUAL PANEL */
+.sol-visual{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;padding:28px}
+.sol-visual-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .sol-visual-dot{width:10px;height:10px;border-radius:50%}
-.sol-kit-title{font-family:var(--serif);font-size:26px;letter-spacing:2px;margin-bottom:6px}
-.sol-kit-sub{font-size:12px;color:var(--text2);font-family:var(--mono);letter-spacing:.05em;margin-bottom:24px}
-.sol-kit-items{display:flex;flex-direction:column;gap:10px}
-.sol-kit-item{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text2)}
-.sol-kit-num{font-family:var(--mono);font-size:11px;color:var(--accent);width:24px;flex-shrink:0}
+.app-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.app-kpi{background:var(--surface2);border-radius:8px;padding:12px 14px}
+.app-kpi.accent{background:var(--accent)}
+.app-kpi-label{font-size:9px;color:var(--text2);font-family:var(--mono);letter-spacing:.08em;margin-bottom:3px}
+.app-kpi.accent .app-kpi-label{color:rgba(255,255,255,.7)}
+.app-kpi-val{font-size:20px;font-weight:700;color:var(--text);line-height:1}
+.app-kpi.accent .app-kpi-val{color:#fff}
+.app-kpi-sub{font-size:9px;color:var(--text2);font-family:var(--mono);margin-top:3px}
+.app-kpi.accent .app-kpi-sub{color:rgba(255,255,255,.55)}
+.app-bar-row{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.app-bar-item{display:flex;align-items:center;gap:8px}
+.app-bar-label{font-size:10px;color:var(--text2);font-family:var(--mono);width:60px;flex-shrink:0}
+.app-bar-track{flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.app-bar-fill{height:100%;border-radius:3px;background:var(--accent)}
+.app-bar-val{font-size:10px;color:var(--text2);font-family:var(--mono);width:36px;text-align:right}
 .sol-kit-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
-.sol-kit-price{display:flex;justify-content:space-between;align-items:flex-end;margin-top:20px}
-.sol-kit-from{font-size:11px;color:var(--text2);font-family:var(--mono)}
-.sol-kit-val{font-family:var(--serif);font-size:44px;font-weight:400;color:var(--text);line-height:1}
-.sol-kit-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:20px;background:var(--accent);color:#fff;padding:14px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;transition:all .2s}
+.sol-kit-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;background:var(--accent);color:#fff;padding:13px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;transition:all .2s}
 .sol-kit-cta:hover{background:var(--accent2);transform:translateY(-1px)}
 
 /* LIGHTBOX */
@@ -289,82 +303,25 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
 .gallery-scroll-item{cursor:zoom-in}
 
 /* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  z-index: 101;
-}
-
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  transform-origin: center;
-}
-
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 98;
-  backdrop-filter: blur(4px);
-}
-
-.nav-overlay.active { display: block; }
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:101}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s ease;transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:98;backdrop-filter:blur(4px)}
+.nav-overlay.active{display:block}
 
 /* MOBILE */
 @media(max-width:900px){
   nav{padding:16px 24px}
   .hamburger{display:flex}
-  .nav-links{
-    display:flex;
-    flex-direction:column;
-    position:fixed;
-    top:0;right:0;bottom:0;
-    width:75vw;max-width:300px;
-    background:var(--surface);
-    border-left:1px solid var(--border);
-    padding:80px 28px 40px;
-    gap:4px;
-    z-index:99;
-    transform:translateX(100%);
-    transition:transform .35s ease;
-    list-style:none;
-  }
+  .nav-links{display:flex;flex-direction:column;position:fixed;top:0;right:0;bottom:0;width:75vw;max-width:300px;background:var(--surface);border-left:1px solid var(--border);padding:80px 28px 40px;gap:4px;z-index:99;transform:translateX(100%);transition:transform .35s ease;list-style:none}
   .nav-links.open{transform:translateX(0)}
-  .nav-links a{
-    font-size:16px;
-    letter-spacing:.05em;
-    padding:14px 0;
-    border-bottom:1px solid var(--border);
-    color:var(--text2);
-    width:100%;
-    display:block;
-  }
+  .nav-links a{font-size:16px;letter-spacing:.05em;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text2);width:100%;display:block}
   .nav-links a:hover{color:var(--text)}
   .nav-links li:last-child a{border-bottom:none}
-  .nav-cta{
-    margin-top:16px;
-    background:var(--accent)!important;
-    color:#fff!important;
-    padding:14px 20px!important;
-    border-radius:8px!important;
-    text-align:center;
-    border-bottom:none!important;
-  }
+  .nav-app{margin-top:8px;background:rgba(65,118,225,.12)!important;text-align:center;border-radius:8px!important;border:1px solid rgba(65,118,225,.3)!important}
+  .nav-cta{margin-top:8px;background:var(--accent)!important;color:#fff!important;padding:14px 20px!important;border-radius:8px!important;text-align:center;border-bottom:none!important}
   .section{padding:80px 24px}
   .hero{grid-template-columns:1fr}
   .hero-left{padding:120px 24px 60px}
@@ -383,8 +340,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   .gallery-hint{padding:0 24px 16px}
   .gallery-scroll-item:nth-child(odd){width:240px;height:300px}
   .gallery-scroll-item:nth-child(even){width:200px;height:250px}
-  .processo-grid{grid-template-columns:1fr}
-  .processo-visual{display:none}
   .calc-layout{grid-template-columns:1fr}
   .calc-result{position:static}
   .form-layout{grid-template-columns:1fr}
@@ -398,22 +353,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   .faq-layout{grid-template-columns:1fr}
   .faq-intro{position:static}
   footer{padding:40px 24px}
-  .footer-top{grid-template-columns:1fr;gap:40px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
   .wpp-float{bottom:20px;right:16px}
   .sol-layout{grid-template-columns:1fr}
   .sol-visual{display:none}
   .processo-fullscreen .processo-content{max-width:100%}
 }
+@media(max-width:480px){
+  .footer-top{grid-template-columns:1fr}
+}
 </style>
-<!-- Google Analytics — substitua G-XXXXXXXXXX pelo seu ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
 
@@ -426,6 +378,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
     <li><a href="#formulario" onclick="closeMenu()">Pedir peça</a></li>
     <li><a href="#solucoes" onclick="closeMenu()">Soluções</a></li>
     <li><a href="#materiais" onclick="closeMenu()">Materiais</a></li>
+    <li><a href="https://alves3d.github.io/Manual_Impr_3d/" target="_blank" onclick="closeMenu()">Manual</a></li>
+    <li><a href="https://alves3d.vercel.app/" target="_blank" class="nav-app" onclick="closeMenu()">📱 App</a></li>
     <li><a href="https://wa.me/5516992364004?text=Olá! Vim pelo site e quero mais informações!" target="_blank" class="nav-cta" onclick="closeMenu()">WhatsApp</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -635,7 +589,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
           <div class="bd-row"><span class="bd-key">Desconto volume</span><span class="bd-val" id="bd-disc" style="color:#4ade80">—</span></div>
           <div class="bd-row bd-total"><span class="bd-key">Total estimado</span><span class="bd-val" id="bd-total">R$12</span></div>
         </div>
-        <div class="result-obs" id="result-obs">Estimativa sem frete. Valor exato confirmado no WhatsApp. O valor pode variar para mais ou para menos dependendo da resistência necessária e nível de detalhes da peça.</div>
+        <div class="result-obs">Estimativa sem frete. Valor exato confirmado no WhatsApp. O valor pode variar para mais ou para menos dependendo da resistência necessária e nível de detalhes da peça.</div>
         <a href="#" class="btn-wpp" id="wpp-calc-btn" target="_blank">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Pedir orçamento no WhatsApp
@@ -729,52 +683,117 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
 </section>
 
 <!-- SOLUÇÕES DIGITAIS -->
-<section class="section" id="solucoes">
+<section class="section" id="solucoes" style="background:var(--bg2)">
   <div class="sol-layout">
     <div class="sol-left reveal">
-      <div class="section-label">Soluções digitais</div>
-      <h2 class="section-title">Ferramentas para <em>gerenciar</em> seu negócio 3D</h2>
-      <p class="sol-intro-text">Além das peças físicas, desenvolvemos kits digitais para impressores 3D que querem parar de gerenciar no feeling e ter controle real do negócio.</p>
+      <div class="section-label">Para impressores 3D</div>
+      <h2 class="section-title">Ferramentas para <em>seu negócio</em></h2>
+      <p class="sol-intro-text">Desenvolvemos ferramentas digitais para impressores 3D que querem parar de gerenciar no feeling e ter controle real — de vendas, estoque, precificação e clientes.</p>
+
       <div class="sol-cards">
+
+        <!-- APP — DESTAQUE -->
+        <a href="https://alves3d.vercel.app/" target="_blank" class="sol-card sol-card-featured">
+          <div class="sol-card-icon">📱</div>
+          <div>
+            <div class="sol-card-title">App de Gestão — Alves 3D</div>
+            <div class="sol-card-desc">Dashboard completo com KPIs, evolução mensal, controle de vendas, clientes, estoque e precificador automático. Acesse do celular ou computador.</div>
+            <div class="sol-card-tag sol-card-tag-green">↗ Acessar o app — grátis</div>
+          </div>
+        </a>
+
+        <!-- KIT GESTÃO -->
         <a href="https://alves3d.github.io/Kit_Impress-o3d/" target="_blank" class="sol-card">
           <div class="sol-card-icon">📊</div>
           <div>
             <div class="sol-card-title">Kit Gestão para Impressão 3D</div>
             <div class="sol-card-desc">Planilhas, calculadoras de precificação, controle de estoque e gestão de pedidos — tudo em um kit completo e editável.</div>
-            <div class="sol-card-tag">↗ Acessar kit</div>
+            <div class="sol-card-tag">↗ Ver o kit completo</div>
           </div>
         </a>
+
+        <!-- MANUAL -->
+        <a href="https://alves3d.github.io/Manual_Impr_3d/" target="_blank" class="sol-card">
+          <div class="sol-card-icon">📖</div>
+          <div>
+            <div class="sol-card-title">Manual de Uso — Impressão 3D</div>
+            <div class="sol-card-desc">Guia completo com materiais, configurações de impressão, precificação e como estruturar seu negócio 3D do zero.</div>
+            <div class="sol-card-tag">↗ Ler o manual</div>
+          </div>
+        </a>
+
       </div>
     </div>
+
+    <!-- PAINEL VISUAL — MOCKUP DO APP -->
     <div class="sol-visual reveal">
       <div class="sol-visual-header">
         <div class="sol-visual-dot" style="background:#ff5f57"></div>
         <div class="sol-visual-dot" style="background:#febc2e"></div>
         <div class="sol-visual-dot" style="background:#28c840"></div>
-        <span style="font-family:var(--mono);font-size:11px;color:var(--text2);margin-left:8px">kit-gestao-3d.xlsx</span>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--text2);margin-left:8px">alves3d.vercel.app</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:5px">
+          <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse-dot 2s infinite"></div>
+          <span style="font-size:10px;color:#4ade80;font-family:var(--mono)">online</span>
+        </div>
       </div>
-      <div class="sol-kit-title">Kit Gestão 3D</div>
-      <div class="sol-kit-sub">12+ ferramentas · 100% editável</div>
-      <div class="sol-kit-items">
-        <div class="sol-kit-item"><span class="sol-kit-num">01</span>Calculadora de precificação por peça</div>
-        <div class="sol-kit-item"><span class="sol-kit-num">02</span>Controle de estoque de filamento</div>
-        <div class="sol-kit-item"><span class="sol-kit-num">03</span>Gestão de pedidos e clientes</div>
-        <div class="sol-kit-item"><span class="sol-kit-num">04</span>Fluxo de caixa simplificado</div>
-        <div class="sol-kit-item"><span class="sol-kit-num">05</span>Dashboard de lucro por impressão</div>
-        <div class="sol-kit-item"><span class="sol-kit-num">06</span>Templates de orçamento para clientes</div>
+
+      <div style="font-family:var(--serif);font-size:22px;letter-spacing:2px;margin-bottom:4px;color:var(--text)">App Alves 3D</div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--text2);margin-bottom:20px">Dashboard de gestão · Gratuito para começar</div>
+
+      <!-- KPI Grid simulado -->
+      <div class="app-kpi-grid">
+        <div class="app-kpi accent">
+          <div class="app-kpi-label">FATURAMENTO</div>
+          <div class="app-kpi-val">R$4.280</div>
+          <div class="app-kpi-sub">↑ 18% vs mês ant.</div>
+        </div>
+        <div class="app-kpi">
+          <div class="app-kpi-label">LUCRO ESTIMADO</div>
+          <div class="app-kpi-val" style="color:#16a34a">R$1.960</div>
+          <div class="app-kpi-sub">Margem: 45,8%</div>
+        </div>
+        <div class="app-kpi">
+          <div class="app-kpi-label">PEDIDOS</div>
+          <div class="app-kpi-val">38</div>
+          <div class="app-kpi-sub">Ticket: R$112,63</div>
+        </div>
+        <div class="app-kpi">
+          <div class="app-kpi-label">EM ANDAMENTO</div>
+          <div class="app-kpi-val" style="color:#6366f1">5</div>
+          <div class="app-kpi-sub">3 Fabric. · 2 Projeto</div>
+        </div>
       </div>
+
+      <!-- Barras simuladas — Top peças -->
+      <div style="font-size:10px;color:var(--text2);font-family:var(--mono);letter-spacing:.08em;margin-bottom:8px">TOP VENDAS DO MÊS</div>
+      <div class="app-bar-row">
+        <div class="app-bar-item"><span class="app-bar-label">Chaveiro</span><div class="app-bar-track"><div class="app-bar-fill" style="width:100%"></div></div><span class="app-bar-val">12 un</span></div>
+        <div class="app-bar-item"><span class="app-bar-label">Decoração</span><div class="app-bar-track"><div class="app-bar-fill" style="width:72%;background:#6366f1"></div></div><span class="app-bar-val">8 un</span></div>
+        <div class="app-bar-item"><span class="app-bar-label">Geek</span><div class="app-bar-track"><div class="app-bar-fill" style="width:50%;background:#f97316"></div></div><span class="app-bar-val">6 un</span></div>
+      </div>
+
       <hr class="sol-kit-divider">
-      <div class="sol-kit-price">
-        <div><div class="sol-kit-from">a partir de</div><div class="sol-kit-val">R$29<span style="font-size:20px">,90</span></div></div>
-        <div style="font-size:13px;color:var(--text2);font-family:var(--mono);text-align:right">Acesso vitalício<br>Entrega imediata</div>
+
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)"><span style="color:#4ade80;font-size:11px">✓</span>Dashboard com KPIs e evolução mensal</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)"><span style="color:#4ade80;font-size:11px">✓</span>Controle de vendas, entregas e pagamentos</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)"><span style="color:#4ade80;font-size:11px">✓</span>Precificador automático por peça</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)"><span style="color:#4ade80;font-size:11px">✓</span>Clientes, estoque, relatórios e orçamentos</div>
       </div>
-      <a href="https://alves3d.github.io/Kit_Impress-o3d/" target="_blank" class="sol-kit-cta">Ver o kit completo →</a>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <span style="font-size:11px;color:var(--text2);font-family:var(--mono)">Web · Mobile · Qualquer dispositivo</span>
+        <span style="background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);color:#4ade80;padding:3px 10px;border-radius:100px;font-family:var(--mono);font-size:11px">Grátis</span>
+      </div>
+
+      <a href="https://alves3d.vercel.app/" target="_blank" class="sol-kit-cta">Acessar o App →</a>
     </div>
   </div>
 </section>
 
 <!-- DEPOIMENTOS -->
-<section class="section" id="depoimentos">
+<section class="section" id="depoimentos" style="background:var(--surface)">
   <div style="margin-bottom:60px" class="reveal">
     <div class="section-label">Depoimentos</div>
     <h2 class="section-title">O que dizem os <em>clientes</em></h2>
@@ -824,6 +843,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qual o prazo de produção e entrega? <span class="faq-icon">+</span></button><div class="faq-a">A produção leva 3–7 dias úteis. A entrega via Correios varia por região: 2–10 dias úteis. O prazo exato é informado na confirmação do pedido.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quais materiais vocês usam? <span class="faq-icon">+</span></button><div class="faq-a">Trabalhamos com PLA (padrão), PETG (resistente) e ABS (técnico). Cada material tem características específicas — posso te indicar o melhor para sua peça.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Tem desconto para pedidos em quantidade? <span class="faq-icon">+</span></button><div class="faq-a">Sim! A partir de 3 unidades já começa o desconto progressivo. Para pedidos maiores, entre em contato para orçamento especial.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O App de gestão é pago? <span class="faq-icon">+</span></button><div class="faq-a">O App Alves 3D é gratuito para começar! Funcionalidades avançadas como relatórios completos, estoque e cobranças fazem parte do plano Premium. Acesse em alves3d.vercel.app e veja os planos disponíveis.</div></div>
     </div>
   </div>
 </section>
@@ -833,7 +853,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   <div class="footer-top">
     <div>
       <div class="footer-logo">Alves<em>.3D</em></div>
-      <p class="footer-tagline">Transformando ideias em peças reais com impressão 3D personalizada.</p>
+      <p class="footer-tagline">Impressão 3D personalizada e ferramentas de gestão para impressores em todo o Brasil.</p>
     </div>
     <div>
       <div class="footer-col-title">Navegação</div>
@@ -842,9 +862,16 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#calculadora">Simular orçamento</a></li>
         <li><a href="#formulario">Pedir peça</a></li>
-        <li><a href="#solucoes">Soluções</a></li>
-    <li><a href="#materiais">Materiais</a></li>
+        <li><a href="#materiais">Materiais</a></li>
         <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Ferramentas</div>
+      <ul class="footer-links">
+        <li><a href="https://alves3d.vercel.app/" target="_blank" class="footer-highlight">📱 App de Gestão</a></li>
+        <li><a href="https://alves3d.github.io/Manual_Impr_3d/" target="_blank">📖 Manual de Uso</a></li>
+        <li><a href="https://alves3d.github.io/Kit_Impress-o3d/" target="_blank">📊 Kit Gestão 3D</a></li>
       </ul>
     </div>
     <div>
@@ -890,16 +917,14 @@ if(heroBg){
     const scrollY=window.scrollY;
     const heroH=document.querySelector('.hero').offsetHeight;
     heroBg.style.transform=`scale(1.05) translateY(${scrollY*.15}px)`;
-    // Fade: starts at 30% scroll, fully faded at 80% of hero height
-    const fadeStart=heroH*.3;
-    const fadeEnd=heroH*.8;
+    const fadeStart=heroH*.3,fadeEnd=heroH*.8;
     const opacity=scrollY<=fadeStart?1:scrollY>=fadeEnd?0:1-((scrollY-fadeStart)/(fadeEnd-fadeStart));
     heroBg.style.opacity=Math.max(0,opacity);
   });
 }
 
 // MARQUEE
-const items=['Impressão 3D','Personalizado','Entrega Nacional','Desde R$8','Chaveiros','Decoração','Geek & Games','Presentes','Corporativo','PLA','PETG','ABS','200+ Projetos','Bambu Lab'];
+const items=['Impressão 3D','Personalizado','Entrega Nacional','Desde R$8','Chaveiros','Decoração','Geek & Games','Presentes','Corporativo','PLA','PETG','ABS','200+ Projetos','App de Gestão','Manual Grátis'];
 const track=document.getElementById('marqueeTrack');
 [...items,...items].forEach(t=>{const el=document.createElement('div');el.className='marquee-item';el.innerHTML=`<span class="marquee-dot"></span>${t}`;track.appendChild(el)});
 
@@ -920,7 +945,6 @@ function calcular(){
   const mat=parseFloat(document.getElementById('material').value);
   const qty=parseInt(document.getElementById('quantidade').value);
   const comp=parseFloat(document.getElementById('complexidade').value);
-  if(cat==='chaveiro')document.getElementById('material').selectedIndex=0;
   const unit=Math.round(bases[cat]*tam*mat*comp);
   const min=Math.round(unit*.85),max=Math.round(unit*1.2);
   let disc=qty>=10?.15:qty>=5?.10:qty>=3?.05:0;
@@ -983,7 +1007,6 @@ function toggleMenu(){
   overlay.classList.toggle('active',isOpen);
   document.body.style.overflow=isOpen?'hidden':'';
 }
-
 function closeMenu(){
   document.getElementById('navLinks').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
