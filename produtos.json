@@ -725,5 +725,23 @@
       "imgs/produtos/M-2DD0-Caixa-figurinha-copa-média-com-trava-1",
       "imgs/produtos/M-2DD0-Caixa-figurinha-copa-média-com-trava-2"
     ]
+  },
+  {
+    "id": "M-QGK1",
+    "nome": "Caixa figurinha personalizável",
+    "categoria": "Copa do mundo",
+    "preco": 30,
+    "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 100 figurinhas e trava de segurança!\nPersonalize do seu jeito!",
+    "material": "PLA",
+    "tamanho": "8x11",
+    "tags": [
+      "Copa do mundo",
+      "caixa"
+    ],
+    "imagens": [
+      "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-1",
+      "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-2",
+      "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-3"
+    ]
   }
 ]
