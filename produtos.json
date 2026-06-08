@@ -743,5 +743,22 @@
       "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-2",
       "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-3"
     ]
+  },
+  {
+    "id": "M-D3X9",
+    "nome": "Rosa Eterna",
+    "categoria": "Dia dos namorados",
+    "preco": 28,
+    "descricao": "Presenteie quem você ama com uma rosa eterna!",
+    "material": "PLA",
+    "tamanho": "8,7X12",
+    "tags": [
+      "Dia dos namorados",
+      "decoração"
+    ],
+    "imagens": [
+      "imgs/produtos/M-D3X9-Rosa-Eterna-1",
+      "imgs/produtos/M-D3X9-Rosa-Eterna-2"
+    ]
   }
 ]
