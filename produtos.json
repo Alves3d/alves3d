@@ -793,6 +793,22 @@
     "imagens": [
       "imgs/produtos/M-H0AP-Chaveiro-montável-coração-1",
       "imgs/produtos/M-H0AP-Chaveiro-montável-coração-2"
+    ],
+    {
+    "id": "M-31MT",
+    "nome": "Coração Origami",
+    "categoria": "Dia dos namorados",
+    "preco": 38,
+    "descricao": "Presenteie seu amor com esse lindo coração em formato de origami!",
+    "material": "PLA",
+    "tamanho": "13 cm",
+    "tags": [
+      "Dia dos namorados",
+      "decoração"
+    ],
+    "imagens": [
+      "imgs/produtos/M-31MT-Coração-Origami"
     ]
+  }
   }
 ]
