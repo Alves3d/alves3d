@@ -777,5 +777,22 @@
       "imgs/produtos/M-W0EG-Moldura-coração-Love-1",
       "imgs/produtos/M-W0EG-Moldura-coração-Love-2"
     ]
+  },
+  {
+    "id": "M-H0AP",
+    "nome": "Chaveiro montável coração",
+    "categoria": "Dia dos namorados",
+    "preco": 6,
+    "descricao": "Carregue sua metade para onde for! Com o chaveiro montável, unu as duas partes com seu amor!",
+    "material": "PLA",
+    "tamanho": "3 cm",
+    "tags": [
+      "Dia dos namorados",
+      "chaveiro"
+    ],
+    "imagens": [
+      "imgs/produtos/M-H0AP-Chaveiro-montável-coração-1",
+      "imgs/produtos/M-H0AP-Chaveiro-montável-coração-2"
+    ]
   }
 ]
