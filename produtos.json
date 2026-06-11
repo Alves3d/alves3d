@@ -760,5 +760,22 @@
       "imgs/produtos/M-D3X9-Rosa-Eterna-1",
       "imgs/produtos/M-D3X9-Rosa-Eterna-2"
     ]
+  },
+  {
+    "id": "M-W0EG",
+    "nome": "Moldura coração Love",
+    "categoria": "Dia dos namorados",
+    "preco": 12.5,
+    "descricao": "Presenteie quem você ama com esse suporte para fotos em formato de coração! Perfeito para decoração!",
+    "material": "PLA",
+    "tamanho": "16 cm",
+    "tags": [
+      "Dia dos namorados",
+      "decoração"
+    ],
+    "imagens": [
+      "imgs/produtos/M-W0EG-Moldura-coração-Love-1",
+      "imgs/produtos/M-W0EG-Moldura-coração-Love-2"
+    ]
   }
 ]
