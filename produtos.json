@@ -7,10 +7,7 @@
     "descricao": "Caixa amazenamento ampolas, ideal para armazenar e proteger suas ampolas com segurança e praticidade.\nCapacidade para 40 ampolas de até 16 mm de diâmetro cada, mantendo tudo organizado e de fácil acesso.",
     "material": "PLA",
     "tamanho": "18,5cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/M-5AF4-Caixa-Ampolas-40un-1",
       "imgs/produtos/M-5AF4-Caixa-Ampolas-40un-2",
@@ -25,10 +22,7 @@
     "descricao": "Caixa amazenamento ampolas, ideal para armazenar e proteger suas ampolas com segurança e praticidade.\nCapacidade para 20 ampolas de até 16 mm de diâmetro cada, mantendo tudo organizado e de fácil acesso.",
     "material": "PLA",
     "tamanho": "12cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/M-805F-Caixa-Ampolas-20un-1",
       "imgs/produtos/M-805F-Caixa-Ampolas-20un-2",
@@ -46,11 +40,7 @@
     "descricao": "Coleira personalizada com o nome do seu pet, garantindo estilo e identificação em um só produto. Você também pode incluir seu número de contato para maior segurança em caso de perda.",
     "material": "PLA",
     "tamanho": "7cm",
-    "tags": [
-      "PET",
-      "chaveiro",
-      "personalizado"
-    ],
+    "tags": ["PET", "chaveiro", "personalizado"],
     "imagens": [
       "imgs/produtos/3-Placa-coleira-PET-1",
       "imgs/produtos/3-Placa-coleira-PET-2",
@@ -66,10 +56,7 @@
     "descricao": "Caixa Sibilla Italiana em PLA. Guarde seu baralho de tarologia com elegância.",
     "material": "PLA",
     "tamanho": "14cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/M-5B3F-Caixa-sibilla-Italiana-1",
       "imgs/produtos/M-5B3F-Caixa-sibilla-Italiana-2",
@@ -84,11 +71,7 @@
     "descricao": "Suporte para PS4 Fat em PLA. Organize e exiba seu console com estilo.",
     "material": "PLA",
     "tamanho": "10cm",
-    "tags": [
-      "organização",
-      "suporte",
-      "ps4"
-    ],
+    "tags": ["organização", "suporte", "ps4"],
     "imagens": [
       "imgs/produtos/M-6575-Suporte-PS4-Fat-1",
       "imgs/produtos/M-6575-Suporte-PS4-Fat-2"
@@ -102,14 +85,8 @@
     "descricao": "Chaveiro camisa da seleção 01 em PLA. Demonstre sua paixão pelo futebol brasileiro.",
     "material": "PLA",
     "tamanho": "7,5cm",
-    "tags": [
-      "chaveiro",
-      "copa do munco",
-      "personalizado"
-    ],
-    "imagens": [
-      "imgs/produtos/M-7886-Chaveiro-camisa-seleção-01"
-    ]
+    "tags": ["chaveiro", "copa do munco", "personalizado"],
+    "imagens": ["imgs/produtos/M-7886-Chaveiro-camisa-seleção-01"]
   },
   {
     "id": "M-E581",
@@ -119,14 +96,8 @@
     "descricao": "Chaveiro camisa da seleção 02 em PLA. Segunda versão para torcedores dedicados.",
     "material": "PLA",
     "tamanho": "6,5cm",
-    "tags": [
-      "chaveiro",
-      "copa do munco",
-      "personalizado"
-    ],
-    "imagens": [
-      "imgs/produtos/M-E581-Chaveiro-camisa-seleção-02"
-    ]
+    "tags": ["chaveiro", "copa do munco", "personalizado"],
+    "imagens": ["imgs/produtos/M-E581-Chaveiro-camisa-seleção-02"]
   },
   {
     "id": "M-3F3C",
@@ -136,10 +107,7 @@
     "descricao": "Pokebola Master Ball em PLA. A mais rara de todas para sua coleção.",
     "material": "PLA",
     "tamanho": "7cm",
-    "tags": [
-      "pokemon",
-      "colecionável"
-    ],
+    "tags": ["pokemon", "colecionável"],
     "imagens": [
       "imgs/produtos/M-3F3C-Pokebola---MasterBall-1",
       "imgs/produtos/M-3F3C-Pokebola---MasterBall-2"
@@ -153,10 +121,7 @@
     "descricao": "Pokebola em PLA tamanho real. Para capturar corações de fãs Pokémon.",
     "material": "PLA",
     "tamanho": "7cm",
-    "tags": [
-      "pokemon",
-      "colecionável"
-    ],
+    "tags": ["pokemon", "colecionável"],
     "imagens": [
       "imgs/produtos/M-CE34-Pokebola-1",
       "imgs/produtos/M-CE34-Pokebola-2",
@@ -171,11 +136,7 @@
     "descricao": "Imã PET personalizado em PLA. Personalize com a foto do seu PET e eternize sua melhor companhia!",
     "material": "PLA",
     "tamanho": "6,5cm",
-    "tags": [
-      "PET",
-      "imã",
-      "personalizado"
-    ],
+    "tags": ["PET", "imã", "personalizado"],
     "imagens": [
       "imgs/produtos/212-Imã-PET-personalizado-1",
       "imgs/produtos/212-Imã-PET-personalizado-2",
@@ -193,11 +154,7 @@
     "descricao": "Chaveiro personalizado do seu PET! Uma peça unica para você.",
     "material": "PLA",
     "tamanho": "6cm",
-    "tags": [
-      "presente",
-      "pet",
-      "chaveiro"
-    ],
+    "tags": ["presente", "pet", "chaveiro"],
     "imagens": [
       "imgs/produtos/195-Chaveiro-personalizado-PET-1",
       "imgs/produtos/195-Chaveiro-personalizado-PET-2",
@@ -216,11 +173,7 @@
     "descricao": "Tartaruga articulada em PLA com movimentos realistas. Brinquedo e decoração.",
     "material": "PLA",
     "tamanho": "11cm",
-    "tags": [
-      "brinquedo",
-      "pet",
-      "decoração"
-    ],
+    "tags": ["brinquedo", "pet", "decoração"],
     "imagens": [
       "imgs/produtos/M-58E2-Tartaturuga-articulada-1",
       "imgs/produtos/M-58E2-Tartaturuga-articulada-2",
@@ -235,11 +188,7 @@
     "descricao": "Figura da Raiva de Divertida Mente em PLA. Para fãs do filme da Pixar.",
     "material": "PLA",
     "tamanho": "10 cm",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/23-Raiva-1",
       "imgs/produtos/23-Raiva-2"
@@ -253,11 +202,7 @@
     "descricao": "Figura da Vergonha de Divertida Mente em PLA. Colecionável do filme da Pixar.",
     "material": "PLA",
     "tamanho": "18cm",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/24-Vergonha-1",
       "imgs/produtos/24-Vergonha-2"
@@ -271,11 +216,7 @@
     "descricao": "Figura do Medo de Divertida Mente em PLA. Perfeita para completar a coleção.",
     "material": "PLA",
     "tamanho": "12 cm",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/25-Medo-1",
       "imgs/produtos/25-Medo-2"
@@ -289,11 +230,7 @@
     "descricao": "Figura da Tristeza de Divertida Mente em PLA. Colecionável detalhado do filme.",
     "material": "PLA",
     "tamanho": "12 cm",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/26-Tristeza-1",
       "imgs/produtos/26-Tristeza-2"
@@ -307,11 +244,7 @@
     "descricao": "Figura da Ansiedade de Divertida Mente em PLA. Novidade da sequência do filme.",
     "material": "PLA",
     "tamanho": "15 cm",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/27-Ansiedade-1",
       "imgs/produtos/27-Ansiedade-2",
@@ -326,11 +259,7 @@
     "descricao": "Figura da Alegria de Divertida Mente em PLA. Leve alegria para sua coleção.",
     "material": "PLA",
     "tamanho": "15 cm",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/28-Alegria-1",
       "imgs/produtos/28-Alegria-2",
@@ -345,11 +274,7 @@
     "descricao": "Figura da Inveja de Divertida Mente em PLA. Novidade da sequência do filme.",
     "material": "PLA",
     "tamanho": "",
-    "tags": [
-      "decoração",
-      "divertidamente",
-      "coleção"
-    ],
+    "tags": ["decoração", "divertidamente", "coleção"],
     "imagens": [
       "imgs/produtos/M-3R2S-Inveja-1",
       "imgs/produtos/M-3R2S-Inveja-2"
@@ -363,13 +288,8 @@
     "descricao": "Vaso tulipa pequeno em PLA. Decoração delicada para mesa ou janela.",
     "material": "ABS",
     "tamanho": "11cm",
-    "tags": [
-      "decoração",
-      "vaso"
-    ],
-    "imagens": [
-      "imgs/produtos/M-A8A7-Vaso-tulipa-P"
-    ]
+    "tags": ["decoração", "vaso"],
+    "imagens": ["imgs/produtos/M-A8A7-Vaso-tulipa-P"]
   },
   {
     "id": "M-75BA",
@@ -379,11 +299,7 @@
     "descricao": "Nome personalizado em estilo Minecraft em PLA. Decoração exclusiva para o quarto.",
     "material": "PLA",
     "tamanho": "~15cm",
-    "tags": [
-      "personalizado",
-      "minecraft",
-      "decoração"
-    ],
+    "tags": ["personalizado", "minecraft", "decoração"],
     "imagens": [
       "imgs/produtos/M-75BA-Nome-minecraft-1",
       "imgs/produtos/M-75BA-Nome-minecraft-2"
@@ -397,14 +313,8 @@
     "descricao": "Nezuko em PLA com detalhes da personagem. Para fãs de Demon Slayer.",
     "material": "PLA",
     "tamanho": "15cm",
-    "tags": [
-      "anime",
-      "decoração",
-      "coleção"
-    ],
-    "imagens": [
-      "imgs/produtos/M-RB5C-Nezuko"
-    ]
+    "tags": ["anime", "decoração", "coleção"],
+    "imagens": ["imgs/produtos/M-RB5C-Nezuko"]
   },
   {
     "id": "M-3AE6",
@@ -414,14 +324,8 @@
     "descricao": "Suporte para PS2 em PLA. Deixe seu console posicionado com estilo e segurança.",
     "material": "PLA",
     "tamanho": "15cm",
-    "tags": [
-      "organização",
-      "suporte",
-      "ps2"
-    ],
-    "imagens": [
-      "imgs/produtos/M-3AE6-Suporte-PS2"
-    ]
+    "tags": ["organização", "suporte", "ps2"],
+    "imagens": ["imgs/produtos/M-3AE6-Suporte-PS2"]
   },
   {
     "id": "5",
@@ -431,11 +335,7 @@
     "descricao": "Banguela e furia da luz em modelo articulado! Para você que quer colecionar e ter seu dragão em casa.",
     "material": "PLA",
     "tamanho": "18cm",
-    "tags": [
-      "brinquedo",
-      "colecionável",
-      "action figure"
-    ],
+    "tags": ["brinquedo", "colecionável", "action figure"],
     "imagens": [
       "imgs/produtos/5-Banguela-e-furia-da-luz-1",
       "imgs/produtos/5-Banguela-e-furia-da-luz-2",
@@ -453,14 +353,8 @@
     "descricao": "Coração artístico em PLA com design diferenciado. Perfeito para presentear.",
     "material": "ABS",
     "tamanho": "15cm",
-    "tags": [
-      "decoração",
-      "dia dos namorados",
-      "presente"
-    ],
-    "imagens": [
-      "imgs/produtos/8-Coração-com-perna-articulado"
-    ]
+    "tags": ["decoração", "dia dos namorados", "presente"],
+    "imagens": ["imgs/produtos/8-Coração-com-perna-articulado"]
   },
   {
     "id": "M-A230",
@@ -470,10 +364,7 @@
     "descricao": "Caixa perfeita para guardar seu pendulo egipcio com segurança! Feito nas medidas exatas para armazenar seu pendulo!",
     "material": "PLA",
     "tamanho": "8 cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/M-A230-Caixa-pendulo-egipcio-1",
       "imgs/produtos/M-A230-Caixa-pendulo-egipcio-2",
@@ -494,10 +385,7 @@
     "descricao": "Pote ideal para levar em viagens, levar pequenos objetos de forma organizada ou até mesmo sua dose diária de Whey!\nO valor inicial é de R$10,00 (pote + tampa). Para mais tamanhos, o valor será alterado conforme demanda.",
     "material": "PLA",
     "tamanho": "5 cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/M-36F7-Pote-container-1",
       "imgs/produtos/M-36F7-Pote-container-2",
@@ -512,10 +400,7 @@
     "descricao": "Luminaria para quem ama Minecraft! Ideal para colocar ao lado da sua cama com uma luz leve e calmante.",
     "material": "PLA",
     "tamanho": "15 cm",
-    "tags": [
-      "decoração",
-      "coleção"
-    ],
+    "tags": ["decoração", "coleção"],
     "imagens": [
       "imgs/produtos/M-4A01-Lanterna-minecraft-1",
       "imgs/produtos/M-4A01-Lanterna-minecraft-2"
@@ -529,10 +414,7 @@
     "descricao": "Caixa feita para guardar seu oráculo de forma segura, aceitando baralhos com medidas de até 12x7 cm",
     "material": "PLA",
     "tamanho": "12 cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/172-Caixa-baralho-lenormand-1",
       "imgs/produtos/172-Caixa-baralho-lenormand-2",
@@ -549,10 +431,7 @@
     "descricao": "Caixa feita para guardar seu oráculo de forma segura, aceitando baralhos com medidas de até 11x7 cm",
     "material": "PLA",
     "tamanho": "14 cm",
-    "tags": [
-      "organização",
-      "caixa"
-    ],
+    "tags": ["organização", "caixa"],
     "imagens": [
       "imgs/produtos/193-Caixa-baralho-Tarot-1",
       "imgs/produtos/193-Caixa-baralho-Tarot-2",
@@ -573,11 +452,7 @@
     "descricao": "O passarinho mais fofo (e nervoso) para sua coleção!",
     "material": "PLA",
     "tamanho": "20 cm",
-    "tags": [
-      "brinquedo",
-      "colecionável",
-      "action figure"
-    ],
+    "tags": ["brinquedo", "colecionável", "action figure"],
     "imagens": [
       "imgs/produtos/M-A3C7-Andry-Birds-Red-1",
       "imgs/produtos/M-A3C7-Andry-Birds-Red-2"
@@ -591,10 +466,7 @@
     "descricao": "Sofisticação em cada detalhe: Conheça o Conjunto de Chaveiros Devil Wears Prada 2.\nO filme que definiu gerações está de volta, e seus acessórios merecem o mesmo nível de prestígio. Una o clássico ao contemporâneo com este set indispensável para colecionadores.",
     "material": "PLA",
     "tamanho": "7 cm",
-    "tags": [
-      "chaveiro",
-      "filme"
-    ],
+    "tags": ["chaveiro", "filme"],
     "imagens": [
       "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-1",
       "imgs/produtos/M-FD43-Chaveiro-Diabo-Veste-Prada-2",
@@ -610,10 +482,7 @@
     "descricao": "Design futurista e cheio de personalidade para deixar sua lata ainda mais estilosa.\nPerfeito para decoração, setup gamer ou para quem curte o visual cyber.",
     "material": "PETG",
     "tamanho": "18 cm",
-    "tags": [
-      "suporte",
-      "lata"
-    ],
+    "tags": ["suporte", "lata"],
     "imagens": [
       "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-1",
       "imgs/produtos/M-6C01-Suporte-lata-Monster-Cyber-2",
@@ -629,11 +498,7 @@
     "descricao": "Personalize o presente ideal para a pessoa que você ama! \nPerfeito para sua mãe ou namorada(o).",
     "material": "PLA",
     "tamanho": "22cm",
-    "tags": [
-      "presente",
-      "dia dos namorados",
-      "dia das mães"
-    ],
+    "tags": ["presente", "dia dos namorados", "dia das mães"],
     "imagens": [
       "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-1",
       "imgs/produtos/M-5406-Caixa-Presente-personalizada-com-flor-2",
@@ -648,10 +513,7 @@
     "descricao": "Surpreenda sua mãe com esse coração de decoração, com cores personalizadas!",
     "material": "PLA",
     "tamanho": "18 cm",
-    "tags": [
-      "presente",
-      "dia das mães"
-    ],
+    "tags": ["presente", "dia das mães"],
     "imagens": [
       "imgs/produtos/M-0ED6-Coração-mãe-1",
       "imgs/produtos/M-0ED6-Coração-mãe-2"
@@ -665,10 +527,7 @@
     "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 100 figurinhas",
     "material": "PLA",
     "tamanho": "9,2 x 6,0",
-    "tags": [
-      "Copa do mundo",
-      "caixa"
-    ],
+    "tags": ["Copa do mundo", "caixa"],
     "imagens": [
       "imgs/produtos/M-5040-Caixa-figurinha-copa-100-1",
       "imgs/produtos/M-5040-Caixa-figurinha-copa-100-2"
@@ -682,10 +541,7 @@
     "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 40 figurinhas e tampa deslizante",
     "material": "PLA",
     "tamanho": "10 X 7,6",
-    "tags": [
-      "Copa do mundo",
-      "caixa"
-    ],
+    "tags": ["Copa do mundo", "caixa"],
     "imagens": [
       "imgs/produtos/M-36F0-Caixa-figurinha-copa-40-tampa-deslizante-1",
       "imgs/produtos/M-36F0-Caixa-figurinha-copa-40-tampa-deslizante-2"
@@ -699,10 +555,7 @@
     "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para mais de 100 figurinhas e trava de segurança!",
     "material": "PLA",
     "tamanho": "10 x 11",
-    "tags": [
-      "Copa do mundo",
-      "caixa"
-    ],
+    "tags": ["Copa do mundo", "caixa"],
     "imagens": [
       "imgs/produtos/M-83B5-Caixa-figurinha-copa-grande-com-trava-1",
       "imgs/produtos/M-83B5-Caixa-figurinha-copa-grande-com-trava-2",
@@ -717,10 +570,7 @@
     "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 100 figurinhas e trava de segurança!",
     "material": "PLA",
     "tamanho": "7,7 x 11",
-    "tags": [
-      "Copa do mundo",
-      "caixa"
-    ],
+    "tags": ["Copa do mundo", "caixa"],
     "imagens": [
       "imgs/produtos/M-2DD0-Caixa-figurinha-copa-média-com-trava-1",
       "imgs/produtos/M-2DD0-Caixa-figurinha-copa-média-com-trava-2"
@@ -734,10 +584,7 @@
     "descricao": "Organize suas figurinhas com mais praticidade e segurança! Suporte para até 100 figurinhas e trava de segurança!\nPersonalize do seu jeito!",
     "material": "PLA",
     "tamanho": "8x11",
-    "tags": [
-      "Copa do mundo",
-      "caixa"
-    ],
+    "tags": ["Copa do mundo", "caixa"],
     "imagens": [
       "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-1",
       "imgs/produtos/M-QGK1-Caixa-figurinha-personalizável-2",
@@ -752,10 +599,7 @@
     "descricao": "Presenteie quem você ama com uma rosa eterna!",
     "material": "PLA",
     "tamanho": "8,7X12",
-    "tags": [
-      "Dia dos namorados",
-      "decoração"
-    ],
+    "tags": ["Dia dos namorados", "decoração"],
     "imagens": [
       "imgs/produtos/M-D3X9-Rosa-Eterna-1",
       "imgs/produtos/M-D3X9-Rosa-Eterna-2"
@@ -769,10 +613,7 @@
     "descricao": "Presenteie quem você ama com esse suporte para fotos em formato de coração! Perfeito para decoração!",
     "material": "PLA",
     "tamanho": "16 cm",
-    "tags": [
-      "Dia dos namorados",
-      "decoração"
-    ],
+    "tags": ["Dia dos namorados", "decoração"],
     "imagens": [
       "imgs/produtos/M-W0EG-Moldura-coração-Love-1",
       "imgs/produtos/M-W0EG-Moldura-coração-Love-2"
@@ -786,15 +627,13 @@
     "descricao": "Carregue sua metade para onde for! Com o chaveiro montável, unu as duas partes com seu amor!",
     "material": "PLA",
     "tamanho": "3 cm",
-    "tags": [
-      "Dia dos namorados",
-      "chaveiro"
-    ],
+    "tags": ["Dia dos namorados", "chaveiro"],
     "imagens": [
       "imgs/produtos/M-H0AP-Chaveiro-montável-coração-1",
       "imgs/produtos/M-H0AP-Chaveiro-montável-coração-2"
-    ],
-    {
+    ]
+  },
+  {
     "id": "M-31MT",
     "nome": "Coração Origami",
     "categoria": "Dia dos namorados",
@@ -802,13 +641,7 @@
     "descricao": "Presenteie seu amor com esse lindo coração em formato de origami!",
     "material": "PLA",
     "tamanho": "13 cm",
-    "tags": [
-      "Dia dos namorados",
-      "decoração"
-    ],
-    "imagens": [
-      "imgs/produtos/M-31MT-Coração-Origami"
-    ]
-  }
+    "tags": ["Dia dos namorados", "decoração"],
+    "imagens": ["imgs/produtos/M-31MT-Coração-Origami"]
   }
 ]
