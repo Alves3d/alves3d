@@ -515,8 +515,9 @@ nav {
 
   function resolveImg(src) {
     if (!src) return '';
-    if (/\.(jpg|jpeg|png|webp)$/i.test(src)) return src;
-    return src + '.jpg';
+    if (/^https?:\/\//i.test(src)) return src;           // URL do Supabase
+    if (/\.(jpg|jpeg|png|webp)$/i.test(src)) return src;   // caminho local com extensão
+    return src + '.jpg';                                   // caminho local sem extensão
   }
 
   function tryNextExt(img) {
@@ -533,6 +534,7 @@ nav {
     }
   }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -594,18 +596,44 @@ nav {
 let allProducts = [];
 let activeCat = 'Todos';
 
+const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 async function loadProducts() {
   try {
-    const res = await fetch('produtos.json?v=' + Date.now());
-    allProducts = await res.json();
+    const { data, error } = await sb
+      .from('produtos')
+      .select('*')
+      .eq('publicado', true)
+      .order('destaque', { ascending: false })
+      .order('ordem')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    // Normaliza para o formato usado pela interface
+    allProducts = (data || []).map(p => ({
+      id: p.codigo,
+      nome: p.nome,
+      categoria: p.categoria,
+      preco: p.preco,
+      descricao: p.descricao || '',
+      material: p.material || '',
+      tamanho: p.tamanho || '',
+      tags: p.tags || [],
+      imagens: p.imagens || [],
+      destaque: p.destaque
+    }));
+
     buildCatFilters();
     filterProducts();
   } catch(e) {
     document.getElementById('productsGrid').innerHTML = `
       <div class="empty-state">
         <div class="empty-state-icon">⚠️</div>
-        <div class="empty-state-title">ARQUIVO NÃO ENCONTRADO</div>
-        <div class="empty-state-desc">Verifique se o arquivo produtos.json está na raiz do repositório.</div>
+        <div class="empty-state-title">ERRO AO CARREGAR</div>
+        <div class="empty-state-desc">Não foi possível carregar o catálogo. Tente recarregar a página.</div>
       </div>`;
   }
 }
