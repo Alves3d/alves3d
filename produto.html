@@ -216,6 +216,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
   function resolveImg(src) {
     if (!src) return '';
+    if (/^https?:\/\//i.test(src)) return src;
     if (/\.(jpg|jpeg|png|webp)$/i.test(src)) return src;
     return src + '.jpg';
   }
@@ -234,6 +235,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     }
   }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -262,14 +264,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 </div>
 
 <script>
+const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 async function loadProduct() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   if (!id || id === 'null') { showNotFound(); return; }
 
   try {
-    const res = await fetch('produtos.json?v=' + Date.now());
-    const products = await res.json();
+    const { data, error } = await sb
+      .from('produtos')
+      .select('*')
+      .eq('publicado', true)
+      .order('ordem');
+    if (error) throw error;
+
+    const products = (data || []).map(x => ({
+      id: x.codigo, nome: x.nome, categoria: x.categoria, preco: x.preco,
+      descricao: x.descricao || '', material: x.material || '',
+      tamanho: x.tamanho || '', tags: x.tags || [], imagens: x.imagens || []
+    }));
+
     const p = products.find(x => String(x.id) === String(id));
     if (!p) { showNotFound(); return; }
 
