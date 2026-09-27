@@ -744,7 +744,7 @@ function renderProducts(products) {
 
 function buildWppLink(p) {
   const vs = varsDe(p);
-  let msg = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}\nCategoria: ${p.categoria}`;
+  let msg = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome} (${p.id})\nCategoria: ${p.categoria}`;
   if (vs.length) msg += `\nOpções disponíveis: ${vs.map(v => v.nome).join(', ')}`;
   msg += `\nPreço: a partir de R$${fmtPreco(precoMin(p))}\n\nPoderia me passar mais informações?`;
   return `https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
