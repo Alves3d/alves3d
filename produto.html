@@ -305,7 +305,7 @@ async function loadProduct() {
 
     produtoAtual = p;
     document.title = p.nome + ' — Alves.3D';
-    const msg = encodeURIComponent(`Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}\nCategoria: ${p.categoria}\nPreço: R$${p.preco}\n\nPoderia me passar mais informações?`);
+    const msg = encodeURIComponent(`Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome} (${p.id})\nCategoria: ${p.categoria}\nPreço: R$${p.preco}\n\nPoderia me passar mais informações?`);
 
     document.getElementById('content').innerHTML = `
       <div class="page">
@@ -495,7 +495,7 @@ function atualizarWpp(){
   const v = vs.length ? vs[varIndex] : null;
   const preco = v && v.preco != null ? v.preco : p.preco;
 
-  let txt = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}`;
+  let txt = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome} (${p.id})`;
   if (v) txt += `\nOpção: ${v.nome}`;
   txt += `\nCategoria: ${p.categoria}\nPreço: R$${fmtPreco(preco)}\n\nPoderia me passar mais informações?`;
 
