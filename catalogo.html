@@ -596,6 +596,31 @@ nav {
 let allProducts = [];
 let activeCat = 'Todos';
 
+function varsDe(p){
+  return (p.temVariacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
+}
+
+// Menor preço considerando as variações
+function precoMin(p){
+  const vs = varsDe(p);
+  const precos = vs.map(v => v.preco != null ? Number(v.preco) : (p.preco != null ? Number(p.preco) : null)).filter(x => x != null);
+  if (precos.length) return Math.min(...precos);
+  return p.preco != null ? Number(p.preco) : null;
+}
+
+function fmtPreco(v){
+  if (v == null) return '—';
+  return Number(v).toFixed(2).replace('.',',').replace(/,00$/,'');
+}
+
+// Capa: 1ª foto do produto, ou a 1ª foto da 1ª variação que tiver
+function capaDe(p){
+  if (p.imagens && p.imagens[0]) return p.imagens[0];
+  const vs = varsDe(p);
+  for (const v of vs) if (v.imagens && v.imagens[0]) return v.imagens[0];
+  return '';
+}
+
 const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -623,7 +648,9 @@ async function loadProducts() {
       tamanho: p.tamanho || '',
       tags: p.tags || [],
       imagens: p.imagens || [],
-      destaque: p.destaque
+      destaque: p.destaque,
+      temVariacoes: !!p.tem_variacoes,
+      variacoes: p.variacoes || []
     }));
 
     buildCatFilters();
@@ -660,12 +687,14 @@ function filterProducts() {
 
   let filtered = allProducts.filter(p => {
     const matchCat = activeCat === 'Todos' || p.categoria === activeCat;
-    const matchQ = !q || p.nome.toLowerCase().includes(q) || p.descricao.toLowerCase().includes(q) || (p.tags && p.tags.some(t => t.toLowerCase().includes(q)));
+    const matchQ = !q || p.nome.toLowerCase().includes(q) || p.descricao.toLowerCase().includes(q)
+      || (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
+      || varsDe(p).some(v => (v.nome||'').toLowerCase().includes(q));
     return matchCat && matchQ;
   });
 
-  if (sort === 'price-asc') filtered.sort((a,b) => a.preco - b.preco);
-  else if (sort === 'price-desc') filtered.sort((a,b) => b.preco - a.preco);
+  if (sort === 'price-asc') filtered.sort((a,b) => (precoMin(a) ?? 1e9) - (precoMin(b) ?? 1e9));
+  else if (sort === 'price-desc') filtered.sort((a,b) => (precoMin(b) ?? -1) - (precoMin(a) ?? -1));
   else if (sort === 'name-asc') filtered.sort((a,b) => a.nome.localeCompare(b.nome));
 
   document.getElementById('resultsCount').textContent = `${filtered.length} produto${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
@@ -687,7 +716,7 @@ function renderProducts(products) {
   grid.innerHTML = products.map(p => `
     <div class="product-card" onclick="location.href='produto.html?id=${encodeURIComponent(String(p.id))}'">
       <div class="product-img">
-        <img src="${resolveImg((p.imagens&&p.imagens[0])||p.imagem||'')}" alt="${p.nome}" loading="lazy" onerror="tryNextExt(this)">
+        <img src="${resolveImg(capaDe(p))}" alt="${p.nome}" loading="lazy" onerror="tryNextExt(this)">
         <div class="product-img-placeholder" style="display:none">🖨️</div>
       </div>
       <div class="product-body">
@@ -695,13 +724,14 @@ function renderProducts(products) {
         <div class="product-name">${p.nome}</div>
         <div class="product-desc">${p.descricao}</div>
         <div class="product-meta">
-          ${(p.tags || []).slice(0,3).map(t => `<span class="meta-tag">${t}</span>`).join('')}
+          ${varsDe(p).length ? `<span class="meta-tag" style="border-color:var(--accent);color:var(--accent)">${varsDe(p).length} opções</span>` : ''}
+          ${(p.tags || []).slice(0, varsDe(p).length ? 2 : 3).map(t => `<span class="meta-tag">${t}</span>`).join('')}
         </div>
       </div>
       <div class="product-footer">
         <div class="product-price">
           <small>a partir de</small>
-          R$${p.preco}
+          R$${fmtPreco(precoMin(p))}
         </div>
         <a href="${buildWppLink(p)}" target="_blank" class="product-wpp" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -713,7 +743,10 @@ function renderProducts(products) {
 }
 
 function buildWppLink(p) {
-  const msg = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}\nCategoria: ${p.categoria}\nPreço: R$${p.preco}\n\nPoderia me passar mais informações?`;
+  const vs = varsDe(p);
+  let msg = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}\nCategoria: ${p.categoria}`;
+  if (vs.length) msg += `\nOpções disponíveis: ${vs.map(v => v.nome).join(', ')}`;
+  msg += `\nPreço: a partir de R$${fmtPreco(precoMin(p))}\n\nPoderia me passar mais informações?`;
   return `https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
 }
 
