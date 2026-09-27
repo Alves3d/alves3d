@@ -169,6 +169,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .lightbox-close{position:absolute;top:20px;right:30px;color:var(--text);font-size:40px;font-family:var(--sans);cursor:pointer;z-index:100000;transition:color .2s;line-height:1}
 .lightbox-close:hover{color:var(--accent)}
 
+
+/* VARIAÇÕES */
+.var-block{display:flex;flex-direction:column;gap:10px;padding:18px 0;border-bottom:1px solid var(--border)}
+.var-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2)}
+.var-label b{color:var(--accent);font-weight:400}
+.var-opts{display:flex;flex-wrap:wrap;gap:8px}
+.var-opt{display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;transition:all .2s;font-size:14px;color:var(--text2);font-family:var(--sans)}
+.var-opt:hover{border-color:var(--accent);color:var(--text)}
+.var-opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);font-weight:600}
+.var-opt-img{width:26px;height:26px;border-radius:5px;object-fit:contain;background:var(--surface2);flex-shrink:0}
+.var-desc{font-size:13px;color:var(--text2);line-height:1.6;font-style:italic}
+
 /* MOBILE */
 @media(max-width:768px){
   .carousel-btn{opacity:.7!important}
@@ -284,12 +296,14 @@ async function loadProduct() {
     const products = (data || []).map(x => ({
       id: x.codigo, nome: x.nome, categoria: x.categoria, preco: x.preco,
       descricao: x.descricao || '', material: x.material || '',
-      tamanho: x.tamanho || '', tags: x.tags || [], imagens: x.imagens || []
+      tamanho: x.tamanho || '', tags: x.tags || [], imagens: x.imagens || [],
+      temVariacoes: !!x.tem_variacoes, variacoes: x.variacoes || []
     }));
 
     const p = products.find(x => String(x.id) === String(id));
     if (!p) { showNotFound(); return; }
 
+    produtoAtual = p;
     document.title = p.nome + ' — Alves.3D';
     const msg = encodeURIComponent(`Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}\nCategoria: ${p.categoria}\nPreço: R$${p.preco}\n\nPoderia me passar mais informações?`);
 
@@ -300,13 +314,11 @@ async function loadProduct() {
             <div class="carousel-track" id="carouselTrack">
               ${buildCarouselSlides(p)}
             </div>
-            ${(p.imagens||[p.imagem||'']).length > 1 ? `
             <button class="carousel-btn prev" onclick="slideCarousel(-1)">&#8249;</button>
-            <button class="carousel-btn next" onclick="slideCarousel(1)">&#8250;</button>` : ''}
+            <button class="carousel-btn next" onclick="slideCarousel(1)">&#8250;</button>
           </div>
-          ${(p.imagens||[p.imagem||'']).length > 1 ? `
           <div class="carousel-dots" id="carouselDots"></div>
-          <div class="carousel-thumbs" id="carouselThumbs"></div>` : ''}
+          <div class="carousel-thumbs" id="carouselThumbs"></div>
         </div>
         <div class="product-info">
           <div class="breadcrumb">
@@ -321,18 +333,30 @@ async function loadProduct() {
           <div class="product-price-block">
             <div>
               <div class="price-label">a partir de</div>
-              <div class="price-val">R$${p.preco}</div>
+              <div class="price-val" id="precoVal">R$${fmtPreco(varsAtivas(p).length && varsAtivas(p)[0].preco != null ? varsAtivas(p)[0].preco : p.preco)}</div>
             </div>
             <div class="price-obs">Valor exato confirmado no WhatsApp conforme tamanho e detalhes</div>
           </div>
           <div class="product-desc">${p.descricao}</div>
+          ${varsAtivas(p).length ? `
+          <div class="var-block">
+            <div class="var-label">Escolha a opção · <b id="varNome">${esc(varsAtivas(p)[0].nome)}</b></div>
+            <div class="var-opts" id="varOpts">
+              ${varsAtivas(p).map((v,i) => `
+                <button class="var-opt${i===0?' sel':''}" onclick="selecionarVar(${i})">
+                  ${v.imagens && v.imagens[0] ? `<img class="var-opt-img" src="${esc(v.imagens[0])}" alt="">` : ''}
+                  ${esc(v.nome)}
+                </button>`).join('')}
+            </div>
+            <div class="var-desc" id="varDesc">${esc(varsAtivas(p)[0].descricao || '')}</div>
+          </div>` : ''}
           <div class="specs-grid">
             <div class="spec-box"><div class="spec-lbl">Material</div><div class="spec-val">${p.material}</div></div>
             <div class="spec-box"><div class="spec-lbl">Tamanho</div><div class="spec-val">${p.tamanho}</div></div>
           </div>
           <div class="tags-row">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
           <div class="actions">
-            <a href="https://wa.me/5516992364004?text=${msg}" target="_blank" class="btn-wpp">
+            <a href="https://wa.me/5516992364004?text=${msg}" target="_blank" class="btn-wpp" id="btnWpp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Quero este produto
             </a>
@@ -382,12 +406,110 @@ function showNotFound() {
   `;
 }
 
+
+// ===== VARIAÇÕES =====
+let produtoAtual = null;
+let varIndex = 0;
+
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function fmtPreco(v){
+  if (v == null) return '—';
+  return Number(v).toFixed(2).replace('.',',').replace(/,00$/,'');
+}
+
+function varsAtivas(p){
+  return (p && p.temVariacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
+}
+
+// Imagens a exibir: as da variação, ou as do produto se a variação não tiver
+function imagensDe(p, i){
+  const vs = varsAtivas(p);
+  if (vs.length && vs[i] && vs[i].imagens && vs[i].imagens.length) return vs[i].imagens;
+  return p.imagens || [];
+}
+
+function selecionarVar(i){
+  const p = produtoAtual;
+  const vs = varsAtivas(p);
+  if (!vs.length || !vs[i]) return;
+  varIndex = i;
+  const v = vs[i];
+
+  document.querySelectorAll('#varOpts .var-opt').forEach((b, idx) => b.classList.toggle('sel', idx === i));
+
+  const nomeEl = document.getElementById('varNome');
+  if (nomeEl) nomeEl.textContent = v.nome;
+
+  const descEl = document.getElementById('varDesc');
+  if (descEl) descEl.textContent = v.descricao || '';
+
+  const precoEl = document.getElementById('precoVal');
+  if (precoEl) precoEl.textContent = 'R$' + fmtPreco(v.preco != null ? v.preco : p.preco);
+
+  // Recarrega o carrossel com as imagens da variação
+  carouselImages = imagensDe(p, i);
+  carouselIndex = 0;
+  const track = document.getElementById('carouselTrack');
+  if (track){
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(0)';
+    track.innerHTML = carouselImages.map(src => `
+      <div class="carousel-slide">
+        <img src="${resolveImg(src)}" alt="${esc(p.nome)}" onerror="tryNextExt(this)" onclick="openLightbox(this.src)">
+        <div class="carousel-slide-placeholder" style="display:none">🖨️</div>
+      </div>`).join('');
+    setTimeout(() => track.style.transition = '', 50);
+  }
+  reconstruirControles();
+  atualizarWpp();
+}
+
+// Recria setas, bolinhas e miniaturas conforme a quantidade de imagens atual
+function reconstruirControles(){
+  const wrap = document.getElementById('carouselWrap');
+  const dots = document.getElementById('carouselDots');
+  const thumbs = document.getElementById('carouselThumbs');
+  const varias = carouselImages.length > 1;
+
+  wrap.querySelectorAll('.carousel-btn').forEach(b => b.style.display = varias ? 'flex' : 'none');
+
+  if (dots){
+    dots.style.display = varias ? 'flex' : 'none';
+    dots.innerHTML = varias ? carouselImages.map((_,i) =>
+      `<button class="carousel-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></button>`).join('') : '';
+  }
+  if (thumbs){
+    thumbs.style.display = varias ? 'flex' : 'none';
+    thumbs.innerHTML = varias ? carouselImages.map((src,i) =>
+      `<div class="carousel-thumb ${i===0?'active':''}" onclick="goToSlide(${i})">
+         <img src="${resolveImg(src)}" alt="foto ${i+1}" onerror="tryNextExt(this)">
+       </div>`).join('') : '';
+  }
+}
+
+function atualizarWpp(){
+  const p = produtoAtual;
+  if (!p) return;
+  const vs = varsAtivas(p);
+  const v = vs.length ? vs[varIndex] : null;
+  const preco = v && v.preco != null ? v.preco : p.preco;
+
+  let txt = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome}`;
+  if (v) txt += `\nOpção: ${v.nome}`;
+  txt += `\nCategoria: ${p.categoria}\nPreço: R$${fmtPreco(preco)}\n\nPoderia me passar mais informações?`;
+
+  const btn = document.getElementById('btnWpp');
+  if (btn) btn.href = 'https://wa.me/5516992364004?text=' + encodeURIComponent(txt);
+}
+
 // CARROSSEL
 let carouselIndex = 0;
 let carouselImages = [];
 
 function buildCarouselSlides(p) {
-  carouselImages = p.imagens || (p.imagem ? [p.imagem] : ['']);
+  carouselImages = imagensDe(p, 0);
+  if (!carouselImages.length) carouselImages = [''];
   return carouselImages.map((src, i) => `
     <div class="carousel-slide">
       <img src="${resolveImg(src)}" alt="${p.nome}" onerror="tryNextExt(this)" onclick="openLightbox(this.src)">
@@ -397,24 +519,8 @@ function buildCarouselSlides(p) {
 }
 
 function initCarousel() {
-  if (carouselImages.length <= 1) return;
-
-  const dots = document.getElementById('carouselDots');
-  const thumbs = document.getElementById('carouselThumbs');
-
-  if (dots) {
-    dots.innerHTML = carouselImages.map((_, i) =>
-      `<button class="carousel-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></button>`
-    ).join('');
-  }
-
-  if (thumbs) {
-    thumbs.innerHTML = carouselImages.map((src, i) =>
-      `<div class="carousel-thumb ${i===0?'active':''}" onclick="goToSlide(${i})">
-        <img src="${resolveImg(src)}" alt="foto ${i+1}" onerror="tryNextExt(this)">
-      </div>`
-    ).join('');
-  }
+  reconstruirControles();
+  atualizarWpp();
 }
 
 function goToSlide(i) {
