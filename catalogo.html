@@ -596,6 +596,8 @@ nav {
 let allProducts = [];
 let activeCat = 'Todos';
 
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
 function varsDe(p){
   return (p.temVariacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
 }
@@ -716,16 +718,16 @@ function renderProducts(products) {
   grid.innerHTML = products.map(p => `
     <div class="product-card" onclick="location.href='produto.html?id=${encodeURIComponent(String(p.id))}'">
       <div class="product-img">
-        <img src="${resolveImg(capaDe(p))}" alt="${p.nome}" loading="lazy" onerror="tryNextExt(this)">
+        <img src="${resolveImg(capaDe(p))}" alt="${esc(p.nome)}" loading="lazy" onerror="tryNextExt(this)">
         <div class="product-img-placeholder" style="display:none">🖨️</div>
       </div>
       <div class="product-body">
-        <div class="product-cat">${p.categoria}</div>
-        <div class="product-name">${p.nome}</div>
-        <div class="product-desc">${p.descricao}</div>
+        <div class="product-cat">${esc(p.categoria)}</div>
+        <div class="product-name">${esc(p.nome)}</div>
+        <div class="product-desc">${esc((p.descricao||'').replace(/\s*\n+\s*/g,' '))}</div>
         <div class="product-meta">
           ${varsDe(p).length ? `<span class="meta-tag" style="border-color:var(--accent);color:var(--accent)">${varsDe(p).length} opções</span>` : ''}
-          ${(p.tags || []).slice(0, varsDe(p).length ? 2 : 3).map(t => `<span class="meta-tag">${t}</span>`).join('')}
+          ${(p.tags || []).slice(0, varsDe(p).length ? 2 : 3).map(t => `<span class="meta-tag">${esc(t)}</span>`).join('')}
         </div>
       </div>
       <div class="product-footer">
