@@ -296,7 +296,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
           <div class="drop" id="drop" onclick="document.getElementById('file').click()">
             <div class="drop-icon">📷</div>
             <div class="drop-txt">Clique ou arraste as fotos aqui</div>
-            <div class="drop-sub">JPG, PNG ou WEBP · até 10MB cada · a 1ª foto é a capa</div>
+            <div class="drop-sub">JPG, PNG ou WEBP · otimizadas automaticamente · a 1ª foto é a capa</div>
           </div>
           <input type="file" id="file" accept="image/*" multiple style="display:none" onchange="enviarFotos(this.files)">
           <div id="uploadStatus"></div>
@@ -518,20 +518,30 @@ async function enviarFotos(files){
   const cod = slugCodigo();
   const status = document.getElementById('uploadStatus');
 
+  let totalAntes = 0, totalDepois = 0;
+
   for (let k = 0; k < files.length; k++){
     const f = files[k];
-    status.innerHTML = `<div class="uploading"><div class="spin"></div><span>Enviando ${k+1} de ${files.length}: ${esc(f.name)}</span></div>`;
-    const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
-    const caminho = `${cod}/${Date.now()}-${k}.${ext}`;
-    const { error } = await sb.storage.from(BUCKET).upload(caminho, f, { cacheControl:'3600', upsert:false });
+    status.innerHTML = `<div class="uploading"><div class="spin"></div><span>Otimizando ${k+1} de ${files.length}: ${esc(f.name)}</span></div>`;
+
+    const img = await comprimir(f);
+    totalAntes += img.original;
+    totalDepois += img.final;
+
+    status.innerHTML = `<div class="uploading"><div class="spin"></div><span>Enviando ${k+1} de ${files.length} · ${mb(img.original)} → ${mb(img.final)}</span></div>`;
+
+    const caminho = `${cod}/${Date.now()}-${k}.${img.ext}`;
+    const { error } = await sb.storage.from(BUCKET).upload(caminho, img.blob, { cacheControl:'3600', upsert:false, contentType: img.blob.type || 'image/webp' });
     if (error){ toast('Erro no upload: ' + error.message, false); continue; }
     const { data } = sb.storage.from(BUCKET).getPublicUrl(caminho);
     fotos.push(data.publicUrl);
     renderThumbs();
   }
+
   status.innerHTML = '';
   document.getElementById('file').value = '';
-  toast('Fotos enviadas!', true);
+  const economia = totalAntes > 0 ? Math.round((1 - totalDepois/totalAntes) * 100) : 0;
+  toast(economia > 5 ? `Fotos enviadas · ${economia}% menores (${mb(totalAntes)} → ${mb(totalDepois)})` : 'Fotos enviadas!', true);
 }
 
 // Drag & drop
@@ -540,6 +550,66 @@ const drop = document.getElementById('drop');
 ['dragleave','drop'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove('over'); }));
 drop.addEventListener('drop', ev => enviarFotos(ev.dataTransfer.files));
 
+
+
+// ===== COMPRESSÃO DE IMAGEM =====
+// Redimensiona para no máximo 1600px e converte para WebP antes de enviar.
+// Reduz ~85% do peso sem diferença visível no site.
+const MAX_LADO = 1600;
+const QUALIDADE = 0.82;
+
+function comprimir(file){
+  return new Promise(resolve => {
+    // GIF animado e SVG passam direto (canvas quebraria a animação)
+    if (file.type === 'image/gif' || file.type === 'image/svg+xml'){
+      return resolve({ blob: file, ext: file.name.split('.').pop().toLowerCase(), original: file.size, final: file.size });
+    }
+
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let { width: w, height: h } = img;
+
+      // Só reduz, nunca aumenta
+      if (w > MAX_LADO || h > MAX_LADO){
+        const escala = MAX_LADO / Math.max(w, h);
+        w = Math.round(w * escala);
+        h = Math.round(h * escala);
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, 0, 0, w, h);
+
+      canvas.toBlob(blob => {
+        // Se a compressão não ajudou, mantém o original
+        if (!blob || blob.size >= file.size){
+          return resolve({ blob: file, ext: file.name.split('.').pop().toLowerCase(), original: file.size, final: file.size });
+        }
+        resolve({ blob, ext: 'webp', original: file.size, final: blob.size });
+      }, 'image/webp', QUALIDADE);
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve({ blob: file, ext: file.name.split('.').pop().toLowerCase(), original: file.size, final: file.size });
+    };
+
+    img.src = url;
+  });
+}
+
+function mb(bytes){
+  return bytes >= 1048576
+    ? (bytes/1048576).toFixed(1) + ' MB'
+    : Math.round(bytes/1024) + ' KB';
+}
 
 // ===== VARIAÇÕES =====
 function toggleVariacoes(){
@@ -634,18 +704,28 @@ async function enviarFotosVar(vi, files){
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9-]/g,'-').toLowerCase();
   const status = document.getElementById('statusVar' + vi);
 
+  let totalAntes = 0, totalDepois = 0;
+
   for (let k = 0; k < files.length; k++){
     const f = files[k];
-    if (status) status.innerHTML = `<div class="uploading"><div class="spin"></div><span>Enviando ${k+1} de ${files.length}...</span></div>`;
-    const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
-    const caminho = `${cod}/variacoes/${nomeVar}-${Date.now()}-${k}.${ext}`;
-    const { error } = await sb.storage.from(BUCKET).upload(caminho, f, { cacheControl:'3600', upsert:false });
+    if (status) status.innerHTML = `<div class="uploading"><div class="spin"></div><span>Otimizando ${k+1} de ${files.length}...</span></div>`;
+
+    const img = await comprimir(f);
+    totalAntes += img.original;
+    totalDepois += img.final;
+
+    if (status) status.innerHTML = `<div class="uploading"><div class="spin"></div><span>Enviando ${k+1} de ${files.length} · ${mb(img.original)} → ${mb(img.final)}</span></div>`;
+
+    const caminho = `${cod}/variacoes/${nomeVar}-${Date.now()}-${k}.${img.ext}`;
+    const { error } = await sb.storage.from(BUCKET).upload(caminho, img.blob, { cacheControl:'3600', upsert:false, contentType: img.blob.type || 'image/webp' });
     if (error){ toast('Erro no upload: ' + error.message, false); continue; }
     const { data } = sb.storage.from(BUCKET).getPublicUrl(caminho);
     variacoes[vi].imagens.push(data.publicUrl);
   }
+
   renderVariacoes();
-  toast('Fotos da variação enviadas!', true);
+  const economia = totalAntes > 0 ? Math.round((1 - totalDepois/totalAntes) * 100) : 0;
+  toast(economia > 5 ? `Fotos enviadas · ${economia}% menores` : 'Fotos da variação enviadas!', true);
 }
 
 function slugCodigo(){
