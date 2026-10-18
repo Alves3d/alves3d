@@ -2,781 +2,479 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo — Alves.3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Catálogo — Alves.3D | Peças em impressão 3D</title>
+<meta name="description" content="Catálogo de peças em impressão 3D da Alves.3D: chaveiros, decoração, caixas, natal, personagens, organizadores e muito mais. Peça pelo WhatsApp e receba em todo o Brasil.">
+<link rel="canonical" href="https://alves3d.com.br/catalogo.html">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Catálogo completo de peças 3D personalizadas da Alves.3D. Chaveiros, decoração, utilidades, geek e muito mais.">
+<meta name="theme-color" content="#080808">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Catálogo — Alves.3D">
+<meta property="og:description" content="Peças em impressão 3D com fotos, opções e preços. Peça direto pelo WhatsApp.">
+<meta property="og:image" content="https://alves3d.com.br/imgs/hero-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ===== TEMA ESCURO (padrão) ===== */
-:root {
-  --bg: #080808;
-  --bg2: #0f0f0f;
-  --surface: #141414;
-  --surface2: #1c1c1c;
-  --accent: #4176e1;
-  --accent2: #5b8ff9;
-  --text: #f0ede6;
-  --text2: #a8a49e;
-  --border: rgba(255,255,255,0.07);
-  --nav-bg: rgba(8,8,8,0.92);
-  --noise-opacity: 0.03;
-  --shadow: rgba(0,0,0,0.4);
-  --serif: 'Bebas Neue', sans-serif;
-  --sans: 'DM Sans', sans-serif;
-  --mono: 'DM Mono', monospace;
-}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://bhqcdzthiatoonbkjioe.supabase.co" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-/* ===== TEMA CLARO ===== */
-:root[data-theme="light"] {
-  --bg: #fafaf9;
-  --bg2: #f5f5f4;
-  --surface: #ffffff;
-  --surface2: #f4f4f5;
-  --accent: #2f5fd0;
-  --accent2: #4176e1;
-  --text: #18181b;
-  --text2: #71717a;
-  --border: rgba(0,0,0,0.10);
-  --nav-bg: rgba(250,250,249,0.92);
-  --noise-opacity: 0.015;
-  --shadow: rgba(0,0,0,0.10);
-}
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  overflow-x: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: var(--noise-opacity);
-  pointer-events: none;
-  z-index: 9998;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 48px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.3s ease;
-}
-
-.nav-logo {
-  font-family: var(--serif);
-  font-size: 24px;
-  letter-spacing: 3px;
-  color: var(--text);
-  text-decoration: none;
-}
-.nav-logo em { color: var(--accent); font-style: normal; }
-
-.nav-back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  font-family: var(--mono);
-}
-.nav-back:hover { color: var(--text); }
-
-.nav-wpp {
-  background: #25D366;
-  color: #000;
-  padding: 10px 20px;
-  border-radius: 100px;
-  font-weight: 600;
-  font-size: 13px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-.nav-wpp:hover { background: #1db954; transform: translateY(-1px); }
-
-/* THEME TOGGLE */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  color: var(--text);
-  font-size: 16px;
-  flex-shrink: 0;
-}
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: rotate(15deg);
-}
-.theme-toggle svg { width: 18px; height: 18px; }
-.icon-sun { display: none; }
-:root[data-theme="light"] .icon-sun { display: block; }
-:root[data-theme="light"] .icon-moon { display: none; }
-
-/* LAYOUT */
-.page {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 100vh;
-  padding-top: 73px;
-}
-
-/* SIDEBAR */
-.sidebar {
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 36px 24px;
-  position: sticky;
-  top: 73px;
-  height: calc(100vh - 73px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-  transition: background 0.3s ease;
-}
-
-.sidebar-title {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text2);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sidebar-title::before {
-  content: '';
-  width: 16px; height: 1px;
-  background: var(--accent);
-}
-
-/* SEARCH */
-.search-wrap { position: relative; margin-bottom: 28px; }
-.search-input {
-  width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 14px;
-  padding: 10px 14px 10px 36px;
-  outline: none;
-  transition: border-color 0.2s, background 0.3s;
-}
-.search-input:focus { border-color: var(--accent); }
-.search-input::placeholder { color: var(--text2); }
-.search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text2);
-  font-size: 14px;
-}
-
-/* FILTERS */
-.filter-group { margin-bottom: 28px; }
-.cat-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: none;
-  border: 1px solid transparent;
-  color: var(--text2);
-  font-family: var(--sans);
-  font-size: 14px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: left;
-  margin-bottom: 2px;
-}
-.cat-btn:hover { background: var(--surface2); color: var(--text); }
-.cat-btn.active {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
-}
-.cat-count {
-  font-family: var(--mono);
-  font-size: 11px;
-  background: var(--surface2);
-  padding: 2px 7px;
-  border-radius: 100px;
-}
-.cat-btn.active .cat-count {
-  background: color-mix(in srgb, var(--accent) 20%, transparent);
-  color: var(--accent);
-}
-
-/* SORT */
-.sort-select {
-  width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 14px;
-  padding: 10px 14px;
-  outline: none;
-  appearance: none;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.3s;
-}
-.sort-select:focus { border-color: var(--accent); }
-
-/* MAIN */
-.main { padding: 36px 40px; }
-.main-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.main-title {
-  font-family: var(--serif);
-  font-size: 36px;
-  letter-spacing: 2px;
-  line-height: 1;
-}
-.main-title span { color: var(--accent); }
-.results-count {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text2);
-  letter-spacing: 0.1em;
-}
-
-/* GRID */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-}
-
-/* PRODUCT CARD */
-.product-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-.product-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px var(--shadow);
-}
-
-.product-img {
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: var(--surface2);
-  position: relative;
-}
-.product-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  transition: transform 0.4s ease;
-  background: var(--surface2);
-  padding: 8px;
-  box-sizing: border-box;
-}
-.product-card:hover .product-img img { transform: scale(1.06); }
-.product-img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  color: var(--text2);
-  opacity: 0.3;
-}
-
-.product-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-.product-cat {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.product-name {
-  font-family: var(--serif);
-  font-size: 20px;
-  letter-spacing: 1px;
-  line-height: 1.1;
-  color: var(--text);
-}
-.product-desc {
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.5;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.product-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-.meta-tag {
-  font-size: 10px;
-  font-family: var(--mono);
-  padding: 2px 8px;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-  color: var(--text2);
-}
-
-.product-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  border-top: 1px solid var(--border);
-  background: var(--surface2);
-}
-.product-price {
-  font-family: var(--serif);
-  font-size: 28px;
-  letter-spacing: 1px;
-  color: var(--text);
-  line-height: 1;
-}
-.product-price small {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: var(--text2);
-  display: block;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-.product-wpp {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #25D366;
-  color: #000;
-  padding: 8px 14px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.product-wpp:hover { background: #1db954; transform: translateY(-1px); }
-
-/* EMPTY STATE */
-.empty-state { grid-column: 1 / -1; text-align: center; padding: 80px 20px; }
-.empty-state-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.3; }
-.empty-state-title { font-family: var(--serif); font-size: 28px; letter-spacing: 2px; margin-bottom: 8px; }
-.empty-state-desc { font-size: 14px; color: var(--text2); }
-
-/* LOADING */
-.loading {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 80px;
-  color: var(--text2);
-}
-.loading-spinner {
-  width: 32px; height: 32px;
-  border: 2px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* MOBILE FILTER BTN */
-.mobile-filter-btn {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 8px 14px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-family: var(--sans);
-  cursor: pointer;
-  transition: all .2s;
-}
-.mobile-filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  nav { padding: 16px 20px; }
-  .mobile-filter-btn { display: flex; }
-  .page { grid-template-columns: 1fr; }
-  .sidebar {
-    position: fixed;
-    top: 73px; left: 0; bottom: 0;
-    width: 280px;
-    z-index: 90;
-    transform: translateX(-100%);
-    transition: transform .3s ease;
-    border-right: 1px solid var(--border);
-    border-bottom: none;
-  }
-  .sidebar.open { transform: translateX(0); }
-  .sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    z-index: 89;
-    display: none;
-  }
-  .sidebar-overlay.active { display: block; }
-  .main { padding: 20px; }
-  .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-  .nav-back span { display: none; }
-  .nav-wpp { padding: 8px 14px; font-size: 12px; }
-  .theme-toggle { width: 34px; height: 34px; }
-}
-</style>
+<script>
+  try { if (localStorage.getItem('alves3d-theme') === 'light') document.documentElement.setAttribute('data-theme','light'); } catch(e){}
+</script>
 
 <!-- Google Analytics — substitua G-XXXXXXXXXX pelo seu ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 
-  // ===== TEMA — aplicar antes do render para evitar "flash" =====
-  (function() {
-    var saved = localStorage.getItem('alves3d-theme');
-    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-  })();
+<style>
+:root{
+  --bg:#080808; --bg2:#0d0d0f; --surface:#141416; --surface2:#1c1c20;
+  --accent:#4176e1; --accent2:#5b8ff9; --cyan:#3fd0e0;
+  --text:#f0ede6; --text2:#a8a49e; --text3:#6f6b66;
+  --border:rgba(255,255,255,.08); --border2:rgba(255,255,255,.14);
+  --wpp:#25D366; --wpp2:#1db954;
+  --shadow:0 18px 50px rgba(0,0,0,.45);
+  --serif:'Bebas Neue',Impact,sans-serif; --sans:'DM Sans',system-ui,sans-serif; --mono:'DM Mono',ui-monospace,monospace;
+  --pad:clamp(16px,4vw,48px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --navh:66px;
+}
+:root[data-theme="light"]{
+  --bg:#f7f7f5; --bg2:#efefec; --surface:#ffffff; --surface2:#f1f1ef;
+  --accent:#2f5fd0; --accent2:#4176e1; --cyan:#0e9fb3;
+  --text:#18181b; --text2:#5f5f66; --text3:#8f8f96;
+  --border:rgba(0,0,0,.09); --border2:rgba(0,0,0,.16);
+  --shadow:0 18px 50px rgba(20,20,40,.12);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden;transition:background .35s,color .35s}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.ic{width:1em;height:1em;flex-shrink:0;fill:currentColor}
 
-  function toggleTheme() {
-    var root = document.documentElement;
-    var isLight = root.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      root.removeAttribute('data-theme');
-      localStorage.setItem('alves3d-theme', 'dark');
-    } else {
-      root.setAttribute('data-theme', 'light');
-      localStorage.setItem('alves3d-theme', 'light');
-    }
-  }
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;height:var(--navh);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 var(--pad);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--serif);font-size:25px;letter-spacing:3px;text-decoration:none;line-height:1}
+.logo em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current]{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--border2);background:var(--surface);color:var(--text);display:grid;place-items:center;transition:border-color .2s,color .2s,transform .3s var(--ease)}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent);transform:rotate(18deg)}
+.icon-btn svg{width:17px;height:17px}
+.i-sun{display:none}
+:root[data-theme="light"] .i-sun{display:block}
+:root[data-theme="light"] .i-moon{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;padding:13px 24px;transition:transform .25s var(--ease),background .2s,border-color .2s,box-shadow .25s;white-space:nowrap;line-height:1.2}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-wpp{background:var(--wpp);color:#06260f}
+.btn-wpp:hover{background:var(--wpp2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,211,102,.28)}
+.btn-ghost{border-color:var(--border2);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{padding:9px 16px;font-size:13px}
+.btn .ic{font-size:18px}
 
-  // Suporte automático a múltiplas extensões de imagem
-  const IMG_EXTS = ['.jpg', '.jpeg', '.png', '.webp'];
+/* CABEÇALHO */
+.head{padding:clamp(28px,5vw,56px) var(--pad) 18px;position:relative;isolation:isolate}
+.head::before{content:'';position:absolute;inset:0;z-index:-1;
+  background-image:linear-gradient(color-mix(in srgb,var(--accent) 8%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--accent) 8%,transparent) 1px,transparent 1px);
+  background-size:40px 40px;mask-image:linear-gradient(to bottom,#000,transparent);-webkit-mask-image:linear-gradient(to bottom,#000,transparent)}
+.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.crumb a{text-decoration:none;color:var(--text2)}
+.crumb a:hover{color:var(--accent)}
+.title{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,92px);line-height:.9;letter-spacing:1px}
+.title em{font-style:normal;color:var(--accent)}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.count{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--text2);margin-top:10px}
+.tools{display:flex;gap:10px;flex:1 1 420px;max-width:560px}
+.search{position:relative;flex:1}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text3);pointer-events:none}
+.search input{width:100%;height:48px;border-radius:100px;border:1px solid var(--border2);background:var(--surface);padding:0 42px 0 46px;outline:none;transition:border-color .2s,box-shadow .2s}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.search input::placeholder{color:var(--text3)}
+.search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;border:none;background:var(--surface2);color:var(--text2);display:none;place-items:center;font-size:18px;line-height:1}
+.search.has .search-clear{display:grid}
+.sort{height:48px;border-radius:100px;border:1px solid var(--border2);background:var(--surface);padding:0 38px 0 18px;outline:none;appearance:none;-webkit-appearance:none;font-size:14px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.sort:focus{border-color:var(--accent)}
 
-  function resolveImg(src) {
-    if (!src) return '';
-    if (/^https?:\/\//i.test(src)) return src;           // URL do Supabase
-    if (/\.(jpg|jpeg|png|webp)$/i.test(src)) return src;   // caminho local com extensão
-    return src + '.jpg';                                   // caminho local sem extensão
-  }
+/* PÍLULAS DE CATEGORIA */
+.pills-bar{position:sticky;top:var(--navh);z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.pills-bar.stuck{border-color:var(--border)}
+.pills{display:flex;gap:8px;overflow-x:auto;padding:12px var(--pad);scrollbar-width:none;scroll-padding-inline:var(--pad);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--pad),#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 var(--pad),#000 calc(100% - 40px),transparent)}
+.pills::-webkit-scrollbar{display:none}
+.pill{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;border:1px solid var(--border2);background:var(--surface);font-size:14px;font-weight:500;color:var(--text2);transition:all .2s var(--ease);white-space:nowrap}
+.pill:hover{color:var(--text);border-color:var(--text3)}
+.pill b{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--text3);background:var(--surface2);padding:1px 7px;border-radius:100px}
+.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill[aria-pressed="true"] b{background:rgba(255,255,255,.2);color:#fff}
 
-  function tryNextExt(img) {
-    const base = img.src.replace(/\.(jpg|jpeg|png|webp)$/i, '');
-    const currentExt = (img.src.match(/\.(jpg|jpeg|png|webp)$/i) || [''])[0].toLowerCase();
-    const currentIdx = IMG_EXTS.indexOf(currentExt);
-    const nextIdx = currentIdx + 1;
-    if (nextIdx < IMG_EXTS.length) {
-      img.src = base + IMG_EXTS[nextIdx];
-    } else {
-      img.style.display = 'none';
-      const placeholder = img.nextElementSibling;
-      if (placeholder) placeholder.style.display = 'flex';
-    }
-  }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+/* GRADE */
+.grid-wrap{padding:22px var(--pad) 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .35s var(--ease);animation:cardIn .55s var(--ease) both;animation-delay:calc(var(--i,0) * 40ms)}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}}
+.card:hover{border-color:color-mix(in srgb,var(--accent) 60%,transparent);box-shadow:var(--shadow);transform:translateY(-4px)}
+.card-img{position:relative;aspect-ratio:1;overflow:hidden;background:var(--surface2);isolation:isolate}
+/* fundo desfocado com a própria foto: a imagem aparece inteira, sem cortar */
+.card-img::before{content:'';position:absolute;inset:-20px;z-index:-1;background:var(--img) center/cover no-repeat;filter:blur(22px) saturate(1.2);opacity:.55;transform:scale(1.1)}
+.card-img img{width:100%;height:100%;object-fit:contain;transition:transform .6s var(--ease)}
+.card:hover .card-img img{transform:scale(1.05)}
+.card-ph{position:absolute;inset:0;display:none;place-items:center;font-size:40px;color:var(--text3)}
+.badge{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:#fff;padding:4px 9px;border-radius:100px}
+.opts{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:0;padding:3px;border-radius:100px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.opt{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);background:var(--surface2) center/cover;margin-left:-6px;display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--text2);overflow:hidden}
+.opt:first-child{margin-left:0}
+.opts span{font-family:var(--mono);font-size:10px;color:var(--text);padding:0 7px 0 5px;white-space:nowrap}
+.card-body{padding:13px 14px 14px;display:flex;flex-direction:column;gap:3px;flex:1}
+.card-cat{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-name{font-weight:600;font-size:15px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px}
+.price small{display:block;font-size:11px;color:var(--text3);line-height:1.2}
+.price b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:.5px;line-height:1}
+.card-wpp{width:40px;height:40px;border-radius:50%;background:var(--wpp);color:#06260f;display:grid;place-items:center;flex-shrink:0;border:none;transition:transform .25s var(--ease)}
+.card-wpp:hover{transform:scale(1.1)}
+.card-wpp .ic{font-size:20px}
+
+/* Card "não achou" */
+.card-idea{justify-content:space-between;padding:22px;background:linear-gradient(150deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#7c3aed));color:#fff;border-color:transparent;min-height:280px}
+.card-idea:hover{border-color:transparent}
+.card-idea .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.card-idea h3{font-family:var(--serif);font-weight:400;font-size:36px;line-height:.95;letter-spacing:.5px;margin:10px 0}
+.card-idea p{font-size:14px;opacity:.88}
+.card-idea .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;margin-top:16px}
+.card-idea .layers{position:absolute;right:-18px;bottom:-18px;width:120px;opacity:.18}
+
+.skel{border-radius:18px;aspect-ratio:3/4;background:linear-gradient(90deg,var(--surface2) 25%,color-mix(in srgb,var(--surface2) 60%,var(--border2)) 50%,var(--surface2) 75%);background-size:200% 100%;animation:shimmer 1.3s infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+.empty{grid-column:1/-1;text-align:center;padding:50px 20px;border:1px dashed var(--border2);border-radius:20px}
+.empty h3{font-family:var(--serif);font-weight:400;font-size:38px;letter-spacing:1px;line-height:1;margin-bottom:10px}
+.empty p{color:var(--text2);max-width:420px;margin:0 auto 22px}
+.empty .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* RODAPÉ */
+footer{padding:36px var(--pad) 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer p{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.06em}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer nav a{text-decoration:none;font-size:14px;color:var(--text2)}
+footer nav a:hover{color:var(--accent)}
+
+.wpp-float{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:90;width:58px;height:58px;border-radius:50%;background:var(--wpp);color:#06260f;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.35);text-decoration:none;transition:transform .3s var(--ease)}
+.wpp-float:hover{transform:scale(1.08)}
+.wpp-float .ic{font-size:29px}
+
+@media (max-width:860px){ .nav-links{display:none} }
+@media (max-width:640px){
+  :root{--navh:60px}
+  .nav .wpp-txt{display:none}
+  .nav .btn-wpp{width:38px;height:38px;padding:0}
+  .tools{flex-basis:100%;max-width:none}
+  .sort{width:48px;padding:0;color:transparent;background-position:center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 6h18M6 12h12M10 18h4'/%3E%3C/svg%3E")}
+  .sort option{color:#111}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{border-radius:16px}
+  .card-body{padding:10px 11px 12px}
+  .card-name{font-size:14px}
+  .price b{font-size:22px}
+  .card-wpp{width:36px;height:36px}
+  .card-wpp .ic{font-size:18px}
+  .card-idea{grid-column:1/-1;min-height:0}
+  .card-idea h3{font-size:30px}
+  .opt{width:20px;height:20px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-back">← Voltar</a>
-  <a href="index.html" class="nav-logo">ALVES<em>.3D</em></a>
-  <div style="display:flex;gap:10px;align-items:center">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema" title="Alternar tema claro/escuro">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wpp" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.12-.28-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.42z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="nav">
+  <a href="index.html" class="logo" aria-label="Alves.3D — início">ALVES<em>.3D</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="catalogo.html" aria-current="page">Catálogo</a></li>
+    <li><a href="index.html#como-funciona">Como funciona</a></li>
+    <li><a href="index.html#sua-ideia">Peça personalizada</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
     </button>
-    <button class="mobile-filter-btn" onclick="toggleSidebar()" id="filterBtn">☰ Filtros</button>
-    <a href="https://wa.me/5516992364004?text=Olá! Vim pelo catálogo e quero fazer um pedido!" target="_blank" class="nav-wpp">WhatsApp</a>
+    <a href="#" class="btn btn-wpp btn-sm" data-wpp="Olá! Vim pelo catálogo da Alves.3D e quero fazer um pedido." data-track="catalogo_whatsapp_topo" aria-label="WhatsApp"><svg class="ic"><use href="#i-wpp"/></svg><span class="wpp-txt">WhatsApp</span></a>
   </div>
-</nav>
+</header>
 
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-<div class="page">
-  <aside class="sidebar">
-    <div class="sidebar-title">Buscar</div>
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" class="search-input" id="searchInput" placeholder="Ex: chaveiro, vaso..." oninput="filterProducts()">
-    </div>
-
-    <div class="sidebar-title">Categorias</div>
-    <div class="filter-group" id="catFilters">
-      <button class="cat-btn active" data-cat="Todos" onclick="setCat('Todos')">
-        Todos <span class="cat-count" id="count-todos">0</span>
-      </button>
-    </div>
-
-    <div class="sidebar-title">Ordenar por</div>
-    <select class="sort-select" id="sortSelect" onchange="filterProducts()">
-      <option value="default">Padrão</option>
-      <option value="price-asc">Menor preço</option>
-      <option value="price-desc">Maior preço</option>
-      <option value="name-asc">Nome A–Z</option>
-    </select>
-  </aside>
-
-  <main class="main">
-    <div class="main-header">
+<main>
+  <section class="head">
+    <div class="crumb"><a href="index.html">Início</a> / Catálogo</div>
+    <div class="head-row">
       <div>
-        <div class="main-title">CATÁLOGO <span id="activeCatTitle">COMPLETO</span></div>
-        <div class="results-count" id="resultsCount">Carregando...</div>
+        <h1 class="title" id="title">Catálogo <em>completo</em></h1>
+        <div class="count" id="count">Carregando peças…</div>
+      </div>
+      <div class="tools">
+        <label class="search" id="searchBox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="q" placeholder="Buscar: chaveiro, natal…" autocomplete="off" enterkeyhint="search" aria-label="Buscar no catálogo">
+          <button type="button" class="search-clear" id="qClear" aria-label="Limpar busca">×</button>
+        </label>
+        <select class="sort" id="sort" aria-label="Ordenar">
+          <option value="">Relevância</option>
+          <option value="menor">Menor preço</option>
+          <option value="maior">Maior preço</option>
+          <option value="novos">Mais recentes</option>
+          <option value="az">Nome A–Z</option>
+        </select>
       </div>
     </div>
-    <div class="products-grid" id="productsGrid">
-      <div class="loading">
-        <div class="loading-spinner"></div>
-        <span>Carregando produtos...</span>
-      </div>
+  </section>
+
+  <div class="pills-bar" id="pillsBar">
+    <div class="pills" id="pills" role="group" aria-label="Categorias"></div>
+  </div>
+
+  <section class="grid-wrap">
+    <div class="grid" id="grid">
+      <div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div>
+      <div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div>
     </div>
-  </main>
-</div>
+  </section>
+</main>
+
+<footer>
+  <a href="index.html" class="logo">ALVES<em>.3D</em></a>
+  <nav>
+    <a href="index.html#como-funciona">Como funciona</a>
+    <a href="index.html#sua-ideia">Peça personalizada</a>
+    <a href="index.html#duvidas">Dúvidas</a>
+    <a href="https://instagram.com/alves_3d" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+  <p>© <span id="ano">2026</span> Alves.3D · Impressão 3D personalizada</p>
+</footer>
+
+<a href="#" class="wpp-float" aria-label="Falar no WhatsApp" data-wpp="Olá! Vim pelo catálogo da Alves.3D e quero fazer um pedido." data-track="catalogo_whatsapp_flutuante"><svg class="ic"><use href="#i-wpp"/></svg></a>
 
 <script>
-let allProducts = [];
-let activeCat = 'Todos';
-
-function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-function varsDe(p){
-  return (p.temVariacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
-}
-
-// Menor preço considerando as variações
-function precoMin(p){
-  const vs = varsDe(p);
-  const precos = vs.map(v => v.preco != null ? Number(v.preco) : (p.preco != null ? Number(p.preco) : null)).filter(x => x != null);
-  if (precos.length) return Math.min(...precos);
-  return p.preco != null ? Number(p.preco) : null;
-}
-
-function fmtPreco(v){
-  if (v == null) return '—';
-  return Number(v).toFixed(2).replace('.',',').replace(/,00$/,'');
-}
-
-// Capa: 1ª foto do produto, ou a 1ª foto da 1ª variação que tiver
-function capaDe(p){
-  if (p.imagens && p.imagens[0]) return p.imagens[0];
-  const vs = varsDe(p);
-  for (const v of vs) if (v.imagens && v.imagens[0]) return v.imagens[0];
-  return '';
-}
-
+(() => {
+'use strict';
+const WPP = '5516992364004';
 const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const wppLink = m => `https://wa.me/${WPP}?text=${encodeURIComponent(m)}`;
+const fmt = v => v == null ? '—' : Number(v).toFixed(2).replace('.', ',').replace(/,00$/, '');
+const track = (n, x) => { try { gtag('event', n, x || {}); } catch(e){} };
+const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-async function loadProducts() {
-  try {
-    const { data, error } = await sb
-      .from('produtos')
-      .select('*')
-      .eq('publicado', true)
-      .order('destaque', { ascending: false })
-      .order('ordem')
-      .order('created_at', { ascending: false });
+$('#ano').textContent = new Date().getFullYear();
+$$('[data-wpp]').forEach(a => { a.href = wppLink(a.dataset.wpp); a.target = '_blank'; a.rel = 'noopener'; });
+document.addEventListener('click', e => { const el = e.target.closest('[data-track]'); if (el) track(el.dataset.track); });
 
-    if (error) throw error;
+$('#themeBtn').addEventListener('click', () => {
+  const r = document.documentElement, light = r.getAttribute('data-theme') === 'light';
+  if (light) r.removeAttribute('data-theme'); else r.setAttribute('data-theme', 'light');
+  try { localStorage.setItem('alves3d-theme', light ? 'dark' : 'light'); } catch(e){}
+});
 
-    // Normaliza para o formato usado pela interface
-    allProducts = (data || []).map(p => ({
-      id: p.codigo,
-      nome: p.nome,
-      categoria: p.categoria,
-      preco: p.preco,
-      descricao: p.descricao || '',
-      material: p.material || '',
-      tamanho: p.tamanho || '',
-      tags: p.tags || [],
-      imagens: p.imagens || [],
-      destaque: p.destaque,
-      temVariacoes: !!p.tem_variacoes,
-      variacoes: p.variacoes || []
-    }));
+/* ---------- Dados ---------- */
+const varsDe = p => (p.tem_variacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
+const precoMin = p => {
+  const ps = varsDe(p).map(v => v.preco != null ? +v.preco : (p.preco != null ? +p.preco : null)).filter(x => x != null);
+  return ps.length ? Math.min(...ps) : (p.preco != null ? +p.preco : null);
+};
+const capa = p => {
+  if (p.imagens && p.imagens[0]) return p.imagens[0];
+  for (const v of varsDe(p)) if (v.imagens && v.imagens[0]) return v.imagens[0];
+  return '';
+};
 
-    // Abre já filtrado quando vem da home: catalogo.html?cat=Natal
-    const catURL = new URLSearchParams(location.search).get('cat');
-    if (catURL && allProducts.some(p => p.categoria === catURL)) {
-      activeCat = catURL;
-      document.getElementById('activeCatTitle').textContent = catURL.toUpperCase();
-    }
+let all = [];
+const state = { cat: 'Todos', q: '', sort: '' };
 
-    buildCatFilters();
-    filterProducts();
-  } catch(e) {
-    document.getElementById('productsGrid').innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">⚠️</div>
-        <div class="empty-state-title">ERRO AO CARREGAR</div>
-        <div class="empty-state-desc">Não foi possível carregar o catálogo. Tente recarregar a página.</div>
-      </div>`;
-  }
+/* Estado na URL: catalogo.html?cat=Natal&q=nome&ord=menor */
+function readURL() {
+  const u = new URLSearchParams(location.search);
+  state.cat = u.get('cat') || 'Todos';
+  state.q = u.get('q') || '';
+  state.sort = u.get('ord') || '';
+}
+function writeURL() {
+  const u = new URLSearchParams();
+  if (state.cat !== 'Todos') u.set('cat', state.cat);
+  if (state.q) u.set('q', state.q);
+  if (state.sort) u.set('ord', state.sort);
+  const qs = u.toString();
+  history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
 }
 
-function buildCatFilters() {
-  const cats = ['Todos', ...new Set(allProducts.map(p => p.categoria))];
-  const container = document.getElementById('catFilters');
-  container.innerHTML = '';
-
-  cats.forEach(cat => {
-    const count = cat === 'Todos' ? allProducts.length : allProducts.filter(p => p.categoria === cat).length;
-    const btn = document.createElement('button');
-    btn.className = 'cat-btn' + (cat === activeCat ? ' active' : '');
-    btn.dataset.cat = cat;
-    btn.innerHTML = `${cat} <span class="cat-count">${count}</span>`;
-    btn.onclick = () => setCat(cat);
-    container.appendChild(btn);
-  });
+/* ---------- Pílulas ---------- */
+function renderPills() {
+  const counts = new Map();
+  all.forEach(p => counts.set(p.categoria, (counts.get(p.categoria) || 0) + 1));
+  const cats = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  $('#pills').innerHTML = [['Todos', all.length], ...cats].map(([c, n]) =>
+    `<button class="pill" data-cat="${esc(c)}" aria-pressed="${c === state.cat}">${esc(c)} <b>${n}</b></button>`).join('');
+  centerActivePill(false);
 }
-
-function filterProducts() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  const sort = document.getElementById('sortSelect').value;
-
-  let filtered = allProducts.filter(p => {
-    const matchCat = activeCat === 'Todos' || p.categoria === activeCat;
-    const matchQ = !q || p.nome.toLowerCase().includes(q) || p.descricao.toLowerCase().includes(q)
-      || (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
-      || varsDe(p).some(v => (v.nome||'').toLowerCase().includes(q));
-    return matchCat && matchQ;
-  });
-
-  if (sort === 'price-asc') filtered.sort((a,b) => (precoMin(a) ?? 1e9) - (precoMin(b) ?? 1e9));
-  else if (sort === 'price-desc') filtered.sort((a,b) => (precoMin(b) ?? -1) - (precoMin(a) ?? -1));
-  else if (sort === 'name-asc') filtered.sort((a,b) => a.nome.localeCompare(b.nome));
-
-  document.getElementById('resultsCount').textContent = `${filtered.length} produto${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
-  renderProducts(filtered);
+function centerActivePill(smooth) {
+  const b = $('#pills .pill[aria-pressed="true"]'); if (!b) return;
+  const box = $('#pills');
+  box.scrollTo({ left: b.offsetLeft - box.clientWidth / 2 + b.clientWidth / 2, behavior: smooth ? 'smooth' : 'auto' });
 }
+$('#pills').addEventListener('click', e => {
+  const b = e.target.closest('.pill'); if (!b) return;
+  state.cat = b.dataset.cat;
+  $$('#pills .pill').forEach(x => x.setAttribute('aria-pressed', x === b));
+  centerActivePill(true);
+  track('catalogo_categoria', { categoria: state.cat });
+  apply(true);
+});
 
-function renderProducts(products) {
-  const grid = document.getElementById('productsGrid');
-  if (products.length === 0) {
-    grid.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">🔍</div>
-        <div class="empty-state-title">NENHUM PRODUTO</div>
-        <div class="empty-state-desc">Tente outros termos ou selecione outra categoria.</div>
-      </div>`;
-    return;
-  }
+/* ---------- Busca e ordenação ---------- */
+let qTimer;
+$('#q').addEventListener('input', e => {
+  state.q = e.target.value.trim();
+  $('#searchBox').classList.toggle('has', !!e.target.value);
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { apply(); if (state.q.length > 2) track('catalogo_busca', { termo: state.q }); }, 180);
+});
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter') e.target.blur(); });
+$('#qClear').addEventListener('click', () => { $('#q').value = ''; state.q = ''; $('#searchBox').classList.remove('has'); apply(); $('#q').focus(); });
+$('#sort').addEventListener('change', e => { state.sort = e.target.value; apply(); });
 
-  grid.innerHTML = products.map(p => `
-    <div class="product-card" onclick="location.href='produto.html?id=${encodeURIComponent(String(p.id))}'">
-      <div class="product-img">
-        <img src="${resolveImg(capaDe(p))}" alt="${esc(p.nome)}" loading="lazy" onerror="tryNextExt(this)">
-        <div class="product-img-placeholder" style="display:none">🖨️</div>
-      </div>
-      <div class="product-body">
-        <div class="product-cat">${esc(p.categoria)}</div>
-        <div class="product-name">${esc(p.nome)}</div>
-        <div class="product-desc">${esc((p.descricao||'').replace(/\s*\n+\s*/g,' '))}</div>
-        <div class="product-meta">
-          ${varsDe(p).length ? `<span class="meta-tag" style="border-color:var(--accent);color:var(--accent)">${varsDe(p).length} opções</span>` : ''}
-          ${(p.tags || []).slice(0, varsDe(p).length ? 2 : 3).map(t => `<span class="meta-tag">${esc(t)}</span>`).join('')}
-        </div>
-      </div>
-      <div class="product-footer">
-        <div class="product-price">
-          <small>a partir de</small>
-          R$${fmtPreco(precoMin(p))}
-        </div>
-        <a href="${buildWppLink(p)}" target="_blank" class="product-wpp" onclick="event.stopPropagation()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Pedir
-        </a>
+/* ---------- Grade ---------- */
+function cardHTML(p, i) {
+  const vs = varsDe(p), img = capa(p), mp = precoMin(p);
+  const optsHTML = vs.length ? `<div class="opts" aria-label="${vs.length} opções">${vs.slice(0, 4).map(v =>
+      v.imagens && v.imagens[0]
+        ? `<i class="opt" style="background-image:url('${esc(v.imagens[0])}')"></i>`
+        : `<i class="opt">${esc(v.nome.trim().charAt(0).toUpperCase())}</i>`).join('')}<span>${vs.length} opç${vs.length > 1 ? 'ões' : 'ão'}</span></div>` : '';
+  return `
+  <a class="card" href="produto.html?id=${encodeURIComponent(p.codigo)}" style="--i:${Math.min(i, 12)}" data-cod="${esc(p.codigo)}">
+    <div class="card-img" style="--img:url('${esc(img)}')">
+      ${img ? `<img src="${esc(img)}" alt="${esc(p.nome)}" loading="${i < 6 ? 'eager' : 'lazy'}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">` : ''}
+      <div class="card-ph"${img ? '' : ' style="display:grid"'}>🖨️</div>
+      ${p.destaque ? '<span class="badge">Destaque</span>' : ''}
+      ${optsHTML}
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${esc(p.categoria)}</div>
+      <div class="card-name">${esc(p.nome)}</div>
+      <div class="card-foot">
+        <div class="price"><small>a partir de</small><b>R$${fmt(mp)}</b></div>
+        <button type="button" class="card-wpp" aria-label="Pedir ${esc(p.nome)} no WhatsApp"><svg class="ic"><use href="#i-wpp"/></svg></button>
       </div>
     </div>
-  `).join('');
+  </a>`;
+}
+const ideaCard = () => `
+  <a class="card card-idea" href="index.html#sua-ideia" data-track="catalogo_card_ideia" style="--i:6">
+    <div>
+      <div class="k">Peça personalizada</div>
+      <h3>Não achou o que procura?</h3>
+      <p>Mande uma foto ou descreva a ideia — eu modelo e imprimo do seu jeito.</p>
+    </div>
+    <span class="go">Mandar minha ideia <svg class="ic"><use href="#i-arrow"/></svg></span>
+    <svg class="layers" viewBox="0 0 100 100" fill="#fff"><rect x="10" y="80" width="80" height="8" rx="2"/><rect x="18" y="68" width="64" height="8" rx="2"/><rect x="26" y="56" width="48" height="8" rx="2"/><rect x="34" y="44" width="32" height="8" rx="2"/></svg>
+  </a>`;
+
+function apply(scrollTop) {
+  const q = norm(state.q);
+  let list = all.filter(p => {
+    if (state.cat !== 'Todos' && p.categoria !== state.cat) return false;
+    if (!q) return true;
+    const hay = norm([p.nome, p.codigo, p.categoria, p.descricao, ...(p.tags || []), ...varsDe(p).map(v => v.nome)].join(' '));
+    return q.split(/\s+/).every(w => hay.includes(w));
+  });
+  const by = {
+    menor: (a, b) => (precoMin(a) ?? 1e9) - (precoMin(b) ?? 1e9),
+    maior: (a, b) => (precoMin(b) ?? -1) - (precoMin(a) ?? -1),
+    novos: (a, b) => String(b.created_at).localeCompare(String(a.created_at)),
+    az:    (a, b) => a.nome.localeCompare(b.nome, 'pt-BR')
+  }[state.sort];
+  if (by) list = [...list].sort(by);
+
+  // Título e contagem
+  $('#title').innerHTML = state.cat === 'Todos' ? 'Catálogo <em>completo</em>' : `<em>${esc(state.cat)}</em>`;
+  $('#count').textContent = `${list.length} peça${list.length !== 1 ? 's' : ''}${state.q ? ` para “${state.q}”` : ''}`;
+  document.title = (state.cat === 'Todos' ? 'Catálogo' : state.cat) + ' — Alves.3D | Peças em impressão 3D';
+
+  const grid = $('#grid');
+  if (!list.length) {
+    const msg = `Olá! Procurei${state.q ? ` por "${state.q}"` : ''} no catálogo e não encontrei. Vocês conseguem fazer?`;
+    grid.innerHTML = `<div class="empty">
+      <h3>Nada por aqui… ainda</h3>
+      <p>Não encontrei ${state.q ? `“${esc(state.q)}”` : 'peças'}${state.cat !== 'Todos' ? ` em ${esc(state.cat)}` : ''}. Mas dá pra fazer sob medida: me conta o que você quer.</p>
+      <div class="row">
+        <a class="btn btn-wpp" href="${esc(wppLink(msg))}" target="_blank" rel="noopener" data-track="catalogo_vazio_whatsapp"><svg class="ic"><use href="#i-wpp"/></svg>Pedir no WhatsApp</a>
+        <button class="btn btn-ghost" type="button" id="resetBtn">Ver todas as peças</button>
+      </div></div>`;
+    $('#resetBtn').onclick = () => { state.cat = 'Todos'; state.q = ''; $('#q').value = ''; $('#searchBox').classList.remove('has'); renderPills(); apply(); };
+  } else {
+    const html = list.map(cardHTML);
+    // Card "não achou" depois da 7ª peça (ou no fim, se houver menos)
+    html.splice(Math.min(7, html.length), 0, ideaCard());
+    grid.innerHTML = html.join('');
+  }
+  writeURL();
+  if (scrollTop) {
+    const top = $('.grid-wrap').getBoundingClientRect().top + scrollY - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navh')) - 70;
+    if (scrollY > top) window.scrollTo({ top, behavior: 'smooth' });
+  }
 }
 
-function buildWppLink(p) {
+/* Botão de WhatsApp dentro do card (sem abrir a página do produto) */
+$('#grid').addEventListener('click', e => {
+  const b = e.target.closest('.card-wpp'); if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const p = all.find(x => x.codigo === b.closest('.card').dataset.cod); if (!p) return;
   const vs = varsDe(p);
-  let msg = `Olá! Vi o catálogo e tenho interesse em:\n\nProduto: ${p.nome} (${p.id})\nCategoria: ${p.categoria}`;
-  if (vs.length) msg += `\nOpções disponíveis: ${vs.map(v => v.nome).join(', ')}`;
-  msg += `\nPreço: a partir de R$${fmtPreco(precoMin(p))}\n\nPoderia me passar mais informações?`;
-  return `https://wa.me/5516992364004?text=${encodeURIComponent(msg)}`;
-}
+  let m = `Olá! Vi no catálogo e tenho interesse em:\n\nProduto: ${p.nome} (${p.codigo})\nCategoria: ${p.categoria}`;
+  if (vs.length) m += `\nOpções: ${vs.map(v => v.nome).join(', ')}`;
+  m += `\nPreço: a partir de R$${fmt(precoMin(p))}\n\nhttps://alves3d.com.br/produto.html?id=${encodeURIComponent(p.codigo)}`;
+  track('catalogo_card_whatsapp', { produto: p.codigo });
+  window.open(wppLink(m), '_blank', 'noopener');
+});
 
-function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  const btn = document.getElementById('filterBtn');
-  const isOpen = sidebar.classList.toggle('open');
-  overlay.classList.toggle('active', isOpen);
-  btn.textContent = isOpen ? '× Fechar' : '☰ Filtros';
-}
+/* Borda na barra de categorias quando ela gruda no topo */
+new IntersectionObserver(([en]) => $('#pillsBar').classList.toggle('stuck', en.intersectionRatio < 1), { threshold: 1, rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navh')) + 1}px 0px 0px 0px` }).observe($('#pillsBar'));
 
-function setCat(cat) {
-  activeCat = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  document.getElementById('activeCatTitle').textContent = cat === 'Todos' ? 'COMPLETO' : cat.toUpperCase();
-  filterProducts();
-  if (window.innerWidth <= 768) toggleSidebar();
+/* ---------- Carregar ---------- */
+async function load() {
+  readURL();
+  $('#q').value = state.q; $('#searchBox').classList.toggle('has', !!state.q);
+  $('#sort').value = state.sort;
+  try {
+    const sel = 'codigo,nome,categoria,preco,descricao,tags,imagens,destaque,tem_variacoes,variacoes,ordem,created_at';
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?select=${sel}&publicado=eq.true&order=destaque.desc,ordem.asc.nullslast,created_at.desc`, { headers: { apikey: SUPABASE_KEY } });
+    if (!res.ok) throw new Error(res.status);
+    all = await res.json();
+    if (state.cat !== 'Todos' && !all.some(p => p.categoria === state.cat)) state.cat = 'Todos';
+    renderPills();
+    apply();
+  } catch (e) {
+    $('#count').textContent = '';
+    $('#grid').innerHTML = `<div class="empty"><h3>Não carregou</h3><p>Verifique sua conexão e tente de novo. Se preferir, me chama no WhatsApp que eu te mando as fotos.</p>
+      <div class="row"><button class="btn btn-primary" onclick="location.reload()">Tentar de novo</button>
+      <a class="btn btn-wpp" href="${esc(wppLink('Olá! Quero ver o catálogo de peças.'))}" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wpp"/></svg>WhatsApp</a></div></div>`;
+  }
 }
-
-loadProducts();
+load();
+})();
 </script>
 </body>
 </html>
