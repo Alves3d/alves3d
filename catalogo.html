@@ -655,6 +655,13 @@ async function loadProducts() {
       variacoes: p.variacoes || []
     }));
 
+    // Abre já filtrado quando vem da home: catalogo.html?cat=Natal
+    const catURL = new URLSearchParams(location.search).get('cat');
+    if (catURL && allProducts.some(p => p.categoria === catURL)) {
+      activeCat = catURL;
+      document.getElementById('activeCatTitle').textContent = catURL.toUpperCase();
+    }
+
     buildCatFilters();
     filterProducts();
   } catch(e) {
