@@ -82,7 +82,8 @@ button{cursor:pointer}
 
 /* LAYOUT */
 .page{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,60px);padding:28px var(--pad) 40px;max-width:1360px;margin:0 auto;align-items:start}
-.gallery{position:sticky;top:calc(var(--navh) + 20px)}
+.gallery{position:sticky;top:calc(var(--navh) + 20px);min-width:0}
+.info{min-width:0}
 
 /* GALERIA */
 .g-main{position:relative;border-radius:22px;overflow:hidden;background:var(--surface2);border:1px solid var(--border)}
@@ -207,7 +208,7 @@ footer nav a:hover{color:var(--accent)}
 
 @media (max-width:960px){ .nav-links{display:none} }
 @media (max-width:860px){
-  .page{grid-template-columns:1fr;padding-top:0;padding-left:0;padding-right:0;gap:18px}
+  .page{grid-template-columns:minmax(0,1fr);padding-top:0;padding-left:0;padding-right:0;gap:18px}
   .gallery{position:relative;top:0}
   .g-main{border-radius:0;border-left:0;border-right:0;border-top:0}
   .g-thumbs{padding:2px var(--pad)}

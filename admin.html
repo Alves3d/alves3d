@@ -222,9 +222,13 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
     <div>
       <div class="title">MEUS <span>PRODUTOS</span></div>
     </div>
-    <button class="btn btn-primary" onclick="abrirNovo()">+ Novo produto</button>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-ghost" onclick="otimizarAntigas()" id="btnOtimizar" title="Converte as fotos antigas (JPG/PNG pesados) para WebP compactado">⚡ Otimizar fotos antigas</button>
+      <button class="btn btn-primary" onclick="abrirNovo()">+ Novo produto</button>
+    </div>
   </div>
   <div class="sub" id="contador">carregando...</div>
+  <div id="otmStatus"></div>
 
   <div class="toolbar">
     <div class="search">
@@ -603,6 +607,75 @@ function comprimir(file){
 
     img.src = url;
   });
+}
+
+
+// ===== OTIMIZAR FOTOS ANTIGAS =====
+// Converte para WebP (máx. 1600px) as fotos que foram enviadas antes da compressão.
+// Ordem segura: envia a nova → atualiza o produto → só então apaga a antiga.
+const PREFIXO_STORAGE = `/storage/v1/object/public/${BUCKET}/`;
+function caminhoDaUrl(url){
+  const i = String(url).indexOf(PREFIXO_STORAGE);
+  return i < 0 ? null : decodeURIComponent(String(url).slice(i + PREFIXO_STORAGE.length).split('?')[0]);
+}
+const precisaOtimizar = url => { const c = caminhoDaUrl(url); return !!c && !/\.(webp|gif|svg)$/i.test(c); };
+
+async function otimizarUma(url, k){
+  const caminhoAntigo = caminhoDaUrl(url);
+  const resp = await fetch(url, { cache: 'no-store' });
+  if (!resp.ok) throw new Error('download ' + resp.status);
+  const blob = await resp.blob();
+  const nome = caminhoAntigo.split('/').pop();
+  const img = await comprimir(new File([blob], nome, { type: blob.type || 'image/jpeg' }));
+  if (img.ext !== 'webp') return { url, antes: blob.size, depois: blob.size, apagar: null };
+  const pasta = caminhoAntigo.includes('/') ? caminhoAntigo.slice(0, caminhoAntigo.lastIndexOf('/')) : 'geral';
+  const caminho = `${pasta}/${Date.now()}-otm${k}.webp`;
+  const { error } = await sb.storage.from(BUCKET).upload(caminho, img.blob, { cacheControl: '31536000', upsert: false, contentType: 'image/webp' });
+  if (error) throw error;
+  const { data } = sb.storage.from(BUCKET).getPublicUrl(caminho);
+  return { url: data.publicUrl, antes: blob.size, depois: img.final, apagar: caminhoAntigo };
+}
+
+async function otimizarAntigas(){
+  const alvo = produtos.filter(p =>
+    (p.imagens || []).some(precisaOtimizar) ||
+    (Array.isArray(p.variacoes) ? p.variacoes : []).some(v => (v && v.imagens || []).some(precisaOtimizar)));
+  const totalFotos = alvo.reduce((n, p) => n + (p.imagens || []).filter(precisaOtimizar).length
+    + (Array.isArray(p.variacoes) ? p.variacoes : []).reduce((m, v) => m + ((v && v.imagens) || []).filter(precisaOtimizar).length, 0), 0);
+  if (!totalFotos){ toast('Todas as fotos já estão otimizadas 👍', true); return; }
+  if (!confirm(`Encontrei ${totalFotos} foto(s) antigas em ${alvo.length} produto(s).\n\nVou converter para WebP (mais leve, mesma aparência) e apagar as versões pesadas.\nNão feche esta aba até terminar. Continuar?`)) return;
+
+  const btn = document.getElementById('btnOtimizar'), st = document.getElementById('otmStatus');
+  btn.disabled = true;
+  let feitas = 0, antes = 0, depois = 0, falhas = 0;
+  const show = (txt) => st.innerHTML = `<div class="uploading" style="margin:10px 0"><div class="spin"></div><span>${txt}</span></div>`;
+
+  for (const p of alvo){
+    const novasImgs = [...(p.imagens || [])];
+    const novasVars = (Array.isArray(p.variacoes) ? p.variacoes : []).map(v => v ? { ...v, imagens: [...(v.imagens || [])] } : v);
+    const apagar = [];
+    const listas = [novasImgs, ...novasVars.filter(Boolean).map(v => v.imagens)];
+    for (const lista of listas){
+      for (let i = 0; i < lista.length; i++){
+        if (!precisaOtimizar(lista[i])) continue;
+        feitas++;
+        show(`Otimizando ${feitas} de ${totalFotos} · ${esc(p.nome)} · economia até agora: ${mb(Math.max(0, antes - depois))}`);
+        try {
+          const r = await otimizarUma(lista[i], i);
+          lista[i] = r.url; antes += r.antes; depois += r.depois;
+          if (r.apagar) apagar.push(r.apagar);
+        } catch (e){ falhas++; console.warn('Falha ao otimizar', lista[i], e); }
+      }
+    }
+    const { error } = await sb.from('produtos').update({ imagens: novasImgs, variacoes: novasVars }).eq('id', p.id);
+    if (error){ falhas++; console.warn('Falha ao salvar', p.codigo, error); continue; }   // não apaga nada se não salvou
+    if (apagar.length) await sb.storage.from(BUCKET).remove(apagar);
+  }
+
+  st.innerHTML = '';
+  btn.disabled = false;
+  await carregar();
+  toast(`Pronto! ${feitas - falhas} foto(s) otimizadas · ${mb(antes)} → ${mb(depois)}${falhas ? ` · ${falhas} falha(s), tente de novo` : ''}`, !falhas);
 }
 
 function mb(bytes){
