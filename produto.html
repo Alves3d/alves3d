@@ -140,7 +140,10 @@ button{cursor:pointer}
 .total{font-size:13px;color:var(--text2);min-height:20px;margin-top:8px}
 .total b{color:var(--text)}
 .cta{display:flex;gap:10px;margin-top:6px}
-.cta .btn-wpp{flex:1;padding:17px 24px;font-size:16px}
+.cta .btn-wpp,.cta .btn-primary{flex:1;padding:17px 24px;font-size:16px}
+.cta .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px color-mix(in srgb,var(--accent) 35%,transparent)}
+.wpp-alt{width:100%;margin-top:10px;font-size:14px}
+.btn .ic[viewBox]{fill:none}
 .share{width:56px;height:56px;flex-shrink:0;padding:0}
 .share svg{width:20px;height:20px}
 .perks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}
@@ -230,6 +233,7 @@ footer nav a:hover{color:var(--accent)}
   .buybar .bb-p small{font-size:11px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
   .buybar .bb-p b{font-family:var(--serif);font-weight:400;font-size:28px}
   .buybar .btn{flex:1;padding:14px 16px}
+  .buybar .bb-wpp{flex:0 0 50px;width:50px;height:50px;padding:0}
   body{padding-bottom:80px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -292,7 +296,8 @@ footer nav a:hover{color:var(--accent)}
 <!-- Barra fixa de pedido (celular) -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="bb-p"><small id="bbLbl">a partir de</small><b id="bbPrice">R$—</b></div>
-  <a href="#" class="btn btn-wpp" id="bbWpp" target="_blank" rel="noopener" tabindex="-1"><svg class="ic"><use href="#i-wpp"/></svg>Pedir no WhatsApp</a>
+  <button type="button" class="btn btn-primary" id="bbAdd" tabindex="-1">Adicionar ao carrinho</button>
+  <a href="#" class="btn btn-wpp bb-wpp" id="bbWpp" target="_blank" rel="noopener" tabindex="-1" aria-label="Pedir no WhatsApp"><svg class="ic"><use href="#i-wpp"/></svg></a>
 </div>
 
 <!-- Lightbox -->
@@ -433,9 +438,10 @@ function render() {
       </div>
 
       <div class="cta" id="mainCta">
-        <a href="#" class="btn btn-wpp" id="wppBtn" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wpp"/></svg>Pedir no WhatsApp</a>
+        <button type="button" class="btn btn-primary" id="addCart"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/></svg>Adicionar ao carrinho</button>
         <button class="btn btn-ghost share" id="shareBtn" aria-label="Compartilhar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
       </div>
+      <a href="#" class="btn btn-ghost wpp-alt" id="wppBtn" target="_blank" rel="noopener"><svg class="ic" style="color:var(--wpp)"><use href="#i-wpp"/></svg>Pedir só esta peça no WhatsApp</a>
 
       <div class="perks">
         <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>3 a 7 dias úteis</b>de produção</div></div>
@@ -461,6 +467,8 @@ function render() {
   $('#wppBtn').addEventListener('click', () => track('produto_whatsapp', { produto: P.codigo, origem: 'principal' }));
   $('#bbWpp').addEventListener('click', () => track('produto_whatsapp', { produto: P.codigo, origem: 'barra_fixa' }));
   $('#shareBtn').addEventListener('click', share);
+  $('#addCart').addEventListener('click', addToCart);
+  $('#bbAdd').addEventListener('click', addToCart);
   $('#gPrev').onclick = () => goTo(cur() - 1);
   $('#gNext').onclick = () => goTo(cur() + 1);
   $('#gTrack').addEventListener('scroll', onGalleryScroll, { passive: true });
@@ -472,7 +480,7 @@ function render() {
     const show = !en.isIntersecting && en.boundingClientRect.top < 0;
     $('#buybar').classList.toggle('show', show);
     $('#buybar').setAttribute('aria-hidden', !show);
-    $('#bbWpp').tabIndex = show ? 0 : -1;
+    $('#bbWpp').tabIndex = $('#bbAdd').tabIndex = show ? 0 : -1;
   }).observe($('#mainCta'));
 
   if (vs.length) selectVar(0); else { setImages(p.imagens || []); updateOrder(); }
@@ -512,6 +520,12 @@ function updateOrder() {
   m += `\n\n${SITE}/produto.html?id=${encodeURIComponent(P.codigo)}`;
   const link = wppLink(m);
   $('#wppBtn').href = link; $('#bbWpp').href = link;
+}
+
+function addToCart() {
+  const vs = varsDe(P), v = vs.length ? vs[st.v] : null;
+  const img = (v && v.imagens && v.imagens[0]) || capa(P);
+  if (window.Carrinho) Carrinho.add({ codigo: P.codigo, nome: P.nome, opcao: v ? v.nome : '', preco: unitPrice(), qtd: st.qtd, pers: st.pers, img });
 }
 
 /* ================= GALERIA ================= */
@@ -638,5 +652,6 @@ function addJsonLd(p) {
 load();
 })();
 </script>
+<script src="carrinho.js"></script>
 </body>
 </html>

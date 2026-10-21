@@ -209,9 +209,9 @@ button{font-family:inherit;cursor:pointer}
 .prod-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px}
 .prod-price small{display:block;font-size:11px;color:var(--text3)}
 .prod-price b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:1px;line-height:1}
-.prod-wpp{width:38px;height:38px;border-radius:50%;background:var(--wpp);color:#06260f;display:grid;place-items:center;flex-shrink:0;transition:transform .25s var(--ease)}
+.prod-wpp{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:transform .25s var(--ease)}
 .prod-wpp:hover{transform:scale(1.1)}
-.prod-wpp .ic{font-size:19px}
+.prod-wpp .ic{font-size:19px;fill:none}
 .skel{background:linear-gradient(90deg,var(--surface2) 25%,color-mix(in srgb,var(--surface2) 60%,var(--border2)) 50%,var(--surface2) 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:18px}
 @keyframes shimmer{to{background-position:-200% 0}}
 
@@ -912,6 +912,7 @@ else {
 }
 
 /* ================= CATÁLOGO AO VIVO ================= */
+const varsDe = p => (p.tem_variacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
 const minPrice = p => {
   const vs = (p.tem_variacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
   const ps = vs.map(v => v.preco != null ? +v.preco : (p.preco != null ? +p.preco : null)).filter(x => x != null);
@@ -958,7 +959,6 @@ function renderProds(list) {
   const picks = [...list.filter(p => p.destaque), ...list.filter(p => !p.destaque)].filter(p => cover(p)).slice(0, 8);
   $('#prodsGrid').innerHTML = picks.map(p => {
     const mp = minPrice(p);
-    const msg = `Olá! Vi no site e tenho interesse em:\n\nProduto: ${p.nome} (${p.codigo})\nCategoria: ${p.categoria}\nPreço: a partir de R$${fmt(mp)}\n\nPoderia me passar mais informações?`;
     return `
     <a class="prod" href="produto.html?id=${encodeURIComponent(p.codigo)}" data-track="home_produto">
       <div class="prod-img"><img src="${esc(cover(p))}" alt="${esc(p.nome)}" loading="lazy">${p.destaque ? '<span class="prod-badge">Destaque</span>' : ''}</div>
@@ -967,14 +967,19 @@ function renderProds(list) {
         <div class="prod-name">${esc(p.nome)}</div>
         <div class="prod-foot">
           <div class="prod-price"><small>a partir de</small><b>R$${fmt(mp)}</b></div>
-          <span class="prod-wpp" role="link" tabindex="0" aria-label="Pedir ${esc(p.nome)} no WhatsApp" data-href="${esc(wppLink(msg))}"><svg class="ic"><use href="#i-wpp"/></svg></span>
+          <span class="prod-wpp" role="button" tabindex="0" data-cod="${esc(p.codigo)}" aria-label="${varsDe(p).length ? 'Escolher opção de' : 'Adicionar ao carrinho:'} ${esc(p.nome)}" title="${varsDe(p).length ? 'Escolher opção' : 'Adicionar ao carrinho'}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/><path d="M14 9.5v4M12 11.5h4"/></svg></span>
         </div>
       </div>
     </a>`;
   }).join('');
-  // Botão de WhatsApp dentro do card não abre a página do produto
+  // Botão "+ carrinho" no card (peças com opções abrem a página para escolher)
   $$('#prodsGrid .prod-wpp').forEach(b => {
-    const go = e => { e.preventDefault(); e.stopPropagation(); track('home_produto_whatsapp'); window.open(b.dataset.href, '_blank', 'noopener'); };
+    const go = e => {
+      e.preventDefault(); e.stopPropagation();
+      const p = picks.find(x => x.codigo === b.dataset.cod); if (!p) return;
+      if (varsDe(p).length || !window.Carrinho) { location.href = `produto.html?id=${encodeURIComponent(p.codigo)}`; return; }
+      Carrinho.add({ codigo: p.codigo, nome: p.nome, preco: minPrice(p), qtd: 1, img: cover(p) });
+    };
     b.addEventListener('click', go);
     b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') go(e); });
   });
@@ -1067,5 +1072,6 @@ $('#faqList').addEventListener('click', e => {
 
 })();
 </script>
+<script src="carrinho.js"></script>
 </body>
 </html>
