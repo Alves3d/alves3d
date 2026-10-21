@@ -138,9 +138,9 @@ button{cursor:pointer}
 .card-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px}
 .price small{display:block;font-size:11px;color:var(--text3);line-height:1.2}
 .price b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:.5px;line-height:1}
-.card-wpp{width:40px;height:40px;border-radius:50%;background:var(--wpp);color:#06260f;display:grid;place-items:center;flex-shrink:0;border:none;transition:transform .25s var(--ease)}
+.card-wpp{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0;border:none;transition:transform .25s var(--ease)}
 .card-wpp:hover{transform:scale(1.1)}
-.card-wpp .ic{font-size:20px}
+.card-wpp .ic{font-size:20px;fill:none}
 
 /* Card "não achou" */
 .card-idea{justify-content:space-between;padding:22px;background:linear-gradient(150deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#7c3aed));color:#fff;border-color:transparent;min-height:280px}
@@ -379,7 +379,7 @@ function cardHTML(p, i) {
       <div class="card-name">${esc(p.nome)}</div>
       <div class="card-foot">
         <div class="price"><small>a partir de</small><b>R$${fmt(mp)}</b></div>
-        <button type="button" class="card-wpp" aria-label="Pedir ${esc(p.nome)} no WhatsApp"><svg class="ic"><use href="#i-wpp"/></svg></button>
+        <button type="button" class="card-wpp" aria-label="${vs.length ? 'Escolher opção de' : 'Adicionar ao carrinho:'} ${esc(p.nome)}" title="${vs.length ? 'Escolher opção' : 'Adicionar ao carrinho'}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/><path d="M14 9.5v4M12 11.5h4"/></svg></button>
       </div>
     </div>
   </a>`;
@@ -440,17 +440,13 @@ function apply(scrollTop) {
   }
 }
 
-/* Botão de WhatsApp dentro do card (sem abrir a página do produto) */
+/* Botão "+ carrinho" dentro do card (peças com opções abrem a página para escolher) */
 $('#grid').addEventListener('click', e => {
   const b = e.target.closest('.card-wpp'); if (!b) return;
   e.preventDefault(); e.stopPropagation();
   const p = all.find(x => x.codigo === b.closest('.card').dataset.cod); if (!p) return;
-  const vs = varsDe(p);
-  let m = `Olá! Vi no catálogo e tenho interesse em:\n\nProduto: ${p.nome} (${p.codigo})\nCategoria: ${p.categoria}`;
-  if (vs.length) m += `\nOpções: ${vs.map(v => v.nome).join(', ')}`;
-  m += `\nPreço: a partir de R$${fmt(precoMin(p))}\n\nhttps://alves3d.com.br/produto.html?id=${encodeURIComponent(p.codigo)}`;
-  track('catalogo_card_whatsapp', { produto: p.codigo });
-  window.open(wppLink(m), '_blank', 'noopener');
+  if (varsDe(p).length || !window.Carrinho) { location.href = `produto.html?id=${encodeURIComponent(p.codigo)}`; return; }
+  Carrinho.add({ codigo: p.codigo, nome: p.nome, preco: precoMin(p), qtd: 1, img: capa(p) });
 });
 
 /* Borda na barra de categorias quando ela gruda no topo */
@@ -479,5 +475,6 @@ async function load() {
 load();
 })();
 </script>
+<script src="carrinho.js"></script>
 </body>
 </html>
