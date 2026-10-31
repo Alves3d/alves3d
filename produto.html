@@ -128,6 +128,9 @@ button{cursor:pointer}
 .var:hover{border-color:var(--text3)}
 .var[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,var(--surface));box-shadow:0 0 0 1px var(--accent)}
 .var-price{font-family:var(--mono);font-size:11px;color:var(--text3)}
+#varLbl.need{color:#ef4444;animation:shake .45s}
+#varLbl.need b{color:#ef4444}
+@keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}
 .var-desc{font-size:14px;color:var(--text2);margin-top:10px;white-space:pre-line}
 .inp{width:100%;height:48px;border-radius:14px;border:1px solid var(--border2);background:var(--surface);padding:0 16px;outline:none;transition:border-color .2s}
 .inp:focus{border-color:var(--accent)}
@@ -350,7 +353,7 @@ const capa = p => {
 };
 
 let P = null;                 // produto atual
-const st = { v: 0, qtd: 1, pers: '' };
+const st = { v: -1, qtd: 1, pers: '' };   // v = -1: nenhuma opção escolhida ainda
 let imgs = [];
 
 /* ================= CARREGAR ================= */
@@ -408,13 +411,13 @@ function render() {
       <div class="p-code">Cód. ${esc(p.codigo)}</div>
 
       <div class="price-box">
-        <div><div class="price-lbl" id="priceLbl">${vs.length ? 'preço desta opção' : 'a partir de'}</div><div class="price-val" id="priceVal">R$—</div></div>
+        <div><div class="price-lbl" id="priceLbl">a partir de</div><div class="price-val" id="priceVal">R$—</div></div>
         <div class="price-note">Valor final confirmado no WhatsApp conforme tamanho, cores e detalhes.</div>
       </div>
 
       ${vs.length ? `
       <div class="block">
-        <div class="lbl">Escolha a opção <b id="varName"></b></div>
+        <div class="lbl" id="varLbl">Escolha a opção <b id="varName"></b></div>
         <div class="vars" id="vars">${vs.map((v, i) => `
           <button class="var${v.imagens && v.imagens[0] ? '' : ' no-img'}" data-i="${i}" aria-pressed="false">
             ${v.imagens && v.imagens[0] ? `<img src="${esc(v.imagens[0])}" alt="" loading="lazy">` : ''}
@@ -483,7 +486,9 @@ function render() {
     $('#bbWpp').tabIndex = $('#bbAdd').tabIndex = show ? 0 : -1;
   }).observe($('#mainCta'));
 
-  if (vs.length) selectVar(0); else { setImages(p.imagens || []); updateOrder(); }
+  // Abre sempre com as fotos principais; a foto da opção aparece quando o cliente escolhe
+  setImages((p.imagens && p.imagens.length) ? p.imagens : ((vs.find(v => v.imagens && v.imagens.length) || {}).imagens || []));
+  updateOrder();
 }
 
 /* ================= OPÇÕES / PEDIDO ================= */
@@ -494,11 +499,16 @@ function selectVar(i) {
   $$('#vars .var').forEach((b, k) => b.setAttribute('aria-pressed', k === i));
   $('#varName').textContent = v.nome;
   $('#varDesc').textContent = v.descricao || '';
-  setImages(v.imagens && v.imagens.length ? v.imagens : (P.imagens || []));
+  $('#varLbl').classList.remove('need');
+  $('#priceLbl').textContent = 'preço desta opção';
+  // Fotos da opção primeiro; as fotos principais continuam logo depois
+  const daOpcao = (v.imagens || []).filter(Boolean), gerais = (P.imagens || []).filter(u => !daOpcao.includes(u));
+  setImages(daOpcao.length ? [...daOpcao, ...gerais] : (P.imagens || []));
   updateOrder();
 }
 function unitPrice() {
   const v = varsDe(P)[st.v];
+  if (varsDe(P).length && !v) return precoMin(P);
   if (v && v.preco != null) return +v.preco;
   return varsDe(P).length ? (P.preco != null ? +P.preco : precoMin(P)) : (P.preco != null ? +P.preco : null);
 }
@@ -514,9 +524,10 @@ function updateOrder() {
 
   let m = `Olá! Vi no site e quero pedir:\n\nProduto: ${P.nome} (${P.codigo})`;
   if (v) m += `\nOpção: ${v.nome}`;
+  else if (vs.length) m += `\nOpção: a escolher (${vs.map(x => x.nome).join(', ')})`;
   m += `\nQuantidade: ${st.qtd}`;
   if (st.pers) m += `\nPersonalização: ${st.pers}`;
-  m += `\nPreço: R$${fmt(up)}${st.qtd > 1 ? ' cada' : ''}`;
+  m += `\nPreço: ${vs.length && !v ? 'a partir de ' : ''}R$${fmt(up)}${st.qtd > 1 ? ' cada' : ''}`;
   m += `\n\n${SITE}/produto.html?id=${encodeURIComponent(P.codigo)}`;
   const link = wppLink(m);
   $('#wppBtn').href = link; $('#bbWpp').href = link;
@@ -524,6 +535,13 @@ function updateOrder() {
 
 function addToCart() {
   const vs = varsDe(P), v = vs.length ? vs[st.v] : null;
+  if (vs.length && !v) {   // precisa escolher a opção antes
+    const lbl = $('#varLbl');
+    lbl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    lbl.classList.remove('need'); void lbl.offsetWidth; lbl.classList.add('need');
+    toast('Escolha uma opção primeiro');
+    return;
+  }
   const img = (v && v.imagens && v.imagens[0]) || capa(P);
   if (window.Carrinho) Carrinho.add({ codigo: P.codigo, nome: P.nome, opcao: v ? v.nome : '', preco: unitPrice(), qtd: st.qtd, pers: st.pers, img });
 }
