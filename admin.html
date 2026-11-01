@@ -169,6 +169,86 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 .var-thumb button:hover{background:var(--red)}
 @media(max-width:820px){ .var-grid{grid-template-columns:1fr} }
 
+/* ===== ABAS ===== */
+.tabs{display:flex;gap:8px;max-width:1200px;margin:0 auto;padding:22px 32px 0;flex-wrap:wrap}
+.tab{background:transparent;border:1px solid var(--border);color:var(--text2);padding:9px 18px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:all .2s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab .cnt{font-family:var(--mono);font-size:11px;background:rgba(0,0,0,.18);padding:1px 7px;border-radius:100px}
+.tab:not(.on) .cnt{background:var(--surface2)}
+
+/* ===== AVALIAÇÕES ===== */
+:root{--c-det:#e5603a;--c-neu:#7a7a7a;--c-pro:#4f86ec;--c-star:#f5b942}
+:root[data-theme="light"]{--c-det:#d4501f;--c-neu:#8a8a8a;--c-pro:#2f5fd0;--c-star:#d99a1e}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.kpi-l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);margin-bottom:10px}
+.kpi-v{font-family:var(--serif);font-size:46px;letter-spacing:1px;line-height:1}
+.kpi-v small{font-size:20px;color:var(--text2);margin-left:3px}
+.kpi-s{font-size:12px;color:var(--text2);margin-top:8px}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+.card-t{font-family:var(--serif);font-size:21px;letter-spacing:1.5px;line-height:1.1}
+.card-s{font-size:12px;color:var(--text2);margin:4px 0 16px}
+.card-s b{color:var(--text);font-weight:600}
+.nps-bar{display:flex;gap:2px;height:26px;margin:4px 0 14px}
+.nps-bar div{height:100%;min-width:0}
+.nps-bar div:first-child{border-radius:4px 0 0 4px}
+.nps-bar div:last-child{border-radius:0 4px 4px 0}
+.nps-leg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.nps-leg div{font-size:12px;color:var(--text2)}
+.nps-leg b{display:block;font-family:var(--serif);font-size:26px;color:var(--text);font-weight:400;letter-spacing:1px;line-height:1.1}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:baseline}
+.hb{display:grid;grid-template-columns:minmax(80px,40%) 1fr 40px;gap:10px;align-items:center;padding:7px 0;cursor:default}
+.hb-l{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb-t{height:10px;background:var(--surface2);border-radius:0 4px 4px 0;position:relative}
+.hb-f{position:absolute;top:0;bottom:0;left:0;background:var(--accent);border-radius:0 4px 4px 0;transition:width .5s ease}
+.hb:hover .hb-f{background:var(--accent2)}
+.hb-v{font-family:var(--mono);font-size:12px;text-align:right}
+.cols{display:flex;gap:4px;height:160px;border-bottom:1px solid var(--border)}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;min-width:0;cursor:default}
+.col-v{font-family:var(--mono);font-size:11px;color:var(--text2);height:18px;line-height:18px}
+.col-f{width:100%;max-width:46px;background:var(--accent);border-radius:4px 4px 0 0;transition:height .5s ease}
+.col:hover .col-f{filter:brightness(1.15)}
+.col-x{display:flex;gap:4px;margin-top:6px}
+.col-x span{flex:1;text-align:center;font-family:var(--mono);font-size:10px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:26px 0 12px}
+.chips-f{display:flex;gap:6px;flex-wrap:wrap}
+.chip-f{background:transparent;border:1px solid var(--border);color:var(--text2);padding:6px 12px;border-radius:100px;font-size:12px;cursor:pointer}
+.chip-f.on{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+#avPeriodo{width:auto;min-width:190px}
+.mais{display:flex;justify-content:center;margin-top:12px}
+.depos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.depo{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.depo-q{font-size:14px;line-height:1.6;flex:1}
+.depo-q::before{content:'“';font-family:var(--serif);font-size:34px;color:var(--accent);line-height:0;vertical-align:-12px;margin-right:4px}
+.depo-f{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px}
+.stars-t{color:var(--c-star);letter-spacing:1px;font-size:14px}
+.stars-t i{font-style:normal;opacity:.22}
+.resp{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px}
+.resp-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.resp-n{font-weight:600;font-size:15px}
+.resp-d{font-family:var(--mono);font-size:11px;color:var(--text2)}
+.resp-meta{font-size:12px;color:var(--text2);margin-top:6px}
+.resp-c{font-size:14px;margin-top:10px;line-height:1.55;white-space:pre-wrap}
+.resp-c b{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);font-weight:500;display:block;margin-bottom:2px}
+.resp-x{margin-left:auto;width:30px;height:30px;font-size:13px}
+.resp-x:hover{border-color:var(--red)!important;color:var(--red)!important}
+.pill-det{background:color-mix(in srgb,var(--c-det) 15%,transparent);color:var(--c-det);border:1px solid color-mix(in srgb,var(--c-det) 35%,transparent)}
+.pill-neu{background:color-mix(in srgb,var(--c-neu) 15%,transparent);color:var(--text2);border:1px solid color-mix(in srgb,var(--c-neu) 35%,transparent)}
+.pill-pro{background:color-mix(in srgb,var(--c-pro) 15%,transparent);color:var(--c-pro);border:1px solid color-mix(in srgb,var(--c-pro) 35%,transparent)}
+.env-prev{margin-top:14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.6;white-space:pre-wrap;color:var(--text2)}
+.env-prev a{color:var(--accent);word-break:break-all}
+#tip{position:fixed;left:0;top:0;pointer-events:none;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 11px;font-size:12px;line-height:1.5;z-index:950;opacity:0;transition:opacity .12s;box-shadow:0 8px 24px rgba(0,0,0,.35);max-width:260px}
+#tip b{font-weight:600}
+@media(max-width:820px){
+  .tabs{padding:16px 16px 0}
+  .kpis{grid-template-columns:1fr 1fr}
+  .cards2,.cards3{grid-template-columns:1fr}
+  .kpi-v{font-size:38px}
+}
+
 @media(max-width:820px){
   .wrap{padding:20px 16px}
   nav{padding:12px 16px}
@@ -217,7 +297,12 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
   </div>
 </nav>
 
-<div class="wrap">
+<div class="tabs">
+  <button class="tab on" data-aba="produtos" onclick="trocarAba('produtos')">📦 Produtos <span class="cnt" id="cntProd">–</span></button>
+  <button class="tab" data-aba="avaliacoes" onclick="trocarAba('avaliacoes')">⭐ Avaliações <span class="cnt" id="cntAval">–</span></button>
+</div>
+
+<div class="wrap" id="abaProdutos">
   <div class="head">
     <div>
       <div class="title">MEUS <span>PRODUTOS</span></div>
@@ -245,6 +330,42 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 
   <div id="lista">
     <div class="loading"><div class="spin"></div><span>Carregando produtos...</span></div>
+  </div>
+</div>
+
+<!-- ===== ABA AVALIAÇÕES ===== -->
+<div class="wrap" id="abaAvaliacoes" style="display:none">
+  <div class="head">
+    <div><div class="title">AVALIAÇÕES <span>DOS CLIENTES</span></div></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <select class="filter" id="avPeriodo" onchange="renderAval()">
+        <option value="30">Últimos 30 dias</option>
+        <option value="90">Últimos 90 dias</option>
+        <option value="365">Últimos 12 meses</option>
+        <option value="0" selected>Todo o período</option>
+      </select>
+      <button class="btn btn-ghost" onclick="carregarAval(true)" title="Buscar respostas novas">↻ Atualizar</button>
+      <button class="btn btn-ghost" onclick="exportarCSV()">⬇ Exportar Excel (CSV)</button>
+      <button class="btn btn-primary" onclick="document.getElementById('envio').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.getElementById('envNome').focus(),400)">✉ Enviar pesquisa</button>
+    </div>
+  </div>
+  <div class="sub" id="avSub">carregando...</div>
+
+  <div id="avConteudo"><div class="loading"><div class="spin"></div><span>Carregando avaliações...</span></div></div>
+
+  <div class="sec-h" id="envio"><div class="card-t">ENVIAR PESQUISA</div></div>
+  <div class="card">
+    <div class="card-s" style="margin-top:0">Preencha e mande pelo WhatsApp — o nome aparece na pesquisa e o pedido fica salvo junto com a resposta.</div>
+    <div class="grid">
+      <div class="fld"><label>Nome do cliente</label><input type="text" id="envNome" placeholder="Ex: Ana" maxlength="80" oninput="atualizarEnvio()"></div>
+      <div class="fld"><label>Pedido / produto (opcional)</label><input type="text" id="envPedido" placeholder="Ex: M-5AF4" maxlength="40" oninput="atualizarEnvio()"></div>
+    </div>
+    <div class="env-prev" id="envPrev"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+      <a class="btn btn-sm" style="background:var(--green);color:#04170d" id="envWa" target="_blank" rel="noopener">Abrir no WhatsApp</a>
+      <button class="btn btn-primary btn-sm" onclick="copiar(msgEnvio(),'Mensagem copiada!')">Copiar mensagem</button>
+      <button class="btn btn-ghost btn-sm" onclick="copiar(linkEnvio(),'Link copiado!')">Copiar só o link</button>
+    </div>
   </div>
 </div>
 </div>
@@ -347,6 +468,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 </div>
 
 <div class="toast" id="toast"></div>
+<div id="tip"></div>
 
 <script>
 // ===== CONFIG =====
@@ -402,6 +524,8 @@ function iniciar(){
   document.getElementById('login').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   carregar();
+  carregarAval();
+  if (location.hash === '#avaliacoes') trocarAba('avaliacoes');
 }
 
 // ===== CARREGAR =====
@@ -409,6 +533,7 @@ async function carregar(){
   const { data, error } = await sb.from('produtos').select('*').order('ordem').order('created_at',{ascending:false});
   if (error){ toast('Erro ao carregar: ' + error.message, false); return; }
   produtos = data || [];
+  document.getElementById('cntProd').textContent = produtos.length;
   const cats = [...new Set(produtos.map(p => p.categoria).filter(Boolean))].sort();
   document.getElementById('filtroCat').innerHTML =
     '<option value="">Todas categorias</option>' + cats.map(c => `<option>${esc(c)}</option>`).join('');
@@ -872,6 +997,351 @@ async function excluir(){
   fecharModal();
   carregar();
 }
+
+// ===== ABAS =====
+function trocarAba(aba){
+  document.getElementById('abaProdutos').style.display   = aba === 'produtos'   ? '' : 'none';
+  document.getElementById('abaAvaliacoes').style.display = aba === 'avaliacoes' ? '' : 'none';
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.aba === aba));
+  history.replaceState(null, '', aba === 'avaliacoes' ? '#avaliacoes' : location.pathname + location.search);
+  if (aba === 'avaliacoes') atualizarEnvio();
+}
+
+// ===== AVALIAÇÕES =====
+const PESQUISA_URL = 'https://alves3d.com.br/pesquisa.html';
+let avaliacoes = [];
+let avFiltroLista = 'todas';
+let avLimite = 10;
+
+async function carregarAval(manual){
+  const { data, error } = await sb.from('pesquisa_satisfacao').select('*').order('criado_em', { ascending:false });
+  if (error){
+    document.getElementById('avConteudo').innerHTML = `<div class="empty"><div class="empty-t">Erro ao carregar</div>${esc(error.message)}</div>`;
+    return;
+  }
+  avaliacoes = data || [];
+  document.getElementById('cntAval').textContent = avaliacoes.length;
+  renderAval();
+  if (manual) toast('Avaliações atualizadas!', true);
+}
+
+function avNoPeriodo(){
+  const d = +document.getElementById('avPeriodo').value;
+  if (!d) return avaliacoes;
+  const lim = Date.now() - d * 864e5;
+  return avaliacoes.filter(r => new Date(r.criado_em).getTime() >= lim);
+}
+
+const media  = arr => { const v = arr.filter(x => x != null); return v.length ? v.reduce((a,b) => a+b, 0) / v.length : null; };
+const fmt1   = n => n == null ? '—' : n.toFixed(1).replace('.', ',');
+const pct    = (a, b) => b ? Math.round(a / b * 100) : 0;
+const grupo  = n => n <= 6 ? 'det' : n <= 8 ? 'neu' : 'pro';
+const GRUPO_TXT = { det:'Detrator', neu:'Neutro', pro:'Promotor' };
+const EXP_TXT = { 'Superou':'🤩 Superou', 'Como esperado':'🙂 Como esperado', 'Parcialmente':'😐 Em parte', 'Abaixo':'🙁 Abaixo' };
+const estrelas = n => n ? `<span class="stars-t" title="${n} de 5">${'★'.repeat(n)}<i>${'★'.repeat(5-n)}</i></span>` : '<span class="resp-d">—</span>';
+const dataBR = s => new Date(s).toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit' });
+const primeiroNome = s => (s || '').trim().split(/\s+/)[0] || '';
+
+function contar(rows, campo, ordem){
+  const m = {};
+  rows.forEach(r => { const k = r[campo]; if (k) m[k] = (m[k] || 0) + 1; });
+  return ordem ? ordem.filter(k => m[k]).map(k => [k, m[k]]) : Object.entries(m).sort((a,b) => b[1] - a[1]);
+}
+
+// --- componentes de gráfico (HTML/CSS puro, seguem o tema claro/escuro) ---
+function barrasH(itens, max, fmtV){
+  return itens.map(it => `
+    <div class="hb" data-tip="${esc(it.tip || '')}">
+      <div class="hb-l">${esc(it.label)}</div>
+      <div class="hb-t"><div class="hb-f" style="width:${max ? it.valor / max * 100 : 0}%"></div></div>
+      <div class="hb-v">${fmtV(it.valor)}</div>
+    </div>`).join('');
+}
+
+function colunas(itens, corFn){
+  const max = Math.max(1, ...itens.map(i => i.valor));
+  return `<div class="cols">${itens.map((it, i) => `
+      <div class="col" data-tip="${esc(it.tip || '')}">
+        <span class="col-v">${it.valor || ''}</span>
+        <div class="col-f" style="height:calc((100% - 18px) * ${it.valor / max});${corFn ? 'background:' + corFn(i) : ''}"></div>
+      </div>`).join('')}</div>
+    <div class="col-x">${itens.map(it => `<span>${esc(it.label)}</span>`).join('')}</div>`;
+}
+
+function serieTempo(rows){
+  const d = +document.getElementById('avPeriodo').value;
+  const semanal = d && d <= 90;
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const b = [];
+  if (semanal){
+    const seg = new Date(hoje); seg.setDate(seg.getDate() - ((seg.getDay() + 6) % 7));
+    for (let i = Math.ceil(d / 7) - 1; i >= 0; i--){
+      const ini = new Date(seg); ini.setDate(ini.getDate() - 7 * i);
+      const fim = new Date(ini); fim.setDate(fim.getDate() + 7);
+      const lbl = ini.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit' });
+      b.push({ ini, fim, label: lbl, nome: 'Semana de ' + lbl });
+    }
+  } else {
+    let n = 12;
+    if (!d && rows.length){
+      const p = new Date(rows[rows.length - 1].criado_em);
+      n = Math.min(12, Math.max(6, (hoje.getFullYear() - p.getFullYear()) * 12 + hoje.getMonth() - p.getMonth() + 1));
+    }
+    for (let i = n - 1; i >= 0; i--){
+      const ini = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1);
+      const fim = new Date(hoje.getFullYear(), hoje.getMonth() - i + 1, 1);
+      b.push({ ini, fim, label: ini.toLocaleDateString('pt-BR', { month:'short' }).replace('.', ''),
+               nome: ini.toLocaleDateString('pt-BR', { month:'long', year:'numeric' }) });
+    }
+  }
+  return {
+    semanal,
+    itens: b.map(x => {
+      const rs = rows.filter(r => { const t = new Date(r.criado_em); return t >= x.ini && t < x.fim; });
+      const m = media(rs.map(r => r.nota_geral));
+      return { label: x.label, valor: rs.length,
+               tip: `<b>${esc(x.nome)}</b><br>${rs.length} resposta(s)${m != null ? ' · nota média ' + fmt1(m) + ' ★' : ''}` };
+    })
+  };
+}
+
+function renderAval(){
+  const rows = avNoPeriodo();
+  const box  = document.getElementById('avConteudo');
+  document.getElementById('avSub').textContent = `${rows.length} resposta(s) no período · ${avaliacoes.length} no total`;
+
+  if (!rows.length){
+    box.innerHTML = `<div class="card"><div class="empty" style="padding:44px 10px">
+      <div class="empty-i">📋</div>
+      <div class="empty-t">${avaliacoes.length ? 'Nenhuma resposta neste período' : 'Nenhuma resposta ainda'}</div>
+      Use o gerador abaixo para mandar a pesquisa aos seus clientes.</div></div>`;
+    return;
+  }
+
+  const n = rows.length;
+  const det = rows.filter(r => r.nps <= 6).length;
+  const neu = rows.filter(r => r.nps >= 7 && r.nps <= 8).length;
+  const pro = rows.filter(r => r.nps >= 9).length;
+  const nps = Math.round((pro - det) / n * 100);
+  const zona = nps > 75 ? 'Excelência' : nps > 50 ? 'Qualidade' : nps > 0 ? 'Aperfeiçoamento' : 'Crítica';
+  const mg = media(rows.map(r => r.nota_geral));
+  const expR = rows.filter(r => r.expectativa);
+  const expOk = expR.filter(r => r.expectativa === 'Superou' || r.expectativa === 'Como esperado').length;
+  const superou = expR.filter(r => r.expectativa === 'Superou').length;
+
+  // KPIs
+  let h = `<div class="kpis">
+    <div class="kpi"><div class="kpi-l">Respostas</div><div class="kpi-v">${n}</div>
+      <div class="kpi-s">${rows.filter(r => r.gostou || r.melhorar).length} com comentário</div></div>
+    <div class="kpi"><div class="kpi-l">Nota média</div><div class="kpi-v">${fmt1(mg)}<small>/ 5</small></div>
+      <div class="kpi-s">${estrelas(Math.round(mg))}</div></div>
+    <div class="kpi"><div class="kpi-l">NPS</div><div class="kpi-v">${nps > 0 ? '+' : ''}${nps}</div>
+      <div class="kpi-s">Zona de ${zona}</div></div>
+    <div class="kpi"><div class="kpi-l">Atendeu a expectativa</div><div class="kpi-v">${expR.length ? pct(expOk, expR.length) : '—'}<small>%</small></div>
+      <div class="kpi-s">${expR.length ? pct(superou, expR.length) + '% disseram que superou' : 'sem respostas'}</div></div>
+  </div>`;
+
+  // NPS + critérios
+  const seg = (q, cor, nome) => q ? `<div style="flex:${q};background:var(${cor})" data-tip="<b>${nome}</b><br>${q} cliente(s) · ${pct(q, n)}%"></div>` : '';
+  const dist = Array.from({ length: 11 }, (_, i) => {
+    const q = rows.filter(r => r.nps === i).length;
+    return { label: String(i), valor: q, tip: `<b>Nota ${i}</b><br>${q} cliente(s) · ${GRUPO_TXT[grupo(i)]}` };
+  });
+  const corNps = i => `var(--c-${grupo(i)})`;
+
+  const crit = [
+    ['Qualidade da peça', 'nota_qualidade'], ['Atendimento', 'nota_atendimento'],
+    ['Prazo de entrega', 'nota_prazo'], ['Preço / custo-benefício', 'nota_preco']
+  ].map(([label, campo]) => {
+    const vs = rows.map(r => r[campo]).filter(v => v != null);
+    return { label, valor: media(vs), qtd: vs.length };
+  }).filter(c => c.qtd);
+  const pior = crit.length > 1 ? crit.reduce((a, b) => b.valor < a.valor ? b : a) : null;
+  const melhor = crit.length > 1 ? crit.reduce((a, b) => b.valor > a.valor ? b : a) : null;
+
+  h += `<div class="cards2">
+    <div class="card">
+      <div class="card-t">NPS — QUANTO INDICAM</div>
+      <div class="card-s">NPS = % promotores − % detratores · vai de −100 a +100</div>
+      <div class="nps-bar">${seg(det, '--c-det', 'Detratores (0–6)')}${seg(neu, '--c-neu', 'Neutros (7–8)')}${seg(pro, '--c-pro', 'Promotores (9–10)')}</div>
+      <div class="nps-leg">
+        <div><span class="dot" style="background:var(--c-det)"></span>Detratores 0–6<b>${det}</b>${pct(det, n)}%</div>
+        <div><span class="dot" style="background:var(--c-neu)"></span>Neutros 7–8<b>${neu}</b>${pct(neu, n)}%</div>
+        <div><span class="dot" style="background:var(--c-pro)"></span>Promotores 9–10<b>${pro}</b>${pct(pro, n)}%</div>
+      </div>
+      ${colunas(dist, corNps)}
+    </div>
+    <div class="card">
+      <div class="card-t">NOTA POR CRITÉRIO</div>
+      <div class="card-s">${pior && pior !== melhor ? `Ponto forte: <b>${esc(melhor.label)}</b> · Melhorar: <b>${esc(pior.label)}</b>` : 'Média de 1 a 5 estrelas'}</div>
+      ${crit.length ? barrasH(crit.map(c => ({ ...c, tip: `<b>${esc(c.label)}</b><br>Média ${fmt1(c.valor)} ★ · ${c.qtd} avaliação(ões)` })), 5, fmt1)
+                    : '<div class="resp-d">Nenhuma nota por critério ainda.</div>'}
+      <div style="margin-top:22px">
+        <div class="card-t" style="font-size:17px">SATISFAÇÃO GERAL</div>
+        <div class="card-s" style="margin-bottom:10px">Quantos clientes deram cada nota</div>
+        ${colunas([1,2,3,4,5].map(s => { const q = rows.filter(r => r.nota_geral === s).length;
+            return { label: s + '★', valor: q, tip: `<b>${s} estrela(s)</b><br>${q} resposta(s) · ${pct(q, n)}%` }; }))}
+      </div>
+    </div>
+  </div>`;
+
+  // Evolução
+  const st = serieTempo(rows);
+  h += `<div class="card" style="margin-bottom:12px">
+    <div class="card-t">RESPOSTAS ${st.semanal ? 'POR SEMANA' : 'POR MÊS'}</div>
+    <div class="card-s">Passe o mouse para ver a nota média de cada ${st.semanal ? 'semana' : 'mês'}</div>
+    ${colunas(st.itens)}
+  </div>`;
+
+  // Origem / tipo / expectativa
+  const bloco = (titulo, sub, pares, rotulo) => {
+    const tot = pares.reduce((a, p) => a + p[1], 0);
+    const max = Math.max(1, ...pares.map(p => p[1]));
+    return `<div class="card"><div class="card-t">${titulo}</div><div class="card-s">${sub}</div>
+      ${pares.length ? barrasH(pares.map(([k, v]) => ({ label: rotulo ? rotulo(k) : k, valor: v,
+          tip: `<b>${esc(rotulo ? rotulo(k) : k)}</b><br>${v} resposta(s) · ${pct(v, tot)}%` })), max, v => v)
+        : '<div class="resp-d">Sem respostas.</div>'}</div>`;
+  };
+  h += `<div class="cards3">
+    ${bloco('COMO CONHECERAM', 'De onde vêm seus clientes', contar(rows, 'origem'))}
+    ${bloco('TIPO DE PEDIDO', 'O que mais pedem', contar(rows, 'tipo_pedido'))}
+    ${bloco('EXPECTATIVA', 'A peça ficou como imaginaram?', contar(rows, 'expectativa', Object.keys(EXP_TXT)), k => EXP_TXT[k] || k)}
+  </div>`;
+
+  // Depoimentos autorizados
+  const depos = rows.filter(r => r.autoriza_depoimento && r.gostou);
+  h += `<div class="sec-h"><div><div class="card-t">DEPOIMENTOS AUTORIZADOS</div>
+      <div class="card-s" style="margin-bottom:0">${depos.length} prontos para usar no site e no Instagram</div></div></div>`;
+  h += depos.length ? `<div class="depos">${depos.map(r => `
+      <div class="depo">
+        <div class="depo-q">${esc(r.gostou)}</div>
+        <div class="depo-f">
+          <span><b>${esc(primeiroNome(r.nome) || 'Cliente')}</b> ${estrelas(r.nota_geral)}</span>
+          <button class="btn btn-ghost btn-sm" onclick="copiarDepo(${+r.id})">Copiar</button>
+        </div>
+      </div>`).join('')}</div>`
+    : `<div class="card"><div class="resp-d">Nenhum cliente autorizou depoimento ainda neste período.</div></div>`;
+
+  // Lista
+  const filtros = [['todas', 'Todas'], ['det', 'Detratores (0–6)'], ['com', 'Com comentário'], ['mel', 'Com sugestão de melhoria']];
+  h += `<div class="sec-h"><div class="card-t">TODAS AS RESPOSTAS</div>
+    <div class="chips-f">${filtros.map(([k, l]) => `<button class="chip-f ${avFiltroLista === k ? 'on' : ''}" onclick="avFiltroLista='${k}';avLimite=10;renderAval()">${l}</button>`).join('')}</div></div>`;
+  const lista = rows.filter(r =>
+    avFiltroLista === 'det' ? r.nps <= 6 :
+    avFiltroLista === 'com' ? (r.gostou || r.melhorar) :
+    avFiltroLista === 'mel' ? r.melhorar : true);
+  h += lista.length ? lista.slice(0, avLimite).map(r => {
+    const g = grupo(r.nps);
+    const meta = [r.tipo_pedido, r.ref_pedido ? 'Pedido ' + r.ref_pedido : null, r.origem ? 'Via ' + r.origem : null,
+                  r.expectativa ? 'Expectativa: ' + (EXP_TXT[r.expectativa] || r.expectativa) : null,
+                  r.autoriza_depoimento ? '✅ Autorizou depoimento' : null].filter(Boolean);
+    const notas = [['Qualidade', r.nota_qualidade], ['Atendimento', r.nota_atendimento], ['Prazo', r.nota_prazo], ['Preço', r.nota_preco]]
+                  .filter(x => x[1]).map(x => `${x[0]} ${x[1]}★`);
+    return `<div class="resp">
+      <div class="resp-h">
+        <span class="resp-n">${esc(r.nome || 'Anônimo')}</span>
+        ${estrelas(r.nota_geral)}
+        <span class="pill pill-${g}">NPS ${r.nps} · ${GRUPO_TXT[g]}</span>
+        <span class="resp-d">${dataBR(r.criado_em)}</span>
+        <button class="btn-icon resp-x" title="Excluir resposta" onclick="excluirResp(${+r.id})">🗑</button>
+      </div>
+      ${meta.length ? `<div class="resp-meta">${esc(meta.join(' · '))}</div>` : ''}
+      ${notas.length ? `<div class="resp-meta">${notas.join(' · ')}</div>` : ''}
+      ${r.gostou ? `<div class="resp-c"><b>Mais gostou</b>${esc(r.gostou)}</div>` : ''}
+      ${r.melhorar ? `<div class="resp-c"><b>Pode melhorar</b>${esc(r.melhorar)}</div>` : ''}
+    </div>`;
+  }).join('') + (lista.length > avLimite ? `<div class="mais"><button class="btn btn-ghost" onclick="avLimite+=20;renderAval()">Mostrar mais (${lista.length - avLimite} restantes)</button></div>` : '')
+    : '<div class="card"><div class="resp-d">Nenhuma resposta com esse filtro.</div></div>';
+
+  box.innerHTML = h;
+}
+
+async function excluirResp(id){
+  const r = avaliacoes.find(x => x.id === id);
+  if (!confirm(`Excluir a resposta de "${r?.nome || 'Anônimo'}"?\n\nUse para apagar testes ou spam. Não pode ser desfeito.`)) return;
+  const { error } = await sb.from('pesquisa_satisfacao').delete().eq('id', id);
+  if (error){ toast('Erro: ' + error.message, false); return; }
+  toast('Resposta excluída.', true);
+  carregarAval();
+}
+
+function copiarDepo(id){
+  const r = avaliacoes.find(x => x.id === id);
+  if (r) copiar(`"${r.gostou}"\n— ${primeiroNome(r.nome) || 'Cliente'} ${'★'.repeat(r.nota_geral || 0)}`, 'Depoimento copiado!');
+}
+
+// --- gerador de link / mensagem ---
+function linkEnvio(){
+  const p = new URLSearchParams();
+  const nome = document.getElementById('envNome').value.trim();
+  const ped  = document.getElementById('envPedido').value.trim();
+  if (nome) p.set('nome', nome);
+  if (ped)  p.set('pedido', ped);
+  const q = p.toString();
+  return PESQUISA_URL + (q ? '?' + q : '');
+}
+function msgEnvio(){
+  const nome = primeiroNome(document.getElementById('envNome').value);
+  return `Oi${nome ? ', ' + nome : ''}! Tudo certo com sua peça? 😊\n` +
+         `Se puder, me conta como foi sua experiência. Leva 2 minutinhos e me ajuda muito a melhorar:\n` +
+         `${linkEnvio()}\n\nObrigado pela confiança! — Matheus, Alves.3D`;
+}
+function atualizarEnvio(){
+  const link = linkEnvio();
+  document.getElementById('envPrev').innerHTML = esc(msgEnvio()).replace(esc(link), `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(link)}</a>`);
+  document.getElementById('envWa').href = 'https://wa.me/?text=' + encodeURIComponent(msgEnvio());
+}
+
+async function copiar(txt, ok){
+  try { await navigator.clipboard.writeText(txt); }
+  catch(_){
+    const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t);
+    t.select(); document.execCommand('copy'); t.remove();
+  }
+  toast(ok || 'Copiado!', true);
+}
+
+// --- exportar para Excel ---
+function exportarCSV(){
+  const rows = avNoPeriodo();
+  if (!rows.length){ toast('Nenhuma resposta no período.', false); return; }
+  const cols = [['criado_em','Data'],['nome','Nome'],['ref_pedido','Pedido'],['tipo_pedido','Tipo de pedido'],
+    ['nota_geral','Nota geral'],['nota_qualidade','Qualidade'],['nota_atendimento','Atendimento'],['nota_prazo','Prazo'],
+    ['nota_preco','Preço'],['expectativa','Expectativa'],['nps','NPS'],['origem','Origem'],['gostou','Mais gostou'],
+    ['melhorar','Pode melhorar'],['autoriza_depoimento','Autoriza depoimento']];
+  const cel = (v, k) => {
+    if (v == null) return '';
+    if (typeof v === 'boolean') return v ? 'Sim' : 'Não';
+    let s = k === 'criado_em' ? dataBR(v) : String(v);
+    if (/^[=+\-@]/.test(s)) s = "'" + s;
+    return /[;"\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  };
+  const csv = [cols.map(c => c[1]).join(';'), ...rows.map(r => cols.map(([k]) => cel(r[k], k)).join(';'))].join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type:'text/csv;charset=utf-8' }));
+  a.download = `avaliacoes-alves3d-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// --- tooltip dos gráficos ---
+(function(){
+  const tip = document.getElementById('tip');
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('[data-tip]');
+    if (!el || !el.dataset.tip){ tip.style.opacity = 0; return; }
+    tip.innerHTML = el.dataset.tip; tip.style.opacity = 1;
+  });
+  document.addEventListener('mousemove', e => {
+    if (tip.style.opacity !== '1') return;
+    const w = tip.offsetWidth, hgt = tip.offsetHeight;
+    let x = e.clientX + 14, y = e.clientY + 14;
+    if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+    if (y + hgt > innerHeight - 8) y = e.clientY - hgt - 14;
+    tip.style.transform = `translate(${x}px,${y}px)`;
+  });
+  document.addEventListener('scroll', () => tip.style.opacity = 0, { passive:true });
+})();
 
 // ===== UTIL =====
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
