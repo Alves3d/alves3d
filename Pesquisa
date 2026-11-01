@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesquisa de Satisfação | Alves.3D</title>
+<meta name="description" content="Conte como foi sua experiência com a Alves.3D. Leva 2 minutos.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0d12">
+
+<!-- Prévia ao enviar o link no WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Como foi sua experiência com a Alves.3D?">
+<meta property="og:description" content="Responda em 2 minutos e ajude a gente a imprimir cada peça melhor.">
+<meta property="og:image" content="https://alves3d.com.br/imgs/galeria-1.jpg">
+<meta property="og:url" content="https://alves3d.com.br/pesquisa.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXF61HPLY7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RXF61HPLY7');
+</script>
+
+<style>
+  :root{
+    --bg:#0b0d12;
+    --surface:#12151d;
+    --surface-2:#181c26;
+    --border:#232938;
+    --text:#eef1f7;
+    --muted:#8b93a7;
+    --accent:#4176e1;
+    --accent-soft:rgba(65,118,225,.14);
+    --accent-glow:rgba(65,118,225,.35);
+    --star:#f5b942;
+    --bad:#e5534b;
+    --mid:#e0a43a;
+    --good:#3fb97a;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'DM Sans',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  /* Camadas de impressão no fundo */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 7px),
+      radial-gradient(ellipse 70% 45% at 50% 0%, rgba(65,118,225,.22), transparent 70%);
+    -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 65%);
+            mask-image:linear-gradient(to bottom, #000 0%, transparent 65%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 16px 64px}
+
+  /* Barra de progresso */
+  .progress{
+    position:sticky;top:0;z-index:10;
+    height:4px;background:var(--border);
+  }
+  .progress span{
+    display:block;height:100%;width:0;
+    background:linear-gradient(90deg,var(--accent),#7aa2ff);
+    box-shadow:0 0 12px var(--accent-glow);
+    transition:width .35s ease;
+  }
+
+  /* Topo */
+  header{padding:40px 0 28px;text-align:center}
+  .logo{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;
+    color:var(--text);text-decoration:none;
+  }
+  .logo svg{width:30px;height:30px}
+  .logo b{color:var(--accent);font-weight:400}
+  .eyebrow{
+    display:inline-block;margin-top:28px;
+    font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);
+    padding:6px 12px;border-radius:999px;
+  }
+  h1{
+    font-family:'Bebas Neue',sans-serif;font-weight:400;
+    font-size:clamp(44px,11vw,72px);line-height:.95;letter-spacing:1px;
+    margin:16px 0 14px;
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .lead{color:var(--muted);max-width:440px;margin:0 auto}
+  .lead strong{color:var(--text);font-weight:500}
+
+  /* Cards */
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 18px;
+    margin-bottom:14px;
+    transition:border-color .2s;
+  }
+  .card.invalid{border-color:var(--bad)}
+  .q-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+  .q-num{
+    font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;
+    color:var(--accent);min-width:32px;
+  }
+  .q-title{font-weight:700;font-size:17px;line-height:1.3}
+  .q-title small{display:block;font-weight:400;font-size:13.5px;color:var(--muted);margin-top:4px}
+  .req{color:var(--accent)}
+  .err{display:none;color:var(--bad);font-size:13px;margin-top:10px}
+  .card.invalid .err{display:block}
+
+  /* Campos de texto */
+  input[type=text], textarea{
+    width:100%;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    color:var(--text);
+    font:inherit;
+    padding:13px 14px;
+    outline:none;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  input[type=text]:focus, textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  textarea{min-height:96px;resize:vertical}
+  ::placeholder{color:#5c6478}
+  .counter{text-align:right;font-size:12px;color:var(--muted);margin-top:6px}
+
+  /* Chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip span{
+    display:inline-block;cursor:pointer;user-select:none;
+    padding:10px 15px;border-radius:999px;
+    background:var(--surface-2);border:1px solid var(--border);
+    font-size:14.5px;transition:all .15s;
+  }
+  .chip span:hover{border-color:#3a4256}
+  .chip input:checked + span{background:var(--accent-soft);border-color:var(--accent);color:#fff}
+  .chip input:focus-visible + span{box-shadow:0 0 0 3px var(--accent-glow)}
+
+  /* Estrelas */
+  .rating-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--border)}
+  .q-head + .rating-row{border-top:0;padding-top:0}
+  .rating-row label.lbl{font-size:15px}
+  .stars{display:flex;gap:4px;flex-shrink:0}
+  .stars.big{gap:8px;justify-content:center;width:100%}
+  .star{
+    background:none;border:0;cursor:pointer;padding:2px;
+    color:#343b4d;transition:transform .12s,color .12s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .star svg{width:26px;height:26px;display:block;fill:currentColor}
+  .stars.big .star svg{width:44px;height:44px}
+  .star.on{color:var(--star)}
+  .star:hover{transform:scale(1.12)}
+  .star:focus-visible{outline:2px solid var(--accent);border-radius:6px}
+  .star-label{text-align:center;color:var(--muted);font-size:14px;margin-top:10px;min-height:22px}
+
+  /* NPS */
+  .nps{display:grid;grid-template-columns:repeat(11,1fr);gap:5px}
+  .nps button{
+    aspect-ratio:1/1.15;border-radius:10px;cursor:pointer;
+    background:var(--surface-2);border:1px solid var(--border);color:var(--text);
+    font-family:'Bebas Neue',sans-serif;font-size:20px;
+    transition:all .15s;-webkit-tap-highlight-color:transparent;
+  }
+  .nps button:hover{border-color:#3a4256}
+  .nps button.sel[data-g="bad"]{background:var(--bad);border-color:var(--bad)}
+  .nps button.sel[data-g="mid"]{background:var(--mid);border-color:var(--mid);color:#1a1300}
+  .nps button.sel[data-g="good"]{background:var(--good);border-color:var(--good);color:#04170d}
+  .nps-legend{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:8px}
+
+  /* Toggle de depoimento */
+  .toggle{display:flex;gap:14px;align-items:flex-start;cursor:pointer}
+  .toggle input{position:absolute;opacity:0}
+  .switch{
+    flex-shrink:0;width:46px;height:26px;border-radius:999px;margin-top:2px;
+    background:var(--surface-2);border:1px solid var(--border);position:relative;transition:all .2s;
+  }
+  .switch::after{
+    content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;
+    background:var(--muted);transition:all .2s;
+  }
+  .toggle input:checked + .switch{background:var(--accent);border-color:var(--accent)}
+  .toggle input:checked + .switch::after{left:23px;background:#fff}
+  .toggle input:focus-visible + .switch{box-shadow:0 0 0 3px var(--accent-glow)}
+  .toggle-text{font-size:14.5px;color:var(--muted)}
+  .toggle-text strong{color:var(--text);font-weight:500;display:block}
+
+  /* Botões */
+  .btn{
+    width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+    border:0;border-radius:14px;cursor:pointer;text-decoration:none;
+    font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;
+    padding:16px 20px;transition:transform .15s, box-shadow .2s, opacity .2s;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 28px var(--accent-glow)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-primary:disabled{opacity:.6;cursor:wait;transform:none}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .btn-wa{background:#25d366;color:#04170d}
+  .btn svg{width:22px;height:22px}
+  .submit-note{text-align:center;font-size:13px;color:var(--muted);margin-top:12px}
+  .form-error{
+    display:none;background:rgba(229,83,75,.12);border:1px solid var(--bad);
+    color:#ffb4ae;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:12px;
+  }
+
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  /* Tela de agradecimento */
+  #obrigado{display:none;text-align:center;padding-top:20px}
+  #obrigado .badge{
+    width:84px;height:84px;margin:0 auto 22px;border-radius:50%;
+    display:grid;place-items:center;
+    background:var(--accent-soft);border:1px solid var(--accent);
+    box-shadow:0 0 40px var(--accent-glow);
+    animation:pop .5s cubic-bezier(.2,1.4,.4,1);
+  }
+  #obrigado .badge svg{width:40px;height:40px;stroke:var(--accent)}
+  #obrigado .actions{display:grid;gap:10px;margin-top:28px}
+  #obrigado .extra{margin-top:24px;text-align:left}
+  @keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:36px}
+  footer a{color:var(--muted)}
+
+  @media (max-width:420px){
+    .nps{gap:3px}
+    .nps button{font-size:17px;border-radius:8px}
+    .star svg{width:24px;height:24px}
+    .rating-row{flex-direction:column;align-items:flex-start;gap:6px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><span id="bar"></span></div>
+
+<div class="wrap">
+
+  <header>
+    <a class="logo" href="https://alves3d.com.br" aria-label="Alves.3D">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#4176e1" stroke-width="2" stroke-linejoin="round">
+        <path d="M16 3 28 10v12L16 29 4 22V10z"/>
+        <path d="M4 10l12 7 12-7M16 17v12" opacity=".55"/>
+      </svg>
+      <span>ALVES<b>.3D</b></span>
+    </a>
+    <div class="eyebrow">Pesquisa de satisfação</div>
+    <h1>Como foi sua<br><em>experiência?</em></h1>
+    <p class="lead">Leva <strong>2 minutos</strong>. Sua opinião ajuda a gente a imprimir cada peça melhor, camada por camada.</p>
+  </header>
+
+  <!-- ============ FORMULÁRIO ============ -->
+  <form id="pesquisa" novalidate>
+
+    <!-- honeypot anti-spam -->
+    <div class="hp" aria-hidden="true">
+      <label>Não preencha <input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+    </div>
+
+    <!-- 01 Satisfação geral -->
+    <section class="card" data-required="nota_geral">
+      <div class="q-head">
+        <span class="q-num">01</span>
+        <div class="q-title">No geral, qual sua satisfação com a Alves.3D? <span class="req">*</span></div>
+      </div>
+      <div class="stars big" data-name="nota_geral" role="radiogroup" aria-label="Satisfação geral"></div>
+      <div class="star-label" id="label_nota_geral">Toque nas estrelas</div>
+      <div class="err">Escolha de 1 a 5 estrelas.</div>
+    </section>
+
+    <!-- 02 Tipo de pedido -->
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">02</span>
+        <div class="q-title">O que você pediu?</div>
+      </div>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="tipo_pedido" value="Peça do catálogo"><span>Peça do catálogo</span></label>
+        <label class="chip"><input type="radio" name="tipo_pedido" value="Peça personalizada"><span>Peça personalizada</span></label>
+        <label class="chip"><input type="radio" name="tipo_pedido" value="Presente"><span>Presente</span></label>
+        <label class="chip"><input type="radio" name="tipo_pedido" value="Peça funcional / reposição"><span>Peça funcional / reposição</span></label>
+        <label class="chip"><input type="radio" name="tipo_pedido" value="Outro"><span>Outro</span></label>
+      </div>
+    </section>
+
+    <!-- 03 Avaliação por item -->
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">03</span>
+        <div class="q-title">Avalie cada parte
+          <small>1 estrela = ruim · 5 estrelas = excelente</small>
+        </div>
+      </div>
+      <div class="rating-row"><label class="lbl">Qualidade e acabamento da peça</label><div class="stars" data-name="nota_qualidade" role="radiogroup" aria-label="Qualidade da peça"></div></div>
+      <div class="rating-row"><label class="lbl">Atendimento no WhatsApp</label><div class="stars" data-name="nota_atendimento" role="radiogroup" aria-label="Atendimento"></div></div>
+      <div class="rating-row"><label class="lbl">Prazo de entrega</label><div class="stars" data-name="nota_prazo" role="radiogroup" aria-label="Prazo de entrega"></div></div>
+      <div class="rating-row"><label class="lbl">Preço / custo-benefício</label><div class="stars" data-name="nota_preco" role="radiogroup" aria-label="Custo-benefício"></div></div>
+    </section>
+
+    <!-- 04 Expectativa -->
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">04</span>
+        <div class="q-title">A peça ficou como você imaginou?</div>
+      </div>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="expectativa" value="Superou"><span>🤩 Superou</span></label>
+        <label class="chip"><input type="radio" name="expectativa" value="Como esperado"><span>🙂 Como esperado</span></label>
+        <label class="chip"><input type="radio" name="expectativa" value="Parcialmente"><span>😐 Em parte</span></label>
+        <label class="chip"><input type="radio" name="expectativa" value="Abaixo"><span>🙁 Abaixo</span></label>
+      </div>
+    </section>
+
+    <!-- 05 NPS -->
+    <section class="card" data-required="nps">
+      <div class="q-head">
+        <span class="q-num">05</span>
+        <div class="q-title">De 0 a 10, quanto você indicaria a Alves.3D para um amigo? <span class="req">*</span></div>
+      </div>
+      <div class="nps" id="nps" role="radiogroup" aria-label="Nota de 0 a 10"></div>
+      <div class="nps-legend"><span>Nada provável</span><span>Com certeza</span></div>
+      <div class="err">Escolha uma nota de 0 a 10.</div>
+    </section>
+
+    <!-- 06 Origem -->
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">06</span>
+        <div class="q-title">Como você conheceu a gente?</div>
+      </div>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="origem" value="Instagram"><span>Instagram</span></label>
+        <label class="chip"><input type="radio" name="origem" value="Indicação"><span>Indicação</span></label>
+        <label class="chip"><input type="radio" name="origem" value="Google"><span>Google</span></label>
+        <label class="chip"><input type="radio" name="origem" value="Site"><span>Site</span></label>
+        <label class="chip"><input type="radio" name="origem" value="Já era cliente"><span>Já era cliente</span></label>
+        <label class="chip"><input type="radio" name="origem" value="Outro"><span>Outro</span></label>
+      </div>
+    </section>
+
+    <!-- 07 Comentários -->
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">07</span>
+        <div class="q-title">O que você mais gostou?</div>
+      </div>
+      <textarea name="gostou" maxlength="1000" placeholder="Ex.: o acabamento, as cores, a rapidez…"></textarea>
+      <div class="counter"><span>0</span>/1000</div>
+    </section>
+
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">08</span>
+        <div class="q-title">O que podemos melhorar?
+          <small>Pode ser sincero — é isso que faz a gente evoluir.</small>
+        </div>
+      </div>
+      <textarea name="melhorar" maxlength="1000" placeholder="Conte o que poderia ter sido melhor"></textarea>
+      <div class="counter"><span>0</span>/1000</div>
+    </section>
+
+    <!-- 09 Nome + depoimento -->
+    <section class="card">
+      <div class="q-head">
+        <span class="q-num">09</span>
+        <div class="q-title">Seu nome <small>Opcional</small></div>
+      </div>
+      <input type="text" name="nome" id="nome" maxlength="80" placeholder="Como podemos te chamar?" autocomplete="given-name">
+      <div style="height:18px"></div>
+      <label class="toggle">
+        <input type="checkbox" name="autoriza_depoimento" id="autoriza">
+        <span class="switch"></span>
+        <span class="toggle-text">
+          <strong>Autorizo usar meu comentário como depoimento</strong>
+          No site e no Instagram da Alves.3D, apenas com o primeiro nome.
+        </span>
+      </label>
+    </section>
+
+    <div class="form-error" id="formError"></div>
+
+    <button type="submit" class="btn btn-primary" id="btnEnviar">
+      Enviar avaliação
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <p class="submit-note">Suas respostas são usadas só para melhorar nosso atendimento.</p>
+  </form>
+
+  <!-- ============ OBRIGADO ============ -->
+  <section id="obrigado" aria-live="polite">
+    <div class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h1 id="obrigadoTitulo">Valeu demais!</h1>
+    <p class="lead" id="obrigadoTexto">Recebemos sua avaliação. Ela vai direto para quem produz suas peças.</p>
+    <div class="actions" id="obrigadoAcoes"></div>
+  </section>
+
+  <footer>
+    <a href="https://alves3d.com.br">alves3d.com.br</a> · <a href="https://instagram.com/alves_3d" target="_blank" rel="noopener">@alves_3d</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  /* ===== CONFIGURAÇÃO ===== */
+  const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
+  const TABELA       = 'pesquisa_satisfacao';
+  const WHATSAPP     = '5516992364004';
+  const INSTAGRAM    = 'https://instagram.com/alves_3d';
+
+  const form   = document.getElementById('pesquisa');
+  const bar    = document.getElementById('bar');
+  const state  = {};
+  const STAR_SVG = '<svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>';
+  const STAR_TXT = ['', 'Ruim', 'Regular', 'Bom', 'Muito bom', 'Excelente!'];
+
+  /* ===== Parâmetros do link (?nome=Ana&pedido=M-5AF4) ===== */
+  const params = new URLSearchParams(location.search);
+  const refPedido = (params.get('pedido') || '').slice(0, 40);
+  if (params.get('nome')) document.getElementById('nome').value = params.get('nome').slice(0, 80);
+
+  /* ===== Estrelas ===== */
+  document.querySelectorAll('.stars').forEach(group => {
+    const name = group.dataset.name;
+    for (let i = 1; i <= 5; i++) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'star'; b.dataset.v = i;
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', 'false');
+      b.setAttribute('aria-label', i + (i === 1 ? ' estrela' : ' estrelas'));
+      b.innerHTML = STAR_SVG;
+      group.appendChild(b);
+    }
+    const stars = [...group.children];
+    const paint = v => stars.forEach(s => s.classList.toggle('on', +s.dataset.v <= v));
+    stars.forEach(s => {
+      s.addEventListener('mouseenter', () => paint(+s.dataset.v));
+      s.addEventListener('click', () => {
+        state[name] = +s.dataset.v;
+        stars.forEach(x => x.setAttribute('aria-checked', x === s ? 'true' : 'false'));
+        paint(state[name]);
+        const lbl = document.getElementById('label_' + name);
+        if (lbl) lbl.textContent = STAR_TXT[state[name]];
+        clearInvalid(group); updateProgress();
+      });
+    });
+    group.addEventListener('mouseleave', () => paint(state[name] || 0));
+  });
+
+  /* ===== NPS 0–10 ===== */
+  const nps = document.getElementById('nps');
+  for (let i = 0; i <= 10; i++) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = i;
+    b.dataset.g = i <= 6 ? 'bad' : i <= 8 ? 'mid' : 'good';
+    b.setAttribute('role', 'radio');
+    b.setAttribute('aria-checked', 'false');
+    b.addEventListener('click', () => {
+      state.nps = i;
+      [...nps.children].forEach(x => {
+        x.classList.toggle('sel', x === b);
+        x.setAttribute('aria-checked', x === b ? 'true' : 'false');
+      });
+      clearInvalid(nps); updateProgress();
+    });
+    nps.appendChild(b);
+  }
+
+  /* ===== Contadores de texto ===== */
+  form.querySelectorAll('textarea').forEach(t => {
+    const c = t.nextElementSibling.querySelector('span');
+    t.addEventListener('input', () => { c.textContent = t.value.length; updateProgress(); });
+  });
+  form.addEventListener('change', updateProgress);
+
+  /* ===== Progresso ===== */
+  function updateProgress(){
+    const checks = [
+      state.nota_geral, radio('tipo_pedido'),
+      state.nota_qualidade || state.nota_atendimento || state.nota_prazo || state.nota_preco,
+      radio('expectativa'), state.nps !== undefined, radio('origem'),
+      form.gostou.value.trim(), form.melhorar.value.trim()
+    ];
+    const done = checks.filter(Boolean).length;
+    bar.style.width = Math.round(done / checks.length * 100) + '%';
+  }
+  function radio(n){ const r = form.querySelector('input[name="'+n+'"]:checked'); return r ? r.value : null; }
+  function clearInvalid(el){ const c = el.closest('.card'); if (c) c.classList.remove('invalid'); }
+
+  /* ===== Envio ===== */
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const errBox = document.getElementById('formError');
+    errBox.style.display = 'none';
+
+    // validação
+    let first = null;
+    form.querySelectorAll('[data-required]').forEach(card => {
+      const key = card.dataset.required;
+      const ok = state[key] !== undefined;
+      card.classList.toggle('invalid', !ok);
+      if (!ok && !first) first = card;
+    });
+    if (first) { first.scrollIntoView({behavior:'smooth', block:'center'}); return; }
+
+    // honeypot: robô preencheu → finge sucesso
+    if (form.site.value) { showThanks(); return; }
+
+    const nome = form.nome.value.trim();
+    const payload = {
+      nome: nome || null,
+      ref_pedido: refPedido || null,
+      tipo_pedido: radio('tipo_pedido'),
+      nota_geral: state.nota_geral,
+      nota_qualidade: state.nota_qualidade || null,
+      nota_atendimento: state.nota_atendimento || null,
+      nota_prazo: state.nota_prazo || null,
+      nota_preco: state.nota_preco || null,
+      expectativa: radio('expectativa'),
+      nps: state.nps,
+      origem: radio('origem'),
+      gostou: form.gostou.value.trim() || null,
+      melhorar: form.melhorar.value.trim() || null,
+      autoriza_depoimento: form.autoriza_depoimento.checked
+    };
+
+    const btn = document.getElementById('btnEnviar');
+    btn.disabled = true; btn.firstChild.textContent = 'Enviando… ';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABELA}`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(res.status + ' ' + await res.text());
+      try { gtag('event', 'pesquisa_enviada', { nps: payload.nps, nota_geral: payload.nota_geral }); } catch(_){}
+      showThanks(payload);
+    } catch (err) {
+      console.error(err);
+      errBox.innerHTML = 'Não conseguimos enviar agora. Verifique sua conexão e tente de novo — ou <a style="color:#fff" href="https://wa.me/'+WHATSAPP+'" target="_blank" rel="noopener">fale com a gente no WhatsApp</a>.';
+      errBox.style.display = 'block';
+      btn.disabled = false; btn.firstChild.textContent = 'Enviar avaliação ';
+    }
+  });
+
+  /* ===== Tela de agradecimento (muda conforme a nota) ===== */
+  function showThanks(p){
+    p = p || {};
+    const primeiroNome = (p.nome || '').split(' ')[0];
+    const t = document.getElementById('obrigadoTitulo');
+    const x = document.getElementById('obrigadoTexto');
+    const a = document.getElementById('obrigadoAcoes');
+    const wa = msg => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+    const icoWa = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2.1 1.3 2.4 1.4.3.2.5.1.6 0l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg>';
+
+    t.innerHTML = primeiroNome ? 'Valeu, <em>' + escapeHtml(primeiroNome) + '</em>!' : 'Valeu <em>demais!</em>';
+
+    if (p.nps !== undefined && p.nps <= 6) {
+      x.textContent = 'Sentimos muito que a experiência não foi a ideal. Queremos entender o que aconteceu e resolver.';
+      a.innerHTML = '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + wa('Oi! Respondi a pesquisa de satisfação e queria conversar sobre meu pedido' + (refPedido ? ' ' + refPedido : '') + '.') + '">' + icoWa + 'Conversar no WhatsApp</a>';
+    } else if (p.nps >= 9) {
+      x.textContent = 'Ficamos muito felizes! Se puder, marque a @alves_3d quando postar sua peça — isso ajuda demais um negócio local.';
+      a.innerHTML =
+        '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + INSTAGRAM + '">Seguir no Instagram</a>' +
+        '<a class="btn btn-ghost" target="_blank" rel="noopener" href="' + wa('Oi! Quero fazer um novo pedido.') + '">Fazer novo pedido</a>';
+    } else {
+      x.textContent = 'Recebemos sua avaliação. Ela vai direto para quem produz suas peças e ajuda a gente a melhorar.';
+      a.innerHTML =
+        '<a class="btn btn-ghost" target="_blank" rel="noopener" href="https://alves3d.com.br/catalogo.html">Ver catálogo</a>' +
+        '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + wa('Oi! Quero fazer um novo pedido.') + '">' + icoWa + 'Fazer novo pedido</a>';
+    }
+
+    form.style.display = 'none';
+    document.querySelector('header .lead').style.display = 'none';
+    document.querySelector('header h1').style.display = 'none';
+    document.querySelector('header .eyebrow').style.display = 'none';
+    bar.style.width = '100%';
+    document.getElementById('obrigado').style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function escapeHtml(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+})();
+</script>
+</body>
+</html>
