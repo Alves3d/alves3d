@@ -636,7 +636,7 @@ function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add
 /* ================= RELACIONADOS ================= */
 async function loadRelated() {
   try {
-    const rows = await api(`select=codigo,nome,categoria,preco,imagens,destaque,tem_variacoes,variacoes&publicado=eq.true&codigo=neq.${encodeURIComponent(P.codigo)}&order=destaque.desc,created_at.desc&limit=60`);
+    const rows = await api(`select=codigo,nome,categoria,preco,imagens,destaque,tem_variacoes,variacoes&publicado=eq.true&codigo=neq.${encodeURIComponent(P.codigo)}&order=destaque.desc,ordem.asc.nullslast,created_at.desc&limit=60`);
     const same = rows.filter(r => r.categoria === P.categoria);
     const others = rows.filter(r => r.categoria !== P.categoria);
     const pick = [...same, ...others].filter(r => capa(r)).slice(0, 4);
