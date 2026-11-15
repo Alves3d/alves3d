@@ -925,7 +925,7 @@ const cover = p => {
 };
 
 async function loadCatalog() {
-  const q = 'select=codigo,nome,categoria,preco,imagens,destaque,tem_variacoes,variacoes,ordem,created_at&publicado=eq.true&order=destaque.desc,created_at.desc';
+  const q = 'select=codigo,nome,categoria,preco,imagens,destaque,tem_variacoes,variacoes,ordem,created_at&publicado=eq.true&order=destaque.desc,ordem.asc.nullslast,created_at.desc';
   const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?${q}`, { headers: { apikey: SUPABASE_KEY } });
   if (!res.ok) throw new Error(res.status);
   return res.json();
