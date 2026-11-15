@@ -459,7 +459,7 @@ async function load() {
   $('#sort').value = state.sort;
   try {
     const sel = 'codigo,nome,categoria,preco,descricao,tags,imagens,destaque,tem_variacoes,variacoes,ordem,created_at';
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?select=${sel}&publicado=eq.true&order=destaque.desc,ordem.asc.nullslast,created_at.desc`, { headers: { apikey: SUPABASE_KEY } });
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?select=${sel}&publicado=eq.true&order=ordem.asc.nullslast,created_at.desc`, { headers: { apikey: SUPABASE_KEY } });
     if (!res.ok) throw new Error(res.status);
     all = await res.json();
     if (state.cat !== 'Todos' && !all.some(p => p.categoria === state.cat)) state.cat = 'Todos';
