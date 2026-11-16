@@ -1,0 +1,10 @@
+{
+  "name": "alves3d-site",
+  "private": true,
+  "description": "Site da Alves.3D (alves3d.com.br)",
+  "scripts": {
+    "build": "node build/gerar.mjs",
+    "preview": "npx --yes serve -l 8080 ."
+  },
+  "engines": { "node": ">=18" }
+}

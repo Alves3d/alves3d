@@ -185,13 +185,13 @@
   /* ---------- lista ---------- */
   function render() {
     if (!itens.length) {
-      body.innerHTML = '<div class="cart-empty">' + ICON_CART + '<h3>Carrinho vazio</h3><p>Adicione peças do catálogo e envie tudo de uma vez pelo WhatsApp.</p><p style="margin-top:18px"><a href="catalogo.html" style="color:var(--accent);font-weight:600">Ver o catálogo →</a></p></div>';
+      body.innerHTML = '<div class="cart-empty">' + ICON_CART + '<h3>Carrinho vazio</h3><p>Adicione peças do catálogo e envie tudo de uma vez pelo WhatsApp.</p><p style="margin-top:18px"><a href="/catalogo.html" style="color:var(--accent);font-weight:600">Ver o catálogo →</a></p></div>';
       ft.style.display = 'none';
       return;
     }
     ft.style.display = '';
     body.innerHTML = itens.map(function (i, k) {
-      var link = 'produto.html?id=' + encodeURIComponent(i.codigo);
+      var link = (window.Loja ? Loja.urlProduto(i) : '/produto.html?id=' + encodeURIComponent(i.codigo));
       return '<div class="cart-it" data-k="' + k + '">' +
         (i.img ? '<img src="' + esc(i.img) + '" alt="" loading="lazy">' : '<div class="ph"></div>') +
         '<div><a class="nm" href="' + link + '">' + esc(i.nome) + '</a>' +

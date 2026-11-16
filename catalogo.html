@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!--b:head-->
 <title>Catálogo — Alves.3D | Peças em impressão 3D</title>
 <meta name="description" content="Catálogo de peças em impressão 3D da Alves.3D: chaveiros, decoração, caixas, natal, personagens, organizadores e muito mais. Peça pelo WhatsApp e receba em todo o Brasil.">
 <link rel="canonical" href="https://alves3d.com.br/catalogo.html">
-<link rel="icon" type="image/png" href="favicon.png">
-<meta name="theme-color" content="#080808">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Alves.3D">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://alves3d.com.br/catalogo.html">
 <meta property="og:title" content="Catálogo — Alves.3D">
 <meta property="og:description" content="Peças em impressão 3D com fotos, opções e preços. Peça direto pelo WhatsApp.">
 <meta property="og:image" content="https://alves3d.com.br/imgs/hero-bg.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!--/b:head-->
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#080808">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://bhqcdzthiatoonbkjioe.supabase.co" crossorigin>
@@ -109,11 +115,11 @@ button{cursor:pointer}
 .pills-bar.stuck{border-color:var(--border)}
 .pills{display:flex;gap:8px;overflow-x:auto;padding:12px var(--pad);scrollbar-width:none;scroll-padding-inline:var(--pad);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--pad),#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 var(--pad),#000 calc(100% - 40px),transparent)}
 .pills::-webkit-scrollbar{display:none}
-.pill{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;border:1px solid var(--border2);background:var(--surface);font-size:14px;font-weight:500;color:var(--text2);transition:all .2s var(--ease);white-space:nowrap}
+.pill{text-decoration:none;flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;border:1px solid var(--border2);background:var(--surface);font-size:14px;font-weight:500;color:var(--text2);transition:all .2s var(--ease);white-space:nowrap}
 .pill:hover{color:var(--text);border-color:var(--text3)}
 .pill b{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--text3);background:var(--surface2);padding:1px 7px;border-radius:100px}
-.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-.pill[aria-pressed="true"] b{background:rgba(255,255,255,.2);color:#fff}
+.pill[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill[aria-current="true"] b{background:rgba(255,255,255,.2);color:#fff}
 
 /* GRADE */
 .grid-wrap{padding:22px var(--pad) 40px}
@@ -124,10 +130,15 @@ button{cursor:pointer}
 .card-img{position:relative;aspect-ratio:1;overflow:hidden;background:var(--surface2);isolation:isolate}
 /* fundo desfocado com a própria foto: a imagem aparece inteira, sem cortar */
 .card-img::before{content:'';position:absolute;inset:-20px;z-index:-1;background:var(--img) center/cover no-repeat;filter:blur(22px) saturate(1.2);opacity:.55;transform:scale(1.1)}
-.card-img img{width:100%;height:100%;object-fit:contain;transition:transform .6s var(--ease)}
+.card-img img{width:100%;height:100%;object-fit:contain;transition:transform .6s var(--ease),opacity .35s}
+/* segunda foto ao passar o mouse */
+.card-img .card-alt{position:absolute;inset:0;opacity:0}
+.card:hover .card-img.has-alt .card-alt{opacity:1}
+.card:hover .card-img.has-alt img:not(.card-alt){opacity:0}
 .card:hover .card-img img{transform:scale(1.05)}
 .card-ph{position:absolute;inset:0;display:none;place-items:center;font-size:40px;color:var(--text3)}
 .badge{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:#fff;padding:4px 9px;border-radius:100px}
+.badge-new{background:var(--cyan);color:#04252a}
 .opts{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:0;padding:3px;border-radius:100px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .opt{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);background:var(--surface2) center/cover;margin-left:-6px;display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--text2);overflow:hidden}
 .opt:first-child{margin-left:0}
@@ -140,6 +151,8 @@ button{cursor:pointer}
 .price b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:.5px;line-height:1}
 .card-wpp{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0;border:none;transition:transform .25s var(--ease)}
 .card-wpp:hover{transform:scale(1.1)}
+.card-wpp.ok{animation:okPop .5s var(--ease)}
+@keyframes okPop{40%{transform:scale(1.25);background:var(--wpp)}}
 .card-wpp .ic{font-size:20px;fill:none}
 
 /* Card "não achou" */
@@ -189,6 +202,8 @@ footer nav a:hover{color:var(--accent)}
   .card-idea h3{font-size:30px}
   .opt{width:20px;height:20px}
 }
+/* transição suave entre as páginas do site */
+@view-transition{navigation:auto}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 <script type="application/ld+json">
@@ -203,12 +218,12 @@ footer nav a:hover{color:var(--accent)}
 </svg>
 
 <header class="nav">
-  <a href="index.html" class="logo" aria-label="Alves.3D — início">ALVES<em>.3D</em></a>
+  <a href="/" class="logo" aria-label="Alves.3D — início">ALVES<em>.3D</em></a>
   <ul class="nav-links">
-    <li><a href="index.html">Início</a></li>
-    <li><a href="catalogo.html" aria-current="page">Catálogo</a></li>
-    <li><a href="index.html#como-funciona">Como funciona</a></li>
-    <li><a href="index.html#sua-ideia">Peça personalizada</a></li>
+    <li><a href="/">Início</a></li>
+    <li><a href="/catalogo.html" aria-current="page">Catálogo</a></li>
+    <li><a href="/#como-funciona">Como funciona</a></li>
+    <li><a href="/#sua-ideia">Peça personalizada</a></li>
   </ul>
   <div class="nav-right">
     <button class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro">
@@ -221,11 +236,11 @@ footer nav a:hover{color:var(--accent)}
 
 <main>
   <section class="head">
-    <div class="crumb"><a href="index.html">Início</a> / Catálogo</div>
+    <div class="crumb"><!--b:crumb--><a href="/">Início</a> / Catálogo<!--/b:crumb--></div>
     <div class="head-row">
       <div>
-        <h1 class="title" id="title">Catálogo <em>completo</em></h1>
-        <div class="count" id="count">Carregando peças…</div>
+        <h1 class="title" id="title"><!--b:titulo-->Catálogo <em>completo</em><!--/b:titulo--></h1>
+        <div class="count" id="count"><!--b:count-->Carregando peças…<!--/b:count--></div>
       </div>
       <div class="tools">
         <label class="search" id="searchBox">
@@ -245,23 +260,23 @@ footer nav a:hover{color:var(--accent)}
   </section>
 
   <div class="pills-bar" id="pillsBar">
-    <div class="pills" id="pills" role="group" aria-label="Categorias"></div>
+    <nav class="pills" id="pills" aria-label="Categorias"><!--b:pills--><!--/b:pills--></nav>
   </div>
 
   <section class="grid-wrap">
-    <div class="grid" id="grid">
+    <div class="grid" id="grid"><!--b:grid-->
       <div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div>
       <div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div>
-    </div>
+    <!--/b:grid--></div>
   </section>
 </main>
 
 <footer>
-  <a href="index.html" class="logo">ALVES<em>.3D</em></a>
+  <a href="/" class="logo">ALVES<em>.3D</em></a>
   <nav>
-    <a href="index.html#como-funciona">Como funciona</a>
-    <a href="index.html#sua-ideia">Peça personalizada</a>
-    <a href="index.html#duvidas">Dúvidas</a>
+    <a href="/#como-funciona">Como funciona</a>
+    <a href="/#sua-ideia">Peça personalizada</a>
+    <a href="/#duvidas">Dúvidas</a>
     <a href="https://instagram.com/alves_3d" target="_blank" rel="noopener">Instagram</a>
   </nav>
   <p>© <span id="ano">2026</span> Alves.3D · CNPJ 69.195.791/0001-59 · Guará – SP · <a href="https://wa.me/5516992364004" target="_blank" rel="noopener" style="color:inherit">(16) 99236-4004</a></p>
@@ -269,19 +284,19 @@ footer nav a:hover{color:var(--accent)}
 
 <a href="#" class="wpp-float" aria-label="Falar no WhatsApp" data-wpp="Olá! Vim pelo catálogo da Alves.3D e quero fazer um pedido." data-track="catalogo_whatsapp_flutuante"><svg class="ic"><use href="#i-wpp"/></svg></a>
 
+<!--b:dados--><!--/b:dados-->
+<script src="/loja.js"></script>
 <script>
 (() => {
 'use strict';
-const WPP = '5516992364004';
+const { esc, norm, wppLink, varsDe, precoMin, capa } = Loja;
 const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
+const SEL = 'codigo,nome,categoria,preco,descricao,tags,imagens,destaque,tem_variacoes,variacoes,ordem,created_at';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const wppLink = m => `https://wa.me/${WPP}?text=${encodeURIComponent(m)}`;
-const fmt = v => v == null ? '—' : Number(v).toFixed(2).replace('.', ',').replace(/,00$/, '');
 const track = (n, x) => { try { gtag('event', n, x || {}); } catch(e){} };
-const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const doHTML = h => { const t = document.createElement('template'); t.innerHTML = h.trim(); return t.content.firstElementChild; };
 
 $('#ano').textContent = new Date().getFullYear();
 $$('[data-wpp]').forEach(a => { a.href = wppLink(a.dataset.wpp); a.target = '_blank'; a.rel = 'noopener'; });
@@ -293,55 +308,51 @@ $('#themeBtn').addEventListener('click', () => {
   try { localStorage.setItem('alves3d-theme', light ? 'dark' : 'light'); } catch(e){}
 });
 
-/* ---------- Dados ---------- */
-const varsDe = p => (p.tem_variacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
-const precoMin = p => {
-  const ps = varsDe(p).map(v => v.preco != null ? +v.preco : (p.preco != null ? +p.preco : null)).filter(x => x != null);
-  return ps.length ? Math.min(...ps) : (p.preco != null ? +p.preco : null);
-};
-const capa = p => {
-  if (p.imagens && p.imagens[0]) return p.imagens[0];
-  for (const v of varsDe(p)) if (v.imagens && v.imagens[0]) return v.imagens[0];
-  return '';
-};
+/* ---------- Dados ----------
+   O build (npm run build) já deixa os cards escritos no HTML e os dados em #dados.
+   Aqui o script só "liga" o que já está na página; se não houver nada pronto
+   (página sem build), ele busca no banco e monta tudo, como antes. */
+let pronto = null;
+try { pronto = JSON.parse($('#dados').textContent); } catch(e) {}
+if (pronto && !Array.isArray(pronto.produtos)) pronto = null;
 
 let all = [];
+const nodes = new Map();      // código -> card já existente na página (reaproveitado ao filtrar/ordenar)
+let ideaEl = null;
 const state = { cat: 'Todos', q: '', sort: '' };
 
-/* Estado na URL: catalogo.html?cat=Natal&q=nome&ord=menor */
+/* Estado na URL: /catalogo/natal.html, ou catalogo.html?cat=Natal&q=nome&ord=menor (links antigos) */
 function readURL() {
   const u = new URLSearchParams(location.search);
-  state.cat = u.get('cat') || 'Todos';
+  state.cat = u.get('cat') || (pronto && pronto.cat) || 'Todos';
   state.q = u.get('q') || '';
   state.sort = u.get('ord') || '';
 }
 function writeURL() {
   const u = new URLSearchParams();
-  if (state.cat !== 'Todos') u.set('cat', state.cat);
   if (state.q) u.set('q', state.q);
   if (state.sort) u.set('ord', state.sort);
-  const qs = u.toString();
-  history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+  const base = Loja.urlCategoria(state.cat), qs = u.toString();
+  const url = base + (qs ? (base.includes('?') ? '&' : '?') + qs : '');
+  if (url !== location.pathname + location.search) { try { history.replaceState(null, '', url); } catch(e){} }
 }
 
 /* ---------- Pílulas ---------- */
 function renderPills() {
-  const counts = new Map();
-  all.forEach(p => counts.set(p.categoria, (counts.get(p.categoria) || 0) + 1));
-  const cats = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-  $('#pills').innerHTML = [['Todos', all.length], ...cats].map(([c, n]) =>
-    `<button class="pill" data-cat="${esc(c)}" aria-pressed="${c === state.cat}">${esc(c)} <b>${n}</b></button>`).join('');
+  $('#pills').innerHTML = Loja.pillsHTML(all, state.cat);
   centerActivePill(false);
 }
 function centerActivePill(smooth) {
-  const b = $('#pills .pill[aria-pressed="true"]'); if (!b) return;
+  const b = $('#pills .pill[aria-current="true"]'); if (!b) return;
   const box = $('#pills');
   box.scrollTo({ left: b.offsetLeft - box.clientWidth / 2 + b.clientWidth / 2, behavior: smooth ? 'smooth' : 'auto' });
 }
 $('#pills').addEventListener('click', e => {
   const b = e.target.closest('.pill'); if (!b) return;
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;   // abrir em nova aba continua funcionando
+  e.preventDefault();
   state.cat = b.dataset.cat;
-  $$('#pills .pill').forEach(x => x.setAttribute('aria-pressed', x === b));
+  $$('#pills .pill').forEach(x => { if (x === b) x.setAttribute('aria-current', 'true'); else x.removeAttribute('aria-current'); });
   centerActivePill(true);
   track('catalogo_categoria', { categoria: state.cat });
   apply(true);
@@ -358,44 +369,13 @@ $('#q').addEventListener('input', e => {
 $('#q').addEventListener('keydown', e => { if (e.key === 'Enter') e.target.blur(); });
 $('#qClear').addEventListener('click', () => { $('#q').value = ''; state.q = ''; $('#searchBox').classList.remove('has'); apply(); $('#q').focus(); });
 $('#sort').addEventListener('change', e => { state.sort = e.target.value; apply(); });
+// "/" foca a busca (atalho de teclado)
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) { e.preventDefault(); $('#q').focus(); }
+});
 
 /* ---------- Grade ---------- */
-function cardHTML(p, i) {
-  const vs = varsDe(p), img = capa(p), mp = precoMin(p);
-  const optsHTML = vs.length ? `<div class="opts" aria-label="${vs.length} opções">${vs.slice(0, 4).map(v =>
-      v.imagens && v.imagens[0]
-        ? `<i class="opt" style="background-image:url('${esc(v.imagens[0])}')"></i>`
-        : `<i class="opt">${esc(v.nome.trim().charAt(0).toUpperCase())}</i>`).join('')}<span>${vs.length} opç${vs.length > 1 ? 'ões' : 'ão'}</span></div>` : '';
-  return `
-  <a class="card" href="produto.html?id=${encodeURIComponent(p.codigo)}" style="--i:${Math.min(i, 12)}" data-cod="${esc(p.codigo)}">
-    <div class="card-img" style="--img:url('${esc(img)}')">
-      ${img ? `<img src="${esc(img)}" alt="${esc(p.nome)}" loading="${i < 6 ? 'eager' : 'lazy'}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">` : ''}
-      <div class="card-ph"${img ? '' : ' style="display:grid"'}>🖨️</div>
-      ${p.destaque ? '<span class="badge">Destaque</span>' : ''}
-      ${optsHTML}
-    </div>
-    <div class="card-body">
-      <div class="card-cat">${esc(p.categoria)}</div>
-      <div class="card-name">${esc(p.nome)}</div>
-      <div class="card-foot">
-        <div class="price"><small>a partir de</small><b>R$${fmt(mp)}</b></div>
-        <button type="button" class="card-wpp" aria-label="${vs.length ? 'Escolher opção de' : 'Adicionar ao carrinho:'} ${esc(p.nome)}" title="${vs.length ? 'Escolher opção' : 'Adicionar ao carrinho'}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/><path d="M14 9.5v4M12 11.5h4"/></svg></button>
-      </div>
-    </div>
-  </a>`;
-}
-const ideaCard = () => `
-  <a class="card card-idea" href="index.html#sua-ideia" data-track="catalogo_card_ideia" style="--i:6">
-    <div>
-      <div class="k">Peça personalizada</div>
-      <h3>Não achou o que procura?</h3>
-      <p>Mande uma foto ou descreva a ideia — eu modelo e imprimo do seu jeito.</p>
-    </div>
-    <span class="go">Mandar minha ideia <svg class="ic"><use href="#i-arrow"/></svg></span>
-    <svg class="layers" viewBox="0 0 100 100" fill="#fff"><rect x="10" y="80" width="80" height="8" rx="2"/><rect x="18" y="68" width="64" height="8" rx="2"/><rect x="26" y="56" width="48" height="8" rx="2"/><rect x="34" y="44" width="32" height="8" rx="2"/></svg>
-  </a>`;
-
-function apply(scrollTop) {
+function filtrar() {
   const q = norm(state.q);
   let list = all.filter(p => {
     if (state.cat !== 'Todos' && p.categoria !== state.cat) return false;
@@ -410,14 +390,20 @@ function apply(scrollTop) {
     az:    (a, b) => a.nome.localeCompare(b.nome, 'pt-BR')
   }[state.sort];
   if (by) list = [...list].sort(by);
+  return list;
+}
 
-  // Título e contagem
-  $('#title').innerHTML = state.cat === 'Todos' ? 'Catálogo <em>completo</em>' : `<em>${esc(state.cat)}</em>`;
+/* soDados = true: a grade já está certa no HTML (veio do build); só atualiza título, contagem e URL */
+function apply(scrollTop, soDados) {
+  const list = filtrar();
+
+  $('#title').innerHTML = Loja.tituloCatalogo(state.cat);
   $('#count').textContent = `${list.length} peça${list.length !== 1 ? 's' : ''}${state.q ? ` para “${state.q}”` : ''}`;
-  document.title = (state.cat === 'Todos' ? 'Catálogo' : state.cat) + ' — Alves.3D | Peças em impressão 3D';
+  document.title = Loja.tituloAba(state.cat);
 
   const grid = $('#grid');
-  if (!list.length) {
+  if (soDados) { /* nada a desenhar */ }
+  else if (!list.length) {
     const msg = `Olá! Procurei${state.q ? ` por "${state.q}"` : ''} no catálogo e não encontrei. Vocês conseguem fazer?`;
     grid.innerHTML = `<div class="empty">
       <h3>Nada por aqui… ainda</h3>
@@ -428,10 +414,18 @@ function apply(scrollTop) {
       </div></div>`;
     $('#resetBtn').onclick = () => { state.cat = 'Todos'; state.q = ''; $('#q').value = ''; $('#searchBox').classList.remove('has'); renderPills(); apply(); };
   } else {
-    const html = list.map(cardHTML);
+    // Reaproveita os cards que já existem (não apaga e recria): só reordena, mostra e esconde
+    const agora = Date.now();
+    const els = list.map((p, i) => {
+      let el = nodes.get(p.codigo);
+      if (!el) { el = doHTML(Loja.cardHTML(p, i, agora)); nodes.set(p.codigo, el); }
+      else el.style.setProperty('--i', Math.min(i, 12));
+      return el;
+    });
+    if (!ideaEl) ideaEl = doHTML(Loja.ideaCard());
     // Card "não achou" depois da 7ª peça (ou no fim, se houver menos)
-    html.splice(Math.min(7, html.length), 0, ideaCard());
-    grid.innerHTML = html.join('');
+    els.splice(Math.min(7, els.length), 0, ideaEl);
+    grid.replaceChildren(...els);
   }
   writeURL();
   if (scrollTop) {
@@ -445,23 +439,64 @@ $('#grid').addEventListener('click', e => {
   const b = e.target.closest('.card-wpp'); if (!b) return;
   e.preventDefault(); e.stopPropagation();
   const p = all.find(x => x.codigo === b.closest('.card').dataset.cod); if (!p) return;
-  if (varsDe(p).length || !window.Carrinho) { location.href = `produto.html?id=${encodeURIComponent(p.codigo)}`; return; }
+  if (varsDe(p).length || !window.Carrinho) { location.href = Loja.urlProduto(p); return; }
   Carrinho.add({ codigo: p.codigo, nome: p.nome, preco: precoMin(p), qtd: 1, img: capa(p) });
+  b.classList.remove('ok'); void b.offsetWidth; b.classList.add('ok');
 });
+
+/* Segunda foto ao passar o mouse (só em computador; a foto só é baixada na hora) */
+if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  $('#grid').addEventListener('mouseover', e => {
+    const c = e.target.closest('.card[data-alt]'); if (!c || c._alt) return;
+    c._alt = true;
+    const box = c.querySelector('.card-img'), im = new Image();
+    im.className = 'card-alt'; im.alt = ''; im.decoding = 'async';
+    im.onload = () => { box.prepend(im); box.classList.add('has-alt'); };
+    im.src = c.dataset.alt;
+  });
+}
 
 /* Borda na barra de categorias quando ela gruda no topo */
 new IntersectionObserver(([en]) => $('#pillsBar').classList.toggle('stuck', en.intersectionRatio < 1), { threshold: 1, rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navh')) + 1}px 0px 0px 0px` }).observe($('#pillsBar'));
 
 /* ---------- Carregar ---------- */
-async function load() {
-  readURL();
+async function buscar() {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?select=${SEL}&publicado=eq.true&order=ordem.asc.nullslast,created_at.desc`, { headers: { apikey: SUPABASE_KEY } });
+  if (!res.ok) throw new Error(res.status);
+  return res.json();
+}
+function campos() {
   $('#q').value = state.q; $('#searchBox').classList.toggle('has', !!state.q);
   $('#sort').value = state.sort;
+}
+
+async function load() {
+  readURL(); campos();
+  if (pronto) {
+    // HTML já veio pronto: aproveita os cards e só conecta filtros, ordenação e carrinho
+    Loja.registrar(pronto);
+    all = pronto.produtos;
+    $$('#grid .card[data-cod]').forEach(el => nodes.set(el.dataset.cod, el));
+    ideaEl = $('#grid .card-idea');
+    if (state.cat !== 'Todos' && !all.some(p => p.categoria === state.cat)) state.cat = 'Todos';
+    const comoNoHTML = state.cat === (pronto.cat || 'Todos') && !state.q && !state.sort;
+    if (comoNoHTML) { centerActivePill(false); apply(false, true); }
+    else { renderPills(); apply(); }
+    // Em segundo plano confere se algo mudou desde o último build (peça nova, preço…)
+    try {
+      const novo = await buscar();
+      if (JSON.stringify(novo) !== JSON.stringify(all)) {
+        const antes = new Map(all.map(p => [p.codigo, JSON.stringify(p)]));
+        novo.forEach(p => { if (antes.get(p.codigo) !== JSON.stringify(p)) nodes.delete(p.codigo); });
+        all = novo;
+        if (state.cat !== 'Todos' && !all.some(p => p.categoria === state.cat)) state.cat = 'Todos';
+        renderPills(); apply();
+      }
+    } catch (e) {}
+    return;
+  }
   try {
-    const sel = 'codigo,nome,categoria,preco,descricao,tags,imagens,destaque,tem_variacoes,variacoes,ordem,created_at';
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?select=${sel}&publicado=eq.true&order=ordem.asc.nullslast,created_at.desc`, { headers: { apikey: SUPABASE_KEY } });
-    if (!res.ok) throw new Error(res.status);
-    all = await res.json();
+    all = await buscar();
     if (state.cat !== 'Todos' && !all.some(p => p.categoria === state.cat)) state.cat = 'Todos';
     renderPills();
     apply();
@@ -475,6 +510,6 @@ async function load() {
 load();
 })();
 </script>
-<script src="carrinho.js"></script>
+<script src="/carrinho.js"></script>
 </body>
 </html>

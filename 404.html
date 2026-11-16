@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página não encontrada — Alves.3D</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#080808">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<script>try { if (localStorage.getItem('alves3d-theme') === 'light') document.documentElement.setAttribute('data-theme','light'); } catch(e){}</script>
+<style>
+:root{--bg:#080808;--surface:#141416;--accent:#4176e1;--text:#f0ede6;--text2:#a8a49e;--border:rgba(255,255,255,.14);--wpp:#25D366}
+:root[data-theme="light"]{--bg:#f7f7f5;--surface:#fff;--accent:#2f5fd0;--text:#18181b;--text2:#5f5f66;--border:rgba(0,0,0,.16)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;padding:24px;text-align:center;
+  background-image:linear-gradient(color-mix(in srgb,var(--accent) 7%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--accent) 7%,transparent) 1px,transparent 1px);background-size:40px 40px}
+.logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:26px;letter-spacing:3px;text-decoration:none;color:var(--text)}
+.logo em{font-style:normal;color:var(--accent)}
+h1{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:clamp(54px,12vw,110px);line-height:.9;letter-spacing:1px;margin:26px 0 14px}
+h1 em{font-style:normal;color:var(--accent)}
+p{color:var(--text2);max-width:420px;margin:0 auto 26px;line-height:1.55}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;padding:13px 24px;border:1px solid var(--border);color:var(--text)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-wpp{background:var(--wpp);border-color:var(--wpp);color:#06260f}
+</style>
+</head>
+<body>
+<main>
+  <a href="/" class="logo">ALVES<em>.3D</em></a>
+  <h1 id="t">Essa camada <em>não imprimiu</em></h1>
+  <p id="m">A página que você procura não existe ou mudou de endereço. Mas o catálogo está inteiro:</p>
+  <div class="row">
+    <a class="btn btn-primary" href="/catalogo.html">Ver o catálogo</a>
+    <a class="btn" href="/">Página inicial</a>
+    <a class="btn btn-wpp" href="https://wa.me/5516992364004?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20queria%20ver%20uma%20pe%C3%A7a." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</main>
+<script src="/loja.js"></script>
+<script>
+/* Se o endereço era de uma peça ou categoria (página ainda não gerada ou renomeada),
+   procura no banco e leva a pessoa para o lugar certo. */
+(async () => {
+  const m = location.pathname.match(/^\/(produto|catalogo)\/([^/]+?)(?:\.html)?\/?$/);
+  if (!m || !window.Loja) return;
+  document.getElementById('m').textContent = 'Procurando essa página…';
+  try {
+    const r = await fetch('https://bhqcdzthiatoonbkjioe.supabase.co/rest/v1/produtos?select=codigo,nome,categoria&publicado=eq.true', { headers: { apikey: 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79' } });
+    const lista = await r.json(), slug = m[2].toLowerCase();
+    if (m[1] === 'produto') {
+      const p = lista.find(x => Loja.slugProduto(x) === slug)
+        || lista.filter(x => Loja.slugify(x.codigo) && slug.endsWith('-' + Loja.slugify(x.codigo))).sort((a, b) => b.codigo.length - a.codigo.length)[0];
+      if (p) return location.replace(Loja.urlProdutoAntiga(p));
+    } else {
+      const c = lista.find(x => Loja.slugify(x.categoria) === slug);
+      if (c) return location.replace('/catalogo.html?cat=' + encodeURIComponent(c.categoria));
+    }
+  } catch (e) {}
+  document.getElementById('m').textContent = 'A página que você procura não existe ou mudou de endereço. Mas o catálogo está inteiro:';
+})();
+</script>
+</body>
+</html>

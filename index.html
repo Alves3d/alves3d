@@ -6,10 +6,13 @@
 <title>Alves.3D — Impressão 3D personalizada</title>
 <meta name="description" content="Peças em impressão 3D sob medida: presentes, decoração, organizadores, colecionáveis e reposição. Escolha no catálogo ou mande sua ideia pelo WhatsApp. Enviamos para todo o Brasil.">
 <link rel="canonical" href="https://alves3d.com.br/">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#080808">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Alves.3D">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://alves3d.com.br/">
 <meta property="og:title" content="Alves.3D — Impressão 3D personalizada">
 <meta property="og:description" content="Escolha no catálogo ou mande sua ideia. Peças sob medida, em várias cores, com envio para todo o Brasil.">
@@ -67,6 +70,7 @@ button{font-family:inherit;cursor:pointer}
 .logo{font-family:var(--serif);font-size:26px;letter-spacing:3px;text-decoration:none;line-height:1}
 .logo em{font-style:normal;color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-right .btn-ghost{display:none}
 .nav-links a{text-decoration:none;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-right{display:flex;align-items:center;gap:10px}
@@ -186,7 +190,7 @@ button{font-family:inherit;cursor:pointer}
 .cat::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 8%,rgba(0,0,0,.15) 55%,transparent);z-index:1}
 .cat:hover img{transform:scale(1.07);filter:saturate(1.1)}
 .cat-body{position:absolute;left:0;right:0;bottom:0;padding:18px;z-index:2;color:#fff}
-.cat-name{font-family:var(--serif);font-size:28px;letter-spacing:1px;line-height:1;overflow-wrap:anywhere}
+.cat-name{font-family:var(--serif);font-size:clamp(22px,2.3vw,28px);letter-spacing:1px;line-height:1;overflow-wrap:break-word}
 .cat-meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;opacity:.8;margin-top:6px}
 .cat-go{position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;display:grid;place-items:center;transform:rotate(-45deg);transition:transform .35s var(--ease),background .25s}
 .cat:hover .cat-go{transform:none;background:var(--accent)}
@@ -209,6 +213,7 @@ button{font-family:inherit;cursor:pointer}
 .prod-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px}
 .prod-price small{display:block;font-size:11px;color:var(--text3)}
 .prod-price b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:1px;line-height:1}
+.prod-badge-new{background:var(--cyan);color:#04252a}
 .prod-wpp{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:transform .25s var(--ease)}
 .prod-wpp:hover{transform:scale(1.1)}
 .prod-wpp .ic{font-size:19px;fill:none}
@@ -325,6 +330,7 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
 /* ============ RESPONSIVO ============ */
 @media (max-width:960px){
   .nav-links{display:none}
+  .nav-right .btn-ghost{display:inline-flex}
   .hero{grid-template-columns:1fr;min-height:auto;padding-top:96px;padding-bottom:40px;text-align:left}
   .printer-wrap{max-width:440px}
   .ft1{left:-8px}.ft2{right:-8px}
@@ -368,6 +374,8 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
   body{padding-bottom:84px}
 }
 @media (hover:none){ .cat-go{transform:none} }
+/* transição suave entre as páginas do site */
+@view-transition{navigation:auto}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
@@ -390,7 +398,7 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
 <header class="nav" id="nav">
   <a href="#topo" class="logo" aria-label="Alves.3D — início">ALVES<em>.3D</em></a>
   <ul class="nav-links">
-    <li><a href="catalogo.html" data-track="nav_catalogo">Catálogo</a></li>
+    <li><a href="/catalogo.html" data-track="nav_catalogo">Catálogo</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#sua-ideia">Sua ideia</a></li>
     <li><a href="#duvidas">Dúvidas</a></li>
@@ -400,7 +408,7 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
       <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
     </button>
-    <a href="catalogo.html" class="btn btn-ghost btn-sm" data-track="nav_catalogo">Catálogo</a>
+    <a href="/catalogo.html" class="btn btn-ghost btn-sm" data-track="nav_catalogo">Catálogo</a>
     <a href="#" class="btn btn-wpp btn-sm btn-wpp-nav" data-wpp="Olá! Vim pelo site da Alves.3D e quero fazer um orçamento." data-track="nav_whatsapp"><svg class="ic"><use href="#i-wpp"/></svg>WhatsApp</a>
   </div>
 </header>
@@ -418,12 +426,12 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
     </h1>
     <p class="hero-sub fade-up d1">Peças em <b>impressão 3D sob medida</b> — presentes, decoração, organizadores, colecionáveis e reposição. Escolha no catálogo ou mande sua ideia: eu modelo, imprimo e envio para <b>todo o Brasil</b>.</p>
     <div class="hero-ctas fade-up d2">
-      <a href="catalogo.html" class="btn btn-primary" data-track="hero_catalogo">Ver catálogo <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
+      <a href="/catalogo.html" class="btn btn-primary" data-track="hero_catalogo">Ver catálogo <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
       <a href="#" class="btn btn-wpp" data-wpp="Olá! Vim pelo site da Alves.3D e quero fazer um orçamento." data-track="hero_whatsapp"><svg class="ic"><use href="#i-wpp"/></svg>Pedir orçamento</a>
     </div>
     <div class="hero-proof fade-up d3">
       <div><div class="proof-num"><span data-count="500">500</span><small>+</small></div><div class="proof-lbl">projetos entregues</div></div>
-      <div><div class="proof-num"><span id="statProdutos" data-count="68">68</span></div><div class="proof-lbl">no catálogo</div></div>
+      <div><div class="proof-num"><span id="statProdutos" data-count="96">96</span></div><div class="proof-lbl">no catálogo</div></div>
       <div><div class="proof-num">BR</div><div class="proof-lbl">envio nacional</div></div>
     </div>
   </div>
@@ -510,11 +518,11 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
       <div class="kicker">Catálogo</div>
       <h2 class="sec-title">Encontre pela <em>categoria</em></h2>
     </div>
-    <a href="catalogo.html" class="link-more" data-track="cats_ver_todos">Ver catálogo completo <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
+    <a href="/catalogo.html" class="link-more" data-track="cats_ver_todos">Ver catálogo completo <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
   </div>
-  <div class="rail cats reveal" id="catsGrid">
+  <div class="rail cats reveal" id="catsGrid"><!--b:cats-->
     <div class="skel" style="aspect-ratio:4/5"></div><div class="skel" style="aspect-ratio:4/5"></div><div class="skel" style="aspect-ratio:4/5"></div><div class="skel" style="aspect-ratio:4/5"></div>
-  </div>
+  <!--/b:cats--></div>
 </section>
 
 <!-- DESTAQUES -->
@@ -526,9 +534,34 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
     </div>
     <p class="sec-sub">Toque numa peça para ver fotos, opções e preço. Gostou? Peça direto pelo WhatsApp.</p>
   </div>
-  <div class="rail prods reveal" id="prodsGrid">
+  <div class="rail prods reveal" id="prodsGrid"><!--b:prods-->
     <div class="skel" style="aspect-ratio:3/4"></div><div class="skel" style="aspect-ratio:3/4"></div><div class="skel" style="aspect-ratio:3/4"></div><div class="skel" style="aspect-ratio:3/4"></div>
+  <!--/b:prods--></div>
+</section>
+
+<!-- NOVIDADES -->
+<section class="section" id="novidades" style="padding-top:0">
+  <div class="sec-head reveal">
+    <div>
+      <div class="kicker">Acabou de sair</div>
+      <h2 class="sec-title">Novidades <em>no catálogo</em></h2>
+    </div>
+    <a href="/catalogo.html?ord=novos" class="link-more" data-track="novidades_ver_todas">Ver as mais recentes <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
   </div>
+  <div class="rail prods reveal" id="novosGrid"><!--b:novos-->
+    <div class="skel" style="aspect-ratio:3/4"></div><div class="skel" style="aspect-ratio:3/4"></div><div class="skel" style="aspect-ratio:3/4"></div><div class="skel" style="aspect-ratio:3/4"></div>
+  <!--/b:novos--></div>
+</section>
+
+<!-- VISTOS RECENTEMENTE (aparece só para quem já olhou peças) -->
+<section class="section" id="vistosSec" style="padding-top:0" hidden>
+  <div class="sec-head reveal">
+    <div>
+      <div class="kicker">Continue de onde parou</div>
+      <h2 class="sec-title">Vistos <em>recentemente</em></h2>
+    </div>
+  </div>
+  <div class="rail prods reveal" id="vistosGrid"></div>
 </section>
 
 <!-- COMO FUNCIONA -->
@@ -661,7 +694,7 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
   <p>Veja o que já está pronto ou me conte a sua ideia. O orçamento é sem compromisso.</p>
   <div class="final-ctas">
     <a href="#" class="btn" style="background:#fff;color:#0b1a3a" data-wpp="Olá! Vim pelo site da Alves.3D e quero fazer um orçamento." data-track="final_whatsapp"><svg class="ic" style="color:#1aa34a"><use href="#i-wpp"/></svg>Pedir orçamento</a>
-    <a href="catalogo.html" class="btn btn-ghost" data-track="final_catalogo">Ver catálogo <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
+    <a href="/catalogo.html" class="btn btn-ghost" data-track="final_catalogo">Ver catálogo <svg class="ic arrow"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
 
@@ -686,7 +719,7 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
       <p>Impressão 3D personalizada, feita sob demanda e enviada para todo o Brasil.</p>
     </div>
     <div class="foot-links">
-      <div class="foot-col"><h4>Navegar</h4><a href="catalogo.html">Catálogo</a><a href="#como-funciona">Como funciona</a><a href="#sua-ideia">Peça personalizada</a><a href="#duvidas">Dúvidas</a></div>
+      <div class="foot-col"><h4>Navegar</h4><a href="/catalogo.html">Catálogo</a><a href="#como-funciona">Como funciona</a><a href="#sua-ideia">Peça personalizada</a><a href="#duvidas">Dúvidas</a></div>
       <div class="foot-col"><h4>Contato</h4><a href="#" data-wpp="Olá! Vim pelo site da Alves.3D." data-track="footer_whatsapp">WhatsApp</a><a href="https://instagram.com/alves_3d" target="_blank" rel="noopener">Instagram @alves_3d</a></div>
     </div>
   </div>
@@ -696,10 +729,12 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
 <!-- Ações fixas -->
 <a href="#" class="wpp-float" id="wppFloat" aria-label="Falar no WhatsApp" data-wpp="Olá! Vim pelo site da Alves.3D e quero fazer um orçamento." data-track="float_whatsapp"><svg class="ic"><use href="#i-wpp"/></svg></a>
 <div class="mbar" id="mbar">
-  <a href="catalogo.html" class="btn btn-ghost" data-track="mbar_catalogo">Catálogo</a>
+  <a href="/catalogo.html" class="btn btn-ghost" data-track="mbar_catalogo">Catálogo</a>
   <a href="#" class="btn btn-wpp" data-wpp="Olá! Vim pelo site da Alves.3D e quero fazer um orçamento." data-track="mbar_whatsapp"><svg class="ic"><use href="#i-wpp"/></svg>WhatsApp</a>
 </div>
 
+<!--b:dados--><!--/b:dados-->
+<script src="/loja.js"></script>
 <script>
 (() => {
 'use strict';
@@ -711,9 +746,8 @@ const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc = Loja.esc;
 const wppLink = msg => `https://wa.me/${WPP}?text=${encodeURIComponent(msg)}`;
-const fmt = v => v == null ? '—' : Number(v).toFixed(2).replace('.', ',').replace(/,00$/, '');
 const track = (name, extra) => { try { gtag('event', name, extra || {}); } catch(e){} };
 
 document.getElementById('ano').textContent = new Date().getFullYear();
@@ -911,83 +945,58 @@ else {
   requestAnimationFrame(tick);
 }
 
-/* ================= CATÁLOGO AO VIVO ================= */
-const varsDe = p => (p.tem_variacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
-const minPrice = p => {
-  const vs = (p.tem_variacoes && Array.isArray(p.variacoes)) ? p.variacoes.filter(v => v && v.nome) : [];
-  const ps = vs.map(v => v.preco != null ? +v.preco : (p.preco != null ? +p.preco : null)).filter(x => x != null);
-  return ps.length ? Math.min(...ps) : (p.preco != null ? +p.preco : null);
-};
-const cover = p => {
-  if (p.imagens && p.imagens[0]) return p.imagens[0];
-  for (const v of (p.variacoes || [])) if (v && v.imagens && v.imagens[0]) return v.imagens[0];
-  return '';
-};
+/* ================= CATÁLOGO =================
+   O build (npm run build) já deixa categorias, destaques e novidades escritos no HTML,
+   com os dados em #dados. Aqui o script só conecta os botões; depois confere no banco
+   se algo mudou e, só nesse caso, atualiza a tela. Sem build, monta tudo como antes. */
+const { varsDe } = Loja;
+const minPrice = Loja.precoMin, cover = Loja.capa;
+const SEL = 'codigo,nome,categoria,preco,imagens,destaque,tem_variacoes,variacoes,ordem,created_at';
+const AGORA = Date.now();
+const TILT = !REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches;
 
 async function loadCatalog() {
-  const q = 'select=codigo,nome,categoria,preco,imagens,destaque,tem_variacoes,variacoes,ordem,created_at&publicado=eq.true&order=destaque.desc,ordem.asc.nullslast,created_at.desc';
+  const q = `select=${SEL}&publicado=eq.true&order=destaque.desc,ordem.asc.nullslast,created_at.desc`;
   const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos?${q}`, { headers: { apikey: SUPABASE_KEY } });
   if (!res.ok) throw new Error(res.status);
   return res.json();
 }
 
-function renderCats(list) {
-  const map = new Map();
-  list.forEach(p => {
-    const c = p.categoria || 'Outros';
-    if (!map.has(c)) map.set(c, { n: 0, min: null, img: '' });
-    const m = map.get(c); m.n++;
-    const mp = minPrice(p); if (mp != null && (m.min == null || mp < m.min)) m.min = mp;
-    if (!m.img) m.img = cover(p);
-  });
-  const cats = [...map.entries()].sort((a, b) => b[1].n - a[1].n);
-  const shown = cats.slice(0, 7);
-  $('#catsGrid').innerHTML = shown.map(([c, m]) => `
-    <a class="cat" href="catalogo.html?cat=${encodeURIComponent(c)}" data-track="home_categoria">
-      ${m.img ? `<img src="${esc(m.img)}" alt="" loading="lazy">` : ''}
-      <span class="cat-go"><svg class="ic"><use href="#i-arrow"/></svg></span>
-      <div class="cat-body"><div class="cat-name">${esc(c)}</div><div class="cat-meta">${m.n} peça${m.n > 1 ? 's' : ''}${m.min != null ? ' · a partir de R$' + fmt(m.min) : ''}</div></div>
-    </a>`).join('') + `
-    <a class="cat cat-all" href="catalogo.html" data-track="home_categoria_todas">
-      <span class="cat-go" style="background:rgba(255,255,255,.2)"><svg class="ic"><use href="#i-arrow"/></svg></span>
-      <div><div class="cat-name">Ver tudo</div></div>
-      <p>${list.length} peças em ${cats.length} categorias</p>
-    </a>`;
+let lista = [];
+const vistos = Loja.vistos.ler().slice(0, 8);
+
+function htmlDe(list) {
+  const dest = Loja.destaquesDe(list), novos = Loja.novidadesDe(list, dest);
+  return {
+    cats: Loja.homeCatsHTML(list),
+    prods: Loja.homeProdsHTML(dest, 'home_produto', AGORA),
+    novos: novos.length >= 4 ? Loja.homeProdsHTML(novos, 'home_novidade', AGORA) : ''
+  };
+}
+function desenhar(h) {
+  $('#catsGrid').innerHTML = h.cats;
+  $('#prodsGrid').innerHTML = h.prods;
+  $('#novosGrid').innerHTML = h.novos;
+  $('#novidades').hidden = !h.novos;
+  if (TILT) addTilt('#prodsGrid .prod, #novosGrid .prod');
 }
 
-function renderProds(list) {
-  const picks = [...list.filter(p => p.destaque), ...list.filter(p => !p.destaque)].filter(p => cover(p)).slice(0, 8);
-  $('#prodsGrid').innerHTML = picks.map(p => {
-    const mp = minPrice(p);
-    return `
-    <a class="prod" href="produto.html?id=${encodeURIComponent(p.codigo)}" data-track="home_produto">
-      <div class="prod-img"><img src="${esc(cover(p))}" alt="${esc(p.nome)}" loading="lazy">${p.destaque ? '<span class="prod-badge">Destaque</span>' : ''}</div>
-      <div class="prod-body">
-        <div class="prod-cat">${esc(p.categoria)}</div>
-        <div class="prod-name">${esc(p.nome)}</div>
-        <div class="prod-foot">
-          <div class="prod-price"><small>a partir de</small><b>R$${fmt(mp)}</b></div>
-          <span class="prod-wpp" role="button" tabindex="0" data-cod="${esc(p.codigo)}" aria-label="${varsDe(p).length ? 'Escolher opção de' : 'Adicionar ao carrinho:'} ${esc(p.nome)}" title="${varsDe(p).length ? 'Escolher opção' : 'Adicionar ao carrinho'}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/><path d="M14 9.5v4M12 11.5h4"/></svg></span>
-        </div>
-      </div>
-    </a>`;
-  }).join('');
-  // Botão "+ carrinho" no card (peças com opções abrem a página para escolher)
-  $$('#prodsGrid .prod-wpp').forEach(b => {
-    const go = e => {
-      e.preventDefault(); e.stopPropagation();
-      const p = picks.find(x => x.codigo === b.dataset.cod); if (!p) return;
-      if (varsDe(p).length || !window.Carrinho) { location.href = `produto.html?id=${encodeURIComponent(p.codigo)}`; return; }
-      Carrinho.add({ codigo: p.codigo, nome: p.nome, preco: minPrice(p), qtd: 1, img: cover(p) });
-    };
-    b.addEventListener('click', go);
-    b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') go(e); });
-  });
-  if (!REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches) addTilt('#prodsGrid .prod');
+/* Botão "+ carrinho" nos cards (peças com opções abrem a página para escolher) */
+function cardAdd(e) {
+  const b = e.target.closest('.prod-wpp'); if (!b) return;
+  if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+  e.preventDefault(); e.stopPropagation();
+  const p = lista.find(x => x.codigo === b.dataset.cod) || vistos.find(x => x.codigo === b.dataset.cod);
+  if (!p) { location.href = b.closest('a').href; return; }
+  if (Loja.temOpcoes(p) || !window.Carrinho) { location.href = Loja.urlProduto(p); return; }
+  Carrinho.add({ codigo: p.codigo, nome: p.nome, preco: minPrice(p), qtd: 1, img: cover(p) });
 }
+document.addEventListener('click', cardAdd);
+document.addEventListener('keydown', cardAdd);
 
 function addTilt(sel) {
   $$(sel).forEach(card => {
+    if (card._tilt) return; card._tilt = true;
     card.addEventListener('pointermove', e => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
@@ -997,14 +1006,43 @@ function addTilt(sel) {
   });
 }
 
-loadCatalog().then(list => {
-  renderCats(list); renderProds(list);
-  const s = $('#statProdutos'); s.dataset.count = list.length; countUp(s, list.length);
-}).catch(() => {
-  // Sem conexão com o banco: mostra só o atalho para o catálogo
-  $('#catsGrid').innerHTML = `<a class="cat cat-all" href="catalogo.html"><div><div class="cat-name">Ver catálogo</div></div><p>Todas as peças com fotos e preços</p></a>`;
-  $('#destaques').style.display = 'none';
-});
+/* Vistos recentemente (guardados só no navegador do cliente) */
+function mostrarVistos() {
+  if (vistos.length < 2) return;
+  $('#vistosGrid').innerHTML = Loja.homeProdsHTML(vistos, 'home_visto', AGORA);
+  $('#vistosSec').hidden = false;
+  observeReveals();
+}
+
+let pronto = null;
+try { pronto = JSON.parse($('#dados').textContent); } catch(e) {}
+
+if (pronto && Array.isArray(pronto.produtos)) {
+  Loja.registrar(pronto);
+  lista = pronto.produtos;
+  const h0 = htmlDe(lista);
+  if (TILT) addTilt('#prodsGrid .prod, #novosGrid .prod');
+  mostrarVistos();
+  loadCatalog().then(novo => {
+    if (JSON.stringify(novo) === JSON.stringify(lista)) return;
+    lista = novo;
+    const h1 = htmlDe(novo);
+    if (h1.cats !== h0.cats || h1.prods !== h0.prods || h1.novos !== h0.novos) desenhar(h1);
+    const s = $('#statProdutos'); if (+s.dataset.count !== novo.length) { s.dataset.count = novo.length; s.textContent = novo.length; }
+  }).catch(() => {});
+} else {
+  loadCatalog().then(list => {
+    lista = list;
+    desenhar(htmlDe(list));
+    mostrarVistos();
+    const s = $('#statProdutos'); s.dataset.count = list.length; countUp(s, list.length);
+  }).catch(() => {
+    // Sem conexão com o banco: mostra só o atalho para o catálogo
+    $('#catsGrid').innerHTML = `<a class="cat cat-all" href="/catalogo.html"><div><div class="cat-name">Ver catálogo</div></div><p>Todas as peças com fotos e preços</p></a>`;
+    $('#destaques').style.display = 'none';
+    $('#novidades').hidden = true;
+  });
+}
 
 /* ================= COMO FUNCIONA (progresso ao rolar) ================= */
 const stepsEl = $('#steps'), fill = $('#stepsFill'), stepEls = $$('#steps .step');
@@ -1072,6 +1110,6 @@ $('#faqList').addEventListener('click', e => {
 
 })();
 </script>
-<script src="carrinho.js"></script>
+<script src="/carrinho.js"></script>
 </body>
 </html>
