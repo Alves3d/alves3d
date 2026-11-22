@@ -27,7 +27,8 @@ const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';   // chav
 
 // Campos que cada página usa (iguais aos pedidos pelo JS de cada uma, na mesma ordem)
 const SEL_CATALOGO = ['codigo', 'nome', 'categoria', 'preco', 'descricao', 'tags', 'imagens', 'destaque', 'tem_variacoes', 'variacoes', 'ordem', 'created_at'];
-const SEL_HOME = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'destaque', 'tem_variacoes', 'variacoes', 'ordem', 'created_at'];
+const SEL_HOME = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'destaque', 'brinde', 'tem_variacoes', 'variacoes', 'ordem', 'created_at'];
+const SEL_EMPRESAS = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'tem_variacoes', 'variacoes', 'brinde', 'ordem', 'created_at'];
 const SEL_PRODUTO = ['codigo', 'nome', 'categoria', 'preco', 'descricao', 'material', 'tamanho', 'tags', 'imagens', 'destaque', 'tem_variacoes', 'variacoes'];
 
 const ler = f => fs.readFileSync(path.join(RAIZ, f), 'utf8');
@@ -194,8 +195,18 @@ ${ldTag({
   home = bloco(home, 'novos', novos.length >= 4 ? Loja.homeProdsHTML(novos, 'home_novidade', agora) + '\n  ' : '');
   home = home.replace(/(<section class="section" id="novidades" style="padding-top:0")( hidden)?>/, (m, a) => a + (novos.length >= 4 ? '' : ' hidden') + '>');
   home = home.replace(/(<span id="statProdutos" data-count=")\d+(">)\d+/, (m, a, b) => a + produtos.length + b + produtos.length);
+  const brindesHome = Loja.brindesDe(listaHome).slice(0, 4);
+  home = bloco(home, 'brindes', brindesHome.length ? Loja.homeProdsHTML(brindesHome, 'home_brinde', agora) : '');
   home = bloco(home, 'dados', dadosTag({ paginas, cats, produtos: listaHome }));
   gravar('index.html', home);
+
+  /* ---------- 4b. brindes para empresas (empresas.html) ---------- */
+  const listaBrindes = produtos.filter(p => p.brinde).map(p => so(p, SEL_EMPRESAS));
+  let emp = ler('empresas.html');
+  emp = bloco(emp, 'brindes', Loja.brindesGradeHTML(listaBrindes) ||
+    '<div class="b-empty">Os modelos estão sendo atualizados. Descreva o que precisa no orçamento abaixo que eu te mando opções.</div>');
+  emp = bloco(emp, 'dados', dadosTag({ paginas, cats, produtos: listaBrindes }));
+  gravar('empresas.html', emp);
 
   /* ---------- 5. sitemap.xml e robots.txt ---------- */
   const dataDe = p => String(p.updated_at || p.created_at || '').slice(0, 10) || hoje;
@@ -203,6 +214,7 @@ ${ldTag({
   const urls = [
     [`${SITE}/`, ultima(produtos), '1.0'],
     [`${SITE}/catalogo.html`, ultima(produtos), '0.9'],
+    [`${SITE}/empresas.html`, ultima(produtos.filter(p => p.brinde).concat([{ created_at: '2026-11-22' }])), '0.9'],
     ...categorias.map(([c]) => [`${SITE}/catalogo/${cats[c]}.html`, ultima(produtos.filter(p => p.categoria === c)), '0.8']),
     ...produtos.map(p => [SITE + Loja.urlProduto(p), dataDe(p), '0.7'])
   ];
@@ -220,7 +232,7 @@ Sitemap: ${SITE}/sitemap.xml
 `);
 
   console.log(`✔ ${produtos.length} produtos · ${categorias.length} categorias`);
-  console.log(`✔ catalogo.html, index.html, ${categorias.length} páginas em /catalogo, ${produtos.length} páginas em /produto, sitemap.xml (${urls.length} endereços), robots.txt`);
+  console.log(`✔ catalogo.html, index.html, empresas.html (${listaBrindes.length} brindes), ${categorias.length} páginas em /catalogo, ${produtos.length} páginas em /produto, sitemap.xml (${urls.length} endereços), robots.txt`);
 }
 
 main().catch(e => { console.error('✖ Build falhou:', e.message); process.exit(1); });
