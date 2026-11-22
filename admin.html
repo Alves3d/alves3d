@@ -367,6 +367,7 @@ body.arrastando{cursor:grabbing}
       <option value="">Publicados e ocultos</option>
       <option value="1">Só publicados</option>
       <option value="0">Só ocultos</option>
+      <option value="b">🎁 Só brindes</option>
     </select>
   </div>
 
@@ -495,6 +496,10 @@ body.arrastando{cursor:grabbing}
               <input type="checkbox" id="fDestaque"><span class="track"></span>
               <span>Destaque</span>
             </label>
+            <label class="switch" title="Aparece na página Brindes para empresas (alves3d.com.br/empresas.html) e na seção de empresas da home">
+              <input type="checkbox" id="fBrinde"><span class="track"></span>
+              <span>🎁 Brinde para empresas</span>
+            </label>
           </div>
         </div>
       </div>
@@ -592,7 +597,7 @@ function render(){
   let lista = produtos.filter(p => {
     const okQ = !q || (p.nome||'').toLowerCase().includes(q) || (p.codigo||'').toLowerCase().includes(q) || (p.categoria||'').toLowerCase().includes(q);
     const okC = !cat || p.categoria === cat;
-    const okP = pub === '' || (pub === '1' ? p.publicado : !p.publicado);
+    const okP = pub === '' || (pub === 'b' ? p.brinde : pub === '1' ? p.publicado : !p.publicado);
     return okQ && okC && okP;
   });
 
@@ -614,7 +619,7 @@ function render(){
       </div>
       <div class="row-cat">${esc(p.categoria||'')}</div>
       <div class="row-price">${p.preco != null ? 'R$' + Number(p.preco).toFixed(2).replace('.',',') : '—'}</div>
-      <div class="row-pub"><span class="pill ${p.publicado ? 'pill-on' : 'pill-off'}">${p.publicado ? 'PUBLICADO' : 'OCULTO'}</span></div>
+      <div class="row-pub"><span class="pill ${p.publicado ? 'pill-on' : 'pill-off'}">${p.publicado ? 'PUBLICADO' : 'OCULTO'}</span>${p.brinde ? ' <span class="pill pill-dest" title="Brinde para empresas">🎁</span>' : ''}</div>
       <div class="row-actions">
         <button class="btn btn-ghost btn-sm" onclick="abrirEditar('${p.id}')">Editar</button>
       </div>
@@ -632,6 +637,7 @@ function abrirNovo(){
   document.getElementById('fMaterial').value = 'PLA';
   document.getElementById('fPublicado').checked = true;
   document.getElementById('fDestaque').checked = false;
+  document.getElementById('fBrinde').checked = false;
   document.getElementById('fCodigo').disabled = false;
   document.getElementById('fTemVariacoes').checked = false;
   document.getElementById('blocoVariacoes').style.display = 'none';
@@ -659,6 +665,7 @@ function abrirEditar(id){
   document.getElementById('fTags').value = (p.tags || []).join(', ');
   document.getElementById('fPublicado').checked = !!p.publicado;
   document.getElementById('fDestaque').checked = !!p.destaque;
+  document.getElementById('fBrinde').checked = !!p.brinde;
   document.getElementById('fTemVariacoes').checked = !!p.tem_variacoes;
   document.getElementById('blocoVariacoes').style.display = p.tem_variacoes ? 'block' : 'none';
   renderThumbs();
@@ -1006,6 +1013,7 @@ async function salvar(){
     imagens: fotos,
     publicado: document.getElementById('fPublicado').checked,
     destaque: document.getElementById('fDestaque').checked,
+    brinde: document.getElementById('fBrinde').checked,
     tem_variacoes: temVar,
     variacoes: varsLimpas
   };
@@ -1112,7 +1120,7 @@ function linhaOrdem(p, i, n){
       <div class="ord-name">${esc(p.nome)}</div>
       <div class="ord-meta">${esc(p.codigo)} · ${esc(p.categoria || '')}</div>
     </div>
-    <div class="ord-tags">${p.destaque ? '<span class="pill pill-dest">DESTAQUE</span>' : ''}${p.publicado ? '' : '<span class="pill pill-off">OCULTO</span>'}</div>
+    <div class="ord-tags">${p.destaque ? '<span class="pill pill-dest">DESTAQUE</span>' : ''}${p.brinde ? '<span class="pill pill-dest">🎁 BRINDE</span>' : ''}${p.publicado ? '' : '<span class="pill pill-off">OCULTO</span>'}</div>
     <div class="ord-btns">
       <button class="ext" title="Mover para o topo" onclick="moverPara('${p.id}', 1)" ${ini ? 'disabled' : ''}>⤒</button>
       <button title="Subir uma posição" onclick="moverPara('${p.id}', ${i})" ${ini ? 'disabled' : ''}>↑</button>

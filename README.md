@@ -44,6 +44,7 @@ Não edite à mão as pastas `catalogo/` e `produto/`: elas são apagadas e recr
 | `index.html`, `catalogo.html`, `produto.html` | páginas (visual + comportamento). O trecho entre `<!--b:nome-->` e `<!--/b:nome-->` é preenchido pelo build |
 | `loja.js` | modelos dos cards e da página de produto, usados pelo site **e** pelo build (por isso o HTML gerado é idêntico ao montado no navegador) |
 | `carrinho.js` | carrinho que fecha o pedido no WhatsApp |
+| `empresas.html` | página **Brindes para empresas**. Mostra as peças marcadas com **🎁 Brinde para empresas** no admin; o formulário monta o pedido de orçamento no WhatsApp |
 | `campanha.js` | faixa de data comemorativa no topo (Natal, Dia das Mães…). Edite o bloco `CAMPANHA`: texto, categoria e datas. Some sozinha depois da data `fim` |
 | `build/gerar.mjs` | o build |
 | `.github/workflows/build.yml` | automação do GitHub. **Requisito (uma vez):** Settings → Pages → Source: **GitHub Actions** |

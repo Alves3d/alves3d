@@ -129,6 +129,28 @@
     return html.join('');
   }
 
+  /* =======================================================
+     BRINDES PARA EMPRESAS (produtos marcados como "brinde" no admin)
+     ======================================================= */
+  const brindesDe = lista => (lista || []).filter(p => p.brinde && capa(p));
+  const ICO_PLUS = '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  function brindeCardHTML(p, i) {
+    const img = capa(p), mp = precoMin(p);
+    return `
+  <div class="card bcard" style="--i:${Math.min(i, 12)}" data-cod="${esc(p.codigo)}">
+    <a class="card-img" href="${esc(urlProduto(p))}" style="--img:url('${esc(img)}')" data-track="empresas_ver_produto">
+      <img src="${esc(img)}" alt="${esc(p.nome)}" width="600" height="600" loading="${i < 6 ? 'eager' : 'lazy'}" decoding="async">
+    </a>
+    <div class="card-body">
+      <div class="card-cat">${esc(p.categoria)}</div>
+      <a class="card-name" href="${esc(urlProduto(p))}">${esc(p.nome)}</a>
+      <div class="bcard-preco">${mp != null ? `Unidade a partir de <b>R$${fmt(mp)}</b> · em quantidade sai mais barato` : 'Preço conforme quantidade'}</div>
+      <button type="button" class="bcard-add" data-cod="${esc(p.codigo)}" aria-pressed="false">${ICO_PLUS}<span>Adicionar ao orçamento</span></button>
+    </div>
+  </div>`;
+  }
+  const brindesGradeHTML = lista => brindesDe(lista).map((p, i) => brindeCardHTML(p, i)).join('');
+
   const tituloCatalogo = cat => cat === 'Todos' ? 'Catálogo <em>completo</em>' : `<em>${esc(cat)}</em>`;
   const tituloAba = cat => (cat === 'Todos' ? 'Catálogo' : cat) + ' — Alves.3D | Peças em impressão 3D';
 
@@ -341,6 +363,7 @@
     varsDe, temOpcoes, precoMin, capa, fotosIniciais, ehNovo,
     registrar, mapa, slugProduto, urlProduto, urlProdutoAntiga, urlCategoria, nomeCat,
     contarCategorias, pillsHTML, cardHTML, ideaCard, gradeHTML, tituloCatalogo, tituloAba,
+    brindesDe, brindeCardHTML, brindesGradeHTML,
     slidesHTML, thumbsHTML, descProduto, produtoHTML, escolherRelacionados, rcardHTML, relacionadosHTML, jsonLdProduto,
     somarDiasUteis, prazoTexto,
     homeCatsHTML, destaquesDe, novidadesDe, homeProdHTML, homeProdsHTML,
