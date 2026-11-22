@@ -98,6 +98,7 @@ select.filter{background:var(--surface);border:1px solid var(--border);border-ra
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .fld{display:flex;flex-direction:column;gap:6px}
 .fld.full{grid-column:1/-1}
+.fld[hidden]{display:none}
 label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2)}
 input[type=text],input[type=number],input[type=email],input[type=password],select,textarea{
   background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);
@@ -502,6 +503,11 @@ body.arrastando{cursor:grabbing}
             </label>
           </div>
         </div>
+        <div class="fld full" id="boxBrindeNome" hidden>
+          <label>Nome no anúncio de empresas</label>
+          <input type="text" id="fBrindeNome" maxlength="80" placeholder="Ex: Chaveiro personalizado">
+          <span class="hint">opcional · aparece só na página de empresas e na faixa de brindes da home. Vazio = usa o nome normal</span>
+        </div>
       </div>
     </div>
     <div class="modal-foot">
@@ -627,6 +633,9 @@ function render(){
 }
 
 // ===== MODAL =====
+// Campo "Nome no anúncio de empresas" só aparece com o brinde ligado
+function syncBrinde(){ document.getElementById('boxBrindeNome').hidden = !document.getElementById('fBrinde').checked; }
+document.getElementById('fBrinde').addEventListener('change', syncBrinde);
 function abrirNovo(){
   editandoId = null;
   fotos = [];
@@ -638,6 +647,8 @@ function abrirNovo(){
   document.getElementById('fPublicado').checked = true;
   document.getElementById('fDestaque').checked = false;
   document.getElementById('fBrinde').checked = false;
+  document.getElementById('fBrindeNome').value = '';
+  syncBrinde();
   document.getElementById('fCodigo').disabled = false;
   document.getElementById('fTemVariacoes').checked = false;
   document.getElementById('blocoVariacoes').style.display = 'none';
@@ -666,6 +677,8 @@ function abrirEditar(id){
   document.getElementById('fPublicado').checked = !!p.publicado;
   document.getElementById('fDestaque').checked = !!p.destaque;
   document.getElementById('fBrinde').checked = !!p.brinde;
+  document.getElementById('fBrindeNome').value = p.brinde_nome || '';
+  syncBrinde();
   document.getElementById('fTemVariacoes').checked = !!p.tem_variacoes;
   document.getElementById('blocoVariacoes').style.display = p.tem_variacoes ? 'block' : 'none';
   renderThumbs();
@@ -1014,6 +1027,7 @@ async function salvar(){
     publicado: document.getElementById('fPublicado').checked,
     destaque: document.getElementById('fDestaque').checked,
     brinde: document.getElementById('fBrinde').checked,
+    brinde_nome: document.getElementById('fBrindeNome').value.trim() || null,
     tem_variacoes: temVar,
     variacoes: varsLimpas
   };

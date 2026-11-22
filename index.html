@@ -322,7 +322,9 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
 .emp .emp-wpp{color:#fff;border-color:rgba(255,255,255,.45)}
 .emp .emp-wpp:hover{border-color:#fff;color:#fff}
 .emp-prods:empty{display:none}
-.emp-prods .prod{background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.emp-prods .prod{background:var(--surface);color:var(--text);border-color:transparent}
+.emp-prods .prod-cat{color:var(--accent)}
+.emp-prods .prod-price small{color:var(--text2)}
 .foot-col h4{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
 .foot-col a{display:block;text-decoration:none;color:var(--text2);font-size:14px;padding:3px 0}
 .foot-col a:hover{color:var(--accent)}
@@ -979,7 +981,7 @@ else {
    se algo mudou e, só nesse caso, atualiza a tela. Sem build, monta tudo como antes. */
 const { varsDe } = Loja;
 const minPrice = Loja.precoMin, cover = Loja.capa;
-const SEL = 'codigo,nome,categoria,preco,imagens,destaque,brinde,tem_variacoes,variacoes,ordem,created_at';
+const SEL = 'codigo,nome,categoria,preco,imagens,destaque,brinde,brinde_nome,tem_variacoes,variacoes,ordem,created_at';
 const AGORA = Date.now();
 const TILT = !REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches;
 

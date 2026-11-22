@@ -132,7 +132,9 @@
   /* =======================================================
      BRINDES PARA EMPRESAS (produtos marcados como "brinde" no admin)
      ======================================================= */
-  const brindesDe = lista => (lista || []).filter(p => p.brinde && capa(p));
+  // Nome usado nos anúncios de brinde: o "Nome no anúncio de empresas" do admin, ou o nome normal
+  const nomeBrinde = p => String(p.brinde_nome || '').trim() || p.nome;
+  const brindesDe = lista => (lista || []).filter(p => p.brinde && capa(p)).map(p => Object.assign({}, p, { nome: nomeBrinde(p) }));
   const ICO_PLUS = '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
   function brindeCardHTML(p, i) {
     const img = capa(p), mp = precoMin(p);
@@ -363,7 +365,7 @@
     varsDe, temOpcoes, precoMin, capa, fotosIniciais, ehNovo,
     registrar, mapa, slugProduto, urlProduto, urlProdutoAntiga, urlCategoria, nomeCat,
     contarCategorias, pillsHTML, cardHTML, ideaCard, gradeHTML, tituloCatalogo, tituloAba,
-    brindesDe, brindeCardHTML, brindesGradeHTML,
+    brindesDe, nomeBrinde, brindeCardHTML, brindesGradeHTML,
     slidesHTML, thumbsHTML, descProduto, produtoHTML, escolherRelacionados, rcardHTML, relacionadosHTML, jsonLdProduto,
     somarDiasUteis, prazoTexto,
     homeCatsHTML, destaquesDe, novidadesDe, homeProdHTML, homeProdsHTML,

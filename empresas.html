@@ -448,7 +448,7 @@ footer nav a:hover{color:var(--accent)}
 const { esc, wppLink, capa } = Loja;
 const SUPABASE_URL = 'https://bhqcdzthiatoonbkjioe.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';
-const SEL = 'codigo,nome,categoria,preco,imagens,tem_variacoes,variacoes,brinde,ordem,created_at';
+const SEL = 'codigo,nome,categoria,preco,imagens,tem_variacoes,variacoes,brinde,brinde_nome,ordem,created_at';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const track = (n, x) => { try { gtag('event', n, x || {}); } catch(e){} };
@@ -485,7 +485,7 @@ function marcar() {
   });
   const sel = lista.filter(p => escolhidos.has(p.codigo));
   $('#selList').innerHTML = sel.length
-    ? sel.map(p => `<span class="sel-it">${esc(p.nome)}<button type="button" data-rm="${esc(p.codigo)}" aria-label="Remover ${esc(p.nome)}">×</button></span>`).join('')
+    ? sel.map(p => `<span class="sel-it">${esc(Loja.nomeBrinde(p))}<button type="button" data-rm="${esc(p.codigo)}" aria-label="Remover ${esc(Loja.nomeBrinde(p))}">×</button></span>`).join('')
     : '<span class="sel-empty">Nenhum ainda — escolha em <a href="#modelos">Modelos</a> ou descreva abaixo.</span>';
   msg();
 }
@@ -509,7 +509,7 @@ function msg() {
   let m = 'Olá! Quero um orçamento de *brindes para empresa*.\n';
   if (empresa) m += '\nEmpresa: ' + empresa;
   if (nome) m += '\nNome: ' + nome;
-  if (sel.length) m += '\n\nModelos:\n' + sel.map(p => '• ' + p.nome + ' (' + p.codigo + ')').join('\n');
+  if (sel.length) m += '\n\nModelos:\n' + sel.map(p => '• ' + Loja.nomeBrinde(p) + ' (' + p.codigo + ')').join('\n');
   if (qtd) m += '\n\nQuantidade: ' + qtd;
   if (data) m += '\nPreciso para: ' + data.split('-').reverse().join('/');
   if (pers.length) m += '\nPersonalização: ' + pers.join(', ');
