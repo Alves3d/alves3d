@@ -27,8 +27,8 @@ const SUPABASE_KEY = 'sb_publishable_SmwxRZ8gZSxp6V8rciCudQ_s5QpLK79';   // chav
 
 // Campos que cada página usa (iguais aos pedidos pelo JS de cada uma, na mesma ordem)
 const SEL_CATALOGO = ['codigo', 'nome', 'categoria', 'preco', 'descricao', 'tags', 'imagens', 'destaque', 'tem_variacoes', 'variacoes', 'ordem', 'created_at'];
-const SEL_HOME = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'destaque', 'brinde', 'tem_variacoes', 'variacoes', 'ordem', 'created_at'];
-const SEL_EMPRESAS = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'tem_variacoes', 'variacoes', 'brinde', 'ordem', 'created_at'];
+const SEL_HOME = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'destaque', 'brinde', 'brinde_nome', 'tem_variacoes', 'variacoes', 'ordem', 'created_at'];
+const SEL_EMPRESAS = ['codigo', 'nome', 'categoria', 'preco', 'imagens', 'tem_variacoes', 'variacoes', 'brinde', 'brinde_nome', 'ordem', 'created_at'];
 const SEL_PRODUTO = ['codigo', 'nome', 'categoria', 'preco', 'descricao', 'material', 'tamanho', 'tags', 'imagens', 'destaque', 'tem_variacoes', 'variacoes'];
 
 const ler = f => fs.readFileSync(path.join(RAIZ, f), 'utf8');
