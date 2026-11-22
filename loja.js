@@ -218,6 +218,8 @@
         <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.6 0-1.4 1-2.4 2.4-2.4H18a3 3 0 0 0 3-3A9 9 0 0 0 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg><div><b>Várias cores</b>escolha no pedido</div></div>
       </div>
 
+      <div class="pay"><span class="pay-lbl">Pagamento</span><span class="pay-chip">Pix</span><span class="pay-chip">Crédito</span><span class="pay-chip">Débito</span><span class="pay-chip">Dinheiro</span><span class="pay-frete">· Frete pelo CEP</span></div>
+
       ${p.descricao ? `<div class="block"><div class="lbl">Sobre a peça</div><div class="desc">${esc(p.descricao)}</div></div>` : ''}
       ${specs.length ? `<div class="specs">${specs.map(([k, v]) => `<div class="spec"><span>${k}</span>${esc(v)}</div>`).join('')}</div>` : ''}
       ${(p.tags || []).length ? `<div class="tags">${p.tags.map(t => `<span class="tag">#${esc(t)}</span>`).join('')}</div>` : ''}

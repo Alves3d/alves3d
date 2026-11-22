@@ -70,6 +70,7 @@
     '.cart-tot span{font-size:13px;color:var(--text2)}' +
     '.cart-tot b{font:400 34px/1 var(--serif);letter-spacing:.5px}' +
     '.cart-note{font-size:12px;color:var(--text3);line-height:1.4}' +
+    '.cart-note b{color:var(--text2);font-weight:600}' +
     '.cart-fields{display:grid;grid-template-columns:1fr 130px;gap:8px}' +
     '.cart-fields input{height:42px;border-radius:12px;border:1px solid var(--border2);background:var(--bg);color:var(--text);padding:0 12px;font:14px var(--sans);outline:none;min-width:0}' +
     '.cart-fields input:focus{border-color:var(--accent)}' +
@@ -114,7 +115,7 @@
     '<div class="cart-body"></div>' +
     '<div class="cart-ft">' +
       '<div class="cart-tot"><span>Total estimado</span><b class="cart-total">R$0</b></div>' +
-      '<div class="cart-note">Frete, prazo e valor final são confirmados no WhatsApp. A partir de 3 unidades tem desconto.</div>' +
+      '<div class="cart-note">Pagamento: <b>Pix, crédito, débito ou dinheiro</b>. Frete (pelo CEP), prazo e valor final são confirmados no WhatsApp. A partir de 3 unidades tem desconto.</div>' +
       '<div class="cart-fields"><input type="text" class="cart-nome" maxlength="60" placeholder="Seu nome (opcional)" autocomplete="name"><input type="text" class="cart-cep" maxlength="9" inputmode="numeric" placeholder="CEP (frete)" autocomplete="postal-code"></div>' +
       '<a href="#" class="cart-send" target="_blank" rel="noopener">' + ICON_WPP + 'Enviar pedido no WhatsApp</a>' +
       '<div class="cart-sent">Pedido enviado? Assim que eu responder no WhatsApp, você pode limpar o carrinho.<br><button type="button" class="cart-clear2">Limpar carrinho</button></div>' +
@@ -177,7 +178,7 @@
     m += '\n\nTotal estimado: R$' + fmt(t.valor) + (t.semPreco ? ' + itens a combinar' : '');
     m += '\nItens: ' + count();
     if (cliente.cep) m += '\nCEP para o frete: ' + cliente.cep;
-    m += '\n\nPode confirmar valores, frete e prazo?';
+    m += '\n\nPode confirmar valores, frete, prazo e forma de pagamento?';
     return m;
   }
   function msgLink() { sendBtn.href = 'https://wa.me/' + WPP + '?text=' + encodeURIComponent(mensagem()); }

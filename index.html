@@ -383,7 +383,7 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Alves.3D","description":"Impressão 3D personalizada: presentes, decoração, chaveiros, organizadores e peças sob medida. Envio para todo o Brasil.","url":"https://alves3d.com.br/","logo":"https://alves3d.com.br/favicon.png","image":"https://alves3d.com.br/imgs/hero-bg.jpg","telephone":"+55 16 99236-4004","taxID":"69.195.791/0001-59","address":{"@type":"PostalAddress","addressLocality":"Guará","addressRegion":"SP","addressCountry":"BR"},"areaServed":"BR","sameAs":["https://instagram.com/alves_3d"]}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Alves.3D","paymentAccepted":"Pix, Cartão de crédito, Cartão de débito, Dinheiro","currenciesAccepted":"BRL","description":"Impressão 3D personalizada: presentes, decoração, chaveiros, organizadores e peças sob medida. Envio para todo o Brasil.","url":"https://alves3d.com.br/","logo":"https://alves3d.com.br/favicon.png","image":"https://alves3d.com.br/imgs/hero-bg.jpg","telephone":"+55 16 99236-4004","taxID":"69.195.791/0001-59","address":{"@type":"PostalAddress","addressLocality":"Guará","addressRegion":"SP","addressCountry":"BR"},"areaServed":"BR","sameAs":["https://instagram.com/alves_3d"]}
 </script>
 </head>
 <body>
@@ -682,7 +682,8 @@ footer{padding:56px var(--pad) 40px;border-top:1px solid var(--border);margin-to
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Posso pedir algo que não está no catálogo?<i></i></button><div class="faq-a"><div><p>Pode. Mande uma foto, referência ou o arquivo 3D (STL/OBJ). Se for preciso modelar do zero, a modelagem leva até 5 dias úteis antes da produção.</p></div></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Qual é o prazo?<i></i></button><div class="faq-a"><div><p>A produção leva de 3 a 7 dias úteis depois da confirmação. O envio pelos Correios varia de 2 a 10 dias úteis conforme a região. O prazo exato vai junto com o orçamento.</p></div></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Quais materiais vocês usam?<i></i></button><div class="faq-a"><div><p><b>PLA</b> para a maioria das peças (muitas cores, ótimo acabamento). <b>PETG</b> para peças que pegam sol, calor ou umidade. <b>ABS</b> para peças técnicas que sofrem impacto. Se não souber qual escolher, eu indico.</p></div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">Vocês enviam para minha cidade?<i></i></button><div class="faq-a"><div><p>Sim, enviamos para todo o Brasil com código de rastreio.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Quais são as formas de pagamento?<i></i></button><div class="faq-a"><div><p><b>Pix</b>, <b>cartão de crédito</b>, <b>cartão de débito</b> ou <b>dinheiro</b>. A forma de pagamento é combinada no WhatsApp, junto com a confirmação do pedido.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Vocês enviam para minha cidade? Quanto é o frete?<i></i></button><div class="faq-a"><div><p>Sim, enviamos para todo o Brasil com código de rastreio. O frete é calculado pelo seu CEP: informe no carrinho ou no WhatsApp e o valor vai junto com o orçamento.</p></div></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Tem desconto em quantidade?<i></i></button><div class="faq-a"><div><p>Tem. A partir de 3 unidades o desconto é progressivo. Para brindes e pedidos de empresa, peça um orçamento especial.</p></div></div></div>
     </div>
   </div>
@@ -801,6 +802,7 @@ const perks = [
   ['Mais de 15 cores','M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.6 0-1.4 1-2.4 2.4-2.4H18a3 3 0 0 0 3-3A9 9 0 0 0 12 3z'],
   ['Feito sob demanda','M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z'],
   ['Envio para todo o Brasil','M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a2 2 0 1 0 0-.1M17 19a2 2 0 1 0 0-.1'],
+  ['Pix, cartão ou dinheiro','M2 7h20v10H2zM2 11h20M6 15h3'],
   ['Orçamento sem compromisso','M20 6 9 17l-5-5'],
   ['Modelagem sob encomenda','M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8']
 ];
@@ -1111,5 +1113,6 @@ $('#faqList').addEventListener('click', e => {
 })();
 </script>
 <script src="/carrinho.js"></script>
+<script src="/campanha.js"></script>
 </body>
 </html>

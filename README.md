@@ -44,11 +44,16 @@ Não edite à mão as pastas `catalogo/` e `produto/`: elas são apagadas e recr
 | `index.html`, `catalogo.html`, `produto.html` | páginas (visual + comportamento). O trecho entre `<!--b:nome-->` e `<!--/b:nome-->` é preenchido pelo build |
 | `loja.js` | modelos dos cards e da página de produto, usados pelo site **e** pelo build (por isso o HTML gerado é idêntico ao montado no navegador) |
 | `carrinho.js` | carrinho que fecha o pedido no WhatsApp |
+| `campanha.js` | faixa de data comemorativa no topo (Natal, Dia das Mães…). Edite o bloco `CAMPANHA`: texto, categoria e datas. Some sozinha depois da data `fim` |
 | `build/gerar.mjs` | o build |
-| `.github/workflows/build.yml` | automação do GitHub |
+| `.github/workflows/build.yml` | automação do GitHub. **Requisito (uma vez):** Settings → Pages → Source: **GitHub Actions** |
 | `404.html` | página de endereço não encontrado (redireciona links de peças/categorias quando possível) |
 | `admin.html`, `pesquisa.html` | painel e pesquisa de satisfação (não aparecem no Google) |
 
 ## Links antigos
 
 Continuam funcionando: `catalogo.html?cat=Natal`, `catalogo.html?q=...&ord=menor` e `produto.html?id=CÓDIGO`.
+
+## ⚠️ Enviando arquivos pelo site do GitHub
+
+O upload arrastando arquivos no github.com **ignora pastas que começam com ponto** (como `.github`). Se a pasta `.github/workflows` sumir, o build automático para de rodar e o Google volta a ver o catálogo vazio. Para criar ou editar o workflow pelo site, use **Add file → Create new file** e digite o caminho `.github/workflows/build.yml`.
