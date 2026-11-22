@@ -1,0 +1,56 @@
+# Atualizar páginas do site
+# Lê os produtos do Supabase, gera catálogo, páginas de produto, sitemap.xml e robots.txt
+# e publica no GitHub Pages. Roda: todo dia às 06:17 (Brasília), a cada envio para a main,
+# e quando você clicar em "Run workflow" (ou no botão 🌐 Atualizar Google do admin).
+#
+# Requisito (uma vez só): Settings → Pages → Build and deployment → Source: "GitHub Actions"
+name: Atualizar páginas do site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 9 * * *'   # 09:17 UTC = 06:17 em Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Gerar páginas (produtos do Supabase)
+        run: npm run build
+
+      - name: Montar pasta do site
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_site' --exclude='build' \
+                   --exclude='node_modules' --exclude='package.json' --exclude='README.md' ./ _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
